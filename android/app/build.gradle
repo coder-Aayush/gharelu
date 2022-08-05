@@ -1,0 +1,71 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) ***REMOVED***
+    localPropertiesFile.withReader('UTF-8') ***REMOVED*** reader ->
+        localProperties.load(reader)
+    ***REMOVED***
+***REMOVED***
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) ***REMOVED***
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+***REMOVED***
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) ***REMOVED***
+    flutterVersionCode = '1'
+***REMOVED***
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) ***REMOVED***
+    flutterVersionName = '1.0'
+***REMOVED***
+
+apply plugin: 'com.android.application'
+// START: FlutterFire Configuration
+apply plugin: 'com.google.gms.google-services'
+// END: FlutterFire Configuration
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android ***REMOVED***
+    compileSdkVersion flutter.compileSdkVersion
+
+    compileOptions ***REMOVED***
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    ***REMOVED***
+
+    kotlinOptions ***REMOVED***
+        jvmTarget = '1.8'
+    ***REMOVED***
+
+    sourceSets ***REMOVED***
+        main.java.srcDirs += 'src/main/kotlin'
+    ***REMOVED***
+
+    defaultConfig ***REMOVED***
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "app.gharelu"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    ***REMOVED***
+
+    buildTypes ***REMOVED***
+        release ***REMOVED***
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        ***REMOVED***
+    ***REMOVED***
+***REMOVED***
+
+flutter ***REMOVED***
+    source '../..'
+***REMOVED***
+
+dependencies ***REMOVED***
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+***REMOVED***

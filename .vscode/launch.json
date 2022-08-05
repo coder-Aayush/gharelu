@@ -1,0 +1,11 @@
+***REMOVED***
+  "version": "1.0.0",
+  "configurations": [
+    ***REMOVED***
+      "name": "Launch development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+    ***REMOVED***,
+  ]
+***REMOVED***
