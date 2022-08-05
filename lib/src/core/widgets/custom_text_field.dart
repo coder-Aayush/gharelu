@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gharelu/src/core/extensions/extensions.dart';
+import 'package:gharelu/src/core/theme/app_colors.dart';
+import 'package:gharelu/src/core/theme/app_styles.dart';
 
 class CustomTextField extends StatelessWidget ***REMOVED***
   const CustomTextField(***REMOVED***
@@ -10,6 +13,8 @@ class CustomTextField extends StatelessWidget ***REMOVED***
     this.onTap,
     this.isEnable = true,
     this.isPassword = false,
+    this.error,
+    this.onChanged,
   ***REMOVED***) : super(key: key);
   final String title;
   final TextEditingController controller;
@@ -17,18 +22,36 @@ class CustomTextField extends StatelessWidget ***REMOVED***
   final VoidCallback? onTap;
   final bool isEnable;
   final bool isPassword;
+  final String? error;
+  final Function(String)? onChanged;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
-    return TextField(
-      controller: controller,
-      inputFormatters: inputFormatters,
-      enableSuggestions: true,
-      onTap: onTap,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        hintText: title,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextField(
+          onChanged: onChanged,
+          controller: controller,
+          inputFormatters: inputFormatters,
+          enableSuggestions: true,
+          onTap: onTap,
+          obscureText: isPassword,
+          decoration: InputDecoration(
+            hintText: title,
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+              color:
+                  error != null ? AppColors.errorColor : AppColors.primaryColor,
+            )),
+          ),
+        ),
+        if (error != null && error!.isNotEmpty)
+          Text(
+            error ?? '',
+            style: AppStyles.text12PxRegular.error,
+          ),
+***REMOVED***
     );
   ***REMOVED***
 ***REMOVED***

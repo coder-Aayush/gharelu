@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
