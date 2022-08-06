@@ -1,6 +1,7 @@
 ***REMOVED***
 import 'package:firebase_auth/firebase_auth.dart';
 ***REMOVED***
+import 'package:gharelu/src/core/collections/firebase_db_collection.dart';
 ***REMOVED***
 
 abstract class _AuthRemoteSource ***REMOVED***
@@ -25,6 +26,11 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
       final response = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
+        final _user = response.user;
+        await FirebaseDBCollection.user.doc(_user?.uid).set(***REMOVED***
+          'updated_at': DateTime.now().millisecondsSinceEpoch,
+          'last_login': DateTime.now().millisecondsSinceEpoch,
+      ***REMOVED***
         return right(response.user);
       ***REMOVED*** else ***REMOVED***
         return left(const AppError.serverError(message: 'Failed to Login'));
@@ -45,6 +51,10 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
       final response = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
+        final _user = response.user;
+        await FirebaseDBCollection.user
+            .doc(_user?.uid)
+            .set(***REMOVED***'location': location, 'name': name, 'email': email***REMOVED***);
         return right(response.user);
       ***REMOVED*** else ***REMOVED***
         return left(const AppError.serverError(message: 'Unknow Eror'));

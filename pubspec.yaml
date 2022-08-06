@@ -36,6 +36,7 @@ dependencies:
   dartz: ^0.10.1
   flutter_map: ^2.2.0
   dio: ^4.0.6
+  dotted_border: ^2.0.0+2
 
 dev_dependencies:
   auto_route_generator: ^4.2.0
