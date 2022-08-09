@@ -8,13 +8,15 @@ import 'package:gharelu/src/core/routes/app_router.gr.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/providers/banner_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeView extends StatelessWidget ***REMOVED***
+class HomeView extends HookConsumerWidget ***REMOVED***
   const HomeView(***REMOVED***Key? key***REMOVED***) : super(key: key);
 
 ***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
     FirebaseAuth.instance.signOut();
     return ScaffoldWrapper(
       body: CustomScrollView(
@@ -41,15 +43,33 @@ class HomeView extends StatelessWidget ***REMOVED***
             ),
           ),
           20.verticalSpace.toSliverBox,
-          const CustomCarousel().toSliverBox,
-          30.verticalSpace.toSliverBox,
+          Consumer(builder: (context, ref, _) ***REMOVED***
+            final bannersState = ref.watch(bannerStateProvider);
+            return bannersState.maybeWhen(
+              orElse: () => Container().toSliverBox,
+              success: (data) ***REMOVED***
+                if (data.isEmpty) ***REMOVED***
+                  return const SizedBox.shrink().toSliverBox;
+                ***REMOVED*** else ***REMOVED***
+                  return Column(
+                    children: [
+                      CustomCarousel(banners: data),
+                      30.verticalSpace,
+              ***REMOVED***
+                  ).toSliverBox;
+                ***REMOVED***
+              ***REMOVED***,
+              error: (message) => Center(child: Text(message)).toSliverBox,
+              loading: () => const CarouselShimmer().px(20.w).toSliverBox,
+            );
+          ***REMOVED***),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 20.h,
             ),
             delegate: SliverChildBuilderDelegate(
-              (context, index) => ProductCard(
+              (context, index) => CustomProductCard(
                 onPressed: () =>
                     context.router.push(CategoryRoute(title: 'Baby Sitting')),
               ).px(8.w),

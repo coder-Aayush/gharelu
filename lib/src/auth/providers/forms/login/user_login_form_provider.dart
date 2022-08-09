@@ -8,7 +8,8 @@ class UserLoginFormProvider extends StateNotifier<UserLoginFormState> ***REMOVED
   UserLoginFormProvider() : super(UserLoginFormState(UserLoginEntity.empty()));
 
   void setEmail(String email) ***REMOVED***
-    var _form = state.form.copyWith(email: Field(value: email));
+    UserLoginEntity _form = state.form.copyWith(
+        email: Field(value: email)); // copy from from the state and add email
     late Field emailField;
     if (email.trim().validateEmail()) ***REMOVED***
       emailField = _form.email.copyWith(isValid: true, errorMessage: '');

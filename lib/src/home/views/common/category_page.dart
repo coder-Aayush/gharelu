@@ -48,7 +48,7 @@ class CategoryView extends StatelessWidget ***REMOVED***
               mainAxisSpacing: 20.h,
             ),
             delegate: SliverChildBuilderDelegate(
-              (context, index) => ProductCard(
+              (context, index) => CustomProductCard(
                 onPressed: () ***REMOVED******REMOVED***,
               ).px(10.w),
               childCount: 100,

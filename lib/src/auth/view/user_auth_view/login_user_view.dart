@@ -48,12 +48,21 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
                 style: AppStyles.text24PxBold,
               ),
               80.verticalSpace,
-              CustomTextField(
-                onChanged: (email) =>
-                    ref.read(userLoginFormProvider.notifier).setEmail(email),
-                title: 'Email',
-                error: ref.watch(userLoginFormProvider).form.email.errorMessage,
-                controller: _email,
+              Consumer(
+                builder: (context, ref, child) ***REMOVED***
+                  return CustomTextField(
+                    onChanged: (email) => ref
+                        .read(userLoginFormProvider.notifier)
+                        .setEmail(email),
+                    title: 'Email',
+                    error: ref
+                        .watch(userLoginFormProvider)
+                        .form
+                        .email
+                        .errorMessage,
+                    controller: _email,
+                  );
+                ***REMOVED***,
               ),
               30.verticalSpace,
               CustomTextField(

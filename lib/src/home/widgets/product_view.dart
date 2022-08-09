@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 
-class ProductCard extends StatelessWidget ***REMOVED***
-  const ProductCard(***REMOVED***Key? key, required this.onPressed***REMOVED***) : super(key: key);
+class CustomProductCard extends StatelessWidget ***REMOVED***
+  const CustomProductCard(***REMOVED***Key? key, required this.onPressed***REMOVED***)
+      : super(key: key);
 
   final VoidCallback onPressed;
 

@@ -2,9 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
+import 'package:gharelu/src/home/providers/banner_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DashboardView extends StatelessWidget ***REMOVED***
+class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
   const DashboardView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+
+***REMOVED***
+  _DashboardViewState createState() => _DashboardViewState();
+***REMOVED***
+
+class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
+***REMOVED***
+  void initState() ***REMOVED***
+    super.initState();
+    ref.read(bannerStateProvider.notifier).getBanners();
+  ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
