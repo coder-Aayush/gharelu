@@ -1,6 +1,4 @@
-***REMOVED***
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -150,7 +148,6 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                         ref
                             .read(merchantSignupFormProvider.notifier)
                             .setLocation(location);
-                        myLocation.value = location;
                       ***REMOVED***,
                     ),
                   ),
