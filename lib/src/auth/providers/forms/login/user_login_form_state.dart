@@ -7,3 +7,5 @@ part 'user_login_form_state.freezed.dart';
 class UserLoginFormState with _$UserLoginFormState ***REMOVED***
   const factory UserLoginFormState(UserLoginEntity form) = _UserLoginFormState;
 ***REMOVED***
+
+

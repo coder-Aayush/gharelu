@@ -25,7 +25,10 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
       state.maybeWhen(
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
-        success: (data) => context.showSnackbar(message: 'Your are logged in'),
+        success: (data) ***REMOVED***
+          context.router.replaceAll([const DashboardRouter()]);
+          context.showSnackbar(message: 'Your are logged in');
+        ***REMOVED***,
       );
   ***REMOVED***
     return ScaffoldWrapper(
@@ -64,12 +67,6 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
               40.verticalSpace,
               Align(
                 child: CustomButton(
-                  // onPressed: () => context.router.push(
-                  //   WelcomeRoute(
-                  //     buttonTitle: 'Register your service',
-                  //     onPressed: () ***REMOVED******REMOVED***,
-                  //   ),
-                  // ),
                   loading: ref.watch(merchantLoginProvider).maybeWhen(
                         orElse: () => false,
                         loading: () => true,

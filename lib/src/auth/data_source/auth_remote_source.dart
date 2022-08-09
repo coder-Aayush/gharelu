@@ -11,6 +11,7 @@ import 'package:gharelu/src/core/enum/auth_type.dart';
 ***REMOVED***
 import 'package:gharelu/src/core/helpers/storage_helper.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
+import 'package:logger/logger.dart';
 
 abstract class _AuthRemoteSource ***REMOVED***
   Future<Either<AppError, User?>> loginAsUser(***REMOVED***
@@ -159,7 +160,9 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
         password: password,
       );
       if (response.user != null) ***REMOVED***
-        final docs = await StorageHelper.uploadFiles(_reader, documents);
+        final docs =
+            await StorageHelper.uploadFiles(_reader, documents, path: 'users');
+        Logger().d(docs);
         log(docs.toString());
         final _customUser = CustomUserModel(
           email: email,

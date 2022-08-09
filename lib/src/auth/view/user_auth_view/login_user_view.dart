@@ -28,12 +28,13 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
         success: (data) => context.router.push(
           WelcomeRoute(
             buttonTitle: 'Back To Home',
-            onPressed: () ***REMOVED******REMOVED***,
+            onPressed: () ***REMOVED***
+              context.router.replaceAll([const DashboardRouter()]);
+            ***REMOVED***,
           ),
         ),
       );
   ***REMOVED***
-    log('here');
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login'),

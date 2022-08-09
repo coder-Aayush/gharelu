@@ -5,15 +5,21 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 
 class StorageHelper ***REMOVED***
   const StorageHelper._();
-  static Future<List<String>> uploadFiles(
-      Reader reader, List<File> files) async ***REMOVED***
+  static Future<List<String>> uploadFiles(Reader reader, List<File> files,
+      ***REMOVED***String? path***REMOVED***) async ***REMOVED***
     List<String> fileUrls = [];
-
-    files.forEach((_file) async ***REMOVED***
-      final storageReference =
-          await reader(storageProvider).ref().child('users/').putFile(_file);
-      fileUrls.add(await (await storageReference.ref.getDownloadURL()));
-  ***REMOVED***
+    fileUrls = await Future.wait(
+        files.map((doc) => uploadFile(reader, doc, path: path)));
     return fileUrls;
+  ***REMOVED***
+
+  static Future<String> uploadFile(Reader reader, File file,
+      ***REMOVED***String? path***REMOVED***) async ***REMOVED***
+    final storageReference = await reader(storageProvider)
+        .ref(path)
+        .child(
+            '$path$***REMOVED***DateTime.now().millisecondsSinceEpoch***REMOVED***$***REMOVED***file.path.split('.')[1]***REMOVED***')
+        .putFile(file);
+    return await storageReference.ref.getDownloadURL();
   ***REMOVED***
 ***REMOVED***

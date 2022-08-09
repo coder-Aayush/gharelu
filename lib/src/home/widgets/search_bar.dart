@@ -14,6 +14,12 @@ class SearchBar extends StatelessWidget ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return Container(
       padding: EdgeInsets.only(top: (150.h / 2).h),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
       height: 150.h,
       child: Center(
         child: Container(

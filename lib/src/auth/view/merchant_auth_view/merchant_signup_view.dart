@@ -27,16 +27,15 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
       state.maybeWhen(
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
-        success: (data) => context.showSnackbar(message: data.toString()),
+        success: (data) => context.showSnackbar(message: 'You are signed up'),
       );
   ***REMOVED***
     final _name = useTextEditingController();
     final _email = useTextEditingController();
     final _phoneNumber = useTextEditingController();
     final _password = useTextEditingController();
-    final documents = useState(<File>[]);
-    final myLocation = useState('');
-    return Scaffold(
+
+    return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Signup as Merchant'),
       ),
@@ -112,7 +111,6 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                   ref
                       .read(merchantSignupFormProvider.notifier)
                       .setDocuments(imagePath.map((e) => e.path).toList());
-                  log(imagePath.toString());
                 ***REMOVED***
               ***REMOVED***,
             ),
