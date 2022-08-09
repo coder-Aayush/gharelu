@@ -29,7 +29,13 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android ***REMOVED***
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
+    lintOptions ***REMOVED***
+        disable 'InvalidPackage'
+        disable "Instantiatable"
+        checkReleaseBuilds false
+        abortOnError false
+       ***REMOVED***
 
     compileOptions ***REMOVED***
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -47,7 +53,7 @@ android ***REMOVED***
     defaultConfig ***REMOVED***
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "app.gharelu"
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

@@ -15,7 +15,8 @@ class CustomCarousel extends StatelessWidget ***REMOVED***
         (index) => ClipRRect(
           borderRadius: BorderRadius.circular(5.r),
           child: const CacheImageViewer(
-            imageUrl: 'https://via.placeholder.com/300',
+            imageUrl:
+                'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
             width: double.infinity,
           ),
         ).px(5.w),

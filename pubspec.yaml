@@ -37,6 +37,7 @@ dependencies:
   flutter_map: ^2.2.0
   dio: ^4.0.6
   dotted_border: ^2.0.0+2
+  firebase_storage: ^10.3.4
 
 dev_dependencies:
   auto_route_generator: ^4.2.0

@@ -3,20 +3,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gharelu/src/auth/data_source/auth_remote_source.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 
-class SignupProvider extends StateNotifier<AppState<User?>> ***REMOVED***
-  SignupProvider(this._remoteSource) : super(const AppState.initial());
+class MerchantLoginProvider extends StateNotifier<AppState<User?>> ***REMOVED***
+  MerchantLoginProvider(this._remoteSource)
+      : super(const AppState<User?>.initial());
 
   final AuthRemoteSource _remoteSource;
 
-  Future<void> signup(***REMOVED***
-    required String name,
+  Future<void> loginAsMerchant(***REMOVED***
     required String email,
     required String password,
-    required String location,
   ***REMOVED***) async ***REMOVED***
     state = const AppState.loading();
-    final response = await _remoteSource.signupUser(
-        name: name, email: email, password: password, location: location);
+    final response =
+        await _remoteSource.merchantLogin(email: email, password: password);
     state = response.fold(
       (error) => error.when(
           serverError: (message) => AppState.error(message: message),
@@ -26,5 +25,6 @@ class SignupProvider extends StateNotifier<AppState<User?>> ***REMOVED***
   ***REMOVED***
 ***REMOVED***
 
-final signupProvider = StateNotifierProvider<SignupProvider, AppState<User?>>(
-    (ref) => SignupProvider(ref.read(authRemoteSourceProvider)));
+final merchantLoginProvider =
+    StateNotifierProvider.autoDispose<MerchantLoginProvider, AppState<User?>>(
+        (ref) => MerchantLoginProvider(ref.read(authRemoteSourceProvider)));

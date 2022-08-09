@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gharelu">
+    <!-- location permission -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
    <application
         android:label="Gharelu"
         android:name="$***REMOVED***applicationName***REMOVED***"

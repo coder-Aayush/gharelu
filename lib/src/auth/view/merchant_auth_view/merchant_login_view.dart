@@ -1,69 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/auth/providers/forms/login/user_login_form_provider.dart';
+import 'package:gharelu/src/auth/providers/merchant_login_provider.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
+import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantLoginView extends StatelessWidget ***REMOVED***
+class MerchantLoginView extends HookConsumerWidget ***REMOVED***
   const MerchantLoginView(***REMOVED***Key? key***REMOVED***) : super(key: key);
 
 ***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
-    return Scaffold(
+  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+    final _email = useTextEditingController();
+    final _password = useTextEditingController();
+
+    // list for the login event
+    ref.listen(merchantLoginProvider, (previous, next) ***REMOVED***
+      final state = next as AppState;
+      state.maybeWhen(
+        orElse: () => null,
+        error: (message) => context.showSnackbar(message: message),
+        success: (data) => context.showSnackbar(message: 'Your are logged in'),
+      );
+  ***REMOVED***
+    return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login as Merchant'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            30.verticalSpace,
-            Text(
-              'Here To Get \nWelcome!',
-              style: AppStyles.text24PxBold,
-            ),
-            30.verticalSpace,
-            CustomTextField(
-              title: 'Email',
-              controller: TextEditingController(),
-            ),
-            22.verticalSpace,
-            CustomTextField(
-              title: 'Password',
-              isPassword: true,
-              controller: TextEditingController(),
-            ),
-            40.verticalSpace,
-            Align(
-              child: CustomButton(
-                onPressed: () => context.router.push(
-                  WelcomeRoute(
-                    buttonTitle: 'Register your service',
-                    onPressed: () ***REMOVED******REMOVED***,
-                  ),
-                ),
-                title: 'Sign in',
-                isDisabled: false,
+        child: Consumer(builder: (context, ref, _) ***REMOVED***
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              30.verticalSpace,
+              Text(
+                'Here To Get \nWelcome!',
+                style: AppStyles.text24PxBold,
               ),
-            ),
-            40.verticalSpace,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Don\'t have account?',
-                  style: AppStyles.text14PxRegular.midGrey,
+              30.verticalSpace,
+              CustomTextField(
+                title: 'Email',
+                controller: _email,
+                error: ref.watch(userLoginFormProvider).form.email.errorMessage,
+                onChanged: (email) =>
+                    ref.read(userLoginFormProvider.notifier).setEmail(email),
+              ),
+              22.verticalSpace,
+              CustomTextField(
+                title: 'Password',
+                isPassword: true,
+                controller: _password,
+                onChanged: (password) => ref
+                    .read(userLoginFormProvider.notifier)
+                    .setPassword(password),
+                error:
+                    ref.watch(userLoginFormProvider).form.password.errorMessage,
+              ),
+              40.verticalSpace,
+              Align(
+                child: CustomButton(
+                  // onPressed: () => context.router.push(
+                  //   WelcomeRoute(
+                  //     buttonTitle: 'Register your service',
+                  //     onPressed: () ***REMOVED******REMOVED***,
+                  //   ),
+                  // ),
+                  loading: ref.watch(merchantLoginProvider).maybeWhen(
+                        orElse: () => false,
+                        loading: () => true,
+                      ),
+                  onPressed: () => ref
+                      .read(merchantLoginProvider.notifier)
+                      .loginAsMerchant(
+                          email: _email.text, password: _password.text),
+                  title: 'Sign in',
+                  isDisabled: !ref.watch(userLoginFormProvider).form.isValid,
                 ),
-                TextButton(
-                  onPressed: () => context.router.pop(),
-                  child: const Text('Sign Up'),
-                ),
-        ***REMOVED***
-            ),
-    ***REMOVED***
-        ),
+              ),
+              40.verticalSpace,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t have account?',
+                    style: AppStyles.text14PxRegular.midGrey,
+                  ),
+                  TextButton(
+                    onPressed: () => context.router.pop(),
+                    child: const Text('Sign Up'),
+                  ),
+          ***REMOVED***
+              ),
+      ***REMOVED***
+          );
+        ***REMOVED***),
       ).px(20),
     );
   ***REMOVED***

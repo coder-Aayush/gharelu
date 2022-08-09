@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget ***REMOVED***
     this.isPassword = false,
     this.error,
     this.onChanged,
+    this.textInputType = TextInputType.none,
   ***REMOVED***) : super(key: key);
   final String title;
   final TextEditingController controller;
@@ -24,6 +25,7 @@ class CustomTextField extends StatelessWidget ***REMOVED***
   final bool isPassword;
   final String? error;
   final Function(String)? onChanged;
+  final TextInputType textInputType;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -34,6 +36,7 @@ class CustomTextField extends StatelessWidget ***REMOVED***
           onChanged: onChanged,
           controller: controller,
           inputFormatters: inputFormatters,
+          keyboardType: textInputType,
           enableSuggestions: true,
           onTap: onTap,
           obscureText: isPassword,

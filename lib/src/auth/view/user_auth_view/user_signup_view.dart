@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/auth/providers/forms/signup/user_signup_form_provider.dart';
-import 'package:gharelu/src/auth/providers/signup_provider.dart';
+import 'package:gharelu/src/auth/providers/user_signup_provider.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
@@ -21,7 +21,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
     final _password = useTextEditingController();
     final _confirmPassword = useTextEditingController();
 
-    ref.listen(signupProvider, (previous, next) ***REMOVED***
+    ref.listen(userSignupProvider, (previous, next) ***REMOVED***
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
@@ -120,11 +120,11 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                 child: CustomButton(
                   isDisabled: !ref.watch(userSignupFormProvider).form.isValid,
                   title: 'Signup',
-                  loading: ref.watch(signupProvider).maybeWhen(
+                  loading: ref.watch(userSignupProvider).maybeWhen(
                         orElse: () => false,
                         loading: () => true,
                       ),
-                  onPressed: () => ref.read(signupProvider.notifier).signup(
+                  onPressed: () => ref.read(userSignupProvider.notifier).signup(
                         name: _name.text,
                         email: _email.text,
                         password: _password.text,

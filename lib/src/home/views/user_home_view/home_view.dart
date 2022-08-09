@@ -15,6 +15,7 @@ class HomeView extends StatelessWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
+    FirebaseAuth.instance.signOut();
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [

@@ -1,5 +1,3 @@
-***REMOVED***
-
 import 'package:flutter/material.dart';
 ***REMOVED***
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,24 +14,28 @@ class SplashView extends ConsumerWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    ref.listen(authSatate, (previous, next) ***REMOVED***
-      if (next != null) ***REMOVED***
-        log(next.toString());
-      ***REMOVED***
-  ***REMOVED***
-    final _authState = ref.watch(authSatate);
-    return Scaffold(
+    // ref.listen(authSatate, (previous, next) ***REMOVED***
+    //   if (next != null) ***REMOVED***
+    //     log(next.toString());
+    //   ***REMOVED***
+    // ***REMOVED***);
+    // final _authState = ref.watch(authSatate);
+    // return Scaffold(
+    //   backgroundColor: AppColors.primaryColor,
+    //   body: _authState.when(
+    //     data: (data) ***REMOVED***
+    //       if (data != null) ***REMOVED***
+    //         context.router.replaceAll([const DashboardRouter()]);
+    //       ***REMOVED***
+    //       return _body(context);
+    //     ***REMOVED***,
+    //     error: (message, _) => _body(context),
+    //     loading: () => _body(context),
+    //   ),
+    // );
+    return ScaffoldWrapper(
       backgroundColor: AppColors.primaryColor,
-      body: _authState.when(
-        data: (data) ***REMOVED***
-          if (data != null) ***REMOVED***
-            context.router.replaceAll([const DashboardRouter()]);
-          ***REMOVED***
-          return _body(context);
-        ***REMOVED***,
-        error: (message, _) => _body(context),
-        loading: () => _body(context),
-      ),
+      body: _body(context),
     );
   ***REMOVED***
 
@@ -48,7 +50,7 @@ class SplashView extends ConsumerWidget ***REMOVED***
             Assets.images.logo.image(),
             const Spacer(),
             Text(
-              'Have a Problem you cannot solve?Don\'t worry. Lets Get started',
+              'Have a Problem \nyou cannot solve?\nDon\'t worry. Lets Get started',
               textAlign: TextAlign.center,
               style: AppStyles.text18PxMedium.white,
             ),
