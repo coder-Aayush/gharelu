@@ -1,15 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CustomProductCard extends StatelessWidget ***REMOVED***
-  const CustomProductCard(***REMOVED***Key? key, required this.onPressed***REMOVED***)
-      : super(key: key);
+  const CustomProductCard(***REMOVED***
+    Key? key,
+    required this.onPressed,
+    required this.image,
+    this.discount,
+    required this.name,
+  ***REMOVED***) : super(key: key);
 
   final VoidCallback onPressed;
+  final String image;
+  final int? discount;
+  final String name;
 
   BorderRadius get radius => BorderRadius.circular(8.r);
 
@@ -39,32 +49,34 @@ class CustomProductCard extends StatelessWidget ***REMOVED***
                 child: Container(
                   alignment: Alignment.topRight,
                   child: Text(
-                    'Baby Sitting',
-                    style: AppStyles.text20PxBold.primary,
-                    maxLines: 1,
+                    name,
+                    style: AppStyles.text18PxMedium.primary,
+                    maxLines: 2,
+                    textAlign: TextAlign.right,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
-              Positioned(
-                top: -10,
-                left: -10,
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(200),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '90%',
-                      style: AppStyles.text14PxBold.white,
-                      overflow: TextOverflow.ellipsis,
+              if (discount != null && discount != 0)
+                Positioned(
+                  top: -10,
+                  left: -10,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(200),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '$discount%',
+                        style: AppStyles.text14PxBold.white,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),
-              ),
       ***REMOVED***
           ),
         ),

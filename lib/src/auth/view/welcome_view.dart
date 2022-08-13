@@ -25,7 +25,7 @@ class WelcomeView extends StatelessWidget ***REMOVED***
               Text('Welcome Aayush', style: AppStyles.text30PxBold.softBlack),
               const Spacer(),
               Text(
-                'Have a Problem you cannot solve?Don\'t worry. Lets Get started',
+                'Have a Problem \nyou cannot solve?\nDon\'t worry. Lets Get started',
                 textAlign: TextAlign.center,
                 style: AppStyles.text18PxMedium.midGrey,
               ),
@@ -34,7 +34,10 @@ class WelcomeView extends StatelessWidget ***REMOVED***
                 title: buttonTitle,
                 isDisabled: false,
                 width: 270.w,
-                onPressed: onPressed,
+                onPressed: () async ***REMOVED***
+                  await Future.delayed(const Duration(seconds: 2));
+                  onPressed();
+                ***REMOVED***,
               ),
               20.verticalSpace,
       ***REMOVED***
