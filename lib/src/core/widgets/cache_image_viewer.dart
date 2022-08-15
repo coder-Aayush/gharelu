@@ -4,15 +4,9 @@ import 'package:gharelu/src/core/assets/assets.gen.dart';
 
 class CacheImageViewer extends StatelessWidget ***REMOVED***
   const CacheImageViewer(
-      ***REMOVED***Key? key,
-      required this.imageUrl,
-      this.height,
-      this.width,
-      this.petType,
-      this.fit***REMOVED***)
+      ***REMOVED***Key? key, required this.imageUrl, this.height, this.width, this.fit***REMOVED***)
       : super(key: key);
   final String imageUrl;
-  final int? petType;
   final double? height;
   final double? width;
   final BoxFit? fit;

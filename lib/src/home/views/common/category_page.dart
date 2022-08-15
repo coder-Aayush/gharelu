@@ -59,7 +59,12 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
                       image: data[index].image,
                       discount: data[index].discount,
                       name: data[index].name,
-                      onPressed: () ***REMOVED******REMOVED***,
+                      onPressed: () => context.router.push(ProductRoute(
+                        categoryId: data[index].id,
+                        serviceId: data[index].serviceId!,
+                        image: data[index].image,
+                        title: data[index].name,
+                      )),
                     ).px(10.w),
                     childCount: data.length,
                   ),

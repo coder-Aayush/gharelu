@@ -54,6 +54,7 @@ import 'package:gharelu/src/map_view/views/views.dart';
 
     // chats
     AutoRoute<void>(page: ChatDetailView),
+    AutoRoute<void>(page: ProductView),
 ***REMOVED***
 )
 class $AppRouter ***REMOVED******REMOVED***

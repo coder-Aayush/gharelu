@@ -5,12 +5,17 @@
 import 'package:gharelu/src/core/constant/app_constant.dart';
 ***REMOVED***
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
+import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:gharelu/src/home/models/service_model.dart';
 
 abstract class _ServiceRemoteSource ***REMOVED***
   Future<Either<AppError, List<ServiceModel>>> getServices();
+
   Future<Either<AppError, List<ServiceModel>>> getServiceCategories(
       ***REMOVED***required String id***REMOVED***);
+
+  Future<Either<AppError, List<ProductModel>>> getProducts(
+      ***REMOVED***required String categoryId***REMOVED***);
 ***REMOVED***
 
 class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
@@ -52,6 +57,23 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
           ),
         );
         return right(_category);
+      ***REMOVED*** else ***REMOVED***
+        return right([]);
+      ***REMOVED***
+    ***REMOVED*** catch (e) ***REMOVED***
+      return left(const AppError.serverError(message: 'Unknow Error'));
+    ***REMOVED***
+  ***REMOVED***
+
+***REMOVED***
+  Future<Either<AppError, List<ProductModel>>> getProducts(
+      ***REMOVED***required String categoryId***REMOVED***) async ***REMOVED***
+***REMOVED***
+      final response = await _reader(firestoreProvider)
+          .collection(AppConstant.products)
+          .get();
+      if (response.docs.isNotEmpty) ***REMOVED***
+        return right([]);
       ***REMOVED*** else ***REMOVED***
         return right([]);
       ***REMOVED***

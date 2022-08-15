@@ -11,4 +11,6 @@ class AppConstant ***REMOVED***
 
   ***REMOVED***value `categories` 
   static const String categories = 'categories';
+  ***REMOVED***value `products` 
+  static const String products = 'products';
 ***REMOVED***
