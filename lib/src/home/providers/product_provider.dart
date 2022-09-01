@@ -20,6 +20,7 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> ***REMOVE
             serverError: (message) => AppState.error(message: message),
             noInternet: () => const AppState.noInternet()),
         (response) => AppState.success(data: response));
+    print(state);
   ***REMOVED***
 ***REMOVED***
 

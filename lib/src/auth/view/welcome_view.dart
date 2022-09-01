@@ -35,7 +35,6 @@ class WelcomeView extends StatelessWidget ***REMOVED***
                 isDisabled: false,
                 width: 270.w,
                 onPressed: () async ***REMOVED***
-                  await Future.delayed(const Duration(seconds: 2));
                   onPressed();
                 ***REMOVED***,
               ),

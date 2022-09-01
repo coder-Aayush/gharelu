@@ -8,13 +8,13 @@ class ProductModel with _$ProductModel ***REMOVED***
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ProductModel(***REMOVED***
     required String categoryId,
-    required String createdAt,
+    required int createdAt,
     required String description,
     required String image,
     required String name,
     required int price,
     required String serviceId,
-    required String updatedAt,
+    required int updatedAt,
   ***REMOVED***) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

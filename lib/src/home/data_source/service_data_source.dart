@@ -71,13 +71,21 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
 ***REMOVED***
       final response = await _reader(firestoreProvider)
           .collection(AppConstant.products)
+          .where('category_id', isEqualTo: categoryId)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***
-        return right([]);
+        return right(
+          List<ProductModel>.from(
+            response.docs.map(
+              (product) => ProductModel.fromJson(product.data()),
+            ),
+          ),
+        );
       ***REMOVED*** else ***REMOVED***
-        return right([]);
+        return left(const AppError.serverError(message: 'Unknon Error'));
       ***REMOVED***
     ***REMOVED*** catch (e) ***REMOVED***
+      log(e.toString());
       return left(const AppError.serverError(message: 'Unknow Error'));
     ***REMOVED***
   ***REMOVED***
