@@ -24,6 +24,7 @@ class AppView extends StatelessWidget ***REMOVED***
           designSize: const Size(390, 844),
           minTextAdapt: true,
           builder: (_, __) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             routerDelegate: _router.delegate(),
             routeInformationParser: _router.defaultRouteParser(),
             title: 'Gharelu',

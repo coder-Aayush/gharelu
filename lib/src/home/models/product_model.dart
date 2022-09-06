@@ -7,6 +7,7 @@ part 'product_model.freezed.dart';
 class ProductModel with _$ProductModel ***REMOVED***
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ProductModel(***REMOVED***
+    required String id,
     required String categoryId,
     required int createdAt,
     required String description,
@@ -15,6 +16,7 @@ class ProductModel with _$ProductModel ***REMOVED***
     required int price,
     required String serviceId,
     required int updatedAt,
+    @Default(0) int quantity,
   ***REMOVED***) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

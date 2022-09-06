@@ -28,7 +28,7 @@ class IncrementAndDecrement extends StatelessWidget ***REMOVED***
       child: Row(
         children: [
           InkWell(
-            onTap: onIncrement,
+            onTap: onDecrement,
             child: Icon(
               Icons.remove,
               color: const Color(0xff707070),
@@ -48,7 +48,7 @@ class IncrementAndDecrement extends StatelessWidget ***REMOVED***
             ),
           ),
           InkWell(
-            onTap: onDecrement,
+            onTap: onIncrement,
             child: Icon(
               Icons.add,
               color: const Color(0xff707070),

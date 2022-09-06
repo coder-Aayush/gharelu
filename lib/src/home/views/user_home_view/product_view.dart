@@ -7,6 +7,8 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -44,24 +46,32 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return ScaffoldWrapper(
-      bottomNavigationBar: BottomAppBar(
-        color: AppColors.primaryColor,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Total: Rs 2000', style: AppStyles.text14PxBold.white),
-            const Spacer(),
-            CustomButton(
-              title: 'View Cart',
-              onPressed: () ***REMOVED******REMOVED***,
-              isDisabled: false,
-              backgroundColor: AppColors.whiteColor,
-              titleStyle: AppStyles.text14PxBold.primary,
-              height: 45,
-            ),
-    ***REMOVED***
-        ).px(20).py(10),
-      ),
+      bottomNavigationBar: Consumer(builder: (context, ref, _) ***REMOVED***
+        final cart = ref.watch(cartStateProvider);
+        if (cart.products.isNotEmpty) ***REMOVED***
+          return BottomAppBar(
+            color: AppColors.primaryColor,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Total: Rs $***REMOVED***cart.price***REMOVED***',
+                    style: AppStyles.text14PxBold.white),
+                const Spacer(),
+                CustomButton(
+                  title: 'View Cart',
+                  onPressed: () ***REMOVED******REMOVED***,
+                  isDisabled: false,
+                  backgroundColor: AppColors.whiteColor,
+                  titleStyle: AppStyles.text14PxBold.primary,
+                  height: 45,
+                ),
+        ***REMOVED***
+            ).px(20).py(10),
+          );
+        ***REMOVED*** else ***REMOVED***
+          return const SizedBox.shrink();
+        ***REMOVED***
+      ***REMOVED***),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -86,14 +96,31 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                 orElse: () => Container().toSliverBox,
                 success: (data) => SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index) => ProductTile(
-                      name: data[index].name,
-                      description: data[index].description,
-                      image: data[index].image,
-                      onDecrement: () ***REMOVED******REMOVED***,
-                      onIncrement: () ***REMOVED******REMOVED***,
-                      price: data[index].price,
-                    ).px(10).py(14),
+                    (context, index) ***REMOVED***
+                      final product = data[index];
+                      return Consumer(
+                        builder: (context, ref, _) ***REMOVED***
+                          final cart = ref.watch(cartStateProvider);
+                          return ProductTile(
+                            name: product.name,
+                            description: product.description,
+                            image: product.image,
+                            itemInCart: cart.products
+                                .where((element) => element.id == product.id)
+                                .isNotEmpty,
+                            onAddToCart: () ***REMOVED***
+                              final _product = cart.products.where(
+                                (element) => element.id == product.id,
+                              );
+                              ref
+                                  .read(cartStateProvider.notifier)
+                                  .addToCart(product);
+                            ***REMOVED***,
+                            price: data[index].price,
+                          ).px(10).py(14);
+                        ***REMOVED***,
+                      );
+                    ***REMOVED***,
                     childCount: data.length,
                   ),
                 ),

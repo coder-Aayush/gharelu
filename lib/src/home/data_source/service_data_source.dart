@@ -72,12 +72,17 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
       final response = await _reader(firestoreProvider)
           .collection(AppConstant.products)
           .where('category_id', isEqualTo: categoryId)
+          .orderBy('updated_at', descending: true)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***
         return right(
           List<ProductModel>.from(
             response.docs.map(
-              (product) => ProductModel.fromJson(product.data()),
+              (product) ***REMOVED***
+                final _product = ProductModel.fromJson(product.data());
+
+                return _product;
+              ***REMOVED***,
             ),
           ),
         );

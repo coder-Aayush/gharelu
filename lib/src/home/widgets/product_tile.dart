@@ -9,14 +9,6 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget ***REMOVED***
-  final String image;
-  final String name;
-  final String description;
-  final int price;
-  final int max;
-  final int itemInCart;
-  final VoidCallback onIncrement;
-  final VoidCallback onDecrement;
   const ProductTile(***REMOVED***
     Key? key,
     required this.image,
@@ -24,10 +16,17 @@ class ProductTile extends StatelessWidget ***REMOVED***
     required this.description,
     required this.price,
     this.max = 10,
-    this.itemInCart = 0,
-    required this.onIncrement,
-    required this.onDecrement,
+    this.itemInCart = false,
+    required this.onAddToCart,
   ***REMOVED***) : super(key: key);
+
+  final String image;
+  final String name;
+  final String description;
+  final int price;
+  final int max;
+  final bool itemInCart;
+  final VoidCallback onAddToCart;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -47,14 +46,19 @@ class ProductTile extends StatelessWidget ***REMOVED***
             ),
             child: CacheImageViewer(
               imageUrl: image,
-              width: 160,
-              height: 120,
+              width: 140,
+              height: 150,
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(name, style: AppStyles.text16PxMedium),
+              Text(
+                name,
+                style: AppStyles.text16PxMedium,
+                maxLines: 2,
+                overflow: TextOverflow.clip,
+              ),
               2.verticalSpace,
               Text(
                 description,
@@ -65,11 +69,18 @@ class ProductTile extends StatelessWidget ***REMOVED***
                 children: [
                   Text('Rs: $price', style: AppStyles.text14PxBold.primary),
                   const Spacer(),
-                  IncrementAndDecrement(
-                    count: 10,
-                    onDecrement: () ***REMOVED******REMOVED***,
-                    onIncrement: () ***REMOVED******REMOVED***,
-                  ),
+                  if (!itemInCart)
+                    CustomButton(
+                      title: 'Add to Cart',
+                      onPressed: onAddToCart,
+                      height: 32,
+                      width: 110,
+                      titleStyle: AppStyles.text12PxMedium.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      isDisabled: false,
+                    ),
           ***REMOVED***
               ).pOnly(top: 16),
       ***REMOVED***
