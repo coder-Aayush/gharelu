@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
+import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
@@ -18,33 +20,59 @@ class PaymentCard extends StatelessWidget ***REMOVED***
   final Widget icon;
   final Color? titleColor;
 
+  BorderRadius get radius => BorderRadius.circular(8);
+  ShapeBorder get _shape => RoundedRectangleBorder(borderRadius: radius);
+  BoxConstraints get _constraints =>
+      BoxConstraints.tightFor(width: double.infinity, height: 70.h);
+
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
+    // return Material(
+    //   color: AppColors.transparent,
+    //   child: Container(
+    //     width: double.infinity,
+
+    //     decoration: BoxDecoration(
+    //       color: AppColors.midWhite,
+    //       borderRadius: BorderRadius.circular(8),
+    //     ),
+    //     child: InkWell(
+    //       borderRadius: BorderRadius.circular(8),
+    //       onTap: onPressed,
+    //     ),
+    //   ),
+    // );
     return Material(
-      color: AppColors.transparent,
+      type: MaterialType.card,
+      clipBehavior: Clip.antiAlias,
+      color: AppColors.midWhite,
+      shape: _shape,
+      shadowColor: AppColors.softBlack,
       child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: AppColors.midWhite,
-          borderRadius: BorderRadius.circular(8),
-        ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: onPressed,
-          child: Center(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                icon,
-                12.horizontalSpace,
-                Text(
-                  title,
-                  style: AppStyles.text18PxBold
-                      .copyWith(color: titleColor ?? const Color(0xff5D2E8E)),
-                ),
-        ***REMOVED***
+          splashColor: (titleColor ?? AppColors.primaryColor).withOpacity(0.5),
+          borderRadius: radius,
+          onTap: () async ***REMOVED***
+            FocusScope.of(context).unfocus();
+            await HapticFeedback.heavyImpact();
+            onPressed.call();
+          ***REMOVED***,
+          child: ConstrainedBox(
+            constraints: _constraints,
+            child: Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  icon,
+                  12.horizontalSpace,
+                  Text(
+                    title,
+                    style: AppStyles.text18PxBold
+                        .copyWith(color: titleColor ?? const Color(0xff5D2E8E)),
+                  ),
+          ***REMOVED***
+              ).pOnly(left: 20),
             ),
           ),
         ),
