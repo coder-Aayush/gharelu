@@ -26,20 +26,24 @@ class IncrementAndDecrement extends StatelessWidget ***REMOVED***
         color: AppColors.softBlue,
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          InkWell(
-            onTap: onDecrement,
-            child: Icon(
-              Icons.remove,
-              color: const Color(0xff707070),
-              size: 16.sp,
+          Material(
+            color: AppColors.transparent,
+            child: InkWell(
+              onTap: onDecrement,
+              child: Icon(
+                Icons.remove,
+                color: const Color(0xff707070),
+                size: 20.sp,
+              ),
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            margin: const EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(2),
               color: AppColors.primaryColor,
             ),
             child: Text(
@@ -47,12 +51,15 @@ class IncrementAndDecrement extends StatelessWidget ***REMOVED***
               style: AppStyles.text14PxMedium.white,
             ),
           ),
-          InkWell(
-            onTap: onIncrement,
-            child: Icon(
-              Icons.add,
-              color: const Color(0xff707070),
-              size: 16.sp,
+          Material(
+            color: AppColors.transparent,
+            child: InkWell(
+              onTap: onIncrement,
+              child: Icon(
+                Icons.add,
+                color: const Color(0xff707070),
+                size: 20.sp,
+              ),
             ),
           ),
   ***REMOVED***

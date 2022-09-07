@@ -29,6 +29,14 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
   ***REMOVED***
 
   void removeFromCart(ProductModel product) ***REMOVED******REMOVED***
+
+  void increment(ProductModel product) ***REMOVED***
+    final cart = state;
+    final _product = state.products.any((element) => element.id == product.id);
+    if (_product)***REMOVED***
+      // state = state.copyWith(price: cart.price, )
+    ***REMOVED***
+  ***REMOVED***
 ***REMOVED***
 
 final cartStateProvider =

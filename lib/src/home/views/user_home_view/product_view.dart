@@ -59,7 +59,8 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
-                  onPressed: () ***REMOVED******REMOVED***,
+                  onPressed: () =>
+                      context.router.push(const ProductSummaryRoute()),
                   isDisabled: false,
                   backgroundColor: AppColors.whiteColor,
                   titleStyle: AppStyles.text14PxBold.primary,

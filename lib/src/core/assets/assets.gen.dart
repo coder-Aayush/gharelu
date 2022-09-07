@@ -14,6 +14,10 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen ***REMOVED***
   const $AssetsIconsGen();
 
+  ***REMOVED***File path: assets/icons/khalti_logo.svg
+  SvgGenImage get khaltiLogo =>
+      const SvgGenImage('assets/icons/khalti_logo.svg');
+
   ***REMOVED***File path: assets/icons/location_marker.svg
   SvgGenImage get locationMarker =>
       const SvgGenImage('assets/icons/location_marker.svg');
@@ -27,6 +31,10 @@ class $AssetsImagesGen ***REMOVED***
 
   ***REMOVED***File path: assets/images/babr.png
   AssetGenImage get babr => const AssetGenImage('assets/images/babr.png');
+
+  ***REMOVED***File path: assets/images/esewa_logo.png
+  AssetGenImage get esewaLogo =>
+      const AssetGenImage('assets/images/esewa_logo.png');
 
   ***REMOVED***File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');

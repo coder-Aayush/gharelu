@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
@@ -79,7 +80,13 @@ class CustomButton extends StatelessWidget ***REMOVED***
       shadowColor: AppColors.softBlack,
       child: InkWell(
         splashColor: _splashColor,
-        onTap: isDisabled || loading ? null : onPressed,
+        onTap: isDisabled || loading
+            ? null
+            : () async ***REMOVED***
+                FocusScope.of(context).unfocus();
+                await HapticFeedback.heavyImpact();
+                onPressed?.call();
+              ***REMOVED***,
         child: ConstrainedBox(
           constraints: _constraints,
           child: Ink(
