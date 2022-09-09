@@ -98,6 +98,26 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
           ),
           Consumer(builder: (context, ref, _) ***REMOVED***
             final cart = ref.watch(cartStateProvider);
+            if (cart.products.isEmpty) ***REMOVED***
+              return Container(
+                height: MediaQuery.of(context).size.height * .85,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'No Product in Cart',
+                      style: AppStyles.text20PxSemiBold,
+                    ),
+                    20.verticalSpace,
+                    CustomButton(
+                      title: 'Shop More',
+                      onPressed: () => context.router.pop(),
+                      isDisabled: false,
+                    ),
+            ***REMOVED***
+                ),
+              ).toSliverBox;
+            ***REMOVED***
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -114,7 +134,9 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       onIncrement: () => ref
                           .read(cartStateProvider.notifier)
                           .increment(product),
-                      onDecrement: () ***REMOVED******REMOVED***,
+                      onDecrement: () => ref
+                          .read(cartStateProvider.notifier)
+                          .decrement(product),
                     ),
                   );
                 ***REMOVED***),

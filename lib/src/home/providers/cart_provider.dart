@@ -38,15 +38,41 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
         state.products.indexWhere((element) => element.id == product.id);
     // increament
     var _product = [...cart.products];
+    // remove
+    // _product.removeWhere((element) => element.id == product.id);
     final updatedProduct = state.products[productIndex].copyWith(
       quantity: cart.products[productIndex].quantity + 1,
     );
     // _product.insert(productIndex, updatedProduct);
-    state.copyWith(
+    state = state.copyWith(
       price: cart.price,
-      products: _product,
+      products: _product.update(productIndex, updatedProduct),
     );
-    log(state.toString());
+    calculatePrice();
+  ***REMOVED***
+
+  void decrement(ProductModel product) ***REMOVED***
+    final cart = state;
+    var _product = [...cart.products];
+    if (product.quantity <= 1) ***REMOVED***
+      // state =
+      _product.removeWhere((element) => element.id == product.id);
+      state = state.copyWith(
+        price: cart.price,
+        products: _product,
+      );
+    ***REMOVED*** else ***REMOVED***
+      final productIndex =
+          state.products.indexWhere((element) => element.id == product.id);
+      final updatedProduct = state.products[productIndex].copyWith(
+        quantity: cart.products[productIndex].quantity - 1,
+      );
+      state = state.copyWith(
+        price: cart.price,
+        products: _product.update(productIndex, updatedProduct),
+      );
+      calculatePrice();
+    ***REMOVED***
   ***REMOVED***
 ***REMOVED***
 
