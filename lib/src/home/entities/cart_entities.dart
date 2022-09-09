@@ -10,6 +10,7 @@ class CartEntities with _$CartEntities ***REMOVED***
   const factory CartEntities(***REMOVED***
     @Default([]) List<ProductModel> products,
     @Default(0) int price,
+    @Default(0) int subTotal,
   ***REMOVED***) = _CartEntities;
 
   factory CartEntities.empty() => const CartEntities(price: 0, products: []);
@@ -19,4 +20,5 @@ class CartEntities with _$CartEntities ***REMOVED***
           .map((item) => item.quantity * item.price)
           .reduce((value1, value2) => value1 + value2)
       : 0;
+
 ***REMOVED***

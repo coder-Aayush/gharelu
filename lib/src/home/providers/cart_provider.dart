@@ -1,6 +1,7 @@
 ***REMOVED***
 
 ***REMOVED***
+import 'package:gharelu/src/core/extensions/list_extension.dart';
 import 'package:gharelu/src/home/entities/cart_entities.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 
@@ -19,12 +20,13 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
   void calculatePrice() ***REMOVED***
     final cart = state;
     int _price = 0;
-    cart.products.forEach((element) ***REMOVED***
-      _price = element.quantity * element.price;
-  ***REMOVED***
+    _price = state.products
+        .map((e) => e.price * e.quantity)
+        .reduce((value, element) => value + element);
     state = state.copyWith(
       products: cart.products,
       price: _price,
+      subTotal: _price + 50,
     );
   ***REMOVED***
 
@@ -32,12 +34,22 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
 
   void increment(ProductModel product) ***REMOVED***
     final cart = state;
-    final _product = state.products.any((element) => element.id == product.id);
-    if (_product)***REMOVED***
-      // state = state.copyWith(price: cart.price, )
-    ***REMOVED***
+    final productIndex =
+        state.products.indexWhere((element) => element.id == product.id);
+    // increament
+    var _product = [...cart.products];
+    final updatedProduct = state.products[productIndex].copyWith(
+      quantity: cart.products[productIndex].quantity + 1,
+    );
+    // _product.insert(productIndex, updatedProduct);
+    state.copyWith(
+      price: cart.price,
+      products: _product,
+    );
+    log(state.toString());
   ***REMOVED***
 ***REMOVED***
 
 final cartStateProvider =
-    StateNotifierProvider<CartState, CartEntities>((ref) => CartState());
+    StateNotifierProvider.autoDispose<CartState, CartEntities>(
+        (ref) => CartState());

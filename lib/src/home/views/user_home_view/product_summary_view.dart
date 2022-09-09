@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 ***REMOVED***
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/widget_extension.dart';
@@ -42,7 +43,8 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       children: [
                         Text('Item Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
-                        Text('Rs: 1600', style: AppStyles.text14PxSemiBold)
+                        Text('Rs: $***REMOVED***_cart.totalPrice***REMOVED***',
+                            style: AppStyles.text14PxSemiBold)
                 ***REMOVED***
                     ),
                     22.verticalSpace,
@@ -61,7 +63,8 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       children: [
                         Text('Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
-                        Text('Rs: 1650', style: AppStyles.text14PxSemiBold)
+                        Text('Rs: $***REMOVED***_cart.subTotal***REMOVED***',
+                            style: AppStyles.text14PxSemiBold)
                 ***REMOVED***
                     ),
                     20.verticalSpace,
@@ -98,12 +101,14 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Your Carts', style: AppStyles.text20PxMedium.softBlack),
+                Text('Your Carts', style: AppStyles.text18PxMedium.softBlack),
+                12.verticalSpace,
                 ...List.generate(cart.products.length, (index) ***REMOVED***
                   final product = cart.products[index];
                   return ListTile(
                     title: Text(product.name),
-                    subtitle: Text('Rs: $***REMOVED***product.price***REMOVED***'),
+                    subtitle: Text(
+                        'Rs: $***REMOVED***calculateTotalPriceOfProduct(product.price, product.quantity)***REMOVED***'),
                     trailing: IncrementAndDecrement(
                       count: product.quantity,
                       onIncrement: () => ref
@@ -119,5 +124,9 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
   ***REMOVED***
       ),
     );
+  ***REMOVED***
+
+  int calculateTotalPriceOfProduct(int amount, int quantity) ***REMOVED***
+    return amount * quantity;
   ***REMOVED***
 ***REMOVED***
