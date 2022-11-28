@@ -6,10 +6,25 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/providers/slot_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SelectSlotView extends StatelessWidget ***REMOVED***
+class SelectSlotView extends StatefulHookConsumerWidget ***REMOVED***
   const SelectSlotView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+
+***REMOVED***
+  _SelectSlotViewState createState() => _SelectSlotViewState();
+***REMOVED***
+
+class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
+***REMOVED***
+  void didChangeDependencies() ***REMOVED***
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+      ref.read(slotNotifierProvider.notifier).getBookings(date: DateTime.now());
+  ***REMOVED***
+    super.didChangeDependencies();
+  ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -40,8 +55,12 @@ class SelectSlotView extends StatelessWidget ***REMOVED***
                   CalendarTimeline(
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
-                    lastDate: DateTime(DateTime.now().year + 5),
-                    onDateSelected: (date) => print(date),
+                    lastDate: DateTime(DateTime.now().year + 2),
+                    onDateSelected: (date) ***REMOVED***
+                      ref
+                          .read(slotNotifierProvider.notifier)
+                          .getBookings(date: date);
+                    ***REMOVED***,
                     leftMargin: 20,
                     monthColor: Colors.blueGrey,
                     dayColor: Colors.teal[200],
@@ -63,17 +82,26 @@ class SelectSlotView extends StatelessWidget ***REMOVED***
                     ),
                   ).px(20),
                   20.verticalSpace,
-                  Wrap(
-                    spacing: 20,
-                    runSpacing: 10,
-                    children: List.generate(
-                      20,
-                      (index) => ActionChip(
-                        label: const Text('10: 00 AM'),
-                        onPressed: () ***REMOVED******REMOVED***,
-                      ),
-                    ),
-                  ).px(20),
+                  Consumer(
+                    builder: (context, ref, _) ***REMOVED***
+                      return ref.watch(slotNotifierProvider).maybeWhen(
+                            orElse: () => Container(),
+                            loading: () => const Center(
+                                child: CircularProgressIndicator()),
+                            success: (data) => Wrap(
+                              spacing: 20,
+                              runSpacing: 10,
+                              children: List.generate(
+                                data.length,
+                                (index) => ActionChip(
+                                  label: Text(data[index]),
+                                  onPressed: () ***REMOVED******REMOVED***,
+                                ),
+                              ),
+                            ).px(20),
+                          );
+                    ***REMOVED***,
+                  ),
           ***REMOVED***
               ),
               CustomPaint(

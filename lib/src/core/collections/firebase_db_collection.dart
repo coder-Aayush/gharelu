@@ -8,4 +8,7 @@ class FirebaseDBCollection ***REMOVED***
 
   static CollectionReference<Map<String, dynamic>> services =
       FirebaseFirestore.instance.collection('services');
+
+  static CollectionReference<Map<String, dynamic>> bookings =
+      FirebaseFirestore.instance.collection('bookings');
 ***REMOVED***
