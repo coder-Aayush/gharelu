@@ -26,15 +26,22 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
     super.didChangeDependencies();
   ***REMOVED***
 
+  ValueNotifier<String?> selectedTime = ValueNotifier<String?>(null);
+
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return ScaffoldWrapper(
       bottomNavigationBar: BottomAppBar(
-        child: CustomButton(
-          title: 'Proceed to checkout',
-          isDisabled: false,
-          onPressed: () => context.router.push(const CheckoutRoute()),
-        ).px(20),
+        child: ValueListenableBuilder(
+          valueListenable: selectedTime,
+          builder: (context, value, _) ***REMOVED***
+            return CustomButton(
+              title: 'Proceed to checkout',
+              isDisabled: value == null,
+              onPressed: () => context.router.push(const CheckoutRoute()),
+            ).px(20);
+          ***REMOVED***,
+        ),
       ),
       body: CustomScrollView(
         slivers: [
@@ -55,8 +62,9 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                   CalendarTimeline(
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
-                    lastDate: DateTime(DateTime.now().year + 2),
+                    lastDate: DateTime(DateTime.now().year + 1),
                     onDateSelected: (date) ***REMOVED***
+                      selectedTime.value = null;
                       ref
                           .read(slotNotifierProvider.notifier)
                           .getBookings(date: date);
@@ -93,9 +101,27 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                               runSpacing: 10,
                               children: List.generate(
                                 data.length,
-                                (index) => ActionChip(
-                                  label: Text(data[index]),
-                                  onPressed: () ***REMOVED******REMOVED***,
+                                (index) => ValueListenableBuilder(
+                                  valueListenable: selectedTime,
+                                  builder: (context, value, _) ***REMOVED***
+                                    final isSelected =
+                                        selectedTime.value == data[index];
+                                    return ActionChip(
+                                      backgroundColor: isSelected
+                                          ? AppColors.primaryColor
+                                          : AppColors.transparent,
+                                      label: Text(
+                                        data[index],
+                                        style: isSelected
+                                            ? AppStyles.text14PxMedium.white
+                                            : AppStyles
+                                                .text14PxMedium.softBlack,
+                                      ),
+                                      onPressed: () ***REMOVED***
+                                        selectedTime.value = data[index];
+                                      ***REMOVED***,
+                                    );
+                                  ***REMOVED***,
                                 ),
                               ),
                             ).px(20),

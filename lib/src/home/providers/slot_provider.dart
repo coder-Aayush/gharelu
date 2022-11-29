@@ -45,7 +45,7 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
 ***REMOVED***
 
 final slotNotifierProvider =
-    StateNotifierProvider<SlotNotifier, AppState<List<String>>>(
+    StateNotifierProvider.autoDispose<SlotNotifier, AppState<List<String>>>(
   (ref) => SlotNotifier(
     ref.read(bookingDataSourceProvider),
   ),

@@ -41,6 +41,10 @@ class CheckoutView extends StatelessWidget ***REMOVED***
                   );
                   await KhaltiScope.of(context).pay(
                     config: config,
+                    preferences: [
+                      PaymentPreference.khalti,
+                      PaymentPreference.mobileBanking,
+              ***REMOVED***
                     onSuccess: (value) ***REMOVED***
                       log(value.toString());
                     ***REMOVED***,

@@ -14,7 +14,8 @@ class AppView extends StatelessWidget ***REMOVED***
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return KhaltiScope(
-      publicKey: 'test_public_key_23934abeeefc4ff3a4408e4376246488',
+      publicKey: 'test_public_key_fb6cfb8adc524a1ebdfa34d656b5922b',
+      enabledDebugging: true,
       navigatorKey: _router.navigatorKey,
       builder: (_, navigatorState) => ProviderScope(
         child: AnnotatedRegion<SystemUiOverlayStyle>(
