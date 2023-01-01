@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = ***REMOVED***
 	***REMOVED***;
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = ***REMOVED***
 
 /* Begin PBXBuildFile section */
@@ -115,7 +115,6 @@
 				84ADEC80ED6225CABB65E750 /* Pods-Runner.release.xcconfig */,
 				C1EB958596A4E36F0AC72434 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		***REMOVED***;
@@ -358,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M6SP5AMGAB;
+				DEVELOPMENT_TEAM = HFHZ39CQK7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -487,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M6SP5AMGAB;
+				DEVELOPMENT_TEAM = HFHZ39CQK7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -510,7 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M6SP5AMGAB;
+				DEVELOPMENT_TEAM = HFHZ39CQK7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget ***REMOVED***
     this.isPassword = false,
     this.error,
     this.onChanged,
-    this.textInputType = TextInputType.none,
+    this.textInputType = TextInputType.name,
   ***REMOVED***) : super(key: key);
   final String title;
   final TextEditingController controller;
@@ -44,8 +44,9 @@ class CustomTextField extends StatelessWidget ***REMOVED***
             hintText: title,
             focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-              color:
-                  error != null ? AppColors.errorColor : AppColors.primaryColor,
+              color: error != null && error!.isNotEmpty
+                  ? AppColors.errorColor
+                  : AppColors.primaryColor,
             )),
           ),
         ),

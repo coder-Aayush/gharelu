@@ -1,5 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gharelu/src/core/assets/assets.gen.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
+import 'package:lottie/lottie.dart';
 
 class ScaffoldWrapper extends StatelessWidget ***REMOVED***
   const ScaffoldWrapper(***REMOVED***
@@ -27,6 +30,7 @@ class ScaffoldWrapper extends StatelessWidget ***REMOVED***
     this.drawerEnableOpenDragGesture = true,
     this.endDrawerEnableOpenDragGesture = true,
     this.restorationId,
+    this.loading = false,
   ***REMOVED***) : super(key: key);
 
   final bool extendBody;
@@ -75,6 +79,8 @@ class ScaffoldWrapper extends StatelessWidget ***REMOVED***
 
   final String? restorationId;
 
+  final bool loading;
+
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return GestureDetector(
@@ -91,7 +97,7 @@ class ScaffoldWrapper extends StatelessWidget ***REMOVED***
       child: Scaffold(
         key: key,
         appBar: appBar,
-        body: body,
+        body: loading ? context.loader : body,
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation,
         floatingActionButtonAnimator: floatingActionButtonAnimator,

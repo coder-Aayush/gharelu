@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/service_model.dart';
+import 'package:gharelu/src/home/models/category_model.dart';
 import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoryView extends StatefulHookConsumerWidget ***REMOVED***
-  const CategoryView(***REMOVED***Key? key, required this.service***REMOVED***) : super(key: key);
+  const CategoryView(***REMOVED***Key? key, required this.category***REMOVED***) : super(key: key);
 
-  final ServiceModel service;
+  final CategoryModel category;
 
 ***REMOVED***
   _CategoryViewState createState() => _CategoryViewState();
@@ -25,7 +26,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
     super.initState();
     ref
         .read(serviceCategoryStateProvider.notifier)
-        .getCategories(serviceId: widget.service.id);
+        .getServices(categoryId: widget.category.id);
   ***REMOVED***
 
 ***REMOVED***
@@ -37,7 +38,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
             leading: const AutoLeadingButton(color: AppColors.whiteColor),
             backgroundColor: AppColors.primaryColor,
             title: Text(
-              widget.service.name,
+              widget.category.name,
               style: AppStyles.text20PxBold.white,
             ),
             floating: true,
@@ -48,6 +49,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
               final _state = ref.watch(serviceCategoryStateProvider);
               return _state.maybeWhen(
                 orElse: () => Container().toSliverBox,
+                loading: () => context.loader.toSliverBox,
                 success: (data) => SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -56,13 +58,13 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
                   delegate: SliverChildBuilderDelegate(
                     (context, index) => CustomProductCard(
                       image: data[index].image,
-                      discount: data[index].discount,
                       name: data[index].name,
                       onPressed: () => context.router.push(ProductRoute(
                         categoryId: data[index].id,
-                        serviceId: data[index].serviceId!,
+                        serviceId: data[index].id,
                         image: data[index].image,
                         title: data[index].name,
+                        service: data[index],
                       )),
                     ).px(10.w),
                     childCount: data.length,

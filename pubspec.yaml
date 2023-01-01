@@ -37,6 +37,8 @@ dependencies:
   firebase_storage: ^10.3.4
   calendar_timeline: ^1.0.5
   khalti_flutter: ^2.1.0
+  webview_flutter: ^4.0.1
+  lottie: ^2.1.0
 
 dev_dependencies:
   auto_route_generator: ^4.2.0
@@ -55,6 +57,7 @@ flutter_gen:
   output: lib/src/core/assets/
   integrations:
     flutter_svg: true
+    lottie: true
 
 flutter:
 
@@ -63,3 +66,4 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lottie/

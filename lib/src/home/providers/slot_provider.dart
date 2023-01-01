@@ -7,11 +7,12 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
   SlotNotifier(this._dataSource) : super(const AppState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getBookings(***REMOVED***required DateTime date***REMOVED***) async ***REMOVED***
+  Future<void> getBookings(
+      ***REMOVED***required DateTime date, required String serviceId***REMOVED***) async ***REMOVED***
     final times = generateTime();
     state = const AppState.loading();
-    final response =
-        await _dataSource.getBookingOnDate(date: date.serverFormattedDate());
+    final response = await _dataSource.getBookingOnDate(
+        date: date.serverFormattedDate(), serviceId: serviceId);
     state = response.fold(
       (error) => error.when(
         serverError: (message) => AppState.error(message: message),

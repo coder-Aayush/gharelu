@@ -2,29 +2,33 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductView extends StatefulHookConsumerWidget ***REMOVED***
-  const ProductView(
-      ***REMOVED***Key? key,
-      required this.categoryId,
-      required this.serviceId,
-      required this.image,
-      required this.title***REMOVED***)
-      : super(key: key);
+  const ProductView(***REMOVED***
+    Key? key,
+    required this.categoryId,
+    required this.serviceId,
+    required this.image,
+    required this.title,
+    required this.service,
+  ***REMOVED***) : super(key: key);
   final String categoryId;
   final String serviceId;
   final String image;
   final String title;
+  final ServiceModel service;
 
 ***REMOVED***
   _ProductViewState createState() => _ProductViewState();
@@ -59,8 +63,8 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
-                  onPressed: () =>
-                      context.router.push(const ProductSummaryRoute()),
+                  onPressed: () => context.router
+                      .push(ProductSummaryRoute(service: widget.service)),
                   isDisabled: false,
                   backgroundColor: AppColors.whiteColor,
                   titleStyle: AppStyles.text14PxBold.primary,
@@ -125,8 +129,7 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                     childCount: data.length,
                   ),
                 ),
-                loading: () => const Center(child: CircularProgressIndicator())
-                    .toSliverBox,
+                loading: () => context.loader.toSliverBox,
                 error: (message) => Center(
                   child: Text(message, style: AppStyles.text14PxMedium),
                 ).toSliverBox,

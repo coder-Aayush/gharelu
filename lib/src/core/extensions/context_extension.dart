@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
+import 'package:lottie/lottie.dart';
 
 extension WidgetX on BuildContext ***REMOVED***
   void showSnackbar(***REMOVED***
@@ -22,4 +25,12 @@ extension WidgetX on BuildContext ***REMOVED***
         ),
       );
   ***REMOVED***
+
+  Widget get loader => Center(
+        child: SizedBox(
+          child: Lottie.asset(Assets.lottie.loader),
+          height: 150.h,
+          width: 150.w,
+        ),
+      );
 ***REMOVED***

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.gr.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
@@ -18,7 +19,6 @@ class HomeView extends HookConsumerWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    FirebaseAuth.instance.signOut();
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [
@@ -66,11 +66,10 @@ class HomeView extends HookConsumerWidget ***REMOVED***
           ***REMOVED***),
           Consumer(
             builder: (context, ref, _) ***REMOVED***
-              final serviceState = ref.watch(serviceStateProvider);
+              final serviceState = ref.watch(categoriesStateProvider);
               return serviceState.maybeWhen(
                 orElse: () => Container().toSliverBox,
-                loading: () => const Center(child: CircularProgressIndicator())
-                    .toSliverBox,
+                loading: () => context.loader.toSliverBox,
                 success: (data) => SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -80,9 +79,8 @@ class HomeView extends HookConsumerWidget ***REMOVED***
                     (context, index) => CustomProductCard(
                       image: data[index].image,
                       name: data[index].name,
-                      discount: data[index].discount,
                       onPressed: () => context.router.push(
-                        CategoryRoute(service: data[index]),
+                        CategoryRoute(category: data[index]),
                       ),
                     ).px(8.w),
                     childCount: data.length,

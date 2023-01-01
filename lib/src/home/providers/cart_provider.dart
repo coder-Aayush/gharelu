@@ -74,6 +74,10 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
       calculatePrice();
     ***REMOVED***
   ***REMOVED***
+
+  // void setMerchantId(String merchantId) ***REMOVED***
+  //   state = state.copyWith(merchantId: merchantId);
+  // ***REMOVED***
 ***REMOVED***
 
 final cartStateProvider =

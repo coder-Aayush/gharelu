@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gharelu/src/home/models/booking_model.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 
 part 'cart_entities.freezed.dart';
@@ -21,4 +22,33 @@ class CartEntities with _$CartEntities ***REMOVED***
           .reduce((value1, value2) => value1 + value2)
       : 0;
 
+  List<BookingModel> booking(***REMOVED***
+    required String bookingDate,
+    required String time,
+    required String serviceId,
+    required String userId,
+    required String merchantId,
+  ***REMOVED***) ***REMOVED***
+    final now = DateTime.now().millisecondsSinceEpoch;
+    List<BookingModel> bookings = [];
+    for (var i = 0; i < products.length; i++) ***REMOVED***
+      bookings.add(BookingModel(
+        createdAt: now,
+        date: bookingDate,
+        id: '',
+        productId: products[i].id,
+        productName: products[i].name,
+        quantity: products[i].quantity,
+        serviceId: serviceId,
+        subTotal: subTotal,
+        time: time,
+        totalPrice: totalPrice,
+        updatedAt: now,
+        userId: userId,
+        merchantId: merchantId,
+      ));
+    ***REMOVED***
+
+    return bookings;
+  ***REMOVED***
 ***REMOVED***

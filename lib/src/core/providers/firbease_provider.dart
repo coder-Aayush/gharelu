@@ -9,6 +9,13 @@ final firestoreProvider =
 final firebaseAuthProvider =
     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
+final authChangeProvider = StreamProvider<User?>((ref) async* ***REMOVED***
+  ref.read(firebaseAuthProvider).authStateChanges().listen((event) ***REMOVED***
+    print(event.toString());
+***REMOVED***
+  yield* ref.read(firebaseAuthProvider).authStateChanges();
+***REMOVED***);
+
 // final authSatate =
 //     StreamProvider((ref) => ref.read(firebaseAuthProvider).authStateChanges());
 

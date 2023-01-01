@@ -3,21 +3,21 @@
 ***REMOVED***
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/home/data_source/service_data_source.dart';
-import 'package:gharelu/src/home/models/service_model.dart';
+import 'package:gharelu/src/home/models/category_model.dart';
 
-class ServiceState extends StateNotifier<AppState<List<ServiceModel>>> ***REMOVED***
-  ServiceState(this._remoteSource)
-      : super(const AppState<List<ServiceModel>>.initial());
+class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> ***REMOVED***
+  CategoriesState(this._remoteSource)
+      : super(const AppState<List<CategoryModel>>.initial());
   final ServiceRemoteSource _remoteSource;
 
   Future<void> getServices() async ***REMOVED***
     state = const AppState.loading();
-    final response = await _remoteSource.getServices();
+    final response = await _remoteSource.getCategories();
     state = response.fold(
       (error) => error.when(
         serverError: (message) =>
-            AppState<List<ServiceModel>>.error(message: message),
-        noInternet: () => const AppState<List<ServiceModel>>.noInternet(),
+            AppState<List<CategoryModel>>.error(message: message),
+        noInternet: () => const AppState<List<CategoryModel>>.noInternet(),
       ),
       (response) => AppState.success(data: response),
     );
@@ -25,9 +25,9 @@ class ServiceState extends StateNotifier<AppState<List<ServiceModel>>> ***REMOVE
   ***REMOVED***
 ***REMOVED***
 
-final serviceStateProvider =
-    StateNotifierProvider<ServiceState, AppState<List<ServiceModel>>>(
-  (ref) => ServiceState(
+final categoriesStateProvider =
+    StateNotifierProvider<CategoriesState, AppState<List<CategoryModel>>>(
+  (ref) => CategoriesState(
     ref.read(serviceRemoteSourceProvider),
   ),
 );

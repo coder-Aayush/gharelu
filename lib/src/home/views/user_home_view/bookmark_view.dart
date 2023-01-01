@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
 class BookMarkView extends StatelessWidget ***REMOVED***
@@ -6,6 +7,10 @@ class BookMarkView extends StatelessWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
-    return const ScaffoldWrapper();
+    return ScaffoldWrapper(
+      appBar: AppBar(
+        leading: const AutoLeadingButton(),
+      ),
+    );
   ***REMOVED***
 ***REMOVED***

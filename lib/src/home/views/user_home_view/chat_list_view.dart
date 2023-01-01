@@ -12,7 +12,6 @@ class ChatListView extends StatelessWidget ***REMOVED***
       body: CustomScrollView(
         slivers: [
           const SliverAppBar(
-            leading: AutoLeadingButton(),
             title: Text('Chats'),
             floating: true,
           ),

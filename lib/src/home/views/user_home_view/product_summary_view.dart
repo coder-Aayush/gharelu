@@ -7,11 +7,13 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductSummaryView extends StatelessWidget ***REMOVED***
-  const ProductSummaryView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+  const ProductSummaryView(***REMOVED***Key? key, required this.service***REMOVED***) : super(key: key);
+  final ServiceModel service;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -63,8 +65,10 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       children: [
                         Text('Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
-                        Text('Rs: $***REMOVED***_cart.subTotal***REMOVED***',
-                            style: AppStyles.text14PxSemiBold)
+                        Text(
+                          'Rs: $***REMOVED***_cart.subTotal***REMOVED***',
+                          style: AppStyles.text14PxSemiBold,
+                        )
                 ***REMOVED***
                     ),
                     20.verticalSpace,
@@ -72,8 +76,8 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       child: CustomButton(
                         title: 'Select Slot',
                         isDisabled: !_cart.products.isNotEmpty,
-                        onPressed: () =>
-                            context.router.push(const SelectSlotRoute()),
+                        onPressed: () => context.router
+                            .push(SelectSlotRoute(service: service)),
                       ),
                     ),
             ***REMOVED***

@@ -8,9 +8,9 @@ class AppConstant ***REMOVED***
   static const String banners = 'banners';
   static const String services = 'services';
 
-
-  ***REMOVED***value `categories` 
+  ***REMOVED***value `categories`
   static const String categories = 'categories';
-  ***REMOVED***value `products` 
+
+  ***REMOVED***value `products`
   static const String products = 'products';
 ***REMOVED***

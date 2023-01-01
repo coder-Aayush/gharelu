@@ -1,17 +1,19 @@
 ***REMOVED***
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 ***REMOVED***
 ***REMOVED***
 import 'package:gharelu/src/core/constant/app_constant.dart';
 ***REMOVED***
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:gharelu/src/home/models/category_model.dart';
 import 'package:gharelu/src/home/models/service_model.dart';
 
 abstract class _ServiceRemoteSource ***REMOVED***
-  Future<Either<AppError, List<ServiceModel>>> getServices();
+  Future<Either<AppError, List<CategoryModel>>> getCategories();
 
-  Future<Either<AppError, List<ServiceModel>>> getServiceCategories(
+  Future<Either<AppError, List<ServiceModel>>> getServices(
       ***REMOVED***required String id***REMOVED***);
 
   Future<Either<AppError, List<ProductModel>>> getProducts(
@@ -23,14 +25,14 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
 
   final Reader _reader;
 ***REMOVED***
-  Future<Either<AppError, List<ServiceModel>>> getServices() async ***REMOVED***
+  Future<Either<AppError, List<CategoryModel>>> getCategories() async ***REMOVED***
 ***REMOVED***
       final response = await _reader(firestoreProvider)
-          .collection(AppConstant.services)
+          .collection(AppConstant.categories)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***
-        final _service = List<ServiceModel>.from(response.docs
-            .map((service) => ServiceModel.fromJson(service.data())));
+        final _service = List<CategoryModel>.from(response.docs
+            .map((service) => CategoryModel.fromJson(service.data())));
         return right(_service);
       ***REMOVED*** else ***REMOVED***
         return right([]);
@@ -42,13 +44,12 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
   ***REMOVED***
 
 ***REMOVED***
-  Future<Either<AppError, List<ServiceModel>>> getServiceCategories(
+  Future<Either<AppError, List<ServiceModel>>> getServices(
       ***REMOVED***required String id***REMOVED***) async ***REMOVED***
 ***REMOVED***
       final response = await _reader(firestoreProvider)
           .collection(AppConstant.services)
-          .doc(id)
-          .collection(AppConstant.categories)
+          .where('category_id', isEqualTo: id)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***
         final _category = List<ServiceModel>.from(
@@ -60,8 +61,9 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
       ***REMOVED*** else ***REMOVED***
         return right([]);
       ***REMOVED***
-    ***REMOVED*** catch (e) ***REMOVED***
-      return left(const AppError.serverError(message: 'Unknow Error'));
+    ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
+      print(e.toString());
+      return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
     ***REMOVED***
   ***REMOVED***
 
@@ -71,7 +73,7 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
 ***REMOVED***
       final response = await _reader(firestoreProvider)
           .collection(AppConstant.products)
-          .where('category_id', isEqualTo: categoryId)
+          .where('service_id', isEqualTo: categoryId)
           .orderBy('updated_at', descending: true)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***

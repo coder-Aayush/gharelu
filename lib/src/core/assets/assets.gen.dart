@@ -46,11 +46,19 @@ class $AssetsImagesGen ***REMOVED***
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
 ***REMOVED***
 
+class $AssetsLottieGen ***REMOVED***
+  const $AssetsLottieGen();
+
+  ***REMOVED***File path: assets/lottie/loader.json
+  String get loader => 'assets/lottie/loader.json';
+***REMOVED***
+
 class Assets ***REMOVED***
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 ***REMOVED***
 
 class AssetGenImage ***REMOVED***
