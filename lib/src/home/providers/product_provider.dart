@@ -10,11 +10,14 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> ***REMOVE
   final ServiceRemoteSource _remoteSource;
 
   Future<void> getProducts(***REMOVED***
-    required String categoryId,
-    required String serviceId,
+    String? categoryId,
+    String? productId,
   ***REMOVED***) async ***REMOVED***
     state = const AppState.loading();
-    final response = await _remoteSource.getProducts(categoryId: categoryId);
+    final response = await _remoteSource.getProducts(
+      categoryId: categoryId,
+      productId: productId,
+    );
     state = response.fold(
         (error) => error.when(
             serverError: (message) => AppState.error(message: message),

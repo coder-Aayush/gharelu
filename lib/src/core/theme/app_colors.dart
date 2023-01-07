@@ -16,10 +16,9 @@ class AppColors ***REMOVED***
     begin: FractionalOffset.centerLeft,
     end: FractionalOffset.centerRight,
     stops: [0, 0.55, 1],
-    colors: const [
-      Color(0xFFF2C2AD),
-      Color(0xFFE98690),
-      Color(0xFFE56981),
+    colors: [
+      primaryColor,
+      errorColor,
   ***REMOVED***
     transform: GradientRotation(3.14159),
   );

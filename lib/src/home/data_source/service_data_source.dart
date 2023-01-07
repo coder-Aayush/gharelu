@@ -17,7 +17,7 @@ abstract class _ServiceRemoteSource ***REMOVED***
       ***REMOVED***required String id***REMOVED***);
 
   Future<Either<AppError, List<ProductModel>>> getProducts(
-      ***REMOVED***required String categoryId***REMOVED***);
+      ***REMOVED***String? categoryId, String? productId***REMOVED***);
 ***REMOVED***
 
 class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
@@ -69,13 +69,22 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
 
 ***REMOVED***
   Future<Either<AppError, List<ProductModel>>> getProducts(
-      ***REMOVED***required String categoryId***REMOVED***) async ***REMOVED***
+      ***REMOVED***String? categoryId, String? productId***REMOVED***) async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firestoreProvider)
-          .collection(AppConstant.products)
-          .where('service_id', isEqualTo: categoryId)
-          .orderBy('updated_at', descending: true)
-          .get();
+      // late QuerySnapshot<Map<String, dynamic>> response;
+      late QuerySnapshot<Map<String, dynamic>> response;
+      if (categoryId != null) ***REMOVED***
+        response = await _reader(firestoreProvider)
+            .collection(AppConstant.products)
+            .where('service_id', isEqualTo: categoryId)
+            .orderBy('updated_at', descending: true)
+            .get();
+      ***REMOVED*** else ***REMOVED***
+        response = await _reader(firestoreProvider)
+            .collection(AppConstant.products)
+            .where('id', isEqualTo: productId)
+            .get();
+      ***REMOVED***
       if (response.docs.isNotEmpty) ***REMOVED***
         return right(
           List<ProductModel>.from(

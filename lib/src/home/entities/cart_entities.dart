@@ -46,6 +46,7 @@ class CartEntities with _$CartEntities ***REMOVED***
         updatedAt: now,
         userId: userId,
         merchantId: merchantId,
+        bookedDate: DateTime.parse(bookingDate).millisecondsSinceEpoch,
       ));
     ***REMOVED***
 

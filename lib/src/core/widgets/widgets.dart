@@ -4,3 +4,6 @@ export 'custom_text_field.dart';
 export 'custom_app_bar.dart';
 export 'cache_image_viewer.dart';
 export 'gradient_circle.dart';
+export 'icon_with_title.dart';
+export 'bottom_sheet_header.dart';
+export 'button_sheet.dart';

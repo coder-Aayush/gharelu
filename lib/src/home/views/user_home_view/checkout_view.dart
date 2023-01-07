@@ -14,6 +14,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/data_source/booking_data_source.dart';
 import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
+import 'package:gharelu/src/home/providers/get_user_bookings.dart';
 import 'package:gharelu/src/home/providers/make_booking_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -35,14 +36,13 @@ class CheckoutView extends HookConsumerWidget ***REMOVED***
         orElse: () => null,
         success: (data) async ***REMOVED***
           context.showSnackbar(message: 'Booking Confirm');
-          context.router.popUntil(
-            (route) => route.settings.name == DashboardRouter.name,
-          );
-          await Future.delayed(const Duration(milliseconds: 200));
+          ref.read(getUserBookingsNotifierProvider.notifier).getBookings();
           context.router.root.innerRouterOf(DashboardRouter.name)
             ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
-                ?.setActiveIndex(2);
-          print(data);
+                ?.setActiveIndex(1)
+            ..navigate(const AppointmentRouter());
+          context.router
+              .popUntil((route) => route.settings.name == DashboardRouter.name);
         ***REMOVED***,
       );
   ***REMOVED***

@@ -2,38 +2,57 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/core/enum/order_type.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/models/booking_model.dart';
+import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget ***REMOVED***
-  const ProductTile(***REMOVED***
+  ProductTile(***REMOVED***
     Key? key,
     required this.image,
     required this.name,
-    required this.description,
+    this.description,
     required this.price,
     this.max = 10,
     this.itemInCart = false,
-    required this.onAddToCart,
-  ***REMOVED***) : super(key: key);
+    required this.onButtomPressed,
+    this.orderDetails,
+    this.status,
+    this.booking,
+  ***REMOVED***) : super(key: key) ***REMOVED***
+    if (status != null && booking == null) ***REMOVED***
+      throw Exception('if status is provided, we need product too');
+    ***REMOVED***
+  ***REMOVED***
 
   final String image;
   final String name;
-  final String description;
+  final String? description;
   final int price;
   final int max;
   final bool itemInCart;
-  final VoidCallback onAddToCart;
+  final VoidCallback onButtomPressed;
+  final OrderType? status;
+  final Widget? orderDetails;
+  final BookingModel? booking;
+
+  double get buttonHeight => 32;
+  double get buttonWidth => 110;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.softBlack.withOpacity(.4),
+          color: status == OrderType.Cancelled
+              ? AppColors.errorColor
+              : AppColors.softBlack.withOpacity(.4),
         ),
         borderRadius: BorderRadius.circular(10.r),
       ),
@@ -60,33 +79,79 @@ class ProductTile extends StatelessWidget ***REMOVED***
                 overflow: TextOverflow.clip,
               ),
               2.verticalSpace,
-              Text(
-                description,
-                style: AppStyles.text12PxBold.midGrey,
-                textAlign: TextAlign.left,
-              ),
-              Row(
-                children: [
-                  Text('Rs: $price', style: AppStyles.text14PxBold.primary),
-                  const Spacer(),
-                  if (!itemInCart)
-                    CustomButton(
-                      title: 'Add to Cart',
-                      onPressed: onAddToCart,
-                      height: 32,
-                      width: 110,
-                      titleStyle: AppStyles.text12PxMedium.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      isDisabled: false,
-                    ),
-          ***REMOVED***
-              ).pOnly(top: 16),
+              if (orderDetails == null)
+                Text(
+                  description!,
+                  style: AppStyles.text12PxBold.midGrey,
+                  textAlign: TextAlign.left,
+                )
+              else
+                orderDetails!,
+              if (status == null)
+                Row(
+                  children: [
+                    Text('Rs: $price', style: AppStyles.text14PxBold.primary),
+                    const Spacer(),
+                    if (!itemInCart)
+                      CustomButton(
+                        title: 'Add to Cart',
+                        onPressed: onButtomPressed,
+                        height: buttonHeight,
+                        width: buttonWidth,
+                        titleStyle: AppStyles.text12PxMedium.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        isDisabled: false,
+                      )
+            ***REMOVED***
+                ).pOnly(top: 16)
+              else
+                statusButton(context).pOnly(top: 14.h),
       ***REMOVED***
           ).px(12).expanded(),
   ***REMOVED***
       ),
     );
+  ***REMOVED***
+
+  Widget statusButton(BuildContext context) ***REMOVED***
+    final now = DateTime.now();
+    final shape =
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
+    final updatedHour = DateTime.fromMillisecondsSinceEpoch(booking!.updatedAt);
+    print(now.subtract(Duration(hours: 6)).millisecondsSinceEpoch);
+    if (status == OrderType.Pending) ***REMOVED***
+      return Row(
+        children: [
+          CustomButton(
+            title: 'Cancel Appoinment',
+            isDisabled:
+                !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
+            onPressed: () ***REMOVED***
+              CancelAppointmentButtomSheet.show(context);
+            ***REMOVED***,
+            height: buttonHeight,
+            width: buttonWidth + 10,
+            titleStyle: AppStyles.text12PxMedium.white,
+            shape: shape,
+          ),
+          const Spacer(),
+          CustomButton(
+            title: 'Chat',
+            shape: shape,
+            isDisabled:
+                !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
+            onPressed: () ***REMOVED******REMOVED***,
+            height: buttonHeight - 4,
+            width: buttonWidth - 45,
+            titleStyle: AppStyles.text12PxMedium.white,
+          ),
+  ***REMOVED***
+      );
+    ***REMOVED*** else if (status == OrderType.Completed) ***REMOVED***
+      return Text('Order Completed', style: AppStyles.text12PxMedium.primary);
+    ***REMOVED*** else
+      return Text('Order Canceled', style: AppStyles.text12PxMedium.error);
   ***REMOVED***
 ***REMOVED***

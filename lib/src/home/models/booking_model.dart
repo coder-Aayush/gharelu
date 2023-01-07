@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gharelu/src/core/enum/order_type.dart';
+import 'package:gharelu/src/home/models/product_model.dart';
 
 part 'booking_model.freezed.dart';
 part 'booking_model.g.dart';
@@ -20,6 +22,9 @@ class BookingModel with _$BookingModel ***REMOVED***
     required int updatedAt,
     required String userId,
     required String merchantId,
+    ProductModel? product,
+    required int bookedDate,
+    @Default(OrderType.Pending) OrderType orderType,
   ***REMOVED***) = _BookingModel;
 
   factory BookingModel.fromJson(Map<String, dynamic> json) =>

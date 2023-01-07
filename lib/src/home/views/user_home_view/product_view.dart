@@ -40,8 +40,9 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
     if (mounted) ***REMOVED***
       Future.delayed(
         Duration.zero,
-        () => ref.read(productStateProvider.notifier).getProducts(
-            categoryId: widget.categoryId, serviceId: widget.serviceId),
+        () => ref
+            .read(productStateProvider.notifier)
+            .getProducts(categoryId: widget.categoryId),
       );
     ***REMOVED***
     super.initState();
@@ -113,7 +114,7 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                             itemInCart: cart.products
                                 .where((element) => element.id == product.id)
                                 .isNotEmpty,
-                            onAddToCart: () ***REMOVED***
+                            onButtomPressed: () ***REMOVED***
                               final _product = cart.products.where(
                                 (element) => element.id == product.id,
                               );

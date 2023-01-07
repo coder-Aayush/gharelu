@@ -34,9 +34,9 @@ import 'package:gharelu/src/map_view/views/views.dart';
           name: 'HomeRouter',
         ),
         AutoRoute(
-          page: BookMarkView,
+          page: AppointmentView,
           path: 'bookmark',
-          name: 'BookmarkRouter',
+          name: 'AppointmentRouter',
         ),
         AutoRoute(
           page: ChatListView,

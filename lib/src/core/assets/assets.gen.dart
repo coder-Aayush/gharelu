@@ -14,6 +14,13 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen ***REMOVED***
   const $AssetsIconsGen();
 
+  ***REMOVED***File path: assets/icons/clock_icon.svg
+  SvgGenImage get clockIcon => const SvgGenImage('assets/icons/clock_icon.svg');
+
+  ***REMOVED***File path: assets/icons/hand_watch_icon.svg
+  SvgGenImage get handWatchIcon =>
+      const SvgGenImage('assets/icons/hand_watch_icon.svg');
+
   ***REMOVED***File path: assets/icons/khalti_logo.svg
   SvgGenImage get khaltiLogo =>
       const SvgGenImage('assets/icons/khalti_logo.svg');
@@ -51,6 +58,9 @@ class $AssetsLottieGen ***REMOVED***
 
   ***REMOVED***File path: assets/lottie/loader.json
   String get loader => 'assets/lottie/loader.json';
+
+  ***REMOVED***File path: assets/lottie/not_found.json
+  String get notFound => 'assets/lottie/not_found.json';
 ***REMOVED***
 
 class Assets ***REMOVED***

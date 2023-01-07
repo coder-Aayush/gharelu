@@ -6,5 +6,5 @@ import 'package:gharelu/src/app/views/views.dart';
 void main() async ***REMOVED***
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(AppView());
+  runApp(AppView.new());
 ***REMOVED***
