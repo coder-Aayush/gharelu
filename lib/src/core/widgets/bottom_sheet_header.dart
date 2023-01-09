@@ -43,6 +43,7 @@ class BottomSheetHeader extends StatelessWidget ***REMOVED***
           ),
           Expanded(
             child: TextButton(
+              style: TextButton.styleFrom(enableFeedback: true),
               onPressed: () ***REMOVED***
                 if (onClose != null) ***REMOVED***
                   onClose?.call();
@@ -60,4 +61,6 @@ class BottomSheetHeader extends StatelessWidget ***REMOVED***
       ),
     );
   ***REMOVED***
+
+  
 ***REMOVED***
