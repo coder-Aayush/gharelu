@@ -123,7 +123,7 @@ class CancelAppointmentButtomSheet extends HookConsumerWidget ***REMOVED***
           title: 'Complain',
         );
       default:
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
     ***REMOVED***
   ***REMOVED***
 ***REMOVED***
