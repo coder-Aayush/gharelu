@@ -2,12 +2,10 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.gr.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/providers/banner_provider.dart';
 import 'package:gharelu/src/home/providers/service_provider.dart';
@@ -24,14 +22,9 @@ class HomeView extends HookConsumerWidget ***REMOVED***
         slivers: [
           SliverAppBar(
             backgroundColor: AppColors.primaryColor,
-            title: Row(
-              children: [
-                Assets.icons.locationMarker
-                    .svg(color: AppColors.whiteColor, height: 30),
-                10.horizontalSpace,
-                Text('Kathmandu, Nepal', style: AppStyles.text18PxBold.white)
-                    .expanded()
-        ***REMOVED***
+            title: const Text(
+              'Gharelu App',
+              style: TextStyle(color: AppColors.whiteColor),
             ),
             expandedHeight: 150.h,
             snap: true,

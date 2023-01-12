@@ -6,6 +6,12 @@ class ProfileView extends StatelessWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
-    return const ScaffoldWrapper();
+    return ScaffoldWrapper(
+      body: Column(
+        children: [
+          Container()
+  ***REMOVED***
+      ),
+    );
   ***REMOVED***
 ***REMOVED***
