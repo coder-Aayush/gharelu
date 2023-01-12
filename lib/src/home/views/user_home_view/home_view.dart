@@ -1,5 +1,5 @@
+import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
@@ -39,7 +39,17 @@ class HomeView extends HookConsumerWidget ***REMOVED***
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: SearchBar(
-                onPressed: () ***REMOVED******REMOVED***,
+                onPressed: () ***REMOVED***
+                  final searcher = HitsSearcher(
+                    applicationID: 'IYS3NBQCDI',
+                    apiKey: '3ab9dbad16ea56cdccf487e845d139a6',
+                    indexName: 'services',
+                  );
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchServices(searcher),
+                  );
+                ***REMOVED***,
               ),
             ),
           ),

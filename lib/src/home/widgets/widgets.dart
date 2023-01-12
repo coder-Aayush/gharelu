@@ -9,3 +9,4 @@ export 'painter/painters.dart';
 export 'payment_card.dart';
 export 'booking_product_tile.dart';
 export 'no_data_found.dart';
+export 'search_services.dart';

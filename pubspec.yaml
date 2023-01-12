@@ -41,6 +41,7 @@ dependencies:
   lottie: ^2.1.0
   awesome_notifications: ^0.7.4+1
   flutter_hooks: ^0.18.5+1
+  algolia_helper_flutter: ^0.2.3
 
 dev_dependencies:
   auto_route_generator: ^4.2.0

@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gharelu/src/core/enum/order_type.dart';
 import 'package:gharelu/src/home/data_source/booking_data_source.dart';
-import 'package:gharelu/src/home/data_source/service_data_source.dart';
 import 'package:gharelu/src/home/models/booking_model.dart';
-import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -31,7 +29,7 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
         for (var item in response) ***REMOVED***
           if (DateTime.fromMillisecondsSinceEpoch(
                       DateTime.parse(item.date).millisecondsSinceEpoch)
-                  .isAfter(now) ||
+                  .isBefore(now) ||
               item.orderType == OrderType.Completed) ***REMOVED***
             previous.add(item);
           ***REMOVED*** else ***REMOVED***

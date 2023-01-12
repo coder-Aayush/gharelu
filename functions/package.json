@@ -1,0 +1,24 @@
+***REMOVED***
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": ***REMOVED***
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  ***REMOVED***,
+  "engines": ***REMOVED***
+    "node": "16"
+  ***REMOVED***,
+  "main": "index.js",
+  "dependencies": ***REMOVED***
+    "algoliasearch": "^4.14.3",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.1.1"
+  ***REMOVED***,
+  "devDependencies": ***REMOVED***
+    "firebase-functions-test": "^0.2.0"
+  ***REMOVED***,
+  "private": true
+***REMOVED***
