@@ -33,7 +33,7 @@ class SearchBar extends StatelessWidget ***REMOVED***
             borderRadius: BorderRadius.circular(6.r),
             child: InkWell(
               borderRadius: BorderRadius.circular(6.r),
-              onTap: () ***REMOVED******REMOVED***,
+              onTap: onPressed,
               child: Row(
                 children: [
                   Assets.icons.search
