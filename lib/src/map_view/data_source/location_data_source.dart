@@ -27,7 +27,7 @@
 ***REMOVED***
     _apiKey =
         'pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw';
-    _googleMapKey = 'AIzaSyAKJ5Dgzvfs29FWrw_QSdYrl79faH4up84';
+    _googleMapKey = 'AIzaSyBJ5TCwnBBtao--_Z2E-jxkcBVGbAG6W94';
   ***REMOVED***
 ***REMOVED***
 ***REMOVED***

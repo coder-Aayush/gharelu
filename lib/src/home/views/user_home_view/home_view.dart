@@ -24,15 +24,7 @@ class HomeView extends HookConsumerWidget ***REMOVED***
         slivers: [
           SliverAppBar(
             backgroundColor: AppColors.primaryColor,
-            title: Row(
-              children: [
-                Assets.icons.locationMarker
-                    .svg(color: AppColors.whiteColor, height: 30),
-                10.horizontalSpace,
-                Text('Kathmandu, Nepal', style: AppStyles.text18PxBold.white)
-                    .expanded()
-        ***REMOVED***
-            ),
+            title: Text('Ghaurlu', style: AppStyles.text18PxBold.white),
             expandedHeight: 150.h,
             snap: true,
             floating: true,

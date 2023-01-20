@@ -1,10 +1,11 @@
 ***REMOVED***
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/services/notification_service.dart';
 import 'package:gharelu/src/home/providers/banner_provider.dart';
+import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:gharelu/src/home/providers/service_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,10 +19,24 @@ class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
 class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
 ***REMOVED***
   void didChangeDependencies() ***REMOVED***
+    final currentUser = FirebaseAuth.instance.currentUser;
     ref.read(bannerStateProvider.notifier).getBanners();
     ref.read(categoriesStateProvider.notifier).getServices();
-    print(ref.watch(authChangeProvider).asData?.value);
+
     super.didChangeDependencies();
+  ***REMOVED***
+
+***REMOVED***
+  void initState() ***REMOVED***
+    super.initState();
+    FirebaseAuth.instance.userChanges().lastWhere((element) ***REMOVED***
+      if (element != null) ***REMOVED***
+        ref
+            .read(getUserInfoNotifiderProvider.notifier)
+            .getUserInfo(id: element.uid);
+      ***REMOVED***
+      return true;
+  ***REMOVED***
   ***REMOVED***
 
 ***REMOVED***

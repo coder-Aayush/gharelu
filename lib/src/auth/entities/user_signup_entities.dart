@@ -19,7 +19,8 @@ class UserSignupFromEntity with _$UserSignupFromEntity ***REMOVED***
         confirmPassword: Field(value: ''),
         email: Field(value: ''),
         password: Field(value: ''),
-        location: Field(value: '')
+        location: Field(value: ''),
+        
       );
 
   bool get isEmailVerified => email.value.validateEmail();

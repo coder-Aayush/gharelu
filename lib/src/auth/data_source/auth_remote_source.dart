@@ -39,6 +39,13 @@ abstract class _AuthRemoteSource ***REMOVED***
     required List<File> documents,
     required String location,
 ***REMOVED***
+
+  Future<Either<AppError, CustomUserModel>> getUserInfo(***REMOVED***required String id***REMOVED***);
+
+  Future<Either<AppError, bool>> deleteUser(
+      ***REMOVED***String? message, required String password***REMOVED***);
+
+  Future<Either<AppError, bool>> logout();
 ***REMOVED***
 
 class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
@@ -55,7 +62,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
           .signInWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
         final _user = response.user;
-        await FirebaseDBCollection.user.doc(_user?.uid).set(***REMOVED***
+        await FirebaseDBCollection.user.doc(_user?.uid).update(***REMOVED***
           'updated_at': DateTime.now().millisecondsSinceEpoch,
           'last_login': DateTime.now().millisecondsSinceEpoch,
       ***REMOVED***
@@ -189,6 +196,83 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
       return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
     ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
       return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
+    ***REMOVED***
+  ***REMOVED***
+
+***REMOVED***
+  Future<Either<AppError, CustomUserModel>> getUserInfo(
+      ***REMOVED***required String id***REMOVED***) async ***REMOVED***
+***REMOVED***
+      final response = await _reader(firestoreProvider)
+          .collection(AppConstant.users)
+          .doc(id)
+          .get();
+      if (response.data() != null) ***REMOVED***
+        return right(CustomUserModel.fromJson(response.data()!));
+      ***REMOVED*** else ***REMOVED***
+        return left(
+            const AppError.serverError(message: 'Failed to Get User Info'));
+      ***REMOVED***
+    ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
+      return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
+    ***REMOVED***
+  ***REMOVED***
+
+***REMOVED***
+  Future<Either<AppError, bool>> deleteUser(
+      ***REMOVED***String? message, required String password***REMOVED***) async ***REMOVED***
+***REMOVED***
+      final now = DateTime.now().millisecondsSinceEpoch;
+      final currentUser = _reader(firebaseAuthProvider).currentUser;
+
+      final response = await _reader(firebaseAuthProvider)
+          .currentUser
+          ?.reauthenticateWithCredential(
+            EmailAuthProvider.credential(
+              email: currentUser!.email!,
+              password: password,
+            ),
+          );
+      if (response != null) ***REMOVED***
+        await Future.wait(Iterable.castFrom([
+          _reader(firestoreProvider).collection(AppConstant.feedback).add(***REMOVED***
+            'message': message,
+            'user_id': currentUser?.uid,
+            'email': currentUser?.email,
+            'created_at': now,
+            'updated_at': now,
+          ***REMOVED***),
+          _reader(firestoreProvider)
+              .collection(AppConstant.users)
+              .doc(currentUser?.uid)
+              .delete(),
+          _reader(firebaseAuthProvider).currentUser?.delete(),
+        ]));
+        return right(true);
+      ***REMOVED*** else ***REMOVED***
+        return left(
+            const AppError.serverError(message: 'Failed to Delete User'));
+      ***REMOVED***
+    ***REMOVED*** on FirebaseAuthException catch (e) ***REMOVED***
+      return left(
+          AppError.serverError(message: e.message ?? 'Failed to Delete User'));
+    ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
+      return left(
+          AppError.serverError(message: e.message ?? 'Failed to Delete User'));
+    ***REMOVED***
+  ***REMOVED***
+
+***REMOVED***
+  Future<Either<AppError, bool>> logout() async ***REMOVED***
+***REMOVED***
+      await _reader(firebaseAuthProvider).signOut();
+      return right(true);
+    ***REMOVED*** on FirebaseAuthException catch (e) ***REMOVED***
+      return left(
+          AppError.serverError(message: e.message ?? 'Failed to Delete User'));
+    ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
+      return left(
+          AppError.serverError(message: e.message ?? 'Failed to Delete User'));
     ***REMOVED***
   ***REMOVED***
 ***REMOVED***

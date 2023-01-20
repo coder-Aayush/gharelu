@@ -22,7 +22,7 @@ class WelcomeView extends StatelessWidget ***REMOVED***
               const Spacer(),
               Assets.images.welcome.image(),
               20.verticalSpace,
-              Text('Welcome Aayush', style: AppStyles.text30PxBold.softBlack),
+              Text('Welcome!', style: AppStyles.text30PxBold.softBlack),
               const Spacer(),
               Text(
                 'Have a Problem \nyou cannot solve?\nDon\'t worry. Lets Get started',

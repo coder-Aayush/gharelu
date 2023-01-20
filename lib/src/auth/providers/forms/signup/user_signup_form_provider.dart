@@ -3,6 +3,7 @@ import 'package:gharelu/src/auth/entities/user_signup_entities.dart';
 import 'package:gharelu/src/auth/providers/forms/signup/user_signup_form_state.dart';
 import 'package:gharelu/src/core/validations/field.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:latlong2/latlong.dart';
 
 class UserSignupFormProvider extends StateNotifier<UserSignupFormState> ***REMOVED***
   UserSignupFormProvider()
@@ -58,7 +59,7 @@ class UserSignupFormProvider extends StateNotifier<UserSignupFormState> ***REMOV
         form: _form.copyWith(confirmPassword: confirmPasswordField));
   ***REMOVED***
 
-  void setLocation(String location) ***REMOVED***
+  void setLocation(String location, String placeId, LatLng latLng) ***REMOVED***
     var _form = state.form.copyWith(location: Field(value: location));
     late Field locationField;
     locationField = _form.location.copyWith(isValid: true, errorMessage: '');

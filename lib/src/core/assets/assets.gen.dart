@@ -56,6 +56,9 @@ class $AssetsImagesGen ***REMOVED***
 class $AssetsLottieGen ***REMOVED***
   const $AssetsLottieGen();
 
+  ***REMOVED***File path: assets/lottie/error.json
+  String get error => 'assets/lottie/error.json';
+
   ***REMOVED***File path: assets/lottie/loader.json
   String get loader => 'assets/lottie/loader.json';
 

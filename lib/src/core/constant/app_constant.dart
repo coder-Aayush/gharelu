@@ -1,14 +1,15 @@
 import 'package:gharelu/src/core/entity/cancellation_reason_entity.dart';
+import 'package:gharelu/src/core/entity/help_and_support_entity.dart';
 
 class AppConstant ***REMOVED***
   const AppConstant._();
 
-  static const String user = 'user';
   static const String users = 'users';
   static const String merchant = 'merchant';
   static const String merchants = 'merchants';
   static const String banners = 'banners';
   static const String services = 'services';
+  static const String feedback = 'feedback';
 
   ***REMOVED***value `categories`
   static const String categories = 'categories';
@@ -40,6 +41,34 @@ class AppConstant ***REMOVED***
       id: 4,
       description:
           'There may be other reasons not listed here that are specific to the individual or the situation.',
+    ),
+  ];
+
+  static List<HelpAndSupportEntity> helpAndSupport = const [
+    HelpAndSupportEntity(
+      name: 'Facebook Messenger',
+      content: 'https://me.m/theaayushb',
+      type: UtilityEnum.EMAIL,
+    ),
+    HelpAndSupportEntity(
+      name: 'WhatsApp',
+      content: 'https://web.whatsapp.com/+9779818630213',
+      type: UtilityEnum.WEB,
+    ),
+    HelpAndSupportEntity(
+      name: 'Viber',
+      content: 'viber.com',
+      type: UtilityEnum.WEB,
+    ),
+    HelpAndSupportEntity(
+      name: 'Call +977 9818630213',
+      content: '+977 9818630213',
+      type: UtilityEnum.MOBILE,
+    ),
+    HelpAndSupportEntity(
+      name: 'Email',
+      content: 'theaayushb@gmail.com',
+      type: UtilityEnum.MOBILE,
     ),
   ];
 ***REMOVED***

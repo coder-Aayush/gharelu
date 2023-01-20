@@ -100,11 +100,11 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                   ActionChip(
                     label: const Text('Set on Map'),
                     onPressed: () => context.router.push(MapPickerRoute(
-                      onSuccess: (location) ***REMOVED***
+                      onSuccess: (location, placeId, latlng) ***REMOVED***
                         context.router.pop();
                         ref
                             .read(userSignupFormProvider.notifier)
-                            .setLocation(location);
+                            .setLocation(location, placeId, latlng);
                       ***REMOVED***,
                     )),
                   ),

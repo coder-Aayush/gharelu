@@ -58,6 +58,8 @@ import 'package:gharelu/src/map_view/views/views.dart';
     AutoRoute<void>(page: ProductSummaryView),
     AutoRoute<void>(page: SelectSlotView),
     AutoRoute<void>(page: CheckoutView),
+    AutoRoute<void>(page: HelpAndSupportView),
+    AutoRoute<void>(page: ProfileInfoView),
 ***REMOVED***
 )
 class $AppRouter ***REMOVED******REMOVED***
