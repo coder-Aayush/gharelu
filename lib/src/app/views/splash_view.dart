@@ -35,13 +35,17 @@ class SplashView extends HookConsumerWidget ***REMOVED***
         success: (data) ***REMOVED***
           if (data.isMerchant) ***REMOVED***
             ***REMOVED***navigate to merchant
-            
+            ///
+            context.router.replaceAll([const MerchantDashboardRouter()]);
           ***REMOVED*** else ***REMOVED***
             context.router.replaceAll([const DashboardRouter()]);
           ***REMOVED***
         ***REMOVED***,
-        error: (message) ***REMOVED***
+        error: (message) async ***REMOVED***
           context.showSnackbar(message: message);
+          // ignore: inference_failure_on_instance_creation
+          await Future.delayed(const Duration(milliseconds: 300));
+          context.router.push(const LoginChoiceRoute());
         ***REMOVED***,
       );
   ***REMOVED***
@@ -88,18 +92,24 @@ class SplashView extends HookConsumerWidget ***REMOVED***
             ),
             const Spacer(),
             Consumer(builder: (context, ref, _) ***REMOVED***
-              return CustomButton(
-                loading: ref.watch(authStatusNotifierProvider).maybeWhen(
-                      orElse: () => false,
-                      loading: () => true,
+              return ref.watch(authStatusNotifierProvider).maybeWhen(
+                    orElse: () => Container(),
+                    success: (data) => const SizedBox.shrink(),
+                    loading: () => const SizedBox.shrink(),
+                    error: (message) => CustomButton(
+                      loading: ref.watch(authStatusNotifierProvider).maybeWhen(
+                            orElse: () => false,
+                            loading: () => true,
+                          ),
+                      title: 'Get Started',
+                      onPressed: () =>
+                          context.router.push(const LoginChoiceRoute()),
+                      isDisabled: false,
+                      backgroundColor: AppColors.whiteColor,
+                      titleStyle: AppStyles.text14PxMedium.softBlack,
+                      width: 270,
                     ),
-                title: 'Get Started',
-                onPressed: () => context.router.push(const LoginChoiceRoute()),
-                isDisabled: false,
-                backgroundColor: AppColors.whiteColor,
-                titleStyle: AppStyles.text14PxMedium.softBlack,
-                width: 270,
-              );
+                  );
             ***REMOVED***),
             20.verticalSpace,
     ***REMOVED***

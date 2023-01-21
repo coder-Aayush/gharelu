@@ -19,8 +19,6 @@ class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
 class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
 ***REMOVED***
   void didChangeDependencies() ***REMOVED***
-    final currentUser = FirebaseAuth.instance.currentUser;
-    ref.read(bannerStateProvider.notifier).getBanners();
     ref.read(categoriesStateProvider.notifier).getServices();
 
     super.didChangeDependencies();
@@ -80,6 +78,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
               ),
       ***REMOVED***
           );
+    
         ***REMOVED***,
       ),
     );

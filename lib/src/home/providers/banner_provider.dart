@@ -24,4 +24,4 @@ class BannerState extends StateNotifier<AppState<List<BannerModel>>> ***REMOVED*
 
 final bannerStateProvider =
     StateNotifierProvider.autoDispose<BannerState, AppState<List<BannerModel>>>(
-        (ref) => BannerState(ref.read(bannerRemoteSourceProvider)));
+        (ref) => BannerState(ref.read(bannerRemoteSourceProvider)..getBanners()));

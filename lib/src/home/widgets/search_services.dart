@@ -29,7 +29,11 @@ class CustomSearchServices extends SearchDelegate ***REMOVED***
 
 ***REMOVED***
   Widget buildSuggestions(BuildContext context) ***REMOVED***
-    searcher.query(query);
+    searcher
+      ..applyState((state) => state.copyWith(
+        
+      ))
+      ..query(query);
 
     return StreamBuilder(
       stream: searcher.responses,
