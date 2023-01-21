@@ -24,7 +24,7 @@ class ProfileView extends StatelessWidget ***REMOVED***
         next.maybeWhen(
           orElse: () => null,
           success: (data) ***REMOVED***
-            context.router.replaceAll([const LoginUserRoute()]);
+            context.router.replaceAll([const SplashRoute()]);
           ***REMOVED***,
           error: (message) ***REMOVED***
             context.showSnackbar(message: message);

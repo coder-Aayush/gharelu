@@ -2,11 +2,15 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 ***REMOVED***
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gharelu/src/app/provider/auth_status_provider.dart';
+import 'package:gharelu/src/auth/models/custom_user_model.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
+import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/services/notification_service.dart';
+import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
@@ -18,12 +22,29 @@ class SplashView extends HookConsumerWidget ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    useEffect(() ***REMOVED***
-      NotificationService.instance.initilize();
-      if (ref.read(firebaseAuthProvider).currentUser != null) ***REMOVED***
-        context.router.replaceAll([const DashboardRouter()]);
-      ***REMOVED***
-    ***REMOVED***, []);
+    // useEffect(() ***REMOVED***
+    //   NotificationService.instance.initilize();
+    //   if (ref.read(firebaseAuthProvider).currentUser != null) ***REMOVED***
+    //     context.router.replaceAll([const DashboardRouter()]);
+    //   ***REMOVED***
+    // ***REMOVED***, []);
+    ref.listen<AppState<CustomUserModel>>(authStatusNotifierProvider,
+        (previous, next) ***REMOVED***
+      next.maybeWhen(
+        orElse: () => null,
+        success: (data) ***REMOVED***
+          if (data.isMerchant) ***REMOVED***
+            ***REMOVED***navigate to merchant
+            
+          ***REMOVED*** else ***REMOVED***
+            context.router.replaceAll([const DashboardRouter()]);
+          ***REMOVED***
+        ***REMOVED***,
+        error: (message) ***REMOVED***
+          context.showSnackbar(message: message);
+        ***REMOVED***,
+      );
+  ***REMOVED***
 
     // ref.listen(authSatate, (previous, next) ***REMOVED***
     //   if (next != null) ***REMOVED***
@@ -66,14 +87,20 @@ class SplashView extends HookConsumerWidget ***REMOVED***
               style: AppStyles.text18PxMedium.white,
             ),
             const Spacer(),
-            CustomButton(
-              title: 'Get Started',
-              onPressed: () => context.router.push(const LoginChoiceRoute()),
-              isDisabled: false,
-              backgroundColor: AppColors.whiteColor,
-              titleStyle: AppStyles.text14PxMedium.softBlack,
-              width: 270,
-            ),
+            Consumer(builder: (context, ref, _) ***REMOVED***
+              return CustomButton(
+                loading: ref.watch(authStatusNotifierProvider).maybeWhen(
+                      orElse: () => false,
+                      loading: () => true,
+                    ),
+                title: 'Get Started',
+                onPressed: () => context.router.push(const LoginChoiceRoute()),
+                isDisabled: false,
+                backgroundColor: AppColors.whiteColor,
+                titleStyle: AppStyles.text14PxMedium.softBlack,
+                width: 270,
+              );
+            ***REMOVED***),
             20.verticalSpace,
     ***REMOVED***
         ),
