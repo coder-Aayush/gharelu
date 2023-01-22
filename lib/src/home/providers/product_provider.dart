@@ -12,11 +12,13 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> ***REMOVE
   Future<void> getProducts(***REMOVED***
     String? categoryId,
     String? productId,
+    bool merchantOnly = false,
   ***REMOVED***) async ***REMOVED***
     state = const AppState.loading();
     final response = await _remoteSource.getProducts(
       categoryId: categoryId,
       productId: productId,
+      merchantOnly: merchantOnly,
     );
     state = response.fold(
         (error) => error.when(

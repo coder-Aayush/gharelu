@@ -25,7 +25,10 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
       state.maybeWhen(
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
-        success: (data) => context.showSnackbar(message: 'You are signed up'),
+        success: (data) ***REMOVED***
+          context.router.replaceAll([const MerchantDashboardRouter()]);
+          context.showSnackbar(message: 'You are signed up');
+        ***REMOVED***,
       );
   ***REMOVED***
     final _name = useTextEditingController();

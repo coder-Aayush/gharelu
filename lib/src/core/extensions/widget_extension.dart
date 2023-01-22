@@ -56,6 +56,8 @@ extension TextStyleX on TextStyle ***REMOVED***
   TextStyle get softBlack => copyWith(color: AppColors.softBlack);
   TextStyle get midGrey => copyWith(color: AppColors.midGreyColor);
   TextStyle get error => copyWith(color: AppColors.errorColor);
+  TextStyle get warning => copyWith(color: AppColors.warningColor);
+
 
   TextStyle spacing(double value) =>
       copyWith(letterSpacing: calculateSpacing(value));

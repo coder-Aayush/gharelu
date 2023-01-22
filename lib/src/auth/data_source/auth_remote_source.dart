@@ -1,6 +1,7 @@
 import 'dart:async';
 ***REMOVED***
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 ***REMOVED***
 import 'package:firebase_auth/firebase_auth.dart';
 ***REMOVED***
@@ -40,7 +41,8 @@ abstract class _AuthRemoteSource ***REMOVED***
     required String location,
 ***REMOVED***
 
-  Future<Either<AppError, CustomUserModel>> getUserInfo(***REMOVED***required String id***REMOVED***);
+  Future<Either<AppError, CustomUserModel>> getUserInfo(
+      ***REMOVED***required String id, bool isMerchant = false***REMOVED***);
 
   Future<Either<AppError, bool>> deleteUser(
       ***REMOVED***String? message, required String password***REMOVED***);
@@ -138,7 +140,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   ***REMOVED***return `false` if user is not a merchant
   Future<bool> _isMerchant(String userId) async ***REMOVED***
     final data = (await _reader(firestoreProvider)
-            .collection('merchant')
+            .collection(AppConstant.merchants)
             .doc(userId)
             .get())
         .data();
@@ -201,12 +203,20 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
 
 ***REMOVED***
   Future<Either<AppError, CustomUserModel>> getUserInfo(
-      ***REMOVED***required String id***REMOVED***) async ***REMOVED***
+      ***REMOVED***required String id, bool isMerchant = false***REMOVED***) async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firestoreProvider)
-          .collection(AppConstant.users)
-          .doc(id)
-          .get();
+      late DocumentSnapshot<Map<String, dynamic>> response;
+      if (isMerchant) ***REMOVED***
+        response = await _reader(firestoreProvider)
+            .collection(AppConstant.merchants)
+            .doc(id)
+            .get();
+      ***REMOVED*** else ***REMOVED***
+        response = await _reader(firestoreProvider)
+            .collection(AppConstant.users)
+            .doc(id)
+            .get();
+      ***REMOVED***
       if (response.data() != null) ***REMOVED***
         return right(CustomUserModel.fromJson(response.data()!));
       ***REMOVED*** else ***REMOVED***

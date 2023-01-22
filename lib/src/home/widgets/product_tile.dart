@@ -13,19 +13,20 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget ***REMOVED***
-  ProductTile(***REMOVED***
-    Key? key,
-    required this.image,
-    required this.name,
-    this.description,
-    required this.price,
-    this.max = 10,
-    this.itemInCart = false,
-    required this.onButtomPressed,
-    this.orderDetails,
-    this.status,
-    this.booking,
-  ***REMOVED***) : super(key: key) ***REMOVED***
+  ProductTile(
+      ***REMOVED***Key? key,
+      required this.image,
+      required this.name,
+      this.description,
+      required this.price,
+      this.max = 10,
+      this.itemInCart = false,
+      required this.onButtomPressed,
+      this.orderDetails,
+      this.status,
+      this.booking,
+      this.buttonTitle***REMOVED***)
+      : super(key: key) ***REMOVED***
     if (status != null && booking == null) ***REMOVED***
       throw Exception('if status is provided, we need product too');
     ***REMOVED***
@@ -41,6 +42,7 @@ class ProductTile extends StatelessWidget ***REMOVED***
   final OrderType? status;
   final Widget? orderDetails;
   final BookingModel? booking;
+  final String? buttonTitle;
 
   double get buttonHeight => 32;
   double get buttonWidth => 110;
@@ -94,7 +96,7 @@ class ProductTile extends StatelessWidget ***REMOVED***
                     const Spacer(),
                     if (!itemInCart)
                       CustomButton(
-                        title: 'Add to Cart',
+                        title: buttonTitle ?? 'Add to Cart',
                         onPressed: onButtomPressed,
                         height: buttonHeight,
                         width: buttonWidth,

@@ -78,6 +78,7 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                               title: 'Enter Password',
                               controller: password,
                               isPassword: true,
+                              maxLines: 1,
                               textInputType: TextInputType.visiblePassword,
                             ),
                     ***REMOVED***

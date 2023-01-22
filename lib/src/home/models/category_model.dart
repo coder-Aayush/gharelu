@@ -17,4 +17,15 @@ class CategoryModel with _$CategoryModel ***REMOVED***
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
+
+  factory CategoryModel.empty() ***REMOVED***
+    final now = DateTime.now().millisecondsSinceEpoch;
+    return CategoryModel(
+      id: '',
+      name: '',
+      image: '',
+      createdAt: now,
+      updatedAt: now,
+    );
+  ***REMOVED***
 ***REMOVED***

@@ -36,5 +36,5 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> ***REMOVED***
 ***REMOVED***
 
 final merchantSignupProvider =
-    StateNotifierProvider<MerchantSignupState, AppState<User?>>(
+    StateNotifierProvider.autoDispose<MerchantSignupState, AppState<User?>>(
         (ref) => MerchantSignupState(ref.read));

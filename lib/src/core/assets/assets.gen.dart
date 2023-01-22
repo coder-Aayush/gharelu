@@ -17,6 +17,10 @@ class $AssetsIconsGen ***REMOVED***
   ***REMOVED***File path: assets/icons/clock_icon.svg
   SvgGenImage get clockIcon => const SvgGenImage('assets/icons/clock_icon.svg');
 
+  ***REMOVED***File path: assets/icons/delete_icon.svg
+  SvgGenImage get deleteIcon =>
+      const SvgGenImage('assets/icons/delete_icon.svg');
+
   ***REMOVED***File path: assets/icons/hand_watch_icon.svg
   SvgGenImage get handWatchIcon =>
       const SvgGenImage('assets/icons/hand_watch_icon.svg');
@@ -48,6 +52,9 @@ class $AssetsImagesGen ***REMOVED***
 
   ***REMOVED***File path: assets/images/map.png
   AssetGenImage get map => const AssetGenImage('assets/images/map.png');
+
+  ***REMOVED***File path: assets/images/market.png
+  AssetGenImage get market => const AssetGenImage('assets/images/market.png');
 
   ***REMOVED***File path: assets/images/welcome.png
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');

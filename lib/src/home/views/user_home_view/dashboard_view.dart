@@ -1,12 +1,5 @@
-***REMOVED***
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/home/providers/banner_provider.dart';
-import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
-import 'package:gharelu/src/home/providers/service_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
@@ -18,26 +11,6 @@ class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
 
 class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
 ***REMOVED***
-  void didChangeDependencies() ***REMOVED***
-    ref.read(categoriesStateProvider.notifier).getServices();
-
-    super.didChangeDependencies();
-  ***REMOVED***
-
-***REMOVED***
-  void initState() ***REMOVED***
-    super.initState();
-    FirebaseAuth.instance.userChanges().lastWhere((element) ***REMOVED***
-      if (element != null) ***REMOVED***
-        ref
-            .read(getUserInfoNotifiderProvider.notifier)
-            .getUserInfo(id: element.uid);
-      ***REMOVED***
-      return true;
-  ***REMOVED***
-  ***REMOVED***
-
-***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return WillPopScope(
       onWillPop: () async ***REMOVED***
@@ -48,7 +21,13 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
           const HomeRouter(),
           const AppointmentRouter(),
           const ChatRouter(),
-          const ProfileRouter(),
+          ProfileRouter(
+            onAppoinment: () =>
+                context.router.root.innerRouterOf(DashboardRouter.name)
+                  ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
+                      ?.setActiveIndex(1)
+                  ..navigate(const AppointmentRouter()),
+          ),
   ***REMOVED***
         builder: (context, child, animation) => FadeTransition(
           opacity: animation,
@@ -78,7 +57,6 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
               ),
       ***REMOVED***
           );
-    
         ***REMOVED***,
       ),
     );

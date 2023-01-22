@@ -26,7 +26,7 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
         success: (data) ***REMOVED***
-          context.router.replaceAll([const DashboardRouter()]);
+          context.router.replaceAll([const MerchantDashboardRouter()]);
           context.showSnackbar(message: 'Your are logged in');
         ***REMOVED***,
       );

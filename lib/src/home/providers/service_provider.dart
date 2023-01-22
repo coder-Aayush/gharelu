@@ -29,5 +29,5 @@ final categoriesStateProvider =
     StateNotifierProvider<CategoriesState, AppState<List<CategoryModel>>>(
   (ref) => CategoriesState(
     ref.read(serviceRemoteSourceProvider),
-  ),
+  )..getServices(),
 );

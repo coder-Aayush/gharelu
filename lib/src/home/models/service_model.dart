@@ -4,6 +4,7 @@ part 'service_model.freezed.dart';
 
 @freezed
 class ServiceModel with _$ServiceModel ***REMOVED***
+  const ServiceModel._();
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ServiceModel(***REMOVED***
     required String id,
@@ -19,4 +20,12 @@ class ServiceModel with _$ServiceModel ***REMOVED***
 
   factory ServiceModel.fromJson(Map<String, dynamic> json) =>
       _$ServiceModelFromJson(json);
+
+  factory ServiceModel.empty() => const ServiceModel(
+        id: '',
+        name: '',
+        image: '',
+        merchantId: '',
+        categoryId: '',
+      );
 ***REMOVED***

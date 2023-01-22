@@ -11,6 +11,7 @@ class AppColors ***REMOVED***
   static const Color errorColor = const Color(0xffE6FF5959);
   static const Color softBlue = const Color(0xffEAE8FE);
   static const Color transparent = Colors.transparent;
+  static const Color warningColor = Color(0xffE7C224);
 
   static const LinearGradient circleGradient = const LinearGradient(
     begin: FractionalOffset.centerLeft,

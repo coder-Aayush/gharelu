@@ -7,7 +7,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 class CustomTextField extends StatelessWidget ***REMOVED***
   const CustomTextField(***REMOVED***
     Key? key,
-    required this.title,
+    this.title,
     required this.controller,
     this.inputFormatters,
     this.onTap,
@@ -16,8 +16,15 @@ class CustomTextField extends StatelessWidget ***REMOVED***
     this.error,
     this.onChanged,
     this.textInputType = TextInputType.name,
+    this.maxLength,
+    this.textCapitalization,
+    this.maxLines,
+    this.warning,
+    this.readOnly = false,
+    this.labelText,
   ***REMOVED***) : super(key: key);
-  final String title;
+
+  final String? title;
   final TextEditingController controller;
   final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onTap;
@@ -26,6 +33,16 @@ class CustomTextField extends StatelessWidget ***REMOVED***
   final String? error;
   final Function(String)? onChanged;
   final TextInputType textInputType;
+  final int? maxLength;
+  final TextCapitalization? textCapitalization;
+  final int? maxLines;
+  final String? warning;
+  final bool readOnly;
+  final String? labelText;
+
+  bool get hasError => error != null && (error ?? '').trim().isNotEmpty;
+
+  bool get hasWarning => warning != null && (warning ?? '').trim().isNotEmpty;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -34,28 +51,49 @@ class CustomTextField extends StatelessWidget ***REMOVED***
       children: [
         TextField(
           onChanged: onChanged,
+          textCapitalization: textCapitalization ?? TextCapitalization.none,
           controller: controller,
           inputFormatters: inputFormatters,
           keyboardType: textInputType,
           enableSuggestions: true,
           onTap: onTap,
           obscureText: isPassword,
+          enabled: isEnable,
+          maxLength: maxLength,
+          maxLines: maxLines ?? 1,
+          readOnly: readOnly,
           decoration: InputDecoration(
+            labelText: labelText,
+            counter: const SizedBox.shrink(),
             hintText: title,
             focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-              color: error != null && error!.isNotEmpty
-                  ? AppColors.errorColor
-                  : AppColors.primaryColor,
+              color: borderColor,
+              width: 1.5,
             )),
           ),
         ),
-        if (error != null && error!.isNotEmpty)
+        if (hasWarning)
+          Text(
+            warning ?? '',
+            style: AppStyles.text12PxMedium.warning,
+          ),
+        if (hasError)
           Text(
             error ?? '',
             style: AppStyles.text12PxRegular.error,
           ),
 ***REMOVED***
     );
+  ***REMOVED***
+
+  Color get borderColor ***REMOVED***
+    if (hasError) ***REMOVED***
+      return AppColors.errorColor;
+    ***REMOVED***
+    if (hasWarning) ***REMOVED***
+      return AppColors.warningColor;
+    ***REMOVED***
+    return AppColors.primaryColor;
   ***REMOVED***
 ***REMOVED***

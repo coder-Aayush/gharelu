@@ -1,23 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
+import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantDashboardView extends StatelessWidget ***REMOVED***
+class MerchantDashboardView extends StatefulHookConsumerWidget ***REMOVED***
   const MerchantDashboardView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+
+***REMOVED***
+  _MerchantDashboardViewState createState() => _MerchantDashboardViewState();
+***REMOVED***
+
+class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> ***REMOVED***
+***REMOVED***
+  void didChangeDependencies() ***REMOVED***
+    final userId = ref.read(firebaseAuthProvider).currentUser?.uid;
+    ref
+        .read(getUserInfoNotifiderProvider.notifier)
+        .getUserInfo(id: userId!, isMerchant: true);
+    super.didChangeDependencies();
+  ***REMOVED***
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return AutoTabsScaffold(
-      routes: const [
-        MerchantHomeRoute(),
-        MerchantBookingsRoute(),
-        ChatListRoute(),
-        MerchantProfileRoute(),
+      routes: [
+        const MerchantHomeRoute(),
+        const MerchantBookingsRoute(),
+        const ChatListRoute(),
+        ProfileRoute(
+          onAppoinment: () =>
+              context.router.root.innerRouterOf(MerchantDashboardRouter.name)
+                ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)
+                    ?.setActiveIndex(1)
+                ..navigate(const MerchantBookingsRoute()),
+        ),
 ***REMOVED***
       homeIndex: 0,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () ***REMOVED******REMOVED***,
+        onPressed: () => context.router.push(CreateProductRoute()),
         backgroundColor: AppColors.primaryColor,
         child: const Icon(Icons.add, color: AppColors.whiteColor),
       ),

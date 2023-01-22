@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/auth/providers/logout_provider.dart';
-import 'package:gharelu/src/auth/view/user_auth_view/login_user_view.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
@@ -14,9 +13,16 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProfileView extends StatelessWidget ***REMOVED***
-  const ProfileView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class ProfileView extends StatefulHookConsumerWidget ***REMOVED***
+  const ProfileView(***REMOVED***Key? key, required this.onAppoinment***REMOVED***) : super(key: key);
+  final VoidCallback onAppoinment;
 
+***REMOVED***
+  _ProfileViewState createState() => _ProfileViewState();
+***REMOVED***
+
+class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
+  
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return Consumer(builder: (context, ref, _) ***REMOVED***
@@ -50,7 +56,8 @@ class ProfileView extends StatelessWidget ***REMOVED***
               ),
               child: Consumer(builder: (context, ref, _) ***REMOVED***
                 return ref.watch(getUserInfoNotifiderProvider).maybeWhen(
-                      orElse: () => Container(),
+                      orElse: Container.new,
+                      error: (message) => Text(message),
                       success: (data) => Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,11 +89,7 @@ class ProfileView extends StatelessWidget ***REMOVED***
                 30.verticalSpace,
                 CardListTile(
                   title: 'Appoinments',
-                  onPressed: () =>
-                      context.router.root.innerRouterOf(DashboardRouter.name)
-                        ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
-                            ?.setActiveIndex(1)
-                        ..navigate(const AppointmentRouter()),
+                  onPressed: widget.onAppoinment,
                 ),
                 20.verticalSpace,
                 CardListTile(

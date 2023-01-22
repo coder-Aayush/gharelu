@@ -25,7 +25,7 @@ class MerchantSignupFromEntity with _$MerchantSignupFromEntity ***REMOVED***
         documents: [],
       );
 
-  bool get isEmailVerified => email.value.validateEmail();
+  bool get isEmailVerified => (email.value as String).validateEmail();
 
   bool get isValid =>
       name.isValid &&

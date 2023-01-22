@@ -4,20 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
+import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.gr.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/providers/banner_provider.dart';
+import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:gharelu/src/home/providers/service_provider.dart';
 import 'package:gharelu/src/home/widgets/search_services.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeView extends HookConsumerWidget ***REMOVED***
+class HomeView extends StatefulHookConsumerWidget ***REMOVED***
   const HomeView(***REMOVED***Key? key***REMOVED***) : super(key: key);
 
 ***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  _HomeViewState createState() => _HomeViewState();
+***REMOVED***
+
+class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
+***REMOVED***
+  void didChangeDependencies() ***REMOVED***
+    super.didChangeDependencies();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+      final currentUser = ref.read(firebaseAuthProvider).currentUser;
+      ref
+          .read(getUserInfoNotifiderProvider.notifier)
+          .getUserInfo(id: currentUser?.uid ?? '');
+  ***REMOVED***
+  ***REMOVED***
+
+***REMOVED***
+  Widget build(BuildContext context) ***REMOVED***
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [

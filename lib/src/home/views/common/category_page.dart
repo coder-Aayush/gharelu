@@ -22,11 +22,13 @@ class CategoryView extends StatefulHookConsumerWidget ***REMOVED***
 
 class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
 ***REMOVED***
-  void initState() ***REMOVED***
-    super.initState();
-    ref
-        .read(serviceCategoryStateProvider.notifier)
-        .getServices(categoryId: widget.category.id);
+  void didChangeDependencies() ***REMOVED***
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+      ref
+          .read(serviceCategoryStateProvider.notifier)
+          .getServices(categoryId: widget.category.id);
+  ***REMOVED***
+    super.didChangeDependencies();
   ***REMOVED***
 
 ***REMOVED***

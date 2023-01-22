@@ -93,28 +93,35 @@ class SplashView extends HookConsumerWidget ***REMOVED***
             const Spacer(),
             Consumer(builder: (context, ref, _) ***REMOVED***
               return ref.watch(authStatusNotifierProvider).maybeWhen(
-                    orElse: () => Container(),
+                    orElse: () => buildButton(ref, context),
                     success: (data) => const SizedBox.shrink(),
-                    loading: () => const SizedBox.shrink(),
-                    error: (message) => CustomButton(
-                      loading: ref.watch(authStatusNotifierProvider).maybeWhen(
-                            orElse: () => false,
-                            loading: () => true,
-                          ),
-                      title: 'Get Started',
-                      onPressed: () =>
-                          context.router.push(const LoginChoiceRoute()),
-                      isDisabled: false,
-                      backgroundColor: AppColors.whiteColor,
-                      titleStyle: AppStyles.text14PxMedium.softBlack,
-                      width: 270,
-                    ),
+                    loading: () => const Center(
+                      child: LinearProgressIndicator(
+                        color: AppColors.whiteColor,
+                      ),
+                    ).px(20.w),
+                    error: (message) => buildButton(ref, context),
                   );
             ***REMOVED***),
             20.verticalSpace,
     ***REMOVED***
         ),
       ),
+    );
+  ***REMOVED***
+
+  Widget buildButton(WidgetRef ref, BuildContext context) ***REMOVED***
+    return CustomButton(
+      loading: ref.watch(authStatusNotifierProvider).maybeWhen(
+            orElse: () => false,
+            loading: () => true,
+          ),
+      title: 'Get Started',
+      onPressed: () => context.router.push(const LoginChoiceRoute()),
+      isDisabled: false,
+      backgroundColor: AppColors.whiteColor,
+      titleStyle: AppStyles.text14PxMedium.softBlack,
+      width: 270,
     );
   ***REMOVED***
 ***REMOVED***
