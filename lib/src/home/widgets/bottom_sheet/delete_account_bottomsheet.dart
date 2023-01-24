@@ -10,6 +10,7 @@ import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
@@ -127,12 +128,21 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                           if (!askPassword.value) ***REMOVED***
                             askPassword.value = true;
                           ***REMOVED*** else ***REMOVED***
+                            final isMerchant = ref
+                                .watch(getUserInfoNotifiderProvider)
+                                .maybeWhen(
+                                  orElse: () => false,
+                                  success: (data) =>
+                                      data.isMerchant ? true : false,
+                                );
                             ref
                                 .read(
                                     deleteUserProviderNotifierProvider.notifier)
                                 .deleteUser(
-                                    message: feedback.text,
-                                    password: password.text);
+                                  message: feedback.text,
+                                  password: password.text,
+                                  isMerchant: isMerchant,
+                                );
                           ***REMOVED***
                         ***REMOVED***,
                         backgroundColor: AppColors.errorColor,
@@ -141,7 +151,7 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                       const Spacer(),
                       CustomButton(
                         title: 'Cancel',
-                        onPressed: () ***REMOVED******REMOVED***,
+                        onPressed: () => Navigator.pop(context),
                         backgroundColor: AppColors.primaryColor,
                         isDisabled: false,
                       ),

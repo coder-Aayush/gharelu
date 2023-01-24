@@ -22,7 +22,6 @@ class ProfileView extends StatefulHookConsumerWidget ***REMOVED***
 ***REMOVED***
 
 class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
-  
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     return Consumer(builder: (context, ref, _) ***REMOVED***
@@ -31,6 +30,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
           orElse: () => null,
           success: (data) ***REMOVED***
             context.router.replaceAll([const SplashRoute()]);
+            ref.invalidate(getUserInfoNotifiderProvider);
           ***REMOVED***,
           error: (message) ***REMOVED***
             context.showSnackbar(message: message);
@@ -73,6 +73,11 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                               data.name,
                               style: AppStyles.text14PxSemiBold.white,
                             ),
+                            4.verticalSpace,
+                            Text(
+                              data.email,
+                              style: AppStyles.text10PxMedium.white,
+                            )
                     ***REMOVED***
                         ),
                       ),

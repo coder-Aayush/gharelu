@@ -43,6 +43,7 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   algolia_helper_flutter: ^0.2.3
   flutter_typeahead: ^4.1.1
+  dropdown_button2: ^1.9.2
 
 dev_dependencies:
   auto_route_generator: ^4.2.0

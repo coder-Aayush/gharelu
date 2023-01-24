@@ -34,7 +34,10 @@ extension WidgetX on BuildContext ***REMOVED***
       );
   ***REMOVED***
 
-  void showErorDialog(***REMOVED***required String? message***REMOVED***) ***REMOVED***
+  void showErorDialog(
+      ***REMOVED***required String? message,
+      VoidCallback? buttonPressed,
+      String? buttonTitle***REMOVED***) ***REMOVED***
     showGeneralDialog(
       context: this,
       barrierDismissible: false,
@@ -75,8 +78,14 @@ extension WidgetX on BuildContext ***REMOVED***
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Ok'),
+            onPressed: () ***REMOVED***
+              if (buttonPressed != null) ***REMOVED***
+                buttonPressed.call();
+              ***REMOVED*** else ***REMOVED***
+                Navigator.pop(context);
+              ***REMOVED***
+            ***REMOVED***,
+            child: Text(buttonTitle ?? 'Ok'),
           ),
   ***REMOVED***
       ),

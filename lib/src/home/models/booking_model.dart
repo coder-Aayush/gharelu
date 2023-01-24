@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gharelu/src/auth/models/custom_user_model.dart';
 import 'package:gharelu/src/core/enum/order_type.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 
@@ -23,6 +24,8 @@ class BookingModel with _$BookingModel ***REMOVED***
     required String userId,
     required String merchantId,
     ProductModel? product,
+    CustomUserModel? user,
+    CustomUserModel? merchantUser,
     required int bookedDate,
     @Default(OrderType.Pending) OrderType orderType,
   ***REMOVED***) = _BookingModel;

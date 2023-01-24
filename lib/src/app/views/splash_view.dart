@@ -33,6 +33,7 @@ class SplashView extends HookConsumerWidget ***REMOVED***
       next.maybeWhen(
         orElse: () => null,
         success: (data) ***REMOVED***
+          context.showSnackbar(message: 'Welcome Back $***REMOVED***data.name***REMOVED***');
           if (data.isMerchant) ***REMOVED***
             ***REMOVED***navigate to merchant
             ///
@@ -94,12 +95,14 @@ class SplashView extends HookConsumerWidget ***REMOVED***
             Consumer(builder: (context, ref, _) ***REMOVED***
               return ref.watch(authStatusNotifierProvider).maybeWhen(
                     orElse: () => buildButton(ref, context),
-                    success: (data) => const SizedBox.shrink(),
+                    success: (data) ***REMOVED***
+                      return const SizedBox.shrink();
+                    ***REMOVED***,
                     loading: () => const Center(
-                      child: LinearProgressIndicator(
+                      child: CircularProgressIndicator(
                         color: AppColors.whiteColor,
                       ),
-                    ).px(20.w),
+                    ),
                     error: (message) => buildButton(ref, context),
                   );
             ***REMOVED***),

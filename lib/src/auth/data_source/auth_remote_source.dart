@@ -229,8 +229,11 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   ***REMOVED***
 
 ***REMOVED***
-  Future<Either<AppError, bool>> deleteUser(
-      ***REMOVED***String? message, required String password***REMOVED***) async ***REMOVED***
+  Future<Either<AppError, bool>> deleteUser(***REMOVED***
+    String? message,
+    required String password,
+    bool isMerchant = false,
+  ***REMOVED***) async ***REMOVED***
 ***REMOVED***
       final now = DateTime.now().millisecondsSinceEpoch;
       final currentUser = _reader(firebaseAuthProvider).currentUser;
@@ -253,7 +256,8 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
             'updated_at': now,
           ***REMOVED***),
           _reader(firestoreProvider)
-              .collection(AppConstant.users)
+              .collection(
+                  isMerchant ? AppConstant.merchants : AppConstant.users)
               .doc(currentUser?.uid)
               .delete(),
           _reader(firebaseAuthProvider).currentUser?.delete(),

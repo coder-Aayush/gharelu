@@ -7,11 +7,16 @@ class DeleteUserProviderNotifier extends StateNotifier<AppState<bool>> ***REMOVE
       : super(const AppState.initial());
   final AuthRemoteSource _remoteSource;
 
-  Future<void> deleteUser(***REMOVED***String? message, required String password***REMOVED***) async ***REMOVED***
+  Future<void> deleteUser(***REMOVED***
+    String? message,
+    required String password,
+    bool isMerchant = false,
+  ***REMOVED***) async ***REMOVED***
     state = const AppState.loading();
     final response = await _remoteSource.deleteUser(
       message: message,
       password: password,
+      isMerchant: isMerchant
     );
     state = response.fold(
         (error) => error.when(

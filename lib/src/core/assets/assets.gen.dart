@@ -14,6 +14,9 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen ***REMOVED***
   const $AssetsIconsGen();
 
+  ***REMOVED***File path: assets/icons/chat.svg
+  SvgGenImage get chat => const SvgGenImage('assets/icons/chat.svg');
+
   ***REMOVED***File path: assets/icons/clock_icon.svg
   SvgGenImage get clockIcon => const SvgGenImage('assets/icons/clock_icon.svg');
 
@@ -32,6 +35,9 @@ class $AssetsIconsGen ***REMOVED***
   ***REMOVED***File path: assets/icons/location_marker.svg
   SvgGenImage get locationMarker =>
       const SvgGenImage('assets/icons/location_marker.svg');
+
+  ***REMOVED***File path: assets/icons/phone.svg
+  SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
 
   ***REMOVED***File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
