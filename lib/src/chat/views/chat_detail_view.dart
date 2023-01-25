@@ -18,8 +18,7 @@ class ChatDetailView extends StatelessWidget ***REMOVED***
             GradientCircle(
               radius: 40.r,
               child: const CacheImageViewer(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+                imageUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
               ),
             ),
             10.horizontalSpace,
@@ -39,17 +38,14 @@ class ChatDetailView extends StatelessWidget ***REMOVED***
       body: Column(
         children: [
           ListView.builder(
+            reverse: true,
             itemBuilder: (context, index) => BubbleSpecialTwo(
               text: 'bubble special tow without tail',
               isSender: index % 2 == 0 ? true : false,
               tail: true,
-              color: index % 2 == 0
-                  ? const Color(0xFF1B97F3)
-                  : const Color(0xFFE8E8EE),
+              color: index % 2 == 0 ? const Color(0xFF1B97F3) : const Color(0xFFE8E8EE),
               delivered: false,
-              textStyle: index % 2 == 0
-                  ? AppStyles.text14PxRegular.white
-                  : const TextStyle(),
+              textStyle: index % 2 == 0 ? AppStyles.text14PxRegular.white : const TextStyle(),
             ).px(10).py(10),
           ).expanded(),
           MessageBar(

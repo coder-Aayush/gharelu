@@ -15,9 +15,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
-  final BookingModel booking;
   const MerchantBookingProductTile(***REMOVED***Key? key, required this.booking***REMOVED***)
       : super(key: key);
+  final BookingModel booking;
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -56,22 +56,27 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
               ***REMOVED***
                   ),
                 ),
-                IgnorePointer(
-                  ignoring: booking.user?.phoneNumber != null,
-                  child: booking.user?.phoneNumber != null
-                      ? IconButton(
-                          onPressed: () async => await launchUrlString(
-                              'tel:$***REMOVED***booking.user?.phoneNumber***REMOVED***'),
-                          icon: Icon(
-                            Icons.call,
-                            color: AppColors.softBlack.withOpacity(.5),
-                          ),
-                        )
-                      : IconButton(
-                          onPressed: () ***REMOVED******REMOVED***,
-                          icon: Assets.icons.chat.svg(),
-                        ),
-                )
+                // IgnorePointer(
+                //   ignoring: booking.user?.phoneNumber != null,
+                //   child: booking.user?.phoneNumber != null
+
+                // ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () async => await launchUrlString(
+                          'tel:$***REMOVED***booking.user?.phoneNumber***REMOVED***'),
+                      icon: Icon(
+                        Icons.phone,
+                        color: AppColors.softBlack.withOpacity(.4),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () ***REMOVED******REMOVED***,
+                      icon: Assets.icons.chat.svg(),
+                    ),
+            ***REMOVED***
+                ),
         ***REMOVED***
             ),
             8.verticalSpace,
@@ -203,3 +208,6 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
     );
   ***REMOVED***
 ***REMOVED***
+
+
+
