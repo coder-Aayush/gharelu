@@ -13,9 +13,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BookingProductTile extends StatefulHookConsumerWidget ***REMOVED***
-  const BookingProductTile(
-      ***REMOVED***Key? key, required this.booking, required this.onButton***REMOVED***)
-      : super(key: key);
+  const BookingProductTile(***REMOVED***Key? key, required this.booking, required this.onButton***REMOVED***) : super(key: key);
   final BookingModel booking;
   final Function(BookingModel) onButton;
 
@@ -23,13 +21,13 @@ class BookingProductTile extends StatefulHookConsumerWidget ***REMOVED***
   _UpcomingProductTileState createState() => _UpcomingProductTileState();
 ***REMOVED***
 
-class _UpcomingProductTileState extends ConsumerState<BookingProductTile>
-    with AutomaticKeepAliveClientMixin ***REMOVED***
+class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with AutomaticKeepAliveClientMixin ***REMOVED***
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
     final booking = widget.booking;
     super.build(context);
     return ProductTile(
+      id: booking.id,
       image: booking.product?.image ?? '',
       name: booking.product?.name ?? '',
       price: widget.booking.totalPrice,

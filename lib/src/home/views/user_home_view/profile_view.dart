@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/auth/providers/logout_provider.dart';
+import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
@@ -62,10 +63,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const GradientCircle(
+                            GradientCircle(
                               child: CacheImageViewer(
-                                imageUrl:
-                                    'https://w7.pngwing.com/pngs/754/2/png-transparent-samsung-galaxy-a8-a8-user-login-telephone-avatar-pawn-blue-angle-sphere-thumbnail.png',
+                                imageUrl: '',
+                                error: (context, url, error) => Assets.images.userAvatar.image(fit: BoxFit.cover),
                               ),
                             ),
                             10.verticalSpace,
@@ -104,17 +105,14 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                 20.verticalSpace,
                 CardListTile(
                   title: 'Customer Support',
-                  onPressed: () =>
-                      context.router.push(const HelpAndSupportRoute()),
+                  onPressed: () => context.router.push(const HelpAndSupportRoute()),
                 ),
                 20.verticalSpace,
                 Consumer(
                   builder: (context, ref, _) ***REMOVED***
                     return CardListTile(
                       title: 'Logout',
-                      onPressed: () => ref
-                          .read(logoutStateNotifierProvider.notifier)
-                          .logout(),
+                      onPressed: () => ref.read(logoutStateNotifierProvider.notifier).logout(),
                     );
                   ***REMOVED***,
                 ),

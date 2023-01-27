@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
@@ -21,7 +22,10 @@ class ChatListTile extends StatelessWidget ***REMOVED***
     return ListTile(
       onTap: onPressed,
       leading: GradientCircle(
-        child: CacheImageViewer(imageUrl: imageUrl),
+        child: CacheImageViewer(
+          imageUrl: imageUrl,
+          error: (context, url, error) => Assets.images.userAvatar.image(fit: BoxFit.cover),
+        ),
         showGradient: true,
       ),
       title: Text(name, style: AppStyles.text16PxBold),

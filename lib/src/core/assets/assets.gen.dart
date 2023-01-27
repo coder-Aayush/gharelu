@@ -5,11 +5,12 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 
 class $AssetsIconsGen ***REMOVED***
   const $AssetsIconsGen();
@@ -41,6 +42,18 @@ class $AssetsIconsGen ***REMOVED***
 
   ***REMOVED***File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
+
+  ***REMOVED***List of all assets
+  List<SvgGenImage> get values => [
+        chat,
+        clockIcon,
+        deleteIcon,
+        handWatchIcon,
+        khaltiLogo,
+        locationMarker,
+        phone,
+        search
+      ];
 ***REMOVED***
 
 class $AssetsImagesGen ***REMOVED***
@@ -62,21 +75,34 @@ class $AssetsImagesGen ***REMOVED***
   ***REMOVED***File path: assets/images/market.png
   AssetGenImage get market => const AssetGenImage('assets/images/market.png');
 
+  ***REMOVED***File path: assets/images/user_avatar.png
+  AssetGenImage get userAvatar =>
+      const AssetGenImage('assets/images/user_avatar.png');
+
   ***REMOVED***File path: assets/images/welcome.png
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
+
+  ***REMOVED***List of all assets
+  List<AssetGenImage> get values =>
+      [babr, esewaLogo, logo, map, market, userAvatar, welcome];
 ***REMOVED***
 
 class $AssetsLottieGen ***REMOVED***
   const $AssetsLottieGen();
 
   ***REMOVED***File path: assets/lottie/error.json
-  String get error => 'assets/lottie/error.json';
+  LottieGenImage get error => const LottieGenImage('assets/lottie/error.json');
 
   ***REMOVED***File path: assets/lottie/loader.json
-  String get loader => 'assets/lottie/loader.json';
+  LottieGenImage get loader =>
+      const LottieGenImage('assets/lottie/loader.json');
 
   ***REMOVED***File path: assets/lottie/not_found.json
-  String get notFound => 'assets/lottie/not_found.json';
+  LottieGenImage get notFound =>
+      const LottieGenImage('assets/lottie/not_found.json');
+
+  ***REMOVED***List of all assets
+  List<LottieGenImage> get values => [error, loader, notFound];
 ***REMOVED***
 
 class Assets ***REMOVED***
@@ -145,6 +171,8 @@ class AssetGenImage ***REMOVED***
     );
   ***REMOVED***
 
+  ImageProvider provider() => AssetImage(_assetName);
+
   String get path => _assetName;
 
   String get keyName => _assetName;
@@ -197,4 +225,65 @@ class SvgGenImage ***REMOVED***
   ***REMOVED***
 
   String get path => _assetName;
+
+  String get keyName => _assetName;
+***REMOVED***
+
+class LottieGenImage ***REMOVED***
+  const LottieGenImage(this._assetName);
+
+  final String _assetName;
+
+  LottieBuilder lottie(***REMOVED***
+    Animation<double>? controller,
+    bool? animate,
+    FrameRate? frameRate,
+    bool? repeat,
+    bool? reverse,
+    LottieDelegates? delegates,
+    LottieOptions? options,
+    void Function(LottieComposition)? onLoaded,
+    LottieImageProviderFactory? imageProviderFactory,
+    Key? key,
+    AssetBundle? bundle,
+    Widget Function(BuildContext, Widget, LottieComposition?)? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    double? width,
+    double? height,
+    BoxFit? fit,
+    AlignmentGeometry? alignment,
+    String? package,
+    bool? addRepaintBoundary,
+    FilterQuality? filterQuality,
+    void Function(String)? onWarning,
+  ***REMOVED***) ***REMOVED***
+    return Lottie.asset(
+      _assetName,
+      controller: controller,
+      animate: animate,
+      frameRate: frameRate,
+      repeat: repeat,
+      reverse: reverse,
+      delegates: delegates,
+      options: options,
+      onLoaded: onLoaded,
+      imageProviderFactory: imageProviderFactory,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      package: package,
+      addRepaintBoundary: addRepaintBoundary,
+      filterQuality: filterQuality,
+      onWarning: onWarning,
+    );
+  ***REMOVED***
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
 ***REMOVED***

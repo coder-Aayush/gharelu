@@ -40,9 +40,7 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
     if (mounted) ***REMOVED***
       Future.delayed(
         Duration.zero,
-        () => ref
-            .read(productStateProvider.notifier)
-            .getProducts(categoryId: widget.categoryId),
+        () => ref.read(productStateProvider.notifier).getProducts(categoryId: widget.categoryId),
       );
     ***REMOVED***
     super.initState();
@@ -59,13 +57,11 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Total: Rs $***REMOVED***cart.price***REMOVED***',
-                    style: AppStyles.text14PxBold.white),
+                Text('Total: Rs $***REMOVED***cart.price***REMOVED***', style: AppStyles.text14PxBold.white),
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
-                  onPressed: () => context.router
-                      .push(ProductSummaryRoute(service: widget.service)),
+                  onPressed: () => context.router.push(ProductSummaryRoute(service: widget.service)),
                   isDisabled: false,
                   backgroundColor: AppColors.whiteColor,
                   titleStyle: AppStyles.text14PxBold.primary,
@@ -108,19 +104,16 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                         builder: (context, ref, _) ***REMOVED***
                           final cart = ref.watch(cartStateProvider);
                           return ProductTile(
+                            id: product.id,
                             name: product.name,
                             description: product.description,
                             image: product.image,
-                            itemInCart: cart.products
-                                .where((element) => element.id == product.id)
-                                .isNotEmpty,
+                            itemInCart: cart.products.where((element) => element.id == product.id).isNotEmpty,
                             onButtomPressed: () ***REMOVED***
                               final _product = cart.products.where(
                                 (element) => element.id == product.id,
                               );
-                              ref
-                                  .read(cartStateProvider.notifier)
-                                  .addToCart(product);
+                              ref.read(cartStateProvider.notifier).addToCart(product);
                             ***REMOVED***,
                             price: data[index].price,
                           ).px(10).py(14);

@@ -17,16 +17,13 @@ import 'package:gharelu/src/home/models/service_model.dart';
 abstract class _ServiceRemoteSource ***REMOVED***
   Future<Either<AppError, List<CategoryModel>>> getCategories();
 
-  Future<Either<AppError, List<ServiceModel>>> getServices(
-      ***REMOVED***String? id, bool merchantOnly = false***REMOVED***);
+  Future<Either<AppError, List<ServiceModel>>> getServices(***REMOVED***String? id, bool merchantOnly = false***REMOVED***);
 
-  Future<Either<AppError, List<ProductModel>>> getProducts(
-      ***REMOVED***String? categoryId, String? productId***REMOVED***);
+  Future<Either<AppError, List<ProductModel>>> getProducts(***REMOVED***String? categoryId, String? productId***REMOVED***);
 
   Future<Either<AppError, ServiceModel>> createServices(ServiceModel service);
 
-  Future<Either<AppError, ProductModel>> createProduct(ProductModel product,
-      ***REMOVED***File? productImage***REMOVED***);
+  Future<Either<AppError, ProductModel>> createProduct(ProductModel product, ***REMOVED***File? productImage***REMOVED***);
 
   Future<Either<AppError, bool>> deleteProduct(String id);
 ***REMOVED***
@@ -34,16 +31,13 @@ abstract class _ServiceRemoteSource ***REMOVED***
 class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
   ServiceRemoteSource(this._reader);
 
-  final Reader _reader;
+  final Ref _reader;
 ***REMOVED***
   Future<Either<AppError, List<CategoryModel>>> getCategories() async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firestoreProvider)
-          .collection(AppConstant.categories)
-          .get();
+      final response = await _reader.read(firestoreProvider).collection(AppConstant.categories).get();
       if (response.docs.isNotEmpty) ***REMOVED***
-        final _service = List<CategoryModel>.from(response.docs
-            .map((service) => CategoryModel.fromJson(service.data())));
+        final _service = List<CategoryModel>.from(response.docs.map((service) => CategoryModel.fromJson(service.data())));
         return right(_service);
       ***REMOVED*** else ***REMOVED***
         return right([]);
@@ -55,21 +49,14 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
   ***REMOVED***
 
 ***REMOVED***
-  Future<Either<AppError, List<ServiceModel>>> getServices(
-      ***REMOVED***String? id, bool merchantOnly = false***REMOVED***) async ***REMOVED***
+  Future<Either<AppError, List<ServiceModel>>> getServices(***REMOVED***String? id, bool merchantOnly = false***REMOVED***) async ***REMOVED***
 ***REMOVED***
       late QuerySnapshot<Map<String, dynamic>> response;
       if (merchantOnly) ***REMOVED***
-        final uid = _reader(firebaseAuthProvider).currentUser?.uid;
-        response = await _reader(firestoreProvider)
-            .collection(AppConstant.services)
-            .where('merchant_id', isEqualTo: uid)
-            .get();
+        final uid = _reader.read(firebaseAuthProvider).currentUser?.uid;
+        response = await _reader.read(firestoreProvider).collection(AppConstant.services).where('merchant_id', isEqualTo: uid).get();
       ***REMOVED*** else ***REMOVED***
-        response = await _reader(firestoreProvider)
-            .collection(AppConstant.services)
-            .where('category_id', isEqualTo: id)
-            .get();
+        response = await _reader.read(firestoreProvider).collection(AppConstant.services).where('category_id', isEqualTo: id).get();
       ***REMOVED***
 
       if (response.docs.isNotEmpty) ***REMOVED***
@@ -98,23 +85,12 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
       // late QuerySnapshot<Map<String, dynamic>> response;
       late QuerySnapshot<Map<String, dynamic>> response;
       if (merchantOnly) ***REMOVED***
-        final currentUser = _reader(firebaseAuthProvider).currentUser;
-        response = await _reader(firestoreProvider)
-            .collection(AppConstant.products)
-            .where('merchant_id', isEqualTo: currentUser?.uid)
-            .orderBy('updated_at', descending: true)
-            .get();
+        final currentUser = _reader.read(firebaseAuthProvider).currentUser;
+        response = await _reader.read(firestoreProvider).collection(AppConstant.products).where('merchant_id', isEqualTo: currentUser?.uid).orderBy('updated_at', descending: true).get();
       ***REMOVED*** else if (categoryId != null) ***REMOVED***
-        response = await _reader(firestoreProvider)
-            .collection(AppConstant.products)
-            .where('service_id', isEqualTo: categoryId)
-            .orderBy('updated_at', descending: true)
-            .get();
+        response = await _reader.read(firestoreProvider).collection(AppConstant.products).where('service_id', isEqualTo: categoryId).orderBy('updated_at', descending: true).get();
       ***REMOVED*** else ***REMOVED***
-        response = await _reader(firestoreProvider)
-            .collection(AppConstant.products)
-            .where('id', isEqualTo: productId)
-            .get();
+        response = await _reader.read(firestoreProvider).collection(AppConstant.products).where('id', isEqualTo: productId).get();
       ***REMOVED***
       if (response.docs.isNotEmpty) ***REMOVED***
         final products = List<ProductModel>.from(
@@ -127,7 +103,7 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
           ),
         );
         // for (var product in products) ***REMOVED***
-        //   final _catrgoryResponse = await _reader(firestoreProvider)
+        //   final _catrgoryResponse = await _reader.read(firestoreProvider)
         //       .collection(AppConstant.categories)
         //       .doc(product.categoryId)
         //       .get();
@@ -140,14 +116,8 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
         // ***REMOVED***
         for (var i = 0; i < products.length; i++) ***REMOVED***
           final _product = products[i];
-          final _categoryResponse = await _reader(firestoreProvider)
-              .collection(AppConstant.categories)
-              .doc(_product.categoryId)
-              .get();
-          final _serviceResponse = await _reader(firestoreProvider)
-              .collection(AppConstant.services)
-              .doc(_product.serviceId)
-              .get();
+          final _categoryResponse = await _reader.read(firestoreProvider).collection(AppConstant.categories).doc(_product.categoryId).get();
+          final _serviceResponse = await _reader.read(firestoreProvider).collection(AppConstant.services).doc(_product.serviceId).get();
           if (_serviceResponse.data() != null) ***REMOVED***
             final _data = ServiceModel.fromJson(_serviceResponse.data()!);
             final service = _product.copyWith(service: _data);
@@ -170,12 +140,11 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
   ***REMOVED***
 
 ***REMOVED***
-  Future<Either<AppError, ServiceModel>> createServices(
-      ServiceModel service) async ***REMOVED***
+  Future<Either<AppError, ServiceModel>> createServices(ServiceModel service) async ***REMOVED***
 ***REMOVED***
-      final currentUser = _reader(firebaseAuthProvider).currentUser;
+      final currentUser = _reader.read(firebaseAuthProvider).currentUser;
       final now = DateTime.now().millisecondsSinceEpoch;
-      final ref = _reader(firestoreProvider).collection(AppConstant.services);
+      final ref = _reader.read(firestoreProvider).collection(AppConstant.services);
       await ref.doc(ref.id).set(service
           .copyWith(
             id: ref.id,
@@ -200,16 +169,14 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
     ***REMOVED***
   ***REMOVED***
 
-  Future<Either<AppError, ProductModel>> createProduct(ProductModel product,
-      ***REMOVED***File? productImage, bool update = false***REMOVED***) async ***REMOVED***
+  Future<Either<AppError, ProductModel>> createProduct(ProductModel product, ***REMOVED***File? productImage, bool update = false***REMOVED***) async ***REMOVED***
 ***REMOVED***
       final now = DateTime.now().millisecondsSinceEpoch;
-      final currentUser = await _reader(firebaseAuthProvider).currentUser;
-      final ref = _reader(firestoreProvider).collection(AppConstant.products);
+      final currentUser = await _reader.read(firebaseAuthProvider).currentUser;
+      final ref = _reader.read(firestoreProvider).collection(AppConstant.products);
       String? url;
       if (productImage != null) ***REMOVED***
-        url = await StorageHelper.uploadFile(_reader, productImage,
-            path: 'merchant');
+        url = await StorageHelper.uploadFile(_reader, productImage, path: 'merchant');
       ***REMOVED***
       if (update) ***REMOVED***
         await ref.doc(product.id).update(product.toJson());
@@ -241,20 +208,14 @@ class ServiceRemoteSource implements _ServiceRemoteSource ***REMOVED***
 ***REMOVED***
   Future<Either<AppError, bool>> deleteProduct(String id) async ***REMOVED***
 ***REMOVED***
-      await _reader(firestoreProvider)
-          .collection(AppConstant.products)
-          .doc(id)
-          .delete();
+      await _reader.read(firestoreProvider).collection(AppConstant.products).doc(id).delete();
       return right(true);
     ***REMOVED*** on FirebaseAuthException catch (e) ***REMOVED***
-      return left(AppError.serverError(
-          message: e.message ?? 'Failed to Delete Product'));
+      return left(AppError.serverError(message: e.message ?? 'Failed to Delete Product'));
     ***REMOVED*** on FirebaseException catch (e) ***REMOVED***
-      return left(AppError.serverError(
-          message: e.message ?? 'Failed to Delete Product'));
+      return left(AppError.serverError(message: e.message ?? 'Failed to Delete Product'));
     ***REMOVED***
   ***REMOVED***
 ***REMOVED***
 
-final serviceRemoteSourceProvider =
-    Provider<ServiceRemoteSource>((ref) => ServiceRemoteSource(ref.read));
+final serviceRemoteSourceProvider = Provider<ServiceRemoteSource>((ref) => ServiceRemoteSource(ref));

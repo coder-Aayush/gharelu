@@ -20,13 +20,11 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
         routes: [
           const HomeRouter(),
           const AppointmentRouter(),
-          const ChatRouter(),
+          ChatRouter(isMerchant: false),
           ProfileRouter(
-            onAppoinment: () =>
-                context.router.root.innerRouterOf(DashboardRouter.name)
-                  ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
-                      ?.setActiveIndex(1)
-                  ..navigate(const AppointmentRouter()),
+            onAppoinment: () => context.router.root.innerRouterOf(DashboardRouter.name)
+              ?..innerRouterOf<TabsRouter>(DashboardRouter.name)?.setActiveIndex(1)
+              ..navigate(const AppointmentRouter()),
           ),
   ***REMOVED***
         builder: (context, child, animation) => FadeTransition(

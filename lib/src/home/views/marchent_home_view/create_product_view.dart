@@ -39,9 +39,10 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
     ///
     useEffect(() ***REMOVED***
       if (editProduct != null) ***REMOVED***
-        ref
-            .read(createProductFormNotifierProvider.notifier)
-            .setProduct(editProduct!);
+        Future.delayed(
+          const Duration(milliseconds: 2),
+          () => ref.read(createProductFormNotifierProvider.notifier).setProduct(editProduct!),
+        );
         productName.text = editProduct!.name;
         productDescription.text = editProduct!.description;
         priceController.text = editProduct!.price.toString();
@@ -60,12 +61,9 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
         success: (data) ***REMOVED***
           context.router.pop();
           context.router.root.innerRouterOf(MerchantDashboardRouter.name)
-            ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)
-                ?.setActiveIndex(0)
+            ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)?.setActiveIndex(0)
             ..navigate(const MerchantHomeRoute());
-          ref
-              .refresh(productStateProvider.notifier)
-              .getProducts(merchantOnly: true);
+          ref.refresh(productStateProvider.notifier).getProducts(merchantOnly: true);
           context.showSnackbar(message: 'Product Created!');
         ***REMOVED***,
         error: (message) => context.showErorDialog(message: message),
@@ -76,11 +74,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
       appBar: AppBar(
         title: Text(editProduct != null ? 'Edit Product' : 'Create Product'),
         actions: [
-          if (editProduct != null)
-            IconButton(
-                onPressed: () => DeleteProductBottomsheet.show(context,
-                    productId: editProduct!.id),
-                icon: Assets.icons.deleteIcon.svg()),
+          if (editProduct != null) IconButton(onPressed: () => DeleteProductBottomsheet.show(context, productId: editProduct!.id), icon: Assets.icons.deleteIcon.svg()),
   ***REMOVED***
       ),
       bottomNavigationBar: BottomAppBar(
@@ -104,9 +98,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     image: form.imageUrl,
                     service: form.service,
                   ),
-                  image: form.fileImage?.value != null
-                      ? File(form.fileImage!.value)
-                      : null,
+                  image: form.fileImage?.value != null ? File(form.fileImage!.value) : null,
                   update: editProduct != null,
                 );
           ***REMOVED***,
@@ -123,19 +115,15 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
             20.verticalSpace,
             Text(
               'Let\'s start your Product to Gharelu App. Complete basic Information and you are Ready to Accept Offers',
-              style: AppStyles.text14PxMedium
-                  .copyWith(color: AppColors.softBlack.withOpacity(.5)),
+              style: AppStyles.text14PxMedium.copyWith(color: AppColors.softBlack.withOpacity(.5)),
             ),
             20.verticalSpace,
             Consumer(builder: (context, ref, _) ***REMOVED***
               return GestureDetector(
                 onTap: () async ***REMOVED***
-                  final picker = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
+                  final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
                   if (picker != null) ***REMOVED***
-                    ref
-                        .read(createProductFormNotifierProvider.notifier)
-                        .setImage(File(picker.path));
+                    ref.read(createProductFormNotifierProvider.notifier).setImage(File(picker.path));
                   ***REMOVED***
                 ***REMOVED***,
                 child: Stack(
@@ -148,8 +136,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                           return CacheImageViewer(imageUrl: form.imageUrl);
                         ***REMOVED***
                         if (form.fileImage?.value != null) ***REMOVED***
-                          return Image.file(File(form.fileImage!.value),
-                              fit: BoxFit.cover);
+                          return Image.file(File(form.fileImage!.value), fit: BoxFit.cover);
                         ***REMOVED***
                         return Opacity(
                           opacity: .4,
@@ -176,9 +163,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               controller: productName,
               textInputType: TextInputType.text,
               textCapitalization: TextCapitalization.words,
-              onChanged: (value) => ref
-                  .read(createProductFormNotifierProvider.notifier)
-                  .setName(value),
+              onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setName(value),
               error: form.productName.errorMessage,
               warning: form.productName.warningMessage,
               inputFormatters: [
@@ -195,9 +180,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-()***REMOVED******REMOVED*** ]')),
         ***REMOVED***
-              onChanged: (value) => ref
-                  .read(createProductFormNotifierProvider.notifier)
-                  .setProductDescription(value),
+              onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setProductDescription(value),
               error: form.description.errorMessage,
               textCapitalization: TextCapitalization.sentences,
             ),
@@ -209,9 +192,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     labelText: 'Price (in RS)',
                     controller: priceController,
                     maxLength: 4,
-                    onChanged: (value) => ref
-                        .read(createProductFormNotifierProvider.notifier)
-                        .setPrice(value),
+                    onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setPrice(value),
                     error: form.price.errorMessage,
                     warning: form.price.warningMessage,
                     textInputType: TextInputType.number,
@@ -225,9 +206,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     labelText: 'Max Quantity',
                     controller: quanity,
                     maxLength: 3,
-                    onChanged: (value) => ref
-                        .read(createProductFormNotifierProvider.notifier)
-                        .setQuantity(value),
+                    onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setQuantity(value),
                     textInputType: TextInputType.number,
                     error: form.maxQuality.errorMessage,
                     inputFormatters: [
@@ -243,12 +222,9 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               labelText: 'Product Services',
               controller: category,
               onTap: () async ***REMOVED***
-                final response =
-                    await SelectServiceCategoryBottomsheet.show(context);
+                final response = await SelectServiceCategoryBottomsheet.show(context);
                 if (response != null) ***REMOVED***
-                  ref
-                      .read(createProductFormNotifierProvider.notifier)
-                      .setService(response);
+                  ref.read(createProductFormNotifierProvider.notifier).setService(response);
                   category.text = response.name;
                 ***REMOVED***
               ***REMOVED***,
@@ -257,8 +233,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
             GestureDetector(
               onTap: () ***REMOVED***
                 if (form.category.id.isEmpty) ***REMOVED***
-                  context.showSnackbar(
-                      message: 'Select Product Category First');
+                  context.showSnackbar(message: 'Select Product Category First');
                 ***REMOVED***
               ***REMOVED***,
               child: CustomTextField(
@@ -267,13 +242,9 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                 labelText: 'Product Category',
                 controller: service,
                 onTap: () async ***REMOVED***
-                  final response = await ProductCategoryBottomsheet.show(
-                      context,
-                      category: form.category);
+                  final response = await ProductCategoryBottomsheet.show(context, category: form.category);
                   if (response != null) ***REMOVED***
-                    ref
-                        .read(createProductFormNotifierProvider.notifier)
-                        .setCategory(response);
+                    ref.read(createProductFormNotifierProvider.notifier).setCategory(response);
                     service.text = response.name;
                   ***REMOVED***
                 ***REMOVED***,
@@ -285,9 +256,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               child: SwitchListTile(
                 value: form.publish,
                 activeColor: AppColors.primaryColor,
-                onChanged: (value) => ref
-                    .read(createProductFormNotifierProvider.notifier)
-                    .publish(value),
+                onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).publish(value),
                 title: const Text('Publish'),
               ),
             ),
@@ -298,8 +267,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               child: !form.publish
                   ? Text(
                       'Your product will be unpublished and you will not receive any offers. Publish your Product to Receive Offers.',
-                      style: AppStyles.text10PxMedium
-                          .copyWith(color: AppColors.softBlack.withOpacity(.5)),
+                      style: AppStyles.text10PxMedium.copyWith(color: AppColors.softBlack.withOpacity(.5)),
                     )
                   : const SizedBox.shrink(),
             ),

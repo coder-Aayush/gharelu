@@ -4,8 +4,7 @@ import 'package:gharelu/src/home/data_source/service_data_source.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 
 class ProductState extends StateNotifier<AppState<List<ProductModel>>> ***REMOVED***
-  ProductState(this._remoteSource)
-      : super(const AppState<List<ProductModel>>.initial());
+  ProductState(this._remoteSource) : super(const AppState<List<ProductModel>>.initial());
 
   final ServiceRemoteSource _remoteSource;
 
@@ -20,15 +19,9 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> ***REMOVE
       productId: productId,
       merchantOnly: merchantOnly,
     );
-    state = response.fold(
-        (error) => error.when(
-            serverError: (message) => AppState.error(message: message),
-            noInternet: () => const AppState.noInternet()),
-        (response) => AppState.success(data: response));
+    state = response.fold((error) => error.when(serverError: (message) => AppState.error(message: message), noInternet: () => const AppState.noInternet()), (response) => AppState.success(data: response));
     print(state);
   ***REMOVED***
 ***REMOVED***
 
-final productStateProvider =
-    StateNotifierProvider<ProductState, AppState<List<ProductModel>>>(
-        (ref) => ProductState(ref.read(serviceRemoteSourceProvider)));
+final productStateProvider = StateNotifierProvider<ProductState, AppState<List<ProductModel>>>((ref) => ProductState(ref.read(serviceRemoteSourceProvider)));

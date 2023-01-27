@@ -34,10 +34,7 @@ extension WidgetX on BuildContext ***REMOVED***
       );
   ***REMOVED***
 
-  void showErorDialog(
-      ***REMOVED***required String? message,
-      VoidCallback? buttonPressed,
-      String? buttonTitle***REMOVED***) ***REMOVED***
+  void showErorDialog(***REMOVED***required String? message, VoidCallback? buttonPressed, String? buttonTitle***REMOVED***) ***REMOVED***
     showGeneralDialog(
       context: this,
       barrierDismissible: false,
@@ -55,7 +52,7 @@ extension WidgetX on BuildContext ***REMOVED***
               height: 150.h,
               width: 200.w,
               child: LottieBuilder.asset(
-                Assets.lottie.error,
+                Assets.lottie.error.path,
                 fit: BoxFit.cover,
                 height: 150.h,
               ),
@@ -70,8 +67,7 @@ extension WidgetX on BuildContext ***REMOVED***
             if (message != null)
               Text(
                 message,
-                style: AppStyles.text14PxRegular
-                    .copyWith(color: AppColors.softBlack.withOpacity(.5)),
+                style: AppStyles.text14PxRegular.copyWith(color: AppColors.softBlack.withOpacity(.5)),
                 textAlign: TextAlign.center,
               ),
     ***REMOVED***
@@ -94,7 +90,7 @@ extension WidgetX on BuildContext ***REMOVED***
 
   Widget get loader => Center(
         child: SizedBox(
-          child: Lottie.asset(Assets.lottie.loader),
+          child: Lottie.asset(Assets.lottie.loader.path),
           height: 150.h,
           width: 150.w,
         ),

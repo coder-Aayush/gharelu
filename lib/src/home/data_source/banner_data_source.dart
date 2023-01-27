@@ -14,14 +14,14 @@ abstract class _BannerRemoteSource ***REMOVED***
 class BannerRemoteSource implements _BannerRemoteSource ***REMOVED***
   BannerRemoteSource(this._reader);
 
-  final Reader _reader;
+  final Ref _reader;
 ***REMOVED***
   Future<Either<AppError, List<BannerModel>>> getBanners() async ***REMOVED***
 ***REMOVED***
-      _reader(firebaseAuthProvider).authStateChanges().listen((event) ***REMOVED***
+      _reader.read(firebaseAuthProvider).authStateChanges().listen((event) ***REMOVED***
         log(event.toString());
     ***REMOVED***
-      final response = await _reader(firestoreProvider)
+      final response = await _reader.read(firestoreProvider)
           .collection(AppConstant.banners)
           .get();
       if (response.docs.isNotEmpty) ***REMOVED***
@@ -40,4 +40,4 @@ class BannerRemoteSource implements _BannerRemoteSource ***REMOVED***
 ***REMOVED***
 
 final bannerRemoteSourceProvider =
-    Provider<BannerRemoteSource>((ref) => BannerRemoteSource(ref.read));
+    Provider<BannerRemoteSource>((ref) => BannerRemoteSource(ref));

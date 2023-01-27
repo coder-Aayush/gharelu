@@ -55,12 +55,12 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
     _dateInMulluSecondSinceEpoch = DateTime.now().millisecondsSinceEpoch;
   ***REMOVED***
   late int _dateInMulluSecondSinceEpoch;
-  final Reader _reader;
+  final Ref _reader;
 ***REMOVED***
   Future<Either<AppError, User?>> loginAsUser(
       ***REMOVED***required String email, required String password***REMOVED***) async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firebaseAuthProvider)
+      final response = await _reader.read(firebaseAuthProvider)
           .signInWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
         final _user = response.user;
@@ -85,7 +85,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
       required String password,
       required String location***REMOVED***) async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firebaseAuthProvider)
+      final response = await _reader.read(firebaseAuthProvider)
           .createUserWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
         final _customUser = CustomUserModel(
@@ -98,7 +98,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
           createdAt: _dateInMulluSecondSinceEpoch,
         );
 
-        await _reader(firestoreProvider)
+        await _reader.read(firestoreProvider)
             .collection(AppConstant.users)
             .doc(_customUser.uid)
             .set(_customUser.toJson());
@@ -115,7 +115,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   Future<Either<AppError, User?>> merchantLogin(
       ***REMOVED***required String email, required String password***REMOVED***) async ***REMOVED***
 ***REMOVED***
-      final response = await _reader(firebaseAuthProvider)
+      final response = await _reader.read(firebaseAuthProvider)
           .signInWithEmailAndPassword(email: email, password: password);
       if (response.user != null) ***REMOVED***
         final _user = response.user;
@@ -123,7 +123,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
         if (merchantUser) ***REMOVED***
           return right(response.user);
         ***REMOVED*** else ***REMOVED***
-          _reader(firebaseAuthProvider).signOut();
+          _reader.read(firebaseAuthProvider).signOut();
           return left(const AppError.serverError(
               message: 'Sorry you are Not a Merchant'));
         ***REMOVED***
@@ -139,7 +139,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   ///
   ***REMOVED***return `false` if user is not a merchant
   Future<bool> _isMerchant(String userId) async ***REMOVED***
-    final data = (await _reader(firestoreProvider)
+    final data = (await _reader.read(firestoreProvider)
             .collection(AppConstant.merchants)
             .doc(userId)
             .get())
@@ -164,7 +164,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   ***REMOVED***) async ***REMOVED***
 ***REMOVED***
       final response =
-          await _reader(firebaseAuthProvider).createUserWithEmailAndPassword(
+          await _reader.read(firebaseAuthProvider).createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -186,7 +186,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
           phoneNumber: phoneNumber,
         );
 
-        await _reader(firestoreProvider)
+        await _reader.read(firestoreProvider)
             .collection(AppConstant.merchants)
             .doc(_customUser.uid)
             .set(_customUser.toJson());
@@ -207,12 +207,12 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
 ***REMOVED***
       late DocumentSnapshot<Map<String, dynamic>> response;
       if (isMerchant) ***REMOVED***
-        response = await _reader(firestoreProvider)
+        response = await _reader.read(firestoreProvider)
             .collection(AppConstant.merchants)
             .doc(id)
             .get();
       ***REMOVED*** else ***REMOVED***
-        response = await _reader(firestoreProvider)
+        response = await _reader.read(firestoreProvider)
             .collection(AppConstant.users)
             .doc(id)
             .get();
@@ -236,9 +236,9 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
   ***REMOVED***) async ***REMOVED***
 ***REMOVED***
       final now = DateTime.now().millisecondsSinceEpoch;
-      final currentUser = _reader(firebaseAuthProvider).currentUser;
+      final currentUser = _reader.read(firebaseAuthProvider).currentUser;
 
-      final response = await _reader(firebaseAuthProvider)
+      final response = await _reader.read(firebaseAuthProvider)
           .currentUser
           ?.reauthenticateWithCredential(
             EmailAuthProvider.credential(
@@ -248,19 +248,19 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
           );
       if (response != null) ***REMOVED***
         await Future.wait(Iterable.castFrom([
-          _reader(firestoreProvider).collection(AppConstant.feedback).add(***REMOVED***
+          _reader.read(firestoreProvider).collection(AppConstant.feedback).add(***REMOVED***
             'message': message,
             'user_id': currentUser?.uid,
             'email': currentUser?.email,
             'created_at': now,
             'updated_at': now,
           ***REMOVED***),
-          _reader(firestoreProvider)
+          _reader.read(firestoreProvider)
               .collection(
                   isMerchant ? AppConstant.merchants : AppConstant.users)
               .doc(currentUser?.uid)
               .delete(),
-          _reader(firebaseAuthProvider).currentUser?.delete(),
+          _reader.read(firebaseAuthProvider).currentUser?.delete(),
         ]));
         return right(true);
       ***REMOVED*** else ***REMOVED***
@@ -279,7 +279,7 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
 ***REMOVED***
   Future<Either<AppError, bool>> logout() async ***REMOVED***
 ***REMOVED***
-      await _reader(firebaseAuthProvider).signOut();
+      await _reader.read(firebaseAuthProvider).signOut();
       return right(true);
     ***REMOVED*** on FirebaseAuthException catch (e) ***REMOVED***
       return left(
@@ -292,4 +292,4 @@ class AuthRemoteSource implements _AuthRemoteSource ***REMOVED***
 ***REMOVED***
 
 final authRemoteSourceProvider =
-    Provider<AuthRemoteSource>((ref) => AuthRemoteSource(ref.read));
+    Provider<AuthRemoteSource>((ref) => AuthRemoteSource(ref));

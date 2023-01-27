@@ -7,7 +7,7 @@ import 'package:gharelu/src/core/state/app_state.dart';
 
 class MerchantSignupState extends StateNotifier<AppState<User?>> ***REMOVED***
   MerchantSignupState(this._reader) : super(const AppState.initial());
-  final Reader _reader;
+  final Ref _reader;
 
   Future<void> signupAsMerchant(***REMOVED***
     required String email,
@@ -18,7 +18,7 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> ***REMOVED***
     required String location,
   ***REMOVED***) async ***REMOVED***
     state = const AppState.loading();
-    final response = await _reader(authRemoteSourceProvider).merchantSignup(
+    final response = await _reader.read(authRemoteSourceProvider).merchantSignup(
       email: email,
       name: name,
       phoneNumber: phoneNumber,
@@ -37,4 +37,4 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> ***REMOVED***
 
 final merchantSignupProvider =
     StateNotifierProvider.autoDispose<MerchantSignupState, AppState<User?>>(
-        (ref) => MerchantSignupState(ref.read));
+        (ref) => MerchantSignupState(ref));

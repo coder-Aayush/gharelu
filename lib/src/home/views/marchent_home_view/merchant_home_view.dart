@@ -23,7 +23,10 @@ class MerchantHomeView extends ConsumerStatefulWidget ***REMOVED***
 class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED***
 ***REMOVED***
   void initState() ***REMOVED***
-    ref.read(productStateProvider.notifier).getProducts(merchantOnly: true);
+    Future.delayed(
+      const Duration(milliseconds: 200),
+      () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
+    );
     super.initState();
   ***REMOVED***
 
@@ -76,9 +79,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
                         height: context.height * 0.6,
                         child: NoDataFound(
                           title: 'No Services Found',
-                          onRefresh: () => ref
-                              .read(productStateProvider.notifier)
-                              .getProducts(merchantOnly: true),
+                          onRefresh: () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
                         ),
                       ),
                     ).toSliverBox;
@@ -86,6 +87,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => ProductTile(
+                          id: data[index].id,
                           image: data[index].image,
                           name: data[index].name,
                           price: data[index].price,

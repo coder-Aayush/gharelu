@@ -2,9 +2,11 @@
     package="com.example.gharelu">
     <!-- location permission -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Gharelu"
         android:name="$***REMOVED***applicationName***REMOVED***"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

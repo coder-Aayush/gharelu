@@ -27,6 +27,7 @@ class BookingModel with _$BookingModel ***REMOVED***
     CustomUserModel? user,
     CustomUserModel? merchantUser,
     required int bookedDate,
+    String? roomId,
     @Default(OrderType.Pending) OrderType orderType,
   ***REMOVED***) = _BookingModel;
 

@@ -7,8 +7,6 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/providers/get_merchant_bookings_provider.dart';
-import 'package:gharelu/src/home/widgets/merchant_booking_product_tile.dart';
-import 'package:gharelu/src/home/widgets/no_data_found.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -20,11 +18,13 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
     final tabController = useTabController(initialLength: 2, initialIndex: 1);
     return ScaffoldWrapper(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        title: Text('Your Bookings', style: AppStyles.text16PxSemiBold.white),
+        // backgroundColor: AppColors.primaryColor,
+        title: const Text('Your Bookings'),
         bottom: TabBar(
+          splashFactory: NoSplash.splashFactory,
+          automaticIndicatorColorAdjustment: true,
           controller: tabController,
-          labelStyle: AppStyles.text14PxSemiBold.softBlack,
+          labelStyle: AppStyles.text14PxSemiBold.white,
           tabs: [
             const Tab(text: 'Previous'),
             const Tab(text: 'Upcoming'),
@@ -50,13 +50,11 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                         ? Center(
                             child: NoDataFound(
                               title: 'No Previous Bookings Found',
-                              onRefresh: () =>
-                                  ref.refresh(getMerchantBookingsStateProvider),
+                              onRefresh: () => ref.refresh(getMerchantBookingsStateProvider),
                             ),
                           )
                         : ListView.builder(
-                            itemBuilder: (context, index) =>
-                                MerchantBookingProductTile(
+                            itemBuilder: (context, index) => MerchantBookingProductTile(
                               booking: previous[index],
                             ).py(10.h).px(10.w),
                             itemCount: previous.length,
@@ -70,8 +68,7 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                         ? Center(
                             child: NoDataFound(
                               title: 'No Upcoming Bookings Found',
-                              onRefresh: () =>
-                                  ref.refresh(getMerchantBookingsStateProvider),
+                              onRefresh: () => ref.refresh(getMerchantBookingsStateProvider),
                             ),
                           )
                         : ListView.builder(

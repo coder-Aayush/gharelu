@@ -16,11 +16,7 @@ class CartEntities with _$CartEntities ***REMOVED***
 
   factory CartEntities.empty() => const CartEntities(price: 0, products: []);
 
-  int get totalPrice => products.isNotEmpty
-      ? products
-          .map((item) => item.quantity * item.price)
-          .reduce((value1, value2) => value1 + value2)
-      : 0;
+  int get totalPrice => products.isNotEmpty ? products.map((item) => item.quantity * item.price).reduce((value1, value2) => value1 + value2) : 0;
 
   List<BookingModel> booking(***REMOVED***
     required String bookingDate,
@@ -42,8 +38,9 @@ class CartEntities with _$CartEntities ***REMOVED***
         serviceId: serviceId,
         subTotal: subTotal,
         time: time,
-        totalPrice: totalPrice,
+        totalPrice: (totalPrice + 60),
         updatedAt: now,
+        roomId: '',
         userId: userId,
         merchantId: merchantId,
         bookedDate: DateTime.parse(bookingDate).millisecondsSinceEpoch,

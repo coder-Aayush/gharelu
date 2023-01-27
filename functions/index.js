@@ -27,3 +27,8 @@ async function updateAloglia(data) ***REMOVED***
 
 ***REMOVED***
 ***REMOVED***
+
+exports.onBookingSuccess = functions.firestore.document('bookings/***REMOVED***bId***REMOVED***').onWrite(async (snap, context)=> ***REMOVED***
+***REMOVED***
+    
+***REMOVED***);

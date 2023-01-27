@@ -10,6 +10,8 @@ class AppConstant ***REMOVED***
   static const String banners = 'banners';
   static const String services = 'services';
   static const String feedback = 'feedback';
+  static const String rooms = 'rooms';
+  static const String messages = 'messages';
 
   ***REMOVED***value `categories`
   static const String categories = 'categories';
@@ -21,26 +23,22 @@ class AppConstant ***REMOVED***
     CancellationReasonEntity(
       title: 'Incorrect appointment',
       id: 1,
-      description:
-          'The appointment was scheduled for the wrong date, time, or location.',
+      description: 'The appointment was scheduled for the wrong date, time, or location.',
     ),
     CancellationReasonEntity(
       title: 'Rescheduling',
       id: 2,
-      description:
-          'I needs to reschedule the appointment for a different date or time',
+      description: 'I needs to reschedule the appointment for a different date or time',
     ),
     CancellationReasonEntity(
       title: 'Conflict with owner',
       id: 3,
-      description:
-          'I has a conflict with the person or organization that they were scheduled to meet with.',
+      description: 'I has a conflict with the person or organization that they were scheduled to meet with.',
     ),
     CancellationReasonEntity(
       title: 'Other',
       id: 4,
-      description:
-          'There may be other reasons not listed here that are specific to the individual or the situation.',
+      description: 'There may be other reasons not listed here that are specific to the individual or the situation.',
     ),
   ];
 
@@ -72,9 +70,12 @@ class AppConstant ***REMOVED***
     ),
   ];
 ***REMOVED***
-***REMOVED***
+
+///
 ***REMOVED***Incorrect appointment: The appointment was scheduled for the wrong date, time, or location.
 // Rescheduling: The individual needs to reschedule the appointment for a different date or time.
 // Change of mind: The individual no longer wants or needs the service or product that the appointment was for.
 // Conflict with owner: The individual has a conflict with the person or organization that they were scheduled to meet with.
 // Other: There may be other reasons not listed here that are specific to the individual or the situation.
+
+enum MessageType ***REMOVED*** text, image ***REMOVED***

@@ -24,16 +24,13 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
 ***REMOVED***
   void didChangeDependencies() ***REMOVED***
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
-      ref
-          .read(slotNotifierProvider.notifier)
-          .getBookings(date: DateTime.now(), serviceId: widget.service.id);
+      ref.read(slotNotifierProvider.notifier).getBookings(date: DateTime.now(), serviceId: widget.service.id);
   ***REMOVED***
     super.didChangeDependencies();
   ***REMOVED***
 
   ValueNotifier<String?> selectedTime = ValueNotifier<String?>(null);
-  ValueNotifier<DateTime> selectedDate =
-      ValueNotifier<DateTime>(DateTime.now());
+  ValueNotifier<DateTime> selectedDate = ValueNotifier<DateTime>(DateTime.now());
 
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
@@ -76,16 +73,14 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                     lastDate: DateTime(DateTime.now().year + 1),
                     onDateSelected: (date) ***REMOVED***
                       selectedTime.value = null;
-                      ref.read(slotNotifierProvider.notifier).getBookings(
-                          date: date, serviceId: widget.service.id);
+                      ref.read(slotNotifierProvider.notifier).getBookings(date: date, serviceId: widget.service.id);
                       selectedDate.value = date;
                     ***REMOVED***,
                     leftMargin: 20,
                     monthColor: Colors.blueGrey,
                     dayColor: Colors.teal[200],
                     activeDayColor: Colors.white,
-                    activeBackgroundDayColor:
-                        AppColors.primaryColor.withOpacity(.8),
+                    activeBackgroundDayColor: AppColors.primaryColor.withOpacity(.8),
                     dotsColor: AppColors.midGreyColor,
                   ),
                   20.verticalSpace,
@@ -114,25 +109,16 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                                 (index) => ValueListenableBuilder(
                                   valueListenable: selectedTime,
                                   builder: (context, value, _) ***REMOVED***
-                                    final isSelected =
-                                        selectedTime.value == data[index];
+                                    final isSelected = selectedTime.value == data[index];
                                     return ActionChip(
                                       side: BorderSide(
                                         width: 0,
-                                        color: isSelected
-                                            ? AppColors.transparent
-                                            : AppColors.softBlack
-                                                .withOpacity(.4),
+                                        color: isSelected ? AppColors.transparent : AppColors.softBlack.withOpacity(.4),
                                       ),
-                                      backgroundColor: isSelected
-                                          ? AppColors.primaryColor
-                                          : AppColors.transparent,
+                                      backgroundColor: isSelected ? AppColors.primaryColor : AppColors.transparent,
                                       label: Text(
                                         data[index],
-                                        style: isSelected
-                                            ? AppStyles.text14PxMedium.white
-                                            : AppStyles
-                                                .text14PxMedium.softBlack,
+                                        style: isSelected ? AppStyles.text14PxMedium.white : AppStyles.text14PxMedium.softBlack,
                                       ),
                                       onPressed: () ***REMOVED***
                                         selectedTime.value = data[index];

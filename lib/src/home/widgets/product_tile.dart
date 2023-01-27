@@ -13,25 +13,12 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget ***REMOVED***
-  ProductTile(
-      ***REMOVED***Key? key,
-      required this.image,
-      required this.name,
-      this.description,
-      required this.price,
-      this.max = 10,
-      this.itemInCart = false,
-      required this.onButtomPressed,
-      this.orderDetails,
-      this.status,
-      this.booking,
-      this.buttonTitle***REMOVED***)
-      : super(key: key) ***REMOVED***
+  ProductTile(***REMOVED***Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id***REMOVED***) : super(key: key) ***REMOVED***
     if (status != null && booking == null) ***REMOVED***
       throw Exception('if status is provided, we need product too');
     ***REMOVED***
   ***REMOVED***
-
+  final String id;
   final String image;
   final String name;
   final String? description;
@@ -52,9 +39,7 @@ class ProductTile extends StatelessWidget ***REMOVED***
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: status == OrderType.Cancelled
-              ? AppColors.errorColor
-              : AppColors.softBlack.withOpacity(.4),
+          color: status == OrderType.Cancelled ? AppColors.errorColor : AppColors.softBlack.withOpacity(.4),
         ),
         borderRadius: BorderRadius.circular(10.r),
       ),
@@ -119,37 +104,20 @@ class ProductTile extends StatelessWidget ***REMOVED***
 
   Widget statusButton(BuildContext context) ***REMOVED***
     final now = DateTime.now();
-    final shape =
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
     final updatedHour = DateTime.fromMillisecondsSinceEpoch(booking!.updatedAt);
     print(now.subtract(Duration(hours: 6)).millisecondsSinceEpoch);
     if (status == OrderType.Pending) ***REMOVED***
-      return Row(
-        children: [
-          CustomButton(
-            title: 'Cancel Appoinment',
-            isDisabled:
-                !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
-            onPressed: () ***REMOVED***
-              CancelAppointmentButtomSheet.show(context);
-            ***REMOVED***,
-            height: buttonHeight,
-            width: buttonWidth + 10,
-            titleStyle: AppStyles.text12PxMedium.white,
-            shape: shape,
-          ),
-          const Spacer(),
-          CustomButton(
-            title: 'Chat',
-            shape: shape,
-            isDisabled:
-                !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
-            onPressed: () ***REMOVED******REMOVED***,
-            height: buttonHeight - 4,
-            width: buttonWidth - 45,
-            titleStyle: AppStyles.text12PxMedium.white,
-          ),
-  ***REMOVED***
+      return CustomButton(
+        title: 'Cancel Appoinment',
+        isDisabled: !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
+        onPressed: () ***REMOVED***
+          CancelAppointmentButtomSheet.show(context, bookingId: id);
+        ***REMOVED***,
+        height: buttonHeight,
+        width: buttonWidth + 10,
+        titleStyle: AppStyles.text12PxMedium.white,
+        shape: shape,
       );
     ***REMOVED*** else if (status == OrderType.Completed) ***REMOVED***
       return Text('Order Completed', style: AppStyles.text12PxMedium.primary);
