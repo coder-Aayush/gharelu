@@ -57,6 +57,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
               CustomTextField(
                 title: 'Email',
                 controller: _email,
+                textInputType: TextInputType.emailAddress,
                 onChanged: (email) =>
                     ref.read(userSignupFormProvider.notifier).setEmail(email),
                 error:
@@ -83,6 +84,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                     .setConfirmPassword(confirmPassword),
                 isPassword: true,
                 title: 'Confirm Password',
+                textInputType: TextInputType.visiblePassword,
                 controller: _confirmPassword,
                 error: ref
                     .watch(userSignupFormProvider)

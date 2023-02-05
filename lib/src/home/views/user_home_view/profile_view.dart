@@ -94,7 +94,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                 // ),
                 30.verticalSpace,
                 CardListTile(
-                  title: 'Appoinments',
+                  title: 'Appointments',
                   onPressed: widget.onAppoinment,
                 ),
                 20.verticalSpace,

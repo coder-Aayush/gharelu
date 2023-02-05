@@ -18,13 +18,15 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
     final tabController = useTabController(initialLength: 2, initialIndex: 1);
     return ScaffoldWrapper(
       appBar: AppBar(
-        // backgroundColor: AppColors.primaryColor,
-        title: const Text('Your Bookings'),
+        backgroundColor: AppColors.primaryColor,
+        title: const Text('Your Bookings', style: TextStyle(
+          color: AppColors.whiteColor
+        )),
         bottom: TabBar(
           splashFactory: NoSplash.splashFactory,
           automaticIndicatorColorAdjustment: true,
           controller: tabController,
-          labelStyle: AppStyles.text14PxSemiBold.white,
+          labelStyle: AppStyles.text14PxSemiBold,
           tabs: [
             const Tab(text: 'Previous'),
             const Tab(text: 'Upcoming'),

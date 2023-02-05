@@ -64,7 +64,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
             ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)?.setActiveIndex(0)
             ..navigate(const MerchantHomeRoute());
           ref.refresh(productStateProvider.notifier).getProducts(merchantOnly: true);
-          context.showSnackbar(message: 'Product Created!');
+          context.showSnackbar(message: editProduct == null ? 'Product Created!': 'Product Updated');
         ***REMOVED***,
         error: (message) => context.showErorDialog(message: message),
       );
@@ -74,7 +74,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
       appBar: AppBar(
         title: Text(editProduct != null ? 'Edit Product' : 'Create Product'),
         actions: [
-          if (editProduct != null) IconButton(onPressed: () => DeleteProductBottomsheet.show(context, productId: editProduct!.id), icon: Assets.icons.deleteIcon.svg()),
+          // if (editProduct != null) IconButton(onPressed: () => DeleteProductBottomsheet.show(context, productId: editProduct!.id), icon: Assets.icons.deleteIcon.svg()),
   ***REMOVED***
       ),
       bottomNavigationBar: BottomAppBar(

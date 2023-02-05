@@ -18,7 +18,7 @@ class NoDataFound extends StatelessWidget ***REMOVED***
           Assets.lottie.notFound.path,
           height: 220.h,
         ),
-        Text(title, style: AppStyles.text20PxMedium),
+        Text(title, style: AppStyles.text20PxMedium, textAlign: TextAlign.center),
         30.verticalSpace,
         CustomButton(
           title: 'Retry',

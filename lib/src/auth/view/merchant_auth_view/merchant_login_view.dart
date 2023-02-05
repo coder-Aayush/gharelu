@@ -49,6 +49,7 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
               CustomTextField(
                 title: 'Email',
                 controller: _email,
+                textInputType: TextInputType.emailAddress,
                 error: ref.watch(userLoginFormProvider).form.email.errorMessage,
                 onChanged: (email) =>
                     ref.read(userLoginFormProvider.notifier).setEmail(email),
@@ -58,6 +59,7 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
                 title: 'Password',
                 isPassword: true,
                 controller: _password,
+                textInputType: TextInputType.visiblePassword,
                 onChanged: (password) => ref
                     .read(userLoginFormProvider.notifier)
                     .setPassword(password),

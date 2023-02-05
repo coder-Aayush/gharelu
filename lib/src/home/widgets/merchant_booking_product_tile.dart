@@ -50,6 +50,8 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                           Text(
                             '#$***REMOVED***booking.user?.uid ?? ''***REMOVED***',
                             style: AppStyles.text10PxRegular.primary,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                   ***REMOVED***
                       ),
@@ -63,18 +65,18 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                 // ),
                 Row(
                   children: [
-                    IconButton(
-                      onPressed: () async => await launchUrlString(
-                          'tel:$***REMOVED***booking.user?.phoneNumber***REMOVED***'),
-                      icon: Icon(
-                        Icons.phone,
-                        color: AppColors.softBlack.withOpacity(.4),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () ***REMOVED******REMOVED***,
-                      icon: Assets.icons.chat.svg(),
-                    ),
+                    // IconButton(
+                    //   onPressed: () async => await launchUrlString(
+                    //       'tel:$***REMOVED***booking.user?.phoneNumber***REMOVED***'),
+                    //   icon: Icon(
+                    //     Icons.phone,
+                    //     color: AppColors.softBlack.withOpacity(.4),
+                    //   ),
+                    // ),
+                    // IconButton(
+                    //   onPressed: () ***REMOVED******REMOVED***,
+                    //   icon: Assets.icons.chat.svg(),
+                    // ),
             ***REMOVED***
                 ),
         ***REMOVED***

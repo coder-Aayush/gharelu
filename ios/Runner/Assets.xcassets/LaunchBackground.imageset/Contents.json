@@ -1,17 +1,15 @@
 ***REMOVED***
   "images" : [
     ***REMOVED***
-      "filename" : "LaunchImage.png",
+      "filename" : "background.png",
       "idiom" : "universal",
       "scale" : "1x"
     ***REMOVED***,
     ***REMOVED***
-      "filename" : "LaunchImage@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     ***REMOVED***,
     ***REMOVED***
-      "filename" : "LaunchImage@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     ***REMOVED***

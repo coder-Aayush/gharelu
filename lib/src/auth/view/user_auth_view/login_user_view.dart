@@ -55,6 +55,7 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
                         .read(userLoginFormProvider.notifier)
                         .setEmail(email),
                     title: 'Email',
+                    textInputType: TextInputType.emailAddress,
                     error: ref
                         .watch(userLoginFormProvider)
                         .form
@@ -74,6 +75,7 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
                 error:
                     ref.watch(userLoginFormProvider).form.password.errorMessage,
                 controller: _password,
+                textInputType: TextInputType.visiblePassword,
               ),
               30.verticalSpace,
               Align(

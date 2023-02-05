@@ -147,7 +147,7 @@ class CancelAppointmentButtomSheet extends StatelessWidget ***REMOVED***
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const BottomSheetHeader(title: 'Cancel Appoinments'),
+        const BottomSheetHeader(title: 'Cancel Appointments'),
         Column(
           children: [
             Text('Are you Sure want to Cancel this order?', style: AppStyles.text14PxSemiBold.softBlack),

@@ -21,12 +21,11 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
         noInternet: () => const GetUserBookingsState.noInternet(),
       ),
       (response) ***REMOVED***
-        final now = DateTime.now();
         List<BookingModel> previous = [];
         List<BookingModel> upcoming = [];
 
         for (var item in response) ***REMOVED***
-          if (DateTime.fromMillisecondsSinceEpoch(DateTime.parse(item.date).millisecondsSinceEpoch).isBefore(now) || item.orderType == OrderType.Completed) ***REMOVED***
+          if (item.orderType == OrderType.Cancelled || item.orderType == OrderType.Completed) ***REMOVED***
             previous.add(item);
           ***REMOVED*** else ***REMOVED***
             upcoming.add(item);
