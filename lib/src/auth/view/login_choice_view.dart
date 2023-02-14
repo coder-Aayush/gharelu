@@ -24,14 +24,14 @@ class LoginChoiceView extends StatelessWidget ***REMOVED***
               Assets.images.logo.image(),
               const Spacer(),
               Text(
-                'Have a Problem you cannot solve?Don\'t worry. Lets Get started',
+                'Have a Problem you cannot solve? Don\'t worry. Lets Get started',
                 textAlign: TextAlign.center,
                 style: AppStyles.text18PxMedium.white,
               ),
               const Spacer(),
               CustomButton(
                 title: 'Get Service',
-                onPressed: () => context.router.push(const UserSignupRoute()),
+                onPressed: () => context.router.push(const LoginUserRoute()),
                 isDisabled: false,
                 backgroundColor: AppColors.whiteColor,
                 titleStyle: AppStyles.text14PxMedium.softBlack,
@@ -41,7 +41,7 @@ class LoginChoiceView extends StatelessWidget ***REMOVED***
               CustomButton(
                 title: 'Provide Service',
                 onPressed: () =>
-                    context.router.push(const MerchantSignupRoute()),
+                    context.router.push(const MerchantLoginRoute()),
                 isDisabled: false,
                 backgroundColor: AppColors.whiteColor,
                 titleStyle: AppStyles.text14PxMedium.softBlack,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -12,6 +13,7 @@ class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
 class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
 ***REMOVED***
   Widget build(BuildContext context) ***REMOVED***
+    ref.read(authChangeProvider);
     return WillPopScope(
       onWillPop: () async ***REMOVED***
         return false;
@@ -22,9 +24,11 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
           const AppointmentRouter(),
           ChatRouter(isMerchant: false),
           ProfileRouter(
-            onAppoinment: () => context.router.root.innerRouterOf(DashboardRouter.name)
-              ?..innerRouterOf<TabsRouter>(DashboardRouter.name)?.setActiveIndex(1)
-              ..navigate(const AppointmentRouter()),
+            onAppoinment: () =>
+                context.router.root.innerRouterOf(DashboardRouter.name)
+                  ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
+                      ?.setActiveIndex(1)
+                  ..navigate(const AppointmentRouter()),
           ),
   ***REMOVED***
         builder: (context, child, animation) => FadeTransition(

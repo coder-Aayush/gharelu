@@ -51,6 +51,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                 ***REMOVED***,
                 title: 'Name',
                 controller: _name,
+                textInputType: TextInputType.name,
                 error: ref.watch(userSignupFormProvider).form.name.errorMessage,
               ),
               20.verticalSpace,
@@ -76,6 +77,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                     .form
                     .password
                     .errorMessage,
+                textInputType: TextInputType.visiblePassword,
               ),
               20.verticalSpace,
               CustomTextField(
@@ -148,8 +150,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                     style: AppStyles.text14PxRegular.midGrey,
                   ),
                   TextButton(
-                      onPressed: () =>
-                          context.router.push(const LoginUserRoute()),
+                      onPressed: () => context.router.pop(),
                       child: const Text('Login')),
           ***REMOVED***
               ),

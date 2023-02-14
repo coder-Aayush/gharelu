@@ -103,7 +103,8 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
                     style: AppStyles.text14PxRegular.midGrey,
                   ),
                   TextButton(
-                    onPressed: () => context.router.pop(),
+                    onPressed: () =>
+                        context.router.push(const UserSignupRoute()),
                     child: const Text('Signup'),
                   ),
           ***REMOVED***

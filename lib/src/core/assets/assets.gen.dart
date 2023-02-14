@@ -66,6 +66,10 @@ class $AssetsImagesGen ***REMOVED***
   AssetGenImage get esewaLogo =>
       const AssetGenImage('assets/images/esewa_logo.png');
 
+  ***REMOVED***File path: assets/images/gharelu_logo.jpg
+  AssetGenImage get ghareluLogo =>
+      const AssetGenImage('assets/images/gharelu_logo.jpg');
+
   ***REMOVED***File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -84,7 +88,7 @@ class $AssetsImagesGen ***REMOVED***
 
   ***REMOVED***List of all assets
   List<AssetGenImage> get values =>
-      [babr, esewaLogo, logo, map, market, userAvatar, welcome];
+      [babr, esewaLogo, ghareluLogo, logo, map, market, userAvatar, welcome];
 ***REMOVED***
 
 class $AssetsLottieGen ***REMOVED***

@@ -78,6 +78,9 @@ import 'package:gharelu/src/map_view/views/views.dart';
 ***REMOVED***
     ),
     AutoRoute<void>(page: CreateProductView),
+
+    //
+    AutoRoute<void>(page: VerifyEmailView),
 ***REMOVED***
 )
 class $AppRouter ***REMOVED******REMOVED***

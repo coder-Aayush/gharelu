@@ -9,12 +9,12 @@ class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> ***REM
   final AuthStatusDataSource _dataSource;
 
   Future<void> checkAuth(***REMOVED***required String id***REMOVED***) async ***REMOVED***
-    state = AppState.loading();
+    state = const AppState.loading();
     final response = await _dataSource.authSatus(id: id);
     state = response.fold(
       (error) => error.when(
           serverError: (message) => AppState.error(message: message),
-          noInternet: () => AppState.noInternet()),
+          noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
   ***REMOVED***

@@ -198,8 +198,7 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                   style: AppStyles.text14PxRegular.midGrey,
                 ),
                 TextButton(
-                  onPressed: () =>
-                      context.router.push(const MerchantLoginRoute()),
+                  onPressed: () => context.router.pop(),
                   child: const Text('Login'),
                 ),
         ***REMOVED***

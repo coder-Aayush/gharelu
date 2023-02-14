@@ -33,6 +33,7 @@ class SplashView extends HookConsumerWidget ***REMOVED***
       next.maybeWhen(
         orElse: () => null,
         success: (data) ***REMOVED***
+          ref.read(authChangeProvider);
           context.showSnackbar(message: 'Welcome Back $***REMOVED***data.name***REMOVED***');
           if (data.isMerchant) ***REMOVED***
             ***REMOVED***navigate to merchant

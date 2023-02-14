@@ -87,5 +87,7 @@ class MerchantSignupFormProvider
 ***REMOVED***
 
 final merchantSignupFormProvider =
-    StateNotifierProvider<MerchantSignupFormProvider, MerchantSignupFormState>(
+    StateNotifierProvider.autoDispose<
+    MerchantSignupFormProvider,
+    MerchantSignupFormState>(
         (ref) => MerchantSignupFormProvider());

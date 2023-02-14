@@ -15,10 +15,13 @@ class MerchantDashboardView extends StatefulHookConsumerWidget ***REMOVED***
 class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> ***REMOVED***
 ***REMOVED***
   void didChangeDependencies() ***REMOVED***
+    ref.read(authChangeProvider);
     final userId = ref.read(firebaseAuthProvider).currentUser?.uid;
     Future.delayed(
       const Duration(milliseconds: 200),
-      () => ref.read(getUserInfoNotifiderProvider.notifier).getUserInfo(id: userId!, isMerchant: true),
+      () => ref
+          .read(getUserInfoNotifiderProvider.notifier)
+          .getUserInfo(id: userId!, isMerchant: true),
     );
     super.didChangeDependencies();
   ***REMOVED***
@@ -31,9 +34,11 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> *
         const MerchantBookingsRoute(),
         ChatListRoute(isMerchant: true),
         ProfileRoute(
-          onAppoinment: () => context.router.root.innerRouterOf(MerchantDashboardRouter.name)
-            ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)?.setActiveIndex(1)
-            ..navigate(const MerchantBookingsRoute()),
+          onAppoinment: () =>
+              context.router.root.innerRouterOf(MerchantDashboardRouter.name)
+                ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)
+                    ?.setActiveIndex(1)
+                ..navigate(const MerchantBookingsRoute()),
         ),
 ***REMOVED***
       homeIndex: 0,
