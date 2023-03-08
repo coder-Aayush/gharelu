@@ -16,6 +16,10 @@
 *.iws
 .idea/*
 
+# Firebase
+GoogleService-Info.plist
+google-services.json
+
 # Visual Studio Code related
 .classpath
 .project
