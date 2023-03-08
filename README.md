@@ -22,7 +22,6 @@ Gharelu is an on-demand handyman application built with Flutter and Firebase. Th
 - Real-time chat between users and service providers.
 - Secure authentication and user account management.
 - Integration with Google Maps for location-based search and appointment scheduling.
-- Product management for merchants, allowing them to sell products alongside their services.
 
 ## Screenshoots
 
