@@ -4,8 +4,8 @@ import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:lottie/lottie.dart';
 
-class ScaffoldWrapper extends StatelessWidget ***REMOVED***
-  const ScaffoldWrapper(***REMOVED***
+class ScaffoldWrapper extends StatelessWidget {
+  const ScaffoldWrapper({
     Key? key,
     this.appBar,
     this.body,
@@ -81,16 +81,16 @@ class ScaffoldWrapper extends StatelessWidget ***REMOVED***
 
   final bool loading;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () ***REMOVED***
-        if (FocusScope.of(context).hasFocus) ***REMOVED***
+      onTap: () {
+        if (FocusScope.of(context).hasFocus) {
           FocusScope.of(context).unfocus();
         ***REMOVED***
       ***REMOVED***,
-      onVerticalDragStart: (details) ***REMOVED***
-        if (FocusScope.of(context).hasFocus) ***REMOVED***
+      onVerticalDragStart: (details) {
+        if (FocusScope.of(context).hasFocus) {
           FocusScope.of(context).unfocus();
         ***REMOVED***
       ***REMOVED***,

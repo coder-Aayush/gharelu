@@ -22,8 +22,8 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ChatDetailView extends StatefulHookConsumerWidget ***REMOVED***
-  const ChatDetailView(***REMOVED***
+class ChatDetailView extends StatefulHookConsumerWidget {
+  const ChatDetailView({
     Key? key,
     required this.roomId,
     required this.isMerchant,
@@ -37,19 +37,19 @@ class ChatDetailView extends StatefulHookConsumerWidget ***REMOVED***
   final bool isMerchant;
   final ProductModel? product;
 
-***REMOVED***
+  @override
   _ChatDetailViewState createState() => _ChatDetailViewState();
 ***REMOVED***
 
-class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
-***REMOVED***
-  void initState() ***REMOVED***
+class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
+  @override
+  void initState() {
     message = TextEditingController();
     super.initState();
   ***REMOVED***
 
-***REMOVED***
-  void dispose() ***REMOVED***
+  @override
+  void dispose() {
     ref.invalidate(getMessagesNotifierProvider);
     message.dispose();
     super.dispose();
@@ -65,8 +65,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
 
   String? get userId => ref.read(firebaseAuthProvider).currentUser?.uid;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       appBar: AppBar(
         title: Row(
@@ -85,10 +85,10 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                   (widget.product?.name ?? ''),
                   style: AppStyles.text18PxBold,
                 ),
-                Text('$***REMOVED***isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')***REMOVED***', style: AppStyles.text12PxMedium.midGrey)
-        ***REMOVED***
+                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')***REMOVED***', style: AppStyles.text12PxMedium.midGrey)
+              ],
             ).expanded(),
-    ***REMOVED***
+          ],
         ),
       ),
       body: Stack(
@@ -96,16 +96,16 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
           Column(
             children: [
               Consumer(
-                builder: (context, ref, _) ***REMOVED***
+                builder: (context, ref, _) {
                   return ref.watch(getMessagesNotifierProvider(roomId)).maybeWhen(
                         orElse: () => Container().expanded(),
                         loading: () => context.loader.expanded(),
-                        success: (data) ***REMOVED***
-                          if (data.isEmpty) ***REMOVED***
+                        success: (data) {
+                          if (data.isEmpty) {
                             return SizedBox(
                               child: NoDataFound(
-                                title: 'Start Conversation with $***REMOVED***isMerchant ? '$***REMOVED***widget.user?.name***REMOVED***' : '$***REMOVED***widget.merchant?.name***REMOVED***'***REMOVED***',
-                                onRefresh: () ***REMOVED***
+                                title: 'Start Conversation with ${isMerchant ? '${widget.user?.name***REMOVED***' : '${widget.merchant?.name***REMOVED***'***REMOVED***',
+                                onRefresh: () {
                                   ref.read(getMessagesNotifierProvider(roomId));
                                 ***REMOVED***,
                               ),
@@ -114,9 +114,9 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                           return ListView.builder(
                             itemCount: data.length,
                             reverse: true,
-                            itemBuilder: (context, index) ***REMOVED***
+                            itemBuilder: (context, index) {
                               final message = data[index];
-                              if (message.type == MessageType.image) ***REMOVED***
+                              if (message.type == MessageType.image) {
                                 return BubbleNormalImage(
                                   isSender: userId == message.senderId ? true : false,
                                   id: message.id,
@@ -140,7 +140,7 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                 ***REMOVED***,
               ),
               MessageBar(
-                onSend: (message) ***REMOVED***
+                onSend: (message) {
                   final now = DateTime.now().millisecondsSinceEpoch;
                   ref.read(sendMessageNotifierProvider.notifier).sendMessage(
                         message: MessageModel(
@@ -165,9 +165,9 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                         color: Colors.green,
                         size: 24,
                       ),
-                      onTap: () async ***REMOVED***
+                      onTap: () async {
                         final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
-                        if (picker?.path != null) ***REMOVED***
+                        if (picker?.path != null) {
                           final now = DateTime.now().millisecondsSinceEpoch;
                           ref.read(sendMessageNotifierProvider.notifier).sendMessage(
                                 message: MessageModel(
@@ -185,11 +185,11 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                       ***REMOVED***,
                     ),
                   ),
-          ***REMOVED***
+                ],
               ),
-      ***REMOVED***
+            ],
           ),
-          Consumer(builder: (context, ref, _) ***REMOVED***
+          Consumer(builder: (context, ref, _) {
             return ref.watch(sendMessageNotifierProvider).maybeWhen(
                   orElse: Container.new,
                   loading: () => Positioned(
@@ -203,7 +203,7 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> ***REMOVED***
                   )),
                 );
           ***REMOVED***)
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

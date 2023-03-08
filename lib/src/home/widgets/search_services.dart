@@ -6,40 +6,40 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/models/category_model.dart';
 
-class CustomSearchServices extends SearchDelegate ***REMOVED***
+class CustomSearchServices extends SearchDelegate {
   CustomSearchServices(this.searcher);
 
   final HitsSearcher searcher;
 
-***REMOVED***
-  List<Widget>? buildActions(BuildContext context) ***REMOVED***
+  @override
+  List<Widget>? buildActions(BuildContext context) {
     return [];
   ***REMOVED***
 
-***REMOVED***
-  Widget? buildLeading(BuildContext context) ***REMOVED***
+  @override
+  Widget? buildLeading(BuildContext context) {
     return const BackButton();
   ***REMOVED***
 
-***REMOVED***
-  Widget buildResults(BuildContext context) ***REMOVED***
+  @override
+  Widget buildResults(BuildContext context) {
     searcher.query(query);
     return Container();
   ***REMOVED***
 
-***REMOVED***
-  Widget buildSuggestions(BuildContext context) ***REMOVED***
+  @override
+  Widget buildSuggestions(BuildContext context) {
     searcher..query(query);
 
     return StreamBuilder(
       stream: searcher.responses,
-      builder: (context, AsyncSnapshot<SearchResponse> snapshot) ***REMOVED***
+      builder: (context, AsyncSnapshot<SearchResponse> snapshot) {
         print(snapshot);
         final response = snapshot.data;
         final hits = response?.hits.toList() ?? [];
         return ListView.builder(
           itemCount: hits.length,
-          itemBuilder: (context, index) ***REMOVED***
+          itemBuilder: (context, index) {
             final hit = hits[index];
 
             return ListTile(
@@ -61,7 +61,7 @@ class CustomSearchServices extends SearchDelegate ***REMOVED***
               ),
               title: RichText(
                   text: TextSpan(
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
                 children: hit.getHighlightedString('name').toInlineSpans(),
               )),
             ).py(12.h);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/widget_extension.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
@@ -11,17 +11,17 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
-class ProductSummaryView extends StatelessWidget ***REMOVED***
-  const ProductSummaryView(***REMOVED***Key? key, required this.service***REMOVED***) : super(key: key);
+class ProductSummaryView extends StatelessWidget {
+  const ProductSummaryView({Key? key, required this.service***REMOVED***) : super(key: key);
   final ServiceModel service;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       bottomNavigationBar: Consumer(
-        builder: (context, ref, _) ***REMOVED***
+        builder: (context, ref, _) {
           final _cart = ref.watch(cartStateProvider);
-          if (_cart.products.isNotEmpty) ***REMOVED***
+          if (_cart.products.isNotEmpty) {
             return BottomAppBar(
               child: Container(
                 padding: const EdgeInsets.all(20),
@@ -45,9 +45,9 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       children: [
                         Text('Item Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
-                        Text('Rs: $***REMOVED***_cart.totalPrice***REMOVED***',
+                        Text('Rs: ${_cart.totalPrice***REMOVED***',
                             style: AppStyles.text14PxSemiBold)
-                ***REMOVED***
+                      ],
                     ),
                     22.verticalSpace,
                     Row(
@@ -56,7 +56,7 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                             style: AppStyles.text14PxMedium),
                         const Spacer(),
                         Text('Rs: 50', style: AppStyles.text14PxSemiBold)
-                ***REMOVED***
+                      ],
                     ),
                     20.verticalSpace,
                     const Divider(),
@@ -66,10 +66,10 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                         Text('Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
                         Text(
-                          'Rs: $***REMOVED***_cart.subTotal***REMOVED***',
+                          'Rs: ${_cart.subTotal***REMOVED***',
                           style: AppStyles.text14PxSemiBold,
                         )
-                ***REMOVED***
+                      ],
                     ),
                     20.verticalSpace,
                     Center(
@@ -80,11 +80,11 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                             .push(SelectSlotRoute(service: service)),
                       ),
                     ),
-            ***REMOVED***
+                  ],
                 ),
               ),
             );
-          ***REMOVED*** else ***REMOVED***
+          ***REMOVED*** else {
             return const SizedBox.shrink();
           ***REMOVED***
         ***REMOVED***,
@@ -100,9 +100,9 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
             ),
             floating: true,
           ),
-          Consumer(builder: (context, ref, _) ***REMOVED***
+          Consumer(builder: (context, ref, _) {
             final cart = ref.watch(cartStateProvider);
-            if (cart.products.isEmpty) ***REMOVED***
+            if (cart.products.isEmpty) {
               return Container(
                 height: MediaQuery.of(context).size.height * .85,
                 child: Column(
@@ -118,7 +118,7 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                       onPressed: () => context.router.pop(),
                       isDisabled: false,
                     ),
-            ***REMOVED***
+                  ],
                 ),
               ).toSliverBox;
             ***REMOVED***
@@ -127,12 +127,12 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
               children: [
                 Text('Your Carts', style: AppStyles.text18PxMedium.softBlack),
                 12.verticalSpace,
-                ...List.generate(cart.products.length, (index) ***REMOVED***
+                ...List.generate(cart.products.length, (index) {
                   final product = cart.products[index];
                   return ListTile(
                     title: Text(product.name),
                     subtitle: Text(
-                        'Rs: $***REMOVED***calculateTotalPriceOfProduct(product.price, product.quantity)***REMOVED***'),
+                        'Rs: ${calculateTotalPriceOfProduct(product.price, product.quantity)***REMOVED***'),
                     trailing: IncrementAndDecrement(
                       count: product.quantity,
                       onIncrement: () => ref
@@ -144,15 +144,15 @@ class ProductSummaryView extends StatelessWidget ***REMOVED***
                     ),
                   );
                 ***REMOVED***),
-        ***REMOVED***
+              ],
             ).px(20).py(20).toSliverBox;
           ***REMOVED***),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***
 
-  int calculateTotalPriceOfProduct(int amount, int quantity) ***REMOVED***
+  int calculateTotalPriceOfProduct(int amount, int quantity) {
     return amount * quantity;
   ***REMOVED***
 ***REMOVED***

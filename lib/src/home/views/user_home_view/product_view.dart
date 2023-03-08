@@ -1,4 +1,4 @@
-***REMOVED***
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +15,8 @@ import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProductView extends StatefulHookConsumerWidget ***REMOVED***
-  const ProductView(***REMOVED***
+class ProductView extends StatefulHookConsumerWidget {
+  const ProductView({
     Key? key,
     required this.categoryId,
     required this.serviceId,
@@ -30,14 +30,14 @@ class ProductView extends StatefulHookConsumerWidget ***REMOVED***
   final String title;
   final ServiceModel service;
 
-***REMOVED***
+  @override
   _ProductViewState createState() => _ProductViewState();
 ***REMOVED***
 
-class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
-***REMOVED***
-  void initState() ***REMOVED***
-    if (mounted) ***REMOVED***
+class _ProductViewState extends ConsumerState<ProductView> {
+  @override
+  void initState() {
+    if (mounted) {
       Future.delayed(
         Duration.zero,
         () => ref.read(productStateProvider.notifier).getProducts(categoryId: widget.categoryId),
@@ -46,18 +46,18 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
     super.initState();
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
-      bottomNavigationBar: Consumer(builder: (context, ref, _) ***REMOVED***
+      bottomNavigationBar: Consumer(builder: (context, ref, _) {
         final cart = ref.watch(cartStateProvider);
-        if (cart.products.isNotEmpty) ***REMOVED***
+        if (cart.products.isNotEmpty) {
           return BottomAppBar(
             color: AppColors.primaryColor,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Total: Rs $***REMOVED***cart.price***REMOVED***', style: AppStyles.text14PxBold.white),
+                Text('Total: Rs ${cart.price***REMOVED***', style: AppStyles.text14PxBold.white),
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
@@ -67,10 +67,10 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                   titleStyle: AppStyles.text14PxBold.primary,
                   height: 45,
                 ),
-        ***REMOVED***
+              ],
             ).px(20).py(10),
           );
-        ***REMOVED*** else ***REMOVED***
+        ***REMOVED*** else {
           return const SizedBox.shrink();
         ***REMOVED***
       ***REMOVED***),
@@ -98,10 +98,10 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                 orElse: () => Container().toSliverBox,
                 success: (data) => SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index) ***REMOVED***
+                    (context, index) {
                       final product = data[index];
                       return Consumer(
-                        builder: (context, ref, _) ***REMOVED***
+                        builder: (context, ref, _) {
                           final cart = ref.watch(cartStateProvider);
                           return ProductTile(
                             id: product.id,
@@ -109,7 +109,7 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                             description: product.description,
                             image: product.image,
                             itemInCart: cart.products.where((element) => element.id == product.id).isNotEmpty,
-                            onButtomPressed: () ***REMOVED***
+                            onButtomPressed: () {
                               final _product = cart.products.where(
                                 (element) => element.id == product.id,
                               );
@@ -128,7 +128,7 @@ class _ProductViewState extends ConsumerState<ProductView> ***REMOVED***
                   child: Text(message, style: AppStyles.text14PxMedium),
                 ).toSliverBox,
               ),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

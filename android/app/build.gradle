@@ -1,23 +1,23 @@
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) ***REMOVED***
-    localPropertiesFile.withReader('UTF-8') ***REMOVED*** reader ->
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     ***REMOVED***
 ***REMOVED***
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) ***REMOVED***
+if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 ***REMOVED***
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) ***REMOVED***
+if (flutterVersionCode == null) {
     flutterVersionCode = '1'
 ***REMOVED***
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) ***REMOVED***
+if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 ***REMOVED***
 
@@ -28,29 +28,29 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-android ***REMOVED***
+android {
     compileSdkVersion 33
-    lintOptions ***REMOVED***
+    lintOptions {
         disable 'InvalidPackage'
         disable "Instantiatable"
         checkReleaseBuilds false
         abortOnError false
        ***REMOVED***
 
-    compileOptions ***REMOVED***
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     ***REMOVED***
 
-    kotlinOptions ***REMOVED***
+    kotlinOptions {
         jvmTarget = '1.8'
     ***REMOVED***
 
-    sourceSets ***REMOVED***
+    sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     ***REMOVED***
 
-    defaultConfig ***REMOVED***
+    defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "app.gharelu"
         minSdkVersion 21
@@ -59,8 +59,8 @@ android ***REMOVED***
         versionName flutterVersionName
     ***REMOVED***
 
-    buildTypes ***REMOVED***
-        release ***REMOVED***
+    buildTypes {
+        release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
@@ -68,10 +68,10 @@ android ***REMOVED***
     ***REMOVED***
 ***REMOVED***
 
-flutter ***REMOVED***
+flutter {
     source '../..'
 ***REMOVED***
 
-dependencies ***REMOVED***
+dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 ***REMOVED***

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ExpensionTileContent extends StatelessWidget ***REMOVED***
-  const ExpensionTileContent(***REMOVED***
+class ExpensionTileContent extends StatelessWidget {
+  const ExpensionTileContent({
     Key? key,
     required this.title,
     required this.description,
@@ -11,14 +11,14 @@ class ExpensionTileContent extends StatelessWidget ***REMOVED***
 
   final String description;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Text(title),
         Spacer(),
         Text(description),
-***REMOVED***
+      ],
     );
   ***REMOVED***
 ***REMOVED***

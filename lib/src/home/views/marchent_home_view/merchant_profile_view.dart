@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-class MerchantProfileView extends StatelessWidget ***REMOVED***
-  const MerchantProfileView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantProfileView extends StatelessWidget {
+  const MerchantProfileView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper();
   ***REMOVED***
 ***REMOVED***

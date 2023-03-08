@@ -6,13 +6,13 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/models/banner_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class CustomCarousel extends StatelessWidget ***REMOVED***
-  const CustomCarousel(***REMOVED***Key? key, required this.banners***REMOVED***) : super(key: key);
+class CustomCarousel extends StatelessWidget {
+  const CustomCarousel({Key? key, required this.banners***REMOVED***) : super(key: key);
 
   final List<BannerModel> banners;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return CarouselSlider(
       items: List.generate(
         banners.length,

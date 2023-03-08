@@ -7,17 +7,17 @@ import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/animated_dialog.dart';
 import 'package:lottie/lottie.dart';
 
-extension ContextX on BuildContext ***REMOVED***
+extension ContextX on BuildContext {
   //width & height
   double get width => MediaQuery.of(this).size.width;
 
   double get height => MediaQuery.of(this).size.height;
 ***REMOVED***
 
-extension WidgetX on BuildContext ***REMOVED***
-  void showSnackbar(***REMOVED***
+extension WidgetX on BuildContext {
+  void showSnackbar({
     required String message,
-  ***REMOVED***) ***REMOVED***
+  ***REMOVED***) {
     ScaffoldMessenger.of(this)
       ..hideCurrentSnackBar()
       ..showSnackBar(
@@ -34,7 +34,7 @@ extension WidgetX on BuildContext ***REMOVED***
       );
   ***REMOVED***
 
-  void showErorDialog(***REMOVED***required String? message, VoidCallback? buttonPressed, String? buttonTitle***REMOVED***) ***REMOVED***
+  void showErorDialog({required String? message, VoidCallback? buttonPressed, String? buttonTitle***REMOVED***) {
     showGeneralDialog(
       context: this,
       barrierDismissible: false,
@@ -70,20 +70,20 @@ extension WidgetX on BuildContext ***REMOVED***
                 style: AppStyles.text14PxRegular.copyWith(color: AppColors.softBlack.withOpacity(.5)),
                 textAlign: TextAlign.center,
               ),
-    ***REMOVED***
+          ],
         ),
         actions: [
           TextButton(
-            onPressed: () ***REMOVED***
-              if (buttonPressed != null) ***REMOVED***
+            onPressed: () {
+              if (buttonPressed != null) {
                 buttonPressed.call();
-              ***REMOVED*** else ***REMOVED***
+              ***REMOVED*** else {
                 Navigator.pop(context);
               ***REMOVED***
             ***REMOVED***,
             child: Text(buttonTitle ?? 'Ok'),
           ),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

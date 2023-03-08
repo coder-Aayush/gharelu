@@ -19,11 +19,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:gharelu/src/core/widgets/widgets.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// class CancelAppointmentButtomSheet extends HookConsumerWidget ***REMOVED***
-//   const CancelAppointmentButtomSheet(***REMOVED***Key? key***REMOVED***) : super(key: key);
+// class CancelAppointmentButtomSheet extends HookConsumerWidget {
+//   const CancelAppointmentButtomSheet({Key? key***REMOVED***) : super(key: key);
 
-// ***REMOVED***
-//   Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
 //     final _description = useTextEditingController();
 //     ValueNotifier<CancellationReasonEntity?> selectedCancellation =
 //         ValueNotifier<CancellationReasonEntity?>(null);
@@ -37,12 +37,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //           Column(
 //             children: List.generate(
 //               AppConstant.cancellationReason.length,
-//               (index) ***REMOVED***
+//               (index) {
 //                 final cancellationReason =
 //                     AppConstant.cancellationReason[index];
 //                 return ValueListenableBuilder(
 //                   valueListenable: selectedCancellation,
-//                   builder: (context, value, _) ***REMOVED***
+//                   builder: (context, value, _) {
 //                     return Column(
 //                       children: [
 //                         RadioListTile<CancellationReasonEntity>(
@@ -56,7 +56,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                           subtitle: Text(cancellationReason.description),
 //                           enableFeedback: true,
 //                         ).py(8.h),
-//                 ***REMOVED***
+//                       ],
 //                     );
 //                   ***REMOVED***,
 //                 );
@@ -66,7 +66,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //           25.verticalSpace,
 //           ValueListenableBuilder<CancellationReasonEntity?>(
 //             valueListenable: selectedCancellation,
-//             builder: (context, _, __) ***REMOVED***
+//             builder: (context, _, __) {
 //               return AnimatedOpacity(
 //                 duration: const Duration(seconds: 1),
 //                 opacity: selectedCancellation.value != null ? 1 : 0,
@@ -78,7 +78,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                           const Spacer(),
 //                           CustomButton(
 //                             isDisabled: false,
-//                             onPressed: () ***REMOVED******REMOVED***,
+//                             onPressed: () {***REMOVED***,
 //                             title: 'Cancel Appointment',
 //                             width: 150,
 //                             backgroundColor: AppColors.transparent,
@@ -90,14 +90,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                               ),
 //                             ),
 //                           ),
-//                   ***REMOVED***
+//                         ],
 //                       )
 //                     : Container(),
 //               );
 //             ***REMOVED***,
 //           ).px(20.w),
 //           30.verticalSpace,
-//   ***REMOVED***
+//         ],
 //       ),
 //     );
 //   ***REMOVED***
@@ -106,30 +106,30 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //     showAppBottomSheet(context, const CancelAppointmentButtomSheet());
 
 //   Widget renderCancellationReasonButton(
-//       CancellationReasonEntity? cancellationReason) ***REMOVED***
-//     switch (cancellationReason?.id) ***REMOVED***
+//       CancellationReasonEntity? cancellationReason) {
+//     switch (cancellationReason?.id) {
 //       case 1:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () ***REMOVED******REMOVED***,
+//           onPressed: () {***REMOVED***,
 //           title: 'Reschedule',
 //         );
 //       case 2:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () ***REMOVED******REMOVED***,
+//           onPressed: () {***REMOVED***,
 //           title: 'Reschedule',
 //         );
 //       case 3:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () ***REMOVED******REMOVED***,
+//           onPressed: () {***REMOVED***,
 //           title: 'Complain',
 //         );
 //       case 4:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () ***REMOVED******REMOVED***,
+//           onPressed: () {***REMOVED***,
 //           title: 'Complain',
 //         );
 //       default:
@@ -138,12 +138,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //   ***REMOVED***
 // ***REMOVED***
 
-class CancelAppointmentButtomSheet extends StatelessWidget ***REMOVED***
-  const CancelAppointmentButtomSheet(***REMOVED***Key? key, required this.bookingId***REMOVED***) : super(key: key);
+class CancelAppointmentButtomSheet extends StatelessWidget {
+  const CancelAppointmentButtomSheet({Key? key, required this.bookingId***REMOVED***) : super(key: key);
   final String bookingId;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -154,22 +154,22 @@ class CancelAppointmentButtomSheet extends StatelessWidget ***REMOVED***
             20.verticalSpace,
             Row(
               children: [
-                Consumer(builder: (context, ref, _) ***REMOVED***
-                  ref.listen(getUserBookingsNotifierProvider, (previous, next) ***REMOVED***
+                Consumer(builder: (context, ref, _) {
+                  ref.listen(getUserBookingsNotifierProvider, (previous, next) {
                     (next as GetUserBookingsState).maybeWhen(
                       orElse: () => null,
-                      success: (previous, upcoming) ***REMOVED***
+                      success: (previous, upcoming) {
                         Navigator.pop(context);
                       ***REMOVED***,
                     );
-                ***REMOVED***
+                  ***REMOVED***
                   return CustomButton(
                     title: 'Cancel Appoinment',
                     loading: ref.watch(getUserBookingsNotifierProvider).maybeWhen(
                           orElse: () => false,
                           loading: () => true,
                         ),
-                    onPressed: () ***REMOVED***
+                    onPressed: () {
                       ref.read(getUserBookingsNotifierProvider.notifier).updateBookings(bookingId: bookingId, orderType: OrderType.Cancelled);
                     ***REMOVED***,
                     isDisabled: false,
@@ -182,14 +182,14 @@ class CancelAppointmentButtomSheet extends StatelessWidget ***REMOVED***
                   onPressed: () => Navigator.pop(context),
                   isDisabled: false,
                 ),
-        ***REMOVED***
+              ],
             ),
-    ***REMOVED***
+          ],
         ).px(20.w),
         20.verticalSpace,
-***REMOVED***
+      ],
     );
   ***REMOVED***
 
-  static Future<void> show(BuildContext context, ***REMOVED***required String bookingId***REMOVED***) async => showAppBottomSheet(context, CancelAppointmentButtomSheet(bookingId: bookingId));
+  static Future<void> show(BuildContext context, {required String bookingId***REMOVED***) async => showAppBottomSheet(context, CancelAppointmentButtomSheet(bookingId: bookingId));
 ***REMOVED***

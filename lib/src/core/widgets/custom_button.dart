@@ -5,9 +5,9 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-class CustomButton extends StatelessWidget ***REMOVED***
+class CustomButton extends StatelessWidget {
   ***REMOVED***[title] argument is required
-  const CustomButton(***REMOVED***
+  const CustomButton({
     Key? key,
     this.title,
     this.onPressed,
@@ -69,8 +69,8 @@ class CustomButton extends StatelessWidget ***REMOVED***
           ? AppColors.primaryColor.withOpacity(0.3)
           : AppColors.whiteColor.withOpacity(0.4));
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Material(
       type: MaterialType.card,
       clipBehavior: Clip.antiAlias,
@@ -82,7 +82,7 @@ class CustomButton extends StatelessWidget ***REMOVED***
         splashColor: _splashColor,
         onTap: isDisabled || loading
             ? null
-            : () async ***REMOVED***
+            : () async {
                 FocusScope.of(context).unfocus();
                 await HapticFeedback.heavyImpact();
                 onPressed?.call();
@@ -115,13 +115,13 @@ class CustomButton extends StatelessWidget ***REMOVED***
                       if (icon != null) ...[
                         icon!,
                         if (title != null) gap.horizontalSpace,
-                ***REMOVED***
+                      ],
                       if (title != null)
                         Text(
                           title!,
                           style: titleStyle ?? AppStyles.text14PxMedium.white,
                         ),
-              ***REMOVED***
+                    ],
                   ),
           ),
         ),

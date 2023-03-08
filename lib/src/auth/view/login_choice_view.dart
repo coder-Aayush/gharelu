@@ -7,11 +7,11 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-class LoginChoiceView extends StatelessWidget ***REMOVED***
-  const LoginChoiceView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class LoginChoiceView extends StatelessWidget {
+  const LoginChoiceView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
@@ -48,7 +48,7 @@ class LoginChoiceView extends StatelessWidget ***REMOVED***
                 width: 270,
               ),
               30.verticalSpace,
-      ***REMOVED***
+            ],
           ),
         ),
       ),

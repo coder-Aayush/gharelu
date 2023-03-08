@@ -2,11 +2,11 @@ import 'package:gharelu/src/auth/data_source/auth_remote_source.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LogoutStateNotifier extends StateNotifier<AppState<bool>> ***REMOVED***
+class LogoutStateNotifier extends StateNotifier<AppState<bool>> {
   LogoutStateNotifier(this._remoteSource) : super(const AppState.initial());
   final AuthRemoteSource _remoteSource;
 
-  Future<void> logout() async ***REMOVED***
+  Future<void> logout() async {
     state = const AppState.loading();
     final response = await _remoteSource.logout();
     state = response.fold(

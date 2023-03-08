@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 
-class BottomSheetHeader extends StatelessWidget ***REMOVED***
-  const BottomSheetHeader(***REMOVED***
+class BottomSheetHeader extends StatelessWidget {
+  const BottomSheetHeader({
     Key? key,
     required this.title,
     this.onClose,
@@ -26,8 +26,8 @@ class BottomSheetHeader extends StatelessWidget ***REMOVED***
   final String? closeText;
   final bool isActionIconEnabled;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.only(right: 10.w),
       child: Row(
@@ -44,10 +44,10 @@ class BottomSheetHeader extends StatelessWidget ***REMOVED***
           Expanded(
             child: TextButton(
               style: TextButton.styleFrom(enableFeedback: true),
-              onPressed: () ***REMOVED***
-                if (onClose != null) ***REMOVED***
+              onPressed: () {
+                if (onClose != null) {
                   onClose?.call();
-                ***REMOVED*** else ***REMOVED***
+                ***REMOVED*** else {
                   Navigator.pop(context);
                 ***REMOVED***
               ***REMOVED***,
@@ -57,7 +57,7 @@ class BottomSheetHeader extends StatelessWidget ***REMOVED***
               ),
             ),
           ),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

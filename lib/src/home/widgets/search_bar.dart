@@ -5,13 +5,13 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-class SearchBar extends StatelessWidget ***REMOVED***
-  const SearchBar(***REMOVED***Key? key, required this.onPressed***REMOVED***) : super(key: key);
+class SearchBar extends StatelessWidget {
+  const SearchBar({Key? key, required this.onPressed***REMOVED***) : super(key: key);
 
   final VoidCallback onPressed;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: (150.h / 2).h),
       decoration: const BoxDecoration(
@@ -44,7 +44,7 @@ class SearchBar extends StatelessWidget ***REMOVED***
                     'Search Services',
                     style: AppStyles.text14PxRegular.midGrey,
                   ).expanded(),
-          ***REMOVED***
+                ],
               ).px(10),
             ),
           ),

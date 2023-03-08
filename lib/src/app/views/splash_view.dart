@@ -1,6 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/app/provider/auth_status_provider.dart';
 import 'package:gharelu/src/auth/models/custom_user_model.dart';
@@ -17,52 +17,52 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SplashView extends HookConsumerWidget ***REMOVED***
-  const SplashView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class SplashView extends HookConsumerWidget {
+  const SplashView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    // useEffect(() ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // useEffect(() {
     //   NotificationService.instance.initilize();
-    //   if (ref.read(firebaseAuthProvider).currentUser != null) ***REMOVED***
+    //   if (ref.read(firebaseAuthProvider).currentUser != null) {
     //     context.router.replaceAll([const DashboardRouter()]);
     //   ***REMOVED***
     // ***REMOVED***, []);
     ref.listen<AppState<CustomUserModel>>(authStatusNotifierProvider,
-        (previous, next) ***REMOVED***
+        (previous, next) {
       next.maybeWhen(
         orElse: () => null,
-        success: (data) ***REMOVED***
+        success: (data) {
           ref.read(authChangeProvider);
-          context.showSnackbar(message: 'Welcome Back $***REMOVED***data.name***REMOVED***');
-          if (data.isMerchant) ***REMOVED***
+          context.showSnackbar(message: 'Welcome Back ${data.name***REMOVED***');
+          if (data.isMerchant) {
             ***REMOVED***navigate to merchant
             ///
             context.router.replaceAll([const MerchantDashboardRouter()]);
-          ***REMOVED*** else ***REMOVED***
+          ***REMOVED*** else {
             context.router.replaceAll([const DashboardRouter()]);
           ***REMOVED***
         ***REMOVED***,
-        error: (message) async ***REMOVED***
+        error: (message) async {
           context.showSnackbar(message: message);
           // ignore: inference_failure_on_instance_creation
           await Future.delayed(const Duration(milliseconds: 300));
           context.router.push(const LoginChoiceRoute());
         ***REMOVED***,
       );
-  ***REMOVED***
+    ***REMOVED***
 
-    // ref.listen(authSatate, (previous, next) ***REMOVED***
-    //   if (next != null) ***REMOVED***
+    // ref.listen(authSatate, (previous, next) {
+    //   if (next != null) {
     //     log(next.toString());
     //   ***REMOVED***
-    // ***REMOVED***);
+    // ***REMOVED***
     // final _authState = ref.watch(authSatate);
     // return Scaffold(
     //   backgroundColor: AppColors.primaryColor,
     //   body: _authState.when(
-    //     data: (data) ***REMOVED***
-    //       if (data != null) ***REMOVED***
+    //     data: (data) {
+    //       if (data != null) {
     //         context.router.replaceAll([const DashboardRouter()]);
     //       ***REMOVED***
     //       return _body(context);
@@ -77,7 +77,7 @@ class SplashView extends HookConsumerWidget ***REMOVED***
     );
   ***REMOVED***
 
-  Widget _body(BuildContext context) ***REMOVED***
+  Widget _body(BuildContext context) {
     return SafeArea(
       child: Center(
         child: Column(
@@ -93,10 +93,10 @@ class SplashView extends HookConsumerWidget ***REMOVED***
               style: AppStyles.text18PxMedium.white,
             ),
             const Spacer(),
-            Consumer(builder: (context, ref, _) ***REMOVED***
+            Consumer(builder: (context, ref, _) {
               return ref.watch(authStatusNotifierProvider).maybeWhen(
                     orElse: () => buildButton(ref, context),
-                    success: (data) ***REMOVED***
+                    success: (data) {
                       return const SizedBox.shrink();
                     ***REMOVED***,
                     loading: () => const Center(
@@ -108,13 +108,13 @@ class SplashView extends HookConsumerWidget ***REMOVED***
                   );
             ***REMOVED***),
             20.verticalSpace,
-    ***REMOVED***
+          ],
         ),
       ),
     );
   ***REMOVED***
 
-  Widget buildButton(WidgetRef ref, BuildContext context) ***REMOVED***
+  Widget buildButton(WidgetRef ref, BuildContext context) {
     return CustomButton(
       loading: ref.watch(authStatusNotifierProvider).maybeWhen(
             orElse: () => false,

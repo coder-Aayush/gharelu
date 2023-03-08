@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-extension WidgetX on Widget ***REMOVED***
+extension WidgetX on Widget {
   Padding px(double padding) => Padding(
         padding: EdgeInsets.symmetric(horizontal: padding),
         child: this,
@@ -13,7 +13,7 @@ extension WidgetX on Widget ***REMOVED***
         child: this,
       );
 
-  Padding pOnly(***REMOVED***
+  Padding pOnly({
     double top = 0,
     double right = 0,
     double bottom = 0,
@@ -41,7 +41,7 @@ extension WidgetX on Widget ***REMOVED***
 
   SliverToBoxAdapter get toSliverBox => SliverToBoxAdapter(child: this);
 
-  Expanded expanded(***REMOVED***int flex = 1***REMOVED***) => Expanded(
+  Expanded expanded({int flex = 1***REMOVED***) => Expanded(
         child: this,
         flex: flex,
       );
@@ -49,7 +49,7 @@ extension WidgetX on Widget ***REMOVED***
 
 ***REMOVED***
 
-extension TextStyleX on TextStyle ***REMOVED***
+extension TextStyleX on TextStyle {
   //colors
   TextStyle get primary => copyWith(color: AppColors.primaryColor);
   TextStyle get white => copyWith(color: AppColors.whiteColor);

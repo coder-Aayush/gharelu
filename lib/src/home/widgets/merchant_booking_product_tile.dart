@@ -14,13 +14,13 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
-  const MerchantBookingProductTile(***REMOVED***Key? key, required this.booking***REMOVED***)
+class MerchantBookingProductTile extends StatelessWidget {
+  const MerchantBookingProductTile({Key? key, required this.booking***REMOVED***)
       : super(key: key);
   final BookingModel booking;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Card(
       elevation: 1,
       child: Padding(
@@ -48,14 +48,14 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                             style: AppStyles.text16PxSemiBold.softBlack,
                           ),
                           Text(
-                            '#$***REMOVED***booking.user?.uid ?? ''***REMOVED***',
+                            '#${booking.user?.uid ?? ''***REMOVED***',
                             style: AppStyles.text10PxRegular.primary,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                  ***REMOVED***
+                        ],
                       ),
-              ***REMOVED***
+                    ],
                   ),
                 ),
                 // IgnorePointer(
@@ -67,19 +67,19 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                   children: [
                     // IconButton(
                     //   onPressed: () async => await launchUrlString(
-                    //       'tel:$***REMOVED***booking.user?.phoneNumber***REMOVED***'),
+                    //       'tel:${booking.user?.phoneNumber***REMOVED***'),
                     //   icon: Icon(
                     //     Icons.phone,
                     //     color: AppColors.softBlack.withOpacity(.4),
                     //   ),
                     // ),
                     // IconButton(
-                    //   onPressed: () ***REMOVED******REMOVED***,
+                    //   onPressed: () {***REMOVED***,
                     //   icon: Assets.icons.chat.svg(),
                     // ),
-            ***REMOVED***
+                  ],
                 ),
-        ***REMOVED***
+              ],
             ),
             8.verticalSpace,
             Row(
@@ -123,11 +123,11 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                             icon: Assets.icons.handWatchIcon.path,
                             title: booking.time,
                           ),
-                  ***REMOVED***
+                        ],
                       ),
                       6.verticalSpace,
                       Consumer(
-                        builder: (context, ref, _) ***REMOVED***
+                        builder: (context, ref, _) {
                           return DropdownButtonHideUnderline(
                             child: DropdownButton2<OrderType>(
                               buttonHeight: 32,
@@ -138,7 +138,7 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                                   BoxShadow(
                                     color: AppColors.softBlack.withOpacity(.4),
                                   ),
-                          ***REMOVED***
+                                ],
                               ),
                               onChanged: (value) => ref
                                   .read(
@@ -166,15 +166,15 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                                   ),
                                   value: OrderType.Cancelled,
                                 ),
-                        ***REMOVED***
+                              ],
                             ),
                           );
                         ***REMOVED***,
                       )
-              ***REMOVED***
+                    ],
                   ),
                 ),
-        ***REMOVED***
+              ],
             ),
             Theme(
               data:
@@ -182,12 +182,12 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
               child: ExpansionTile(
                 tilePadding: EdgeInsets.zero,
                 title: const Text('Payment Info'),
-                onExpansionChanged: (value) ***REMOVED******REMOVED***,
+                onExpansionChanged: (value) {***REMOVED***,
                 childrenPadding: EdgeInsets.zero,
                 children: [
                   ExpensionTileContent(
                     title: 'Item Price: ',
-                    description: 'Rs $***REMOVED***booking.totalPrice - 60***REMOVED***',
+                    description: 'Rs ${booking.totalPrice - 60***REMOVED***',
                   ),
                   3.verticalSpace,
                   const ExpensionTileContent(
@@ -198,13 +198,13 @@ class MerchantBookingProductTile extends StatelessWidget ***REMOVED***
                   Divider(color: AppColors.softBlack.withOpacity(.2)),
                   ExpensionTileContent(
                     title: 'Total: ',
-                    description: 'Rs $***REMOVED***booking.totalPrice***REMOVED***',
+                    description: 'Rs ${booking.totalPrice***REMOVED***',
                   ),
                   4.verticalSpace,
-          ***REMOVED***
+                ],
               ),
             )
-    ***REMOVED***
+          ],
         ),
       ),
     );

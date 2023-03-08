@@ -1,4 +1,4 @@
-***REMOVED***
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,9 +12,9 @@ import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
-class ProductTile extends StatelessWidget ***REMOVED***
-  ProductTile(***REMOVED***Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id***REMOVED***) : super(key: key) ***REMOVED***
-    if (status != null && booking == null) ***REMOVED***
+class ProductTile extends StatelessWidget {
+  ProductTile({Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id***REMOVED***) : super(key: key) {
+    if (status != null && booking == null) {
       throw Exception('if status is provided, we need product too');
     ***REMOVED***
   ***REMOVED***
@@ -34,8 +34,8 @@ class ProductTile extends StatelessWidget ***REMOVED***
   double get buttonHeight => 32;
   double get buttonWidth => 110;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -91,27 +91,27 @@ class ProductTile extends StatelessWidget ***REMOVED***
                         ),
                         isDisabled: false,
                       )
-            ***REMOVED***
+                  ],
                 ).pOnly(top: 16)
               else
                 statusButton(context).pOnly(top: 14.h),
-      ***REMOVED***
+            ],
           ).px(12).expanded(),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***
 
-  Widget statusButton(BuildContext context) ***REMOVED***
+  Widget statusButton(BuildContext context) {
     final now = DateTime.now();
     final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
     final updatedHour = DateTime.fromMillisecondsSinceEpoch(booking!.updatedAt);
     print(now.subtract(Duration(hours: 6)).millisecondsSinceEpoch);
-    if (status == OrderType.Pending) ***REMOVED***
+    if (status == OrderType.Pending) {
       return CustomButton(
         title: 'Cancel Appoinment',
         isDisabled: !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
-        onPressed: () ***REMOVED***
+        onPressed: () {
           CancelAppointmentButtomSheet.show(context, bookingId: id);
         ***REMOVED***,
         height: buttonHeight,
@@ -119,7 +119,7 @@ class ProductTile extends StatelessWidget ***REMOVED***
         titleStyle: AppStyles.text12PxMedium.white,
         shape: shape,
       );
-    ***REMOVED*** else if (status == OrderType.Completed) ***REMOVED***
+    ***REMOVED*** else if (status == OrderType.Completed) {
       return Text('Order Completed', style: AppStyles.text12PxMedium.primary);
     ***REMOVED*** else
       return Text('Order Canceled', style: AppStyles.text12PxMedium.error);

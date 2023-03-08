@@ -6,9 +6,9 @@ part 'message_model.g.dart';
 part 'message_model.freezed.dart';
 
 @freezed
-class MessageModel with _$MessageModel ***REMOVED***
+class MessageModel with _$MessageModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory MessageModel(***REMOVED***
+  const factory MessageModel({
     required String id,
     required String userId,
     required String merchantId,

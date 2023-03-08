@@ -6,9 +6,9 @@ part 'product_model.g.dart';
 part 'product_model.freezed.dart';
 
 @freezed
-class ProductModel with _$ProductModel ***REMOVED***
+class ProductModel with _$ProductModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory ProductModel(***REMOVED***
+  const factory ProductModel({
     required String id,
     required String categoryId,
     required int createdAt,
@@ -28,7 +28,7 @@ class ProductModel with _$ProductModel ***REMOVED***
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
 
-  factory ProductModel.empty() ***REMOVED***
+  factory ProductModel.empty() {
     final now = DateTime.now().millisecondsSinceEpoch;
     return ProductModel(
       id: '',

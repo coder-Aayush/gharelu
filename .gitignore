@@ -133,5 +133,4 @@ app.*.map.json
 !.idea/dictionaries/
 !.idea/runConfigurations/
 build.yaml
-
-
+.env

@@ -5,21 +5,21 @@ import 'package:gharelu/src/core/utility/contact_utility.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
-class HelpAndSupportView extends StatelessWidget ***REMOVED***
-  const HelpAndSupportView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class HelpAndSupportView extends StatelessWidget {
+  const HelpAndSupportView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Help and Support'),
       ),
       body: Column(
-        children: List.generate(AppConstant.helpAndSupport.length, (index) ***REMOVED***
+        children: List.generate(AppConstant.helpAndSupport.length, (index) {
           final helpAndSupport = AppConstant.helpAndSupport[index];
           return CardListTile(
             title: helpAndSupport.name,
-            onPressed: () async ***REMOVED***
+            onPressed: () async {
               await launchType(helpAndSupport.type, helpAndSupport.content);
             ***REMOVED***,
           );

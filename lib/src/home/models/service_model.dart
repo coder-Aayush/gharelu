@@ -3,10 +3,10 @@ part 'service_model.g.dart';
 part 'service_model.freezed.dart';
 
 @freezed
-class ServiceModel with _$ServiceModel ***REMOVED***
+class ServiceModel with _$ServiceModel {
   const ServiceModel._();
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory ServiceModel(***REMOVED***
+  const factory ServiceModel({
     required String id,
     required String name,
     required String image,

@@ -11,14 +11,14 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginUserView extends HookConsumerWidget ***REMOVED***
-  const LoginUserView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class LoginUserView extends HookConsumerWidget {
+  const LoginUserView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final _email = useTextEditingController();
     final _password = useTextEditingController();
-    ref.listen(userLoginProvider, (previous, next) ***REMOVED***
+    ref.listen(userLoginProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
@@ -26,19 +26,19 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
         success: (data) => context.router.push(
           WelcomeRoute(
             buttonTitle: 'Back To Home',
-            onPressed: () ***REMOVED***
+            onPressed: () {
               context.router.replaceAll([const DashboardRouter()]);
             ***REMOVED***,
           ),
         ),
       );
-  ***REMOVED***
+    ***REMOVED***
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login'),
       ),
       body: SingleChildScrollView(
-        child: Consumer(builder: (context, ref, _) ***REMOVED***
+        child: Consumer(builder: (context, ref, _) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -49,7 +49,7 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
               ),
               80.verticalSpace,
               Consumer(
-                builder: (context, ref, child) ***REMOVED***
+                builder: (context, ref, child) {
                   return CustomTextField(
                     onChanged: (email) => ref
                         .read(userLoginFormProvider.notifier)
@@ -107,9 +107,9 @@ class LoginUserView extends HookConsumerWidget ***REMOVED***
                         context.router.push(const UserSignupRoute()),
                     child: const Text('Signup'),
                   ),
-          ***REMOVED***
+                ],
               ),
-      ***REMOVED***
+            ],
           ).px(20);
         ***REMOVED***),
       ),

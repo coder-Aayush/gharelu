@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 
-class CustomProductCard extends StatelessWidget ***REMOVED***
-  const CustomProductCard(***REMOVED***
+class CustomProductCard extends StatelessWidget {
+  const CustomProductCard({
     Key? key,
     required this.onPressed,
     required this.image,
@@ -21,8 +21,8 @@ class CustomProductCard extends StatelessWidget ***REMOVED***
 
   BorderRadius get radius => BorderRadius.circular(8.r);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: 250.h,
       width: double.infinity,
@@ -75,7 +75,7 @@ class CustomProductCard extends StatelessWidget ***REMOVED***
                     ),
                   ),
                 ),
-      ***REMOVED***
+            ],
           ),
         ),
       ),

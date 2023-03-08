@@ -1,13 +1,13 @@
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/map_view/data_source/location_data_source.dart';
 
-class GetLocationState extends StateNotifier<AppState<String>> ***REMOVED***
+class GetLocationState extends StateNotifier<AppState<String>> {
   GetLocationState(this._dataSource) : super(const AppState<String>.initial());
   final LocationDataSource _dataSource;
 
   Future<void> getLocationFromLatLng(
-      ***REMOVED***required String lat, required String lng***REMOVED***) async ***REMOVED***
+      {required String lat, required String lng***REMOVED***) async {
     state = const AppState.loading();
     final response =
         await _dataSource.getLocationFromGeoCordinates(lat: lat, lng: lng);

@@ -5,10 +5,10 @@ part 'custom_user_model.g.dart';
 part 'custom_user_model.freezed.dart';
 
 @freezed
-class CustomUserModel with _$CustomUserModel ***REMOVED***
+class CustomUserModel with _$CustomUserModel {
   const CustomUserModel._();
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory CustomUserModel(***REMOVED***
+  const factory CustomUserModel({
     required String uid,
     required String name,
     required String email,

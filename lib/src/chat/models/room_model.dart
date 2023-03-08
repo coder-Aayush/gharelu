@@ -7,9 +7,9 @@ part 'room_model.g.dart';
 part 'room_model.freezed.dart';
 
 @freezed
-class RoomModel with _$RoomModel ***REMOVED***
+class RoomModel with _$RoomModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory RoomModel(***REMOVED***
+  const factory RoomModel({
     required String id,
     required String userId,
     required String merchantId,

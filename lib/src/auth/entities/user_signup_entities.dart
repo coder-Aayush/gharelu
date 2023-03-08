@@ -4,9 +4,9 @@ import 'package:velocity_x/velocity_x.dart';
 part 'user_signup_entities.freezed.dart';
 
 @freezed
-class UserSignupFromEntity with _$UserSignupFromEntity ***REMOVED***
+class UserSignupFromEntity with _$UserSignupFromEntity {
   const UserSignupFromEntity._();
-  const factory UserSignupFromEntity(***REMOVED***
+  const factory UserSignupFromEntity({
     required Field name,
     required Field email,
     required Field password,

@@ -3,19 +3,19 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DashboardView extends StatefulHookConsumerWidget ***REMOVED***
-  const DashboardView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class DashboardView extends StatefulHookConsumerWidget {
+  const DashboardView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
+  @override
   _DashboardViewState createState() => _DashboardViewState();
 ***REMOVED***
 
-class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+class _DashboardViewState extends ConsumerState<DashboardView> {
+  @override
+  Widget build(BuildContext context) {
     ref.read(authChangeProvider);
     return WillPopScope(
-      onWillPop: () async ***REMOVED***
+      onWillPop: () async {
         return false;
       ***REMOVED***,
       child: AutoTabsScaffold(
@@ -30,12 +30,12 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
                       ?.setActiveIndex(1)
                   ..navigate(const AppointmentRouter()),
           ),
-  ***REMOVED***
+        ],
         builder: (context, child, animation) => FadeTransition(
           opacity: animation,
           child: child,
         ),
-        bottomNavigationBuilder: (context, tabsRouter) ***REMOVED***
+        bottomNavigationBuilder: (context, tabsRouter) {
           return BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
@@ -57,7 +57,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> ***REMOVED***
                 icon: Icon(Icons.person),
                 label: 'Profile',
               ),
-      ***REMOVED***
+            ],
           );
         ***REMOVED***,
       ),

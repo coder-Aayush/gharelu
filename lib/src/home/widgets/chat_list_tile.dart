@@ -4,8 +4,8 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-class ChatListTile extends StatelessWidget ***REMOVED***
-  const ChatListTile(***REMOVED***
+class ChatListTile extends StatelessWidget {
+  const ChatListTile({
     Key? key,
     required this.imageUrl,
     required this.name,
@@ -17,8 +17,8 @@ class ChatListTile extends StatelessWidget ***REMOVED***
   final String subtitle;
   final VoidCallback onPressed;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ListTile(
       onTap: onPressed,
       leading: GradientCircle(

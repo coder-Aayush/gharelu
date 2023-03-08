@@ -15,22 +15,22 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-class MerchantSignupView extends HookConsumerWidget ***REMOVED***
-  const MerchantSignupView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantSignupView extends HookConsumerWidget {
+  const MerchantSignupView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    ref.listen(merchantSignupProvider, (previous, next) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(merchantSignupProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
-        success: (data) ***REMOVED***
+        success: (data) {
           context.router.replaceAll([const MerchantDashboardRouter()]);
           context.showSnackbar(message: 'You are signed up');
         ***REMOVED***,
       );
-  ***REMOVED***
+    ***REMOVED***
     final _name = useTextEditingController();
     final _email = useTextEditingController();
     final _phoneNumber = useTextEditingController();
@@ -106,9 +106,9 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
             ),
             ActionChip(
               label: const Text('Upload'),
-              onPressed: () async ***REMOVED***
+              onPressed: () async {
                 final imagePath = (await ImagePicker().pickMultiImage());
-                if (imagePath != null) ***REMOVED***
+                if (imagePath != null) {
                   ref
                       .read(merchantSignupFormProvider.notifier)
                       .setDocuments(imagePath.map((e) => e.path).toList());
@@ -145,7 +145,7 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                   label: const Text('Set on Map'),
                   onPressed: () => context.router.push(
                     MapPickerRoute(
-                      onSuccess: (location, placeId, latlng) ***REMOVED***
+                      onSuccess: (location, placeId, latlng) {
                         context.router.pop();
                         // ref.read(merchantSignupProvider).
                         ref
@@ -158,7 +158,7 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                 3.horizontalSpace,
                 Text(ref.watch(merchantSignupFormProvider).form.location.value)
                     .expanded()
-        ***REMOVED***
+              ],
             ),
             40.verticalSpace,
             Align(
@@ -201,9 +201,9 @@ class MerchantSignupView extends HookConsumerWidget ***REMOVED***
                   onPressed: () => context.router.pop(),
                   child: const Text('Login'),
                 ),
-        ***REMOVED***
+              ],
             ),
-    ***REMOVED***
+          ],
         ),
       ).px(20),
     );

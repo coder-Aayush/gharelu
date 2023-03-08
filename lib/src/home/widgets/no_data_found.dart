@@ -5,12 +5,12 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
 
-class NoDataFound extends StatelessWidget ***REMOVED***
-  const NoDataFound(***REMOVED***Key? key, required this.title, required this.onRefresh***REMOVED***) : super(key: key);
+class NoDataFound extends StatelessWidget {
+  const NoDataFound({Key? key, required this.title, required this.onRefresh***REMOVED***) : super(key: key);
   final String title;
   final VoidCallback onRefresh;
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -25,7 +25,7 @@ class NoDataFound extends StatelessWidget ***REMOVED***
           onPressed: onRefresh,
           isDisabled: false,
         )
-***REMOVED***
+      ],
     );
   ***REMOVED***
 ***REMOVED***

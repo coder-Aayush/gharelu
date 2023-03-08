@@ -1,16 +1,16 @@
-***REMOVED***
+import 'dart:developer';
 
 import 'package:gharelu/src/auth/data_source/auth_remote_source.dart';
 import 'package:gharelu/src/auth/models/custom_user_model.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GetUserInfoNotifier extends StateNotifier<AppState<CustomUserModel>> ***REMOVED***
+class GetUserInfoNotifier extends StateNotifier<AppState<CustomUserModel>> {
   GetUserInfoNotifier(this._remoteSource) : super(const AppState.initial());
   final AuthRemoteSource _remoteSource;
 
   Future<void> getUserInfo(
-      ***REMOVED***required String id, bool isMerchant = false***REMOVED***) async ***REMOVED***
+      {required String id, bool isMerchant = false***REMOVED***) async {
     state = const AppState.loading();
     final response =
         await _remoteSource.getUserInfo(id: id, isMerchant: isMerchant);

@@ -8,27 +8,27 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/service_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SelectServiceCategoryBottomsheet extends StatelessWidget ***REMOVED***
-  const SelectServiceCategoryBottomsheet(***REMOVED***Key? key***REMOVED***) : super(key: key);
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+class SelectServiceCategoryBottomsheet extends StatelessWidget {
+  const SelectServiceCategoryBottomsheet({Key? key***REMOVED***) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         const BottomSheetHeader(title: 'Select Service'),
         10.verticalSpace,
-        Consumer(builder: (context, ref, _) ***REMOVED***
+        Consumer(builder: (context, ref, _) {
           return ref.watch(categoriesStateProvider).maybeWhen(
                 orElse: () => Container(),
                 loading: () => const Center(child: CircularProgressIndicator()),
-                success: (data) ***REMOVED***
+                success: (data) {
                   return Wrap(
                     runSpacing: 20,
                     spacing: 26,
                     children: List.generate(
                       data.length,
                       (index) => GestureDetector(
-                        onTap: () ***REMOVED***
+                        onTap: () {
                           Navigator.pop(context, data[index]);
                         ***REMOVED***,
                         child: Column(
@@ -44,7 +44,7 @@ class SelectServiceCategoryBottomsheet extends StatelessWidget ***REMOVED***
                               data[index].name,
                               style: AppStyles.text10PxBold.softBlack,
                             ),
-                    ***REMOVED***
+                          ],
                         ),
                       ),
                     ),
@@ -53,14 +53,14 @@ class SelectServiceCategoryBottomsheet extends StatelessWidget ***REMOVED***
               );
         ***REMOVED***),
         40.verticalSpace,
-***REMOVED***
+      ],
     );
   ***REMOVED***
 
-  static Future<CategoryModel?> show(BuildContext context) async ***REMOVED***
+  static Future<CategoryModel?> show(BuildContext context) async {
     final response = await showAppBottomSheet<CategoryModel?>(
         context, const SelectServiceCategoryBottomsheet());
-    if (response != null) ***REMOVED***
+    if (response != null) {
       return response;
     ***REMOVED***
     return null;

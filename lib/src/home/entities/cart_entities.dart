@@ -6,9 +6,9 @@ import 'package:gharelu/src/home/models/product_model.dart';
 part 'cart_entities.freezed.dart';
 
 @freezed
-class CartEntities with _$CartEntities ***REMOVED***
+class CartEntities with _$CartEntities {
   const CartEntities._();
-  const factory CartEntities(***REMOVED***
+  const factory CartEntities({
     @Default([]) List<ProductModel> products,
     @Default(0) int price,
     @Default(0) int subTotal,
@@ -18,16 +18,16 @@ class CartEntities with _$CartEntities ***REMOVED***
 
   int get totalPrice => products.isNotEmpty ? products.map((item) => item.quantity * item.price).reduce((value1, value2) => value1 + value2) : 0;
 
-  List<BookingModel> booking(***REMOVED***
+  List<BookingModel> booking({
     required String bookingDate,
     required String time,
     required String serviceId,
     required String userId,
     required String merchantId,
-  ***REMOVED***) ***REMOVED***
+  ***REMOVED***) {
     final now = DateTime.now().millisecondsSinceEpoch;
     List<BookingModel> bookings = [];
-    for (var i = 0; i < products.length; i++) ***REMOVED***
+    for (var i = 0; i < products.length; i++) {
       bookings.add(BookingModel(
         createdAt: now,
         date: bookingDate,

@@ -1,4 +1,4 @@
-***REMOVED***
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,11 +11,11 @@ import 'package:gharelu/src/home/providers/get_user_bookings.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AppointmentView extends ConsumerWidget ***REMOVED***
-  const AppointmentView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class AppointmentView extends ConsumerWidget {
+  const AppointmentView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     log('rebuild');
     return DefaultTabController(
       length: 2,
@@ -31,11 +31,11 @@ class AppointmentView extends ConsumerWidget ***REMOVED***
             tabs: [
               Tab(text: 'Previous'),
               Tab(text: 'Upcoming'),
-      ***REMOVED***
+            ],
           ),
         ),
         body: Consumer(
-          builder: (context, ref, _) ***REMOVED***
+          builder: (context, ref, _) {
             return ref.watch(getUserBookingsNotifierProvider).maybeWhen(
                   orElse: Container.new,
                   loading: () => context.loader,
@@ -43,7 +43,7 @@ class AppointmentView extends ConsumerWidget ***REMOVED***
                   success: (previous, upcoming) => TabBarView(
                     children: [
                       RefreshIndicator(
-                        onRefresh: () async ***REMOVED***
+                        onRefresh: () async {
                           await ref.refresh(getUserBookingsNotifierProvider);
                         ***REMOVED***,
                         child: previous.isEmpty
@@ -58,13 +58,13 @@ class AppointmentView extends ConsumerWidget ***REMOVED***
                                 itemBuilder: (context, index) =>
                                     BookingProductTile(
                                   booking: previous[index],
-                                  onButton: (product) ***REMOVED******REMOVED***,
+                                  onButton: (product) {***REMOVED***,
                                 ).py(10.h).px(10.w),
                                 itemCount: previous.length,
                               ),
                       ),
                       RefreshIndicator(
-                        onRefresh: () async ***REMOVED***
+                        onRefresh: () async {
                           await ref.refresh(getUserBookingsNotifierProvider);
                         ***REMOVED***,
                         child: upcoming.isEmpty
@@ -76,17 +76,17 @@ class AppointmentView extends ConsumerWidget ***REMOVED***
                                 ),
                               )
                             : ListView.builder(
-                                itemBuilder: (context, index) ***REMOVED***
+                                itemBuilder: (context, index) {
                                   final product = upcoming[index];
                                   return BookingProductTile(
                                     booking: product,
-                                    onButton: (product) ***REMOVED******REMOVED***,
+                                    onButton: (product) {***REMOVED***,
                                   ).py(10.h).px(10.w);
                                 ***REMOVED***,
                                 itemCount: upcoming.length,
                               ),
                       ),
-              ***REMOVED***
+                    ],
                   ),
                 );
           ***REMOVED***,

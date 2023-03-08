@@ -4,8 +4,8 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 
-class CustomTextField extends StatelessWidget ***REMOVED***
-  const CustomTextField(***REMOVED***
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
     Key? key,
     this.title,
     required this.controller,
@@ -44,8 +44,8 @@ class CustomTextField extends StatelessWidget ***REMOVED***
 
   bool get hasWarning => warning != null && (warning ?? '').trim().isNotEmpty;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,15 +83,15 @@ class CustomTextField extends StatelessWidget ***REMOVED***
             error ?? '',
             style: AppStyles.text12PxRegular.error,
           ),
-***REMOVED***
+      ],
     );
   ***REMOVED***
 
-  Color get borderColor ***REMOVED***
-    if (hasError) ***REMOVED***
+  Color get borderColor {
+    if (hasError) {
       return AppColors.errorColor;
     ***REMOVED***
-    if (hasWarning) ***REMOVED***
+    if (hasWarning) {
       return AppColors.warningColor;
     ***REMOVED***
     return AppColors.primaryColor;

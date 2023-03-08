@@ -5,13 +5,13 @@ import 'package:gharelu/src/home/data_source/service_data_source.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> ***REMOVED***
+class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> {
   CreateProductNotifier(this._remoteSource) : super(const AppState.initial());
 
   final ServiceRemoteSource _remoteSource;
 
   Future<void> createProduct(ProductModel product,
-      ***REMOVED***File? image, bool update = false***REMOVED***) async ***REMOVED***
+      {File? image, bool update = false***REMOVED***) async {
     state = const AppState.loading();
     final response = await _remoteSource.createProduct(product,
         productImage: image, update: update);
@@ -26,6 +26,6 @@ class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> ***REM
 ***REMOVED***
 
 final createProductNotifierProvider = StateNotifierProvider.autoDispose<
-    CreateProductNotifier, AppState<ProductModel>>((ref) ***REMOVED***
+    CreateProductNotifier, AppState<ProductModel>>((ref) {
   return CreateProductNotifier(ref.read(serviceRemoteSourceProvider));
-***REMOVED***);
+***REMOVED***

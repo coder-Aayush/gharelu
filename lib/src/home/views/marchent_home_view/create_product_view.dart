@@ -21,12 +21,12 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-class CreateProductView extends HookConsumerWidget ***REMOVED***
-  const CreateProductView(***REMOVED***Key? key, this.editProduct***REMOVED***) : super(key: key);
+class CreateProductView extends HookConsumerWidget {
+  const CreateProductView({Key? key, this.editProduct***REMOVED***) : super(key: key);
   final ProductModel? editProduct;
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final productName = useTextEditingController();
     final productDescription = useTextEditingController();
     final priceController = useTextEditingController();
@@ -37,8 +37,8 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
     ***REMOVED***Listeners
     ///
     ///
-    useEffect(() ***REMOVED***
-      if (editProduct != null) ***REMOVED***
+    useEffect(() {
+      if (editProduct != null) {
         Future.delayed(
           const Duration(milliseconds: 2),
           () => ref.read(createProductFormNotifierProvider.notifier).setProduct(editProduct!),
@@ -55,10 +55,10 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
 
     final form = ref.watch(createProductFormNotifierProvider).form;
 
-    ref.listen<AppState>(createProductNotifierProvider, (previous, next) ***REMOVED***
+    ref.listen<AppState>(createProductNotifierProvider, (previous, next) {
       next.maybeWhen(
         orElse: () => null,
-        success: (data) ***REMOVED***
+        success: (data) {
           context.router.pop();
           context.router.root.innerRouterOf(MerchantDashboardRouter.name)
             ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)?.setActiveIndex(0)
@@ -68,19 +68,19 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
         ***REMOVED***,
         error: (message) => context.showErorDialog(message: message),
       );
-  ***REMOVED***
+    ***REMOVED***
 
     return ScaffoldWrapper(
       appBar: AppBar(
         title: Text(editProduct != null ? 'Edit Product' : 'Create Product'),
         actions: [
           // if (editProduct != null) IconButton(onPressed: () => DeleteProductBottomsheet.show(context, productId: editProduct!.id), icon: Assets.icons.deleteIcon.svg()),
-  ***REMOVED***
+        ],
       ),
       bottomNavigationBar: BottomAppBar(
         child: CustomButton(
           title: 'Submit',
-          onPressed: () ***REMOVED***
+          onPressed: () {
             final now = DateTime.now().millisecondsSinceEpoch;
             ref.read(createProductNotifierProvider.notifier).createProduct(
                   ProductModel.empty().copyWith(
@@ -118,11 +118,11 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               style: AppStyles.text14PxMedium.copyWith(color: AppColors.softBlack.withOpacity(.5)),
             ),
             20.verticalSpace,
-            Consumer(builder: (context, ref, _) ***REMOVED***
+            Consumer(builder: (context, ref, _) {
               return GestureDetector(
-                onTap: () async ***REMOVED***
+                onTap: () async {
                   final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
-                  if (picker != null) ***REMOVED***
+                  if (picker != null) {
                     ref.read(createProductFormNotifierProvider.notifier).setImage(File(picker.path));
                   ***REMOVED***
                 ***REMOVED***,
@@ -131,11 +131,11 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     GradientCircle(
                       showGradient: true,
                       radius: 90,
-                      child: Consumer(builder: (context, ref, _) ***REMOVED***
-                        if (form.imageUrl.isNotEmpty) ***REMOVED***
+                      child: Consumer(builder: (context, ref, _) {
+                        if (form.imageUrl.isNotEmpty) {
                           return CacheImageViewer(imageUrl: form.imageUrl);
                         ***REMOVED***
-                        if (form.fileImage?.value != null) ***REMOVED***
+                        if (form.fileImage?.value != null) {
                           return Image.file(File(form.fileImage!.value), fit: BoxFit.cover);
                         ***REMOVED***
                         return Opacity(
@@ -153,7 +153,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                         child: Icon(Icons.add),
                       ),
                     ),
-            ***REMOVED***
+                  ],
                 ),
               );
             ***REMOVED***),
@@ -167,8 +167,8 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               error: form.productName.errorMessage,
               warning: form.productName.warningMessage,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-()***REMOVED******REMOVED*** ]')),
-        ***REMOVED***
+                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){***REMOVED*** ]')),
+              ],
               maxLength: 100,
             ),
             20.verticalSpace,
@@ -178,8 +178,8 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
               controller: productDescription,
               maxLength: 300,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-()***REMOVED******REMOVED*** ]')),
-        ***REMOVED***
+                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){***REMOVED*** ]')),
+              ],
               onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setProductDescription(value),
               error: form.description.errorMessage,
               textCapitalization: TextCapitalization.sentences,
@@ -198,7 +198,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     textInputType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-              ***REMOVED***
+                    ],
                   ),
                 ),
                 Expanded(
@@ -211,19 +211,19 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                     error: form.maxQuality.errorMessage,
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-              ***REMOVED***
+                    ],
                   ).pOnly(left: 30.w),
                 ),
-        ***REMOVED***
+              ],
             ),
             20.verticalSpace,
             CustomTextField(
               readOnly: true,
               labelText: 'Product Services',
               controller: category,
-              onTap: () async ***REMOVED***
+              onTap: () async {
                 final response = await SelectServiceCategoryBottomsheet.show(context);
-                if (response != null) ***REMOVED***
+                if (response != null) {
                   ref.read(createProductFormNotifierProvider.notifier).setService(response);
                   category.text = response.name;
                 ***REMOVED***
@@ -231,8 +231,8 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
             ),
             20.verticalSpace,
             GestureDetector(
-              onTap: () ***REMOVED***
-                if (form.category.id.isEmpty) ***REMOVED***
+              onTap: () {
+                if (form.category.id.isEmpty) {
                   context.showSnackbar(message: 'Select Product Category First');
                 ***REMOVED***
               ***REMOVED***,
@@ -241,9 +241,9 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                 isEnable: form.category.id.isNotEmpty,
                 labelText: 'Product Category',
                 controller: service,
-                onTap: () async ***REMOVED***
+                onTap: () async {
                   final response = await ProductCategoryBottomsheet.show(context, category: form.category);
-                  if (response != null) ***REMOVED***
+                  if (response != null) {
                     ref.read(createProductFormNotifierProvider.notifier).setCategory(response);
                     service.text = response.name;
                   ***REMOVED***
@@ -272,7 +272,7 @@ class CreateProductView extends HookConsumerWidget ***REMOVED***
                   : const SizedBox.shrink(),
             ),
             30.verticalSpace,
-    ***REMOVED***
+          ],
         ).px(20.w),
       ),
     );

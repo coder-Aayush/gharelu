@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
 
-class GradientCircle extends StatelessWidget ***REMOVED***
-  const GradientCircle(***REMOVED***
+class GradientCircle extends StatelessWidget {
+  const GradientCircle({
     Key? key,
     this.radius = 60,
     required this.child,
@@ -19,8 +19,8 @@ class GradientCircle extends StatelessWidget ***REMOVED***
   final LinearGradient gradient;
   final bool showGradient;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: radius.w,
       height: radius.h,

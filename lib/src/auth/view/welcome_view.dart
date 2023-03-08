@@ -5,15 +5,15 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-class WelcomeView extends StatelessWidget ***REMOVED***
+class WelcomeView extends StatelessWidget {
   const WelcomeView(
-      ***REMOVED***Key? key, required this.onPressed, required this.buttonTitle***REMOVED***)
+      {Key? key, required this.onPressed, required this.buttonTitle***REMOVED***)
       : super(key: key);
   final VoidCallback onPressed;
   final String buttonTitle;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       body: SafeArea(
         child: Center(
@@ -34,12 +34,12 @@ class WelcomeView extends StatelessWidget ***REMOVED***
                 title: buttonTitle,
                 isDisabled: false,
                 width: 270.w,
-                onPressed: () async ***REMOVED***
+                onPressed: () async {
                   onPressed();
                 ***REMOVED***,
               ),
               20.verticalSpace,
-      ***REMOVED***
+            ],
           ),
         ),
       ),

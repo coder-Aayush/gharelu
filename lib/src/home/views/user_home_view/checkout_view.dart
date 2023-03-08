@@ -1,5 +1,5 @@
 import 'dart:convert';
-***REMOVED***
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,21 +20,21 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
-class CheckoutView extends HookConsumerWidget ***REMOVED***
+class CheckoutView extends HookConsumerWidget {
   const CheckoutView(
-      ***REMOVED***Key? key, required this.date, required this.time, required this.service***REMOVED***)
+      {Key? key, required this.date, required this.time, required this.service***REMOVED***)
       : super(key: key);
   final String date;
   final String time;
   final ServiceModel service;
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    ref.listen(createBookingProvider, (previous, next) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(createBookingProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
-        success: (data) async ***REMOVED***
+        success: (data) async {
           context.showSnackbar(message: 'Booking Confirm');
           ref.read(getUserBookingsNotifierProvider.notifier).getBookings();
           context.router.root.innerRouterOf(DashboardRouter.name)
@@ -45,9 +45,9 @@ class CheckoutView extends HookConsumerWidget ***REMOVED***
               .popUntil((route) => route.settings.name == DashboardRouter.name);
         ***REMOVED***,
       );
-  ***REMOVED***
+    ***REMOVED***
     return Consumer(
-      builder: (context, ref, _) ***REMOVED***
+      builder: (context, ref, _) {
         return ScaffoldWrapper(
           loading: ref.watch(createBookingProvider).maybeWhen(
                 orElse: () => false,
@@ -65,28 +65,28 @@ class CheckoutView extends HookConsumerWidget ***REMOVED***
                 floating: true,
               ),
               Consumer(
-                builder: (context, ref, _) ***REMOVED***
+                builder: (context, ref, _) {
                   final _cart = ref.watch(cartStateProvider);
                   return Column(
                     children: [
                       10.verticalSpace,
                       PaymentCard(
                         title: 'Pay with Khalti',
-                        onPressed: () async ***REMOVED***
+                        onPressed: () async {
                           final config = PaymentConfig(
                             amount: ((_cart.totalPrice + 50) *
                                 100), // Amount should be in paisa
                             productIdentity: _cart.products.first.serviceId,
-                            productName: '$***REMOVED***_cart.products.first.categoryId***REMOVED***',
+                            productName: '${_cart.products.first.categoryId***REMOVED***',
                           );
                           await KhaltiScope.of(context).pay(
                             config: config,
                             preferences: [
                               PaymentPreference.khalti,
                               PaymentPreference.mobileBanking,
-                      ***REMOVED***
-                            onSuccess: (value) async ***REMOVED***
-                              for (var i = 0; i < _cart.products.length; i++) ***REMOVED***
+                            ],
+                            onSuccess: (value) async {
+                              for (var i = 0; i < _cart.products.length; i++) {
                                 ref
                                     .read(createBookingProvider.notifier)
                                     .createBookings(
@@ -100,7 +100,7 @@ class CheckoutView extends HookConsumerWidget ***REMOVED***
                                     );
                               ***REMOVED***
                             ***REMOVED***,
-                            onFailure: (value) ***REMOVED***
+                            onFailure: (value) {
                               context.showSnackbar(message: value.message);
                             ***REMOVED***,
                           );
@@ -111,17 +111,17 @@ class CheckoutView extends HookConsumerWidget ***REMOVED***
                       PaymentCard(
                         title: 'Pay with eSewa',
                         icon: Assets.images.esewaLogo.image(height: 23.h),
-                        onPressed: () ***REMOVED***
+                        onPressed: () {
                           context.showSnackbar(
                               message: 'Unable to Pay with eSEWA');
                         ***REMOVED***,
                         titleColor: const Color(0xff60BB47),
                       ),
-              ***REMOVED***
+                    ],
                   ).px(20).toSliverBox;
                 ***REMOVED***,
               )
-      ***REMOVED***
+            ],
           ),
         );
       ***REMOVED***,

@@ -5,16 +5,16 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantDashboardView extends StatefulHookConsumerWidget ***REMOVED***
-  const MerchantDashboardView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantDashboardView extends StatefulHookConsumerWidget {
+  const MerchantDashboardView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
+  @override
   _MerchantDashboardViewState createState() => _MerchantDashboardViewState();
 ***REMOVED***
 
-class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> ***REMOVED***
-***REMOVED***
-  void didChangeDependencies() ***REMOVED***
+class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> {
+  @override
+  void didChangeDependencies() {
     ref.read(authChangeProvider);
     final userId = ref.read(firebaseAuthProvider).currentUser?.uid;
     Future.delayed(
@@ -26,8 +26,8 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> *
     super.didChangeDependencies();
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: [
         const MerchantHomeRoute(),
@@ -40,7 +40,7 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> *
                     ?.setActiveIndex(1)
                 ..navigate(const MerchantBookingsRoute()),
         ),
-***REMOVED***
+      ],
       homeIndex: 0,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -69,7 +69,7 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> *
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

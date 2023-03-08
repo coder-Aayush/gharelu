@@ -8,34 +8,34 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ChatListView extends StatefulHookConsumerWidget ***REMOVED***
-  const ChatListView(***REMOVED***Key? key, required this.isMerchant***REMOVED***) : super(key: key);
+class ChatListView extends StatefulHookConsumerWidget {
+  const ChatListView({Key? key, required this.isMerchant***REMOVED***) : super(key: key);
   final bool isMerchant;
 
-***REMOVED***
+  @override
   _ChatListViewState createState() => _ChatListViewState();
 ***REMOVED***
 
-class _ChatListViewState extends ConsumerState<ChatListView> ***REMOVED***
+class _ChatListViewState extends ConsumerState<ChatListView> {
   bool get isMerchant => widget.isMerchant;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       appBar: AppBar(title: const Text('Chat')),
       // body: ref.watch(getChatProvider).maybeWhen(
       //       orElse: Container.new,
       //       loading: () => context.loader,
-      //       data: (data) ***REMOVED***
+      //       data: (data) {
       //         return ListView.builder(
       //           itemCount: data.length,
-      //           itemBuilder: (context, index) ***REMOVED***
+      //           itemBuilder: (context, index) {
       //             final room = data[index];
       //             return ChatListTile(
       //               imageUrl: data[index].id,
       //               name: isMerchant ? (room.user?.name ?? '') : (room.merchant?.name ?? ''),
       //               subtitle: 's',
-      //               onPressed: () ***REMOVED******REMOVED***,
+      //               onPressed: () {***REMOVED***,
       //             );
       //           ***REMOVED***,
       //         );
@@ -47,7 +47,7 @@ class _ChatListViewState extends ConsumerState<ChatListView> ***REMOVED***
             loading: () => context.loader,
             success: (data) => ListView.builder(
               itemCount: data.length,
-              itemBuilder: (context, index) ***REMOVED***
+              itemBuilder: (context, index) {
                 final room = data[index];
                 return ChatListTile(
                   imageUrl: '',
@@ -75,10 +75,10 @@ class _ChatListViewState extends ConsumerState<ChatListView> ***REMOVED***
           //         delegate: SliverChildBuilderDelegate(
           //           (context, index) => StreamBuilder(
           //               stream: ref.watch(getChatListProvider(true).stream),
-          //               builder: (context, value) ***REMOVED***
+          //               builder: (context, value) {
           //                 print(value);
           //                 return ChatListTile(
-          //                   onPressed: () ***REMOVED***
+          //                   onPressed: () {
           //                     context.router.push(const ChatDetailRoute());
           //                   ***REMOVED***,
           //                   imageUrl: 'https://placehold.jp/30/dd6699/ffffff/300x150.png?text=A',

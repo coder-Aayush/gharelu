@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class CarouselShimmer extends StatelessWidget ***REMOVED***
-  const CarouselShimmer(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class CarouselShimmer extends StatelessWidget {
+  const CarouselShimmer({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return VxShimmer(
       child: AspectRatio(
         aspectRatio: 23 / 10,

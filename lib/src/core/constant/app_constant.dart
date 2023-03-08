@@ -1,7 +1,7 @@
 import 'package:gharelu/src/core/entity/cancellation_reason_entity.dart';
 import 'package:gharelu/src/core/entity/help_and_support_entity.dart';
 
-class AppConstant ***REMOVED***
+class AppConstant {
   const AppConstant._();
 
   static const String users = 'users';
@@ -78,4 +78,4 @@ class AppConstant ***REMOVED***
 // Conflict with owner: The individual has a conflict with the person or organization that they were scheduled to meet with.
 // Other: There may be other reasons not listed here that are specific to the individual or the situation.
 
-enum MessageType ***REMOVED*** text, image ***REMOVED***
+enum MessageType { text, image ***REMOVED***

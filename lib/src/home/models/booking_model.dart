@@ -7,9 +7,9 @@ part 'booking_model.freezed.dart';
 part 'booking_model.g.dart';
 
 @freezed
-class BookingModel with _$BookingModel ***REMOVED***
+class BookingModel with _$BookingModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory BookingModel(***REMOVED***
+  const factory BookingModel({
     required int createdAt,
     required String date,
     required String id,

@@ -1,1 +1,1 @@
-enum OrderType ***REMOVED*** Cancelled, Pending, Completed ***REMOVED***
+enum OrderType { Cancelled, Pending, Completed ***REMOVED***

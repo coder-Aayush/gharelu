@@ -8,21 +8,21 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class VerifyEmailView extends StatefulWidget ***REMOVED***
-  const VerifyEmailView(***REMOVED***Key? key, required this.email***REMOVED***) : super(key: key);
+class VerifyEmailView extends StatefulWidget {
+  const VerifyEmailView({Key? key, required this.email***REMOVED***) : super(key: key);
 
   final String email;
 
-***REMOVED***
+  @override
   State<VerifyEmailView> createState() => _VerifyEmailViewState();
 ***REMOVED***
 
-class _VerifyEmailViewState extends State<VerifyEmailView> ***REMOVED***
+class _VerifyEmailViewState extends State<VerifyEmailView> {
   bool isVerified = false;
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async ***REMOVED***
+      onWillPop: () async {
         return isVerified;
       ***REMOVED***,
       child: ScaffoldWrapper(
@@ -43,31 +43,31 @@ class _VerifyEmailViewState extends State<VerifyEmailView> ***REMOVED***
                     ),
                     const TextSpan(
                         text: ' Please verify your email and continue.'),
-            ***REMOVED***
+                  ],
                 ),
                 textAlign: TextAlign.center,
               ),
               20.verticalSpace,
               Consumer(
-                builder: (context, ref, child) ***REMOVED***
+                builder: (context, ref, child) {
                   return CustomButton(
                     title: 'Continue',
                     isDisabled: false,
-                    onPressed: () async ***REMOVED***
+                    onPressed: () async {
                       final _ref = ref.read(firebaseAuthProvider);
                       await _ref.currentUser?.reload();
                       final currentUser = _ref.currentUser;
                       isVerified = currentUser?.emailVerified ?? false;
-                      if (currentUser?.emailVerified == false) ***REMOVED***
+                      if (currentUser?.emailVerified == false) {
                         context.showSnackbar(message: 'Email Not Verified yet');
-                      ***REMOVED*** else ***REMOVED***
+                      ***REMOVED*** else {
                         context.router.pop();
                       ***REMOVED***
                     ***REMOVED***,
                   );
                 ***REMOVED***,
               ),
-      ***REMOVED***
+            ],
           ),
         ),
       ),

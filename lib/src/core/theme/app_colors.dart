@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors ***REMOVED***
+class AppColors {
   const AppColors._();
 
   static const Color primaryColor = const Color(0xFF7210FF);
@@ -20,7 +20,7 @@ class AppColors ***REMOVED***
     colors: [
       primaryColor,
       primaryColor,
-  ***REMOVED***
+    ],
     transform: GradientRotation(3.14159),
   );
   static const Color midWhite = Color(0xffEEEEEE);

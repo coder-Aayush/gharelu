@@ -5,9 +5,9 @@ part 'banner_model.freezed.dart';
 part 'banner_model.g.dart';
 
 @freezed
-class BannerModel with _$BannerModel ***REMOVED***
+class BannerModel with _$BannerModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory BannerModel(***REMOVED***
+  const factory BannerModel({
     required String id,
     required String title,
     required String description,

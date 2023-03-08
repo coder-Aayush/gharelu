@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class CancellationReasonEntity extends Equatable ***REMOVED***
-  const CancellationReasonEntity(***REMOVED***required this.title, required this.id, required this.description***REMOVED***);
+class CancellationReasonEntity extends Equatable {
+  const CancellationReasonEntity({required this.title, required this.id, required this.description***REMOVED***
   final String title;
   final int id;
   final String description;
-***REMOVED***
+  @override
   List<Object?> get props => [title, id];
 ***REMOVED***

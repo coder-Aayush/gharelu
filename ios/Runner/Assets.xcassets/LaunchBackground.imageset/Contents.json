@@ -1,20 +1,20 @@
-***REMOVED***
+{
   "images" : [
-    ***REMOVED***
+    {
       "filename" : "background.png",
       "idiom" : "universal",
       "scale" : "1x"
     ***REMOVED***,
-    ***REMOVED***
+    {
       "idiom" : "universal",
       "scale" : "2x"
     ***REMOVED***,
-    ***REMOVED***
+    {
       "idiom" : "universal",
       "scale" : "3x"
     ***REMOVED***
-***REMOVED***
-  "info" : ***REMOVED***
+  ],
+  "info" : {
     "author" : "xcode",
     "version" : 1
   ***REMOVED***

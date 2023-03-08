@@ -8,19 +8,19 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GetMessageNotifier extends StateNotifier<AppState<List<MessageModel>>> ***REMOVED***
+class GetMessageNotifier extends StateNotifier<AppState<List<MessageModel>>> {
   GetMessageNotifier(this._firestore, this._firebaseAuth, this.ref) : super(const AppState.initial());
 
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final Ref ref;
 
-  void getMessages(***REMOVED***required String roomId***REMOVED***) ***REMOVED***
+  void getMessages({required String roomId***REMOVED***) {
     state = const AppState.loading();
     List<MessageModel> messages = [];
-    _firestore.collection(AppConstant.messages).where('room_id', isEqualTo: roomId).orderBy('created_at', descending: true).snapshots().listen((event) async ***REMOVED***
+    _firestore.collection(AppConstant.messages).where('room_id', isEqualTo: roomId).orderBy('created_at', descending: true).snapshots().listen((event) async {
       messages = List<MessageModel>.from(event.docs.map((e) => MessageModel.fromJson(e.data())));
-      for (var message in messages) ***REMOVED***
+      for (var message in messages) {
         final index = messages.indexOf(message);
         // final user = await getUserInfo(ref, message.userId);
         // final merchant = await getMerchantInfo(ref, message.merchantId);
@@ -29,10 +29,10 @@ class GetMessageNotifier extends StateNotifier<AppState<List<MessageModel>>> ***
         state = AppState.success(data: messages);
       ***REMOVED***
       state = AppState.success(data: messages);
-  ***REMOVED***
+    ***REMOVED***
   ***REMOVED***
 ***REMOVED***
 
-final getMessagesNotifierProvider = StateNotifierProvider.family<GetMessageNotifier, AppState<List<MessageModel>>, String>((ref, roomId) ***REMOVED***
+final getMessagesNotifierProvider = StateNotifierProvider.family<GetMessageNotifier, AppState<List<MessageModel>>, String>((ref, roomId) {
   return GetMessageNotifier(ref.read(firestoreProvider), ref.read(firebaseAuthProvider), ref)..getMessages(roomId: roomId);
-***REMOVED***);
+***REMOVED***

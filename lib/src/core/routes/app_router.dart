@@ -51,7 +51,7 @@ import 'package:gharelu/src/map_view/views/views.dart';
           path: 'profile',
           name: 'ProfileRouter',
         ),
-***REMOVED***
+      ],
     ),
     AutoRoute<void>(page: CategoryView),
 
@@ -75,12 +75,12 @@ import 'package:gharelu/src/map_view/views/views.dart';
         AutoRoute<void>(page: MerchantBookingsView),
         AutoRoute<void>(page: ChatListView),
         AutoRoute<void>(page: ProfileView),
-***REMOVED***
+      ],
     ),
     AutoRoute<void>(page: CreateProductView),
 
     //
     AutoRoute<void>(page: VerifyEmailView),
-***REMOVED***
+  ],
 )
-class $AppRouter ***REMOVED******REMOVED***
+class $AppRouter {***REMOVED***

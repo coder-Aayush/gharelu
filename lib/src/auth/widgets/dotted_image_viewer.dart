@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-class DottedImageViewer extends StatelessWidget ***REMOVED***
-  const DottedImageViewer(***REMOVED***Key? key, required this.image, this.onDelete***REMOVED***)
+class DottedImageViewer extends StatelessWidget {
+  const DottedImageViewer({Key? key, required this.image, this.onDelete***REMOVED***)
       : super(key: key);
   final String image;
   final VoidCallback? onDelete;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -48,7 +48,7 @@ class DottedImageViewer extends StatelessWidget ***REMOVED***
             ),
           ),
         ),
-***REMOVED***
+      ],
     ).pOnly(left: 10);
   ***REMOVED***
 ***REMOVED***

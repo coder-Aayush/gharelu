@@ -13,16 +13,16 @@ import 'package:gharelu/src/home/widgets/search_services.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantHomeView extends ConsumerStatefulWidget ***REMOVED***
-  const MerchantHomeView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantHomeView extends ConsumerStatefulWidget {
+  const MerchantHomeView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
+  @override
   _MerchantHomeViewState createState() => _MerchantHomeViewState();
 ***REMOVED***
 
-class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED***
-***REMOVED***
-  void initState() ***REMOVED***
+class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
+  @override
+  void initState() {
     Future.delayed(
       const Duration(milliseconds: 200),
       () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
@@ -30,8 +30,8 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
     super.initState();
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [
@@ -47,7 +47,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: SearchBar(
-                onPressed: () ***REMOVED***
+                onPressed: () {
                   final searcher = HitsSearcher(
                     applicationID: 'IYS3NBQCDI',
                     apiKey: '3ab9dbad16ea56cdccf487e845d139a6',
@@ -63,7 +63,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
           ),
           20.verticalSpace.toSliverBox,
           Consumer(
-            builder: (context, ref, child) ***REMOVED***
+            builder: (context, ref, child) {
               final _state = ref.watch(productStateProvider);
               return _state.maybeWhen(
                 orElse: () => Container().toSliverBox,
@@ -72,8 +72,8 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
                   child: context.loader,
                 ).toSliverBox,
                 error: (message) => Center(child: Text(message)).toSliverBox,
-                success: (data) ***REMOVED***
-                  if (data.isEmpty) ***REMOVED***
+                success: (data) {
+                  if (data.isEmpty) {
                     return Center(
                       child: SizedBox(
                         height: context.height * 0.6,
@@ -83,7 +83,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
                         ),
                       ),
                     ).toSliverBox;
-                  ***REMOVED*** else ***REMOVED***
+                  ***REMOVED*** else {
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => ProductTile(
@@ -107,7 +107,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> ***REMOVED*
               );
             ***REMOVED***,
           )
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

@@ -1,6 +1,7 @@
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
@@ -15,27 +16,25 @@ import 'package:gharelu/src/home/widgets/search_services.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeView extends StatefulHookConsumerWidget ***REMOVED***
-  const HomeView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class HomeView extends StatefulHookConsumerWidget {
+  const HomeView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
+  @override
   _HomeViewState createState() => _HomeViewState();
 ***REMOVED***
 
-class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
-***REMOVED***
-  void didChangeDependencies() ***REMOVED***
+class _HomeViewState extends ConsumerState<HomeView> {
+  @override
+  void didChangeDependencies() {
     super.didChangeDependencies();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final currentUser = ref.read(firebaseAuthProvider).currentUser;
-      ref
-          .read(getUserInfoNotifiderProvider.notifier)
-          .getUserInfo(id: currentUser?.uid ?? '');
-  ***REMOVED***
+      ref.read(getUserInfoNotifiderProvider.notifier).getUserInfo(id: currentUser?.uid ?? '');
+    ***REMOVED***
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [
@@ -51,10 +50,10 @@ class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: SearchBar(
-                onPressed: () ***REMOVED***
+                onPressed: () {
                   final searcher = HitsSearcher(
-                    applicationID: 'IYS3NBQCDI',
-                    apiKey: '3ab9dbad16ea56cdccf487e845d139a6',
+                    applicationID: '${dotenv.env['ALGOLIA_APPLICATIONID']***REMOVED***',
+                    apiKey: '${dotenv.env['ALGOLIA_APIKEY']***REMOVED***',
                     indexName: 'services',
                   );
                   showSearch(
@@ -66,19 +65,19 @@ class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
             ),
           ),
           20.verticalSpace.toSliverBox,
-          Consumer(builder: (context, ref, _) ***REMOVED***
+          Consumer(builder: (context, ref, _) {
             final bannersState = ref.watch(bannerStateProvider);
             return bannersState.maybeWhen(
               orElse: () => Container().toSliverBox,
-              success: (data) ***REMOVED***
-                if (data.isEmpty) ***REMOVED***
+              success: (data) {
+                if (data.isEmpty) {
                   return const SizedBox.shrink().toSliverBox;
-                ***REMOVED*** else ***REMOVED***
+                ***REMOVED*** else {
                   return Column(
                     children: [
                       CustomCarousel(banners: data),
                       30.verticalSpace,
-              ***REMOVED***
+                    ],
                   ).toSliverBox;
                 ***REMOVED***
               ***REMOVED***,
@@ -87,7 +86,7 @@ class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
             );
           ***REMOVED***),
           Consumer(
-            builder: (context, ref, _) ***REMOVED***
+            builder: (context, ref, _) {
               final serviceState = ref.watch(categoriesStateProvider);
               return serviceState.maybeWhen(
                 orElse: () => Container().toSliverBox,
@@ -111,7 +110,7 @@ class _HomeViewState extends ConsumerState<HomeView> ***REMOVED***
               );
             ***REMOVED***,
           ),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

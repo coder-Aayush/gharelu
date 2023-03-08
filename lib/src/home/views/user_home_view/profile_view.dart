@@ -14,30 +14,30 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProfileView extends StatefulHookConsumerWidget ***REMOVED***
-  const ProfileView(***REMOVED***Key? key, required this.onAppoinment***REMOVED***) : super(key: key);
+class ProfileView extends StatefulHookConsumerWidget {
+  const ProfileView({Key? key, required this.onAppoinment***REMOVED***) : super(key: key);
   final VoidCallback onAppoinment;
 
-***REMOVED***
+  @override
   _ProfileViewState createState() => _ProfileViewState();
 ***REMOVED***
 
-class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
-    return Consumer(builder: (context, ref, _) ***REMOVED***
-      ref.listen<AppState>(logoutStateNotifierProvider, (previous, next) ***REMOVED***
+class _ProfileViewState extends ConsumerState<ProfileView> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(builder: (context, ref, _) {
+      ref.listen<AppState>(logoutStateNotifierProvider, (previous, next) {
         next.maybeWhen(
           orElse: () => null,
-          success: (data) ***REMOVED***
+          success: (data) {
             context.router.replaceAll([const SplashRoute()]);
             ref.invalidate(getUserInfoNotifiderProvider);
           ***REMOVED***,
-          error: (message) ***REMOVED***
+          error: (message) {
             context.showSnackbar(message: message);
           ***REMOVED***,
         );
-    ***REMOVED***
+      ***REMOVED***
       return ScaffoldWrapper(
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
@@ -55,7 +55,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                   bottomRight: Radius.circular(4.0),
                 ),
               ),
-              child: Consumer(builder: (context, ref, _) ***REMOVED***
+              child: Consumer(builder: (context, ref, _) {
                 return ref.watch(getUserInfoNotifiderProvider).maybeWhen(
                       orElse: Container.new,
                       error: (message) => Text(message),
@@ -79,7 +79,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                               data.email,
                               style: AppStyles.text10PxMedium.white,
                             )
-                    ***REMOVED***
+                          ],
                         ),
                       ),
                     );
@@ -90,7 +90,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                 // 30.verticalSpace,
                 // CardListTile(
                 //   title: 'View Profile',
-                //   onPressed: () ***REMOVED******REMOVED***,
+                //   onPressed: () {***REMOVED***,
                 // ),
                 30.verticalSpace,
                 CardListTile(
@@ -109,18 +109,18 @@ class _ProfileViewState extends ConsumerState<ProfileView> ***REMOVED***
                 ),
                 20.verticalSpace,
                 Consumer(
-                  builder: (context, ref, _) ***REMOVED***
+                  builder: (context, ref, _) {
                     return CardListTile(
                       title: 'Logout',
                       onPressed: () => ref.read(logoutStateNotifierProvider.notifier).logout(),
                     );
                   ***REMOVED***,
                 ),
-        ***REMOVED***
+              ],
             ).px(20.w),
-    ***REMOVED***
+          ],
         ),
       );
-  ***REMOVED***
+    ***REMOVED***
   ***REMOVED***
 ***REMOVED***

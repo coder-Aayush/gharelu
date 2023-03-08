@@ -14,9 +14,9 @@ import 'package:flutter/foundation.dart'
 ***REMOVED***  options: DefaultFirebaseOptions.currentPlatform,
 ***REMOVED***);
 ***REMOVED***```
-class DefaultFirebaseOptions ***REMOVED***
-  static FirebaseOptions get currentPlatform ***REMOVED***
-    switch (defaultTargetPlatform) ***REMOVED***
+class DefaultFirebaseOptions {
+  static FirebaseOptions get currentPlatform {
+    switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:

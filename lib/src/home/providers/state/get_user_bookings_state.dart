@@ -3,19 +3,19 @@ part of '../get_user_bookings.dart';
 
 
 @freezed
-class GetUserBookingsState with _$GetUserBookingsState ***REMOVED***
+class GetUserBookingsState with _$GetUserBookingsState {
   const factory GetUserBookingsState.initial() = _Initial;
 
   const factory GetUserBookingsState.loading() = _Loading;
 
-  const factory GetUserBookingsState.success(***REMOVED***
+  const factory GetUserBookingsState.success({
     required List<BookingModel> previous,
     required List<BookingModel> upcoming,
   ***REMOVED***) = _Success;
 
   const factory GetUserBookingsState.noInternet() = _Internet;
 
-  const factory GetUserBookingsState.error(***REMOVED***
+  const factory GetUserBookingsState.error({
     required String message,
   ***REMOVED***) = _Error;
 ***REMOVED***

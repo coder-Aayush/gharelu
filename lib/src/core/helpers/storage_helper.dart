@@ -1,12 +1,12 @@
 import 'dart:io';
 
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 
-class StorageHelper ***REMOVED***
+class StorageHelper {
   const StorageHelper._();
   static Future<List<String>> uploadFiles(Ref reader, List<File> files,
-      ***REMOVED***String? path***REMOVED***) async ***REMOVED***
+      {String? path***REMOVED***) async {
     List<String> fileUrls = [];
     fileUrls = await Future.wait(
         files.map((doc) => uploadFile(reader, doc, path: path)));
@@ -14,11 +14,11 @@ class StorageHelper ***REMOVED***
   ***REMOVED***
 
   static Future<String> uploadFile(Ref reader, File file,
-      ***REMOVED***String? path***REMOVED***) async ***REMOVED***
+      {String? path***REMOVED***) async {
     final storageReference = await reader.read(storageProvider)
         .ref(path)
         .child(
-            '$path$***REMOVED***DateTime.now().millisecondsSinceEpoch***REMOVED***$***REMOVED***file.path.split('.')[1]***REMOVED***')
+            '$path${DateTime.now().millisecondsSinceEpoch***REMOVED***${file.path.split('.')[1]***REMOVED***')
         .putFile(file);
     return await storageReference.ref.getDownloadURL();
   ***REMOVED***

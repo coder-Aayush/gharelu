@@ -1,14 +1,14 @@
-***REMOVED***
+import 'dart:developer';
 
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gharelu/src/core/extensions/list_extension.dart';
 import 'package:gharelu/src/home/entities/cart_entities.dart';
 import 'package:gharelu/src/home/models/product_model.dart';
 
-class CartState extends StateNotifier<CartEntities> ***REMOVED***
+class CartState extends StateNotifier<CartEntities> {
   CartState() : super(CartEntities.empty());
 
-  void addToCart(ProductModel product) ***REMOVED***
+  void addToCart(ProductModel product) {
     final cart = state;
     state = state.copyWith(
       price: cart.price,
@@ -17,7 +17,7 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
     calculatePrice();
   ***REMOVED***
 
-  void calculatePrice() ***REMOVED***
+  void calculatePrice() {
     final cart = state;
     int _price = 0;
     _price = state.products
@@ -30,9 +30,9 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
     );
   ***REMOVED***
 
-  void removeFromCart(ProductModel product) ***REMOVED******REMOVED***
+  void removeFromCart(ProductModel product) {***REMOVED***
 
-  void increment(ProductModel product) ***REMOVED***
+  void increment(ProductModel product) {
     final cart = state;
     final productIndex =
         state.products.indexWhere((element) => element.id == product.id);
@@ -51,17 +51,17 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
     calculatePrice();
   ***REMOVED***
 
-  void decrement(ProductModel product) ***REMOVED***
+  void decrement(ProductModel product) {
     final cart = state;
     var _product = [...cart.products];
-    if (product.quantity <= 1) ***REMOVED***
+    if (product.quantity <= 1) {
       // state =
       _product.removeWhere((element) => element.id == product.id);
       state = state.copyWith(
         price: cart.price,
         products: _product,
       );
-    ***REMOVED*** else ***REMOVED***
+    ***REMOVED*** else {
       final productIndex =
           state.products.indexWhere((element) => element.id == product.id);
       final updatedProduct = state.products[productIndex].copyWith(
@@ -75,7 +75,7 @@ class CartState extends StateNotifier<CartEntities> ***REMOVED***
     ***REMOVED***
   ***REMOVED***
 
-  // void setMerchantId(String merchantId) ***REMOVED***
+  // void setMerchantId(String merchantId) {
   //   state = state.copyWith(merchantId: merchantId);
   // ***REMOVED***
 ***REMOVED***

@@ -4,12 +4,12 @@ import 'package:gharelu/src/home/models/booking_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CreateBookingNotifier
-    extends StateNotifier<AppState<List<BookingModel>>> ***REMOVED***
+    extends StateNotifier<AppState<List<BookingModel>>> {
   CreateBookingNotifier(this._dataSource) : super(const AppState.initial());
 
   final BookingDataSource _dataSource;
 
-  Future<void> createBookings(***REMOVED***required List<BookingModel> booking***REMOVED***) async ***REMOVED***
+  Future<void> createBookings({required List<BookingModel> booking***REMOVED***) async {
     state = const AppState.loading();
     final response = await _dataSource.makeBooking(booking: booking);
     state = response.fold(

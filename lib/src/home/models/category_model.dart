@@ -4,9 +4,9 @@ part 'category_model.freezed.dart';
 part 'category_model.g.dart';
 
 @freezed
-class CategoryModel with _$CategoryModel ***REMOVED***
+class CategoryModel with _$CategoryModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory CategoryModel(***REMOVED***
+  const factory CategoryModel({
     required String id,
     required String name,
     required String image,
@@ -18,7 +18,7 @@ class CategoryModel with _$CategoryModel ***REMOVED***
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
 
-  factory CategoryModel.empty() ***REMOVED***
+  factory CategoryModel.empty() {
     final now = DateTime.now().millisecondsSinceEpoch;
     return CategoryModel(
       id: '',

@@ -4,15 +4,15 @@ import 'dart:ui';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
-class NotificationService ***REMOVED***
-  factory NotificationService() ***REMOVED***
+class NotificationService {
+  factory NotificationService() {
     return instance;
   ***REMOVED***
   const NotificationService._();
 
   static NotificationService get instance => const NotificationService._();
 
-  Future<void> initilize() async ***REMOVED***
+  Future<void> initilize() async {
     AwesomeNotifications().initialize(
       null,
       [
@@ -24,11 +24,11 @@ class NotificationService ***REMOVED***
           defaultColor: Color(0xFF9D50DD),
           ledColor: Colors.white,
         )
-***REMOVED***
+      ],
     );
   ***REMOVED***
 
-  Future<void> show() async ***REMOVED***
+  Future<void> show() async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: NotificationService().hashCode,

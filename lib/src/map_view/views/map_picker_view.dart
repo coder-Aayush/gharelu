@@ -13,45 +13,45 @@ import 'package:latlong2/latlong.dart';
 // ignore: inference_failure_on_function_return_type
 typedef Success = Function(String, String, LatLng);
 
-class MapPickerView extends StatefulHookConsumerWidget ***REMOVED***
-  const MapPickerView(this.onSuccess, ***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MapPickerView extends StatefulHookConsumerWidget {
+  const MapPickerView(this.onSuccess, {Key? key***REMOVED***) : super(key: key);
   // ignore: inference_failure_on_function_return_type
   final Success onSuccess;
 
-***REMOVED***
+  @override
   _MapPickerViewState createState() => _MapPickerViewState();
 ***REMOVED***
 
-class _MapPickerViewState extends ConsumerState<MapPickerView> ***REMOVED***
+class _MapPickerViewState extends ConsumerState<MapPickerView> {
   late MapController controller;
 
-***REMOVED***
-  void initState() ***REMOVED***
+  @override
+  void initState() {
     super.initState();
     controller = MapController();
     selectedLatLng = LatLng(27.70169, 85.3206);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // context.showSnackbar(message: 'Tab anywhere to Select Location');
-  ***REMOVED***
+    ***REMOVED***
   ***REMOVED***
 
   late LatLng selectedLatLng;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
-    ref.listen(getLocationStateProvider, (previous, next) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
+    ref.listen(getLocationStateProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
         success: (data) => context.showSnackbar(message: data.toString()),
         error: (message) => context.showSnackbar(message: message),
       );
-  ***REMOVED***
+    ***REMOVED***
     return StatefulBuilder(
-      builder: (context, setState) ***REMOVED***
+      builder: (context, setState) {
         return ScaffoldWrapper(
           extendBody: true,
-          floatingActionButton: Consumer(builder: (context, ref, _) ***REMOVED***
+          floatingActionButton: Consumer(builder: (context, ref, _) {
             final String? location = ref.watch(getLocationStateProvider).maybeWhen(
                   orElse: () => null,
                   success: (data) => data.toString(),
@@ -77,7 +77,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> ***REMOVED***
               child: Column(
                 children: [
                   const Spacer(),
-                  Consumer(builder: (context, ref, _) ***REMOVED***
+                  Consumer(builder: (context, ref, _) {
                     final String location = ref.watch(getLocationStateProvider).maybeWhen(
                           orElse: () => 'Pick Your Location',
                           success: (data) => data.toString(),
@@ -91,7 +91,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> ***REMOVED***
                       overflow: TextOverflow.ellipsis,
                     );
                   ***REMOVED***),
-          ***REMOVED***
+                ],
               ),
             ),
           ),
@@ -102,19 +102,19 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> ***REMOVED***
                 mapController: controller,
                 children: [
                   TileLayer(
-                    urlTemplate: 'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/***REMOVED***z***REMOVED***/***REMOVED***x***REMOVED***/***REMOVED***y***REMOVED***@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
-                    additionalOptions: ***REMOVED***
+                    urlTemplate: 'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/{z***REMOVED***/{x***REMOVED***/{y***REMOVED***@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
+                    additionalOptions: {
                       'accessToken': 'pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
                       'id': 'mapbox.mapbox-streets-v8',
                     ***REMOVED***,
                   ),
-          ***REMOVED***
+                ],
                 options: MapOptions(
                   center: LatLng(27.700769, 85.300140),
-                  onPointerDown: (event, point) ***REMOVED***
+                  onPointerDown: (event, point) {
                     selectedLatLng = point;
-                    setState(() ***REMOVED******REMOVED***);
-                    ref.read(getLocationStateProvider.notifier).getLocationFromLatLng(lat: '$***REMOVED***selectedLatLng.latitude***REMOVED***', lng: '$***REMOVED***selectedLatLng.longitude***REMOVED***');
+                    setState(() {***REMOVED***
+                    ref.read(getLocationStateProvider.notifier).getLocationFromLatLng(lat: '${selectedLatLng.latitude***REMOVED***', lng: '${selectedLatLng.longitude***REMOVED***');
                   ***REMOVED***,
                   keepAlive: true,
                   zoom: 18.0,
@@ -127,7 +127,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> ***REMOVED***
                 height: 45,
                 width: 45,
               ),
-      ***REMOVED***
+            ],
           ),
         );
       ***REMOVED***,

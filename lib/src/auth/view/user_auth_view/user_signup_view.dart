@@ -11,31 +11,31 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class UserSignupView extends HookConsumerWidget ***REMOVED***
-  const UserSignupView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class UserSignupView extends HookConsumerWidget {
+  const UserSignupView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final _name = useTextEditingController();
     final _email = useTextEditingController();
     final _password = useTextEditingController();
     final _confirmPassword = useTextEditingController();
 
-    ref.listen(userSignupProvider, (previous, next) ***REMOVED***
+    ref.listen(userSignupProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
         success: (data) => context.router.replaceAll([const DashboardRouter()]),
         error: (message) => context.showSnackbar(message: message),
       );
-  ***REMOVED***
+    ***REMOVED***
 
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Signup'),
       ),
       body: SingleChildScrollView(
-        child: Consumer(builder: (context, ref, _) ***REMOVED***
+        child: Consumer(builder: (context, ref, _) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -46,7 +46,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
               ),
               20.verticalSpace,
               CustomTextField(
-                onChanged: (name) ***REMOVED***
+                onChanged: (name) {
                   ref.read(userSignupFormProvider.notifier).setName(name);
                 ***REMOVED***,
                 title: 'Name',
@@ -104,7 +104,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                   ActionChip(
                     label: const Text('Set on Map'),
                     onPressed: () => context.router.push(MapPickerRoute(
-                      onSuccess: (location, placeId, latlng) ***REMOVED***
+                      onSuccess: (location, placeId, latlng) {
                         context.router.pop();
                         ref
                             .read(userSignupFormProvider.notifier)
@@ -117,7 +117,7 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                     ref.watch(userSignupFormProvider).form.location.value,
                     style: AppStyles.text14PxRegular,
                   ).expanded()
-          ***REMOVED***
+                ],
               ),
               40.verticalSpace,
               Align(
@@ -152,9 +152,9 @@ class UserSignupView extends HookConsumerWidget ***REMOVED***
                   TextButton(
                       onPressed: () => context.router.pop(),
                       child: const Text('Login')),
-          ***REMOVED***
+                ],
               ),
-      ***REMOVED***
+            ],
           ).px(20);
         ***REMOVED***),
       ),

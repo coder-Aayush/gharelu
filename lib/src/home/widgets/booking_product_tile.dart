@@ -12,18 +12,18 @@ import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BookingProductTile extends StatefulHookConsumerWidget ***REMOVED***
-  const BookingProductTile(***REMOVED***Key? key, required this.booking, required this.onButton***REMOVED***) : super(key: key);
+class BookingProductTile extends StatefulHookConsumerWidget {
+  const BookingProductTile({Key? key, required this.booking, required this.onButton***REMOVED***) : super(key: key);
   final BookingModel booking;
   final Function(BookingModel) onButton;
 
-***REMOVED***
+  @override
   _UpcomingProductTileState createState() => _UpcomingProductTileState();
 ***REMOVED***
 
-class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with AutomaticKeepAliveClientMixin ***REMOVED***
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
     final booking = widget.booking;
     super.build(context);
     return ProductTile(
@@ -45,11 +45,11 @@ class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with A
             icon: Assets.icons.handWatchIcon.path,
             title: booking.time,
           ),
-  ***REMOVED***
+        ],
       ).pOnly(top: 2.h),
     );
   ***REMOVED***
 
-***REMOVED***
+  @override
   bool get wantKeepAlive => true;
 ***REMOVED***

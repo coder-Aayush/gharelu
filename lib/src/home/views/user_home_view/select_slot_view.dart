@@ -13,32 +13,32 @@ import 'package:gharelu/src/home/providers/slot_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SelectSlotView extends StatefulHookConsumerWidget ***REMOVED***
-  const SelectSlotView(***REMOVED***Key? key, required this.service***REMOVED***) : super(key: key);
+class SelectSlotView extends StatefulHookConsumerWidget {
+  const SelectSlotView({Key? key, required this.service***REMOVED***) : super(key: key);
   final ServiceModel service;
-***REMOVED***
+  @override
   _SelectSlotViewState createState() => _SelectSlotViewState();
 ***REMOVED***
 
-class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
-***REMOVED***
-  void didChangeDependencies() ***REMOVED***
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
+  @override
+  void didChangeDependencies() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(slotNotifierProvider.notifier).getBookings(date: DateTime.now(), serviceId: widget.service.id);
-  ***REMOVED***
+    ***REMOVED***
     super.didChangeDependencies();
   ***REMOVED***
 
   ValueNotifier<String?> selectedTime = ValueNotifier<String?>(null);
   ValueNotifier<DateTime> selectedDate = ValueNotifier<DateTime>(DateTime.now());
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       bottomNavigationBar: BottomAppBar(
         child: ValueListenableBuilder(
           valueListenable: selectedTime,
-          builder: (context, value, _) ***REMOVED***
+          builder: (context, value, _) {
             return CustomButton(
               title: 'Proceed to checkout',
               isDisabled: value == null,
@@ -71,7 +71,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime(DateTime.now().year + 1),
-                    onDateSelected: (date) ***REMOVED***
+                    onDateSelected: (date) {
                       selectedTime.value = null;
                       ref.read(slotNotifierProvider.notifier).getBookings(date: date, serviceId: widget.service.id);
                       selectedDate.value = date;
@@ -97,7 +97,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                   ).px(20),
                   20.verticalSpace,
                   Consumer(
-                    builder: (context, ref, _) ***REMOVED***
+                    builder: (context, ref, _) {
                       return ref.watch(slotNotifierProvider).maybeWhen(
                             orElse: () => Container(),
                             loading: () => context.loader,
@@ -108,7 +108,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                                 data.length,
                                 (index) => ValueListenableBuilder(
                                   valueListenable: selectedTime,
-                                  builder: (context, value, _) ***REMOVED***
+                                  builder: (context, value, _) {
                                     final isSelected = selectedTime.value == data[index];
                                     return ActionChip(
                                       side: BorderSide(
@@ -120,7 +120,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                                         data[index],
                                         style: isSelected ? AppStyles.text14PxMedium.white : AppStyles.text14PxMedium.softBlack,
                                       ),
-                                      onPressed: () ***REMOVED***
+                                      onPressed: () {
                                         selectedTime.value = data[index];
                                       ***REMOVED***,
                                     );
@@ -131,15 +131,15 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> ***REMOVED***
                           );
                     ***REMOVED***,
                   ),
-          ***REMOVED***
+                ],
               ),
               CustomPaint(
                 painter: BodyPainter(),
                 child: Container(height: 0),
               )
-      ***REMOVED***
+            ],
           ).toSliverBox,
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

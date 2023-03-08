@@ -11,18 +11,18 @@ import 'package:gharelu/src/home/providers/delete_product_provider.dart';
 import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DeleteProductBottomsheet extends ConsumerWidget ***REMOVED***
-  const DeleteProductBottomsheet(***REMOVED***Key? key, required this.productId***REMOVED***)
+class DeleteProductBottomsheet extends ConsumerWidget {
+  const DeleteProductBottomsheet({Key? key, required this.productId***REMOVED***)
       : super(key: key);
 
   final String productId;
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
-    ref.listen<AppState>(deleteProductNotifierProvider, (previous, next) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<AppState>(deleteProductNotifierProvider, (previous, next) {
       next.maybeWhen(
         orElse: () => null,
-        success: (data) ***REMOVED***
+        success: (data) {
           context.showSnackbar(message: 'Product Deleted');
           ref
               .read(productStateProvider.notifier)
@@ -32,7 +32,7 @@ class DeleteProductBottomsheet extends ConsumerWidget ***REMOVED***
           );
         ***REMOVED***,
       );
-  ***REMOVED***
+    ***REMOVED***
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -69,16 +69,16 @@ class DeleteProductBottomsheet extends ConsumerWidget ***REMOVED***
                       .read(deleteProductNotifierProvider.notifier)
                       .deleteProduct(productId),
                 )),
-        ***REMOVED***
+              ],
             ),
             20.verticalSpace,
-    ***REMOVED***
+          ],
         ).px(20.w),
-***REMOVED***
+      ],
     );
   ***REMOVED***
 
-  static Future<void> show(BuildContext context, ***REMOVED***required String productId***REMOVED***) =>
+  static Future<void> show(BuildContext context, {required String productId***REMOVED***) =>
       showAppBottomSheet(
           context, DeleteProductBottomsheet(productId: productId));
 ***REMOVED***

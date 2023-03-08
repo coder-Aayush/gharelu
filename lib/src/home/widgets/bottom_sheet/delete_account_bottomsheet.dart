@@ -13,13 +13,13 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
-  DeleteAccountBottomsheet(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class DeleteAccountBottomsheet extends HookWidget {
+  DeleteAccountBottomsheet({Key? key***REMOVED***) : super(key: key);
 
   final ValueNotifier<bool> askPassword = ValueNotifier<bool>(false);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     final feedback = useTextEditingController();
     final password = useTextEditingController();
     return ClipRRect(
@@ -27,21 +27,21 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
         topLeft: Radius.circular(8),
         topRight: Radius.circular(8),
       ),
-      child: Consumer(builder: (context, ref, _) ***REMOVED***
+      child: Consumer(builder: (context, ref, _) {
         ref.listen<AppState>(deleteUserProviderNotifierProvider,
-            (previous, next) ***REMOVED***
+            (previous, next) {
           next.maybeWhen(
             orElse: () => null,
-            success: (data) ***REMOVED***
+            success: (data) {
               context.showSnackbar(message: 'Account Deleted');
               context.router.replaceAll([const SplashRoute()]);
             ***REMOVED***,
-            error: (message) ***REMOVED***
+            error: (message) {
               print(message);
               context.showErorDialog(message: message);
             ***REMOVED***,
           );
-      ***REMOVED***
+        ***REMOVED***
         return Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -51,7 +51,7 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
               10.verticalSpace,
               ValueListenableBuilder(
                 valueListenable: askPassword,
-                builder: (context, value, _) ***REMOVED***
+                builder: (context, value, _) {
                   return BottomSheetHeader(
                     title: askPassword.value
                         ? 'Confirm Deletion'
@@ -64,8 +64,8 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                 children: [
                   ValueListenableBuilder<bool>(
                     valueListenable: askPassword,
-                    builder: (context, value, child) ***REMOVED***
-                      if (value) ***REMOVED***
+                    builder: (context, value, child) {
+                      if (value) {
                         return Column(
                           children: [
                             Text(
@@ -82,9 +82,9 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                               maxLines: 1,
                               textInputType: TextInputType.visiblePassword,
                             ),
-                    ***REMOVED***
+                          ],
                         );
-                      ***REMOVED*** else ***REMOVED***
+                      ***REMOVED*** else {
                         return Column(
                           children: [
                             Text(
@@ -108,7 +108,7 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                                 ),
                               ),
                             ),
-                    ***REMOVED***
+                          ],
                         );
                       ***REMOVED***
                     ***REMOVED***,
@@ -124,10 +124,10 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                               orElse: () => false,
                               loading: () => true,
                             ),
-                        onPressed: () ***REMOVED***
-                          if (!askPassword.value) ***REMOVED***
+                        onPressed: () {
+                          if (!askPassword.value) {
                             askPassword.value = true;
-                          ***REMOVED*** else ***REMOVED***
+                          ***REMOVED*** else {
                             final isMerchant = ref
                                 .watch(getUserInfoNotifiderProvider)
                                 .maybeWhen(
@@ -155,12 +155,12 @@ class DeleteAccountBottomsheet extends HookWidget ***REMOVED***
                         backgroundColor: AppColors.primaryColor,
                         isDisabled: false,
                       ),
-              ***REMOVED***
+                    ],
                   ),
                   20.verticalSpace,
-          ***REMOVED***
+                ],
               ).px(20.w),
-      ***REMOVED***
+            ],
           ),
         );
       ***REMOVED***),

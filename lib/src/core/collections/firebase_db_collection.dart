@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirebaseDBCollection ***REMOVED***
+class FirebaseDBCollection {
   const FirebaseDBCollection._();
 
   static CollectionReference<Map<String, dynamic>> user =

@@ -11,28 +11,28 @@ import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CategoryView extends StatefulHookConsumerWidget ***REMOVED***
-  const CategoryView(***REMOVED***Key? key, required this.category***REMOVED***) : super(key: key);
+class CategoryView extends StatefulHookConsumerWidget {
+  const CategoryView({Key? key, required this.category***REMOVED***) : super(key: key);
 
   final CategoryModel category;
 
-***REMOVED***
+  @override
   _CategoryViewState createState() => _CategoryViewState();
 ***REMOVED***
 
-class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
-***REMOVED***
-  void didChangeDependencies() ***REMOVED***
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+class _CategoryViewState extends ConsumerState<CategoryView> {
+  @override
+  void didChangeDependencies() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref
           .read(serviceCategoryStateProvider.notifier)
           .getServices(categoryId: widget.category.id);
-  ***REMOVED***
+    ***REMOVED***
     super.didChangeDependencies();
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return ScaffoldWrapper(
       body: CustomScrollView(
         slivers: [
@@ -47,7 +47,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
           ),
           20.verticalSpace.toSliverBox,
           Consumer(
-            builder: (context, ref, child) ***REMOVED***
+            builder: (context, ref, child) {
               final _state = ref.watch(serviceCategoryStateProvider);
               return _state.maybeWhen(
                 orElse: () => Container().toSliverBox,
@@ -75,7 +75,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> ***REMOVED***
               );
             ***REMOVED***,
           )
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

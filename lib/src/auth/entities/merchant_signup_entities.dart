@@ -5,9 +5,9 @@ import 'package:velocity_x/velocity_x.dart';
 part 'merchant_signup_entities.freezed.dart';
 
 @freezed
-class MerchantSignupFromEntity with _$MerchantSignupFromEntity ***REMOVED***
+class MerchantSignupFromEntity with _$MerchantSignupFromEntity {
   const MerchantSignupFromEntity._();
-  const factory MerchantSignupFromEntity(***REMOVED***
+  const factory MerchantSignupFromEntity({
     required Field name,
     required Field email,
     required Field password,

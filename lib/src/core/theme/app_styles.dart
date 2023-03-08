@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppStyles ***REMOVED***
+class AppStyles {
   const AppStyles._();
 
   static TextStyle get text8PxRegular => TextStyle(
@@ -252,6 +252,6 @@ class AppStyles ***REMOVED***
       );
 ***REMOVED***
 
-double calculateSpacing(double em) ***REMOVED***
+double calculateSpacing(double em) {
   return 16 * em;
 ***REMOVED***

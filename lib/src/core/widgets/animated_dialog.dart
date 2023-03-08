@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-class AnimatedDialog extends StatefulWidget ***REMOVED***
-***REMOVED***
+class AnimatedDialog extends StatefulWidget {
+  @override
   State<AnimatedDialog> createState() => _AnimatedDialogState();
 ***REMOVED***
 
 class _AnimatedDialogState extends State<AnimatedDialog>
-    with SingleTickerProviderStateMixin ***REMOVED***
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
 
-***REMOVED***
-  void initState() ***REMOVED***
+  @override
+  void initState() {
     super.initState();
     controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     animation = Tween<double>(begin: 0, end: 1).animate(controller);
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
       builder: (context, child) => Dialog(
@@ -30,7 +30,7 @@ class _AnimatedDialogState extends State<AnimatedDialog>
         child: Column(
           children: [
             Text('Dialog'),
-    ***REMOVED***
+          ],
         ),
       )),
     );

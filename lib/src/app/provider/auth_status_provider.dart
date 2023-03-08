@@ -4,11 +4,11 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> ***REMOVED***
+class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> {
   AuthStatusNotifier(this._dataSource) : super(const AppState.initial());
   final AuthStatusDataSource _dataSource;
 
-  Future<void> checkAuth(***REMOVED***required String id***REMOVED***) async ***REMOVED***
+  Future<void> checkAuth({required String id***REMOVED***) async {
     state = const AppState.loading();
     final response = await _dataSource.authSatus(id: id);
     state = response.fold(
@@ -21,11 +21,11 @@ class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> ***REM
 ***REMOVED***
 
 final authStatusNotifierProvider = StateNotifierProvider.autoDispose<
-    AuthStatusNotifier, AppState<CustomUserModel>>((ref) ***REMOVED***
+    AuthStatusNotifier, AppState<CustomUserModel>>((ref) {
   final currentUser = ref.read(firebaseAuthProvider).currentUser;
   final notifier = AuthStatusNotifier(ref.read(authStatusDataSourceProvider));
-  if (currentUser != null) ***REMOVED***
+  if (currentUser != null) {
     notifier..checkAuth(id: currentUser.uid);
   ***REMOVED***
   return notifier;
-***REMOVED***);
+***REMOVED***

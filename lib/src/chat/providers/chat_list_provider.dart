@@ -6,15 +6,15 @@
 // import 'package:gharelu/src/core/providers/firbease_provider.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// final getChatListProvider = StreamProvider.family<List<RoomModel>, bool>((ref, isMerchant) ***REMOVED***
+// final getChatListProvider = StreamProvider.family<List<RoomModel>, bool>((ref, isMerchant) {
 //   final firestore = ref.read(firestoreProvider);
 //   final auth = ref.read(firebaseAuthProvider);
 
 //   // List<RoomModel> chatRoom = [];
 
-//   // final response = firestore.collection(AppConstant.rooms).where(isMerchant ? 'merchant_id' : 'user_id', isEqualTo: auth.currentUser?.uid).snapshots().listen((event) async ***REMOVED***
+//   // final response = firestore.collection(AppConstant.rooms).where(isMerchant ? 'merchant_id' : 'user_id', isEqualTo: auth.currentUser?.uid).snapshots().listen((event) async {
 //   //   chatRoom = List<RoomModel>.from(event.docs.map((e) => RoomModel.fromJson(e.data())));
-//   //   for (var room in chatRoom) ***REMOVED***
+//   //   for (var room in chatRoom) {
 //   //     final index = chatRoom.indexOf(room);
 //   //     final user = await getUserInfo(ref, room.userId);
 //   //     final merchant = await getMerchantInfo(ref, room.merchantId);
@@ -22,15 +22,15 @@
 //   //     chatRoom.update(index, data);
 //   //   ***REMOVED***
 
-//   // ***REMOVED***);
+//   // ***REMOVED***
 //   // return response;
 //   ref.read(getChatProvider);
-// ***REMOVED***);
+// ***REMOVED***
 
-// // final getUserInfoProvider = FutureProvider.family<CustomUserModel, String>((ref, userId) async ***REMOVED***
+// // final getUserInfoProvider = FutureProvider.family<CustomUserModel, String>((ref, userId) async {
 // //   final firestore = ref.read(firestoreProvider);
 
-// // ***REMOVED***);
+// // ***REMOVED***
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,7 +43,7 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> ***REMOVED***
+class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> {
   ChatListNotifier(this._firestore, this._firebaseAuth, this.ref) : super(const AppState.initial());
 
   final FirebaseFirestore _firestore;
@@ -52,14 +52,14 @@ class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> ***REMOV
 
   String? get userId => _firebaseAuth.currentUser?.uid;
 
-  void getChatList(***REMOVED***required bool isMerchant***REMOVED***) async ***REMOVED***
+  void getChatList({required bool isMerchant***REMOVED***) async {
     state = const AppState.loading();
     List<RoomModel> rooms = [];
     MessageModel? lastMessage;
     await _firestore.collection(AppConstant.rooms).where(isMerchant ? 'merchant_id' : 'user_id', isEqualTo: userId)
-      ..snapshots().listen((event) async ***REMOVED***
+      ..snapshots().listen((event) async {
         rooms = List<RoomModel>.from(event.docs.map((e) => RoomModel.fromJson(e.data())));
-        for (var i = 0; i < rooms.length; i++) ***REMOVED***
+        for (var i = 0; i < rooms.length; i++) {
           final room = rooms[i];
           final user = await getUserInfo(ref, room.userId);
           final merchant = await getMerchantInfo(ref, room.merchantId);
@@ -68,10 +68,10 @@ class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> ***REMOV
           rooms.update(i, _room);
           state = AppState.success(data: rooms);
         ***REMOVED***
-    ***REMOVED***
+      ***REMOVED***
   ***REMOVED***
 ***REMOVED***
 
-final chatListNotifierProvider = StateNotifierProvider.family<ChatListNotifier, AppState<List<RoomModel>>, bool>((ref, isMerchant) ***REMOVED***
+final chatListNotifierProvider = StateNotifierProvider.family<ChatListNotifier, AppState<List<RoomModel>>, bool>((ref, isMerchant) {
   return ChatListNotifier(ref.read(firestoreProvider), ref.read(firebaseAuthProvider), ref)..getChatList(isMerchant: isMerchant);
-***REMOVED***);
+***REMOVED***

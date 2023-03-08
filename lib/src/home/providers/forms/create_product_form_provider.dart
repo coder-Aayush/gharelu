@@ -9,19 +9,19 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CreateProductFormNotifier
-    extends StateNotifier<AppFormState<CreateProductEntity>> ***REMOVED***
+    extends StateNotifier<AppFormState<CreateProductEntity>> {
   CreateProductFormNotifier()
       : super(AppFormState(CreateProductEntity.empty()));
 
-  void setProduct(ProductModel product) ***REMOVED***
+  void setProduct(ProductModel product) {
     setName(product.name);
     setProductDescription(product.description);
     setPrice(product.price.toString());
     setQuantity(product.quantity.toString());
-    if (product.category != null) ***REMOVED***
+    if (product.category != null) {
       setService(product.category!);
     ***REMOVED***
-    if (product.service != null) ***REMOVED***
+    if (product.service != null) {
       setCategory(product.service!);
     ***REMOVED***
     final _state = state;
@@ -36,14 +36,14 @@ class CreateProductFormNotifier
     ));
   ***REMOVED***
 
-  void setService(CategoryModel category) ***REMOVED***
+  void setService(CategoryModel category) {
     final _state = state;
     var form = state.form;
     state = _state.copyWith(
         form: form.copyWith(category: category, categoryId: category.id));
   ***REMOVED***
 
-  void setCategory(ServiceModel service) ***REMOVED***
+  void setCategory(ServiceModel service) {
     final _state = state;
     var form = state.form;
     state = _state.copyWith(
@@ -54,11 +54,11 @@ class CreateProductFormNotifier
     );
   ***REMOVED***
 
-  void setName(String name) ***REMOVED***
+  void setName(String name) {
     final _state = state;
     var form = state.form;
 
-    if (name.trim().isEmpty) ***REMOVED***
+    if (name.trim().isEmpty) {
       form = _state.form.copyWith(
         productName: Field(
           value: name,
@@ -66,8 +66,8 @@ class CreateProductFormNotifier
           errorMessage: 'Product Name must be a valid name',
         ),
       );
-    ***REMOVED*** else ***REMOVED***
-      if (name.length <= 10 || name.length >= 60) ***REMOVED***
+    ***REMOVED*** else {
+      if (name.length <= 10 || name.length >= 60) {
         print(name.length);
         form = _state.form.copyWith(
           productName: Field(
@@ -77,7 +77,7 @@ class CreateProductFormNotifier
                 'Recommended: Catchy name can be between 10 words to 60 words.',
           ),
         );
-      ***REMOVED*** else ***REMOVED***
+      ***REMOVED*** else {
         form = _state.form
             .copyWith(productName: Field(value: name, isValid: true));
       ***REMOVED***
@@ -85,10 +85,10 @@ class CreateProductFormNotifier
     state = state.copyWith(form: form);
   ***REMOVED***
 
-  void setProductDescription(String description) ***REMOVED***
+  void setProductDescription(String description) {
     final _state = state;
     var form = state.form;
-    if (description.trim().isEmpty) ***REMOVED***
+    if (description.trim().isEmpty) {
       form = _state.form.copyWith(
         description: Field(
           value: description,
@@ -96,7 +96,7 @@ class CreateProductFormNotifier
           errorMessage: 'Discription must be a valid name',
         ),
       );
-    ***REMOVED*** else ***REMOVED***
+    ***REMOVED*** else {
       form = _state.form.copyWith(
         description: Field(value: description, isValid: true, errorMessage: ''),
       );
@@ -104,10 +104,10 @@ class CreateProductFormNotifier
     state = state.copyWith(form: form);
   ***REMOVED***
 
-  void setPrice(String price) ***REMOVED***
+  void setPrice(String price) {
     final _state = state;
     var form = state.form;
-    if (price.isEmpty) ***REMOVED***
+    if (price.isEmpty) {
       form = _state.form.copyWith(
         price: Field(
           value: price,
@@ -115,9 +115,9 @@ class CreateProductFormNotifier
           errorMessage: 'Price cannot be less than 50',
         ),
       );
-    ***REMOVED*** else ***REMOVED***
+    ***REMOVED*** else {
       final _price = int.parse(price);
-      if (_price < 49 || _price > 9998) ***REMOVED***
+      if (_price < 49 || _price > 9998) {
         form = _state.form.copyWith(
           price: Field(
             value: _price.toString(),
@@ -125,7 +125,7 @@ class CreateProductFormNotifier
             errorMessage: 'Product Price should be between 50 to 9999',
           ),
         );
-      ***REMOVED*** else ***REMOVED***
+      ***REMOVED*** else {
         form = _state.form.copyWith(
           price: Field(value: price, isValid: true, errorMessage: ''),
         );
@@ -134,10 +134,10 @@ class CreateProductFormNotifier
     state = state.copyWith(form: form);
   ***REMOVED***
 
-  void setQuantity(String quantity) ***REMOVED***
+  void setQuantity(String quantity) {
     final _state = state;
     var form = state.form;
-    if (quantity.isEmpty) ***REMOVED***
+    if (quantity.isEmpty) {
       form = _state.form.copyWith(
         maxQuality: Field(
           value: quantity,
@@ -145,9 +145,9 @@ class CreateProductFormNotifier
           errorMessage: 'Quality must be Greater than 1',
         ),
       );
-    ***REMOVED*** else ***REMOVED***
+    ***REMOVED*** else {
       final _quantity = int.parse(quantity);
-      if (_quantity < 1 || _quantity > 200) ***REMOVED***
+      if (_quantity < 1 || _quantity > 200) {
         form = _state.form.copyWith(
           maxQuality: Field(
             value: quantity.toString(),
@@ -155,7 +155,7 @@ class CreateProductFormNotifier
             errorMessage: 'Quality must be Greater than 0 and Less than 200',
           ),
         );
-      ***REMOVED*** else ***REMOVED***
+      ***REMOVED*** else {
         form = _state.form.copyWith(
           maxQuality: Field(value: quantity, isValid: true, errorMessage: ''),
         );
@@ -164,7 +164,7 @@ class CreateProductFormNotifier
     state = state.copyWith(form: form);
   ***REMOVED***
 
-  void setImage(File file) ***REMOVED***
+  void setImage(File file) {
     final _state = state;
     var form = state.form;
     form =
@@ -172,7 +172,7 @@ class CreateProductFormNotifier
     state = state.copyWith(form: form);
   ***REMOVED***
 
-  void publish(bool val) ***REMOVED***
+  void publish(bool val) {
     final _state = state;
     var form = state.form;
     form = state.form.copyWith(publish: val);

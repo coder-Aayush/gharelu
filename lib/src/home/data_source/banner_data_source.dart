@@ -1,37 +1,37 @@
-***REMOVED***
+import 'dart:developer';
 
-***REMOVED***
-***REMOVED***
+import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gharelu/src/core/constant/app_constant.dart';
-***REMOVED***
+import 'package:gharelu/src/core/errors/app_error.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/home/models/banner_model.dart';
 
-abstract class _BannerRemoteSource ***REMOVED***
+abstract class _BannerRemoteSource {
   Future<Either<AppError, List<BannerModel>>> getBanners();
 ***REMOVED***
 
-class BannerRemoteSource implements _BannerRemoteSource ***REMOVED***
+class BannerRemoteSource implements _BannerRemoteSource {
   BannerRemoteSource(this._reader);
 
   final Ref _reader;
-***REMOVED***
-  Future<Either<AppError, List<BannerModel>>> getBanners() async ***REMOVED***
-***REMOVED***
-      _reader.read(firebaseAuthProvider).authStateChanges().listen((event) ***REMOVED***
+  @override
+  Future<Either<AppError, List<BannerModel>>> getBanners() async {
+    try {
+      _reader.read(firebaseAuthProvider).authStateChanges().listen((event) {
         log(event.toString());
-    ***REMOVED***
+      ***REMOVED***
       final response = await _reader.read(firestoreProvider)
           .collection(AppConstant.banners)
           .get();
-      if (response.docs.isNotEmpty) ***REMOVED***
+      if (response.docs.isNotEmpty) {
         return right(response.docs
             .map((banner) => BannerModel.fromJson(banner.data()))
             .toList());
-      ***REMOVED*** else ***REMOVED***
+      ***REMOVED*** else {
         return right([]);
       ***REMOVED***
-    ***REMOVED*** catch (e) ***REMOVED***
+    ***REMOVED*** catch (e) {
       log(e.toString());
       return left(
           const AppError.serverError(message: 'Failed to Fetch Banners'));

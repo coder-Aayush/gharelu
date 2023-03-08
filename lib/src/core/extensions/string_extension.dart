@@ -1,5 +1,5 @@
-extension StringX on String ***REMOVED***
+extension StringX on String {
   bool validatePassword() =>
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).***REMOVED***8,***REMOVED***$')
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,***REMOVED***$')
           .hasMatch(this);
 ***REMOVED***

@@ -1,16 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-class HelpAndSupportEntity extends Equatable ***REMOVED***
-  const HelpAndSupportEntity(***REMOVED***
+class HelpAndSupportEntity extends Equatable {
+  const HelpAndSupportEntity({
     required this.name,
     required this.content,
     required this.type,
-***REMOVED***
+  ***REMOVED***
   final String name;
   final String content;
   final UtilityEnum type;
-***REMOVED***
+  @override
   List<Object?> get props => [name,content,type];
 ***REMOVED***
 
-enum UtilityEnum ***REMOVED*** WEB, MOBILE, EMAIL ***REMOVED***
+enum UtilityEnum { WEB, MOBILE, EMAIL ***REMOVED***

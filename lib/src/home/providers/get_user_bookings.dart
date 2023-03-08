@@ -8,11 +8,11 @@ import 'package:riverpod/riverpod.dart';
 part 'get_user_bookings.freezed.dart';
 part 'state/get_user_bookings_state.dart';
 
-class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REMOVED***
+class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
   GetUserBookingsNotifier(this._dataSource) : super(const GetUserBookingsState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getBookings() async ***REMOVED***
+  Future<void> getBookings() async {
     state = const GetUserBookingsState.loading();
     final response = await _dataSource.getUserBookings();
     state = response.fold(
@@ -20,14 +20,14 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
         serverError: (message) => GetUserBookingsState.error(message: message),
         noInternet: () => const GetUserBookingsState.noInternet(),
       ),
-      (response) ***REMOVED***
+      (response) {
         List<BookingModel> previous = [];
         List<BookingModel> upcoming = [];
 
-        for (var item in response) ***REMOVED***
-          if (item.orderType == OrderType.Cancelled || item.orderType == OrderType.Completed) ***REMOVED***
+        for (var item in response) {
+          if (item.orderType == OrderType.Cancelled || item.orderType == OrderType.Completed) {
             previous.add(item);
-          ***REMOVED*** else ***REMOVED***
+          ***REMOVED*** else {
             upcoming.add(item);
           ***REMOVED***
         ***REMOVED***
@@ -40,7 +40,7 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
     );
   ***REMOVED***
 
-  Future<void> updateBookings(***REMOVED***required String bookingId, required OrderType orderType***REMOVED***) async ***REMOVED***
+  Future<void> updateBookings({required String bookingId, required OrderType orderType***REMOVED***) async {
     state = const GetUserBookingsState.loading();
     final response = await _dataSource.updateBookings(bookingId: bookingId, orderType: orderType);
     getBookings();
@@ -49,7 +49,7 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
         serverError: (message) => GetUserBookingsState.error(message: message),
         noInternet: () => const GetUserBookingsState.noInternet(),
       ),
-      (response) ***REMOVED***
+      (response) {
         final _state = state as _Success;
         return GetUserBookingsState.success(
           previous: _state.previous,
@@ -61,7 +61,7 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> ***REM
 ***REMOVED***
 
 final getUserBookingsNotifierProvider = StateNotifierProvider<GetUserBookingsNotifier, GetUserBookingsState>(
-  (ref) ***REMOVED***
+  (ref) {
     return GetUserBookingsNotifier(ref.read(bookingDataSourceProvider))..getBookings();
   ***REMOVED***,
 );

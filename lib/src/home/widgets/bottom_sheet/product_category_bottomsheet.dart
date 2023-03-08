@@ -7,22 +7,22 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProductCategoryBottomsheet extends StatefulHookConsumerWidget ***REMOVED***
-  const ProductCategoryBottomsheet(***REMOVED***Key? key, required this.category***REMOVED***)
+class ProductCategoryBottomsheet extends StatefulHookConsumerWidget {
+  const ProductCategoryBottomsheet({Key? key, required this.category***REMOVED***)
       : super(key: key);
   final CategoryModel category;
 
-***REMOVED***
+  @override
   _ProductCategoryBottomsheetState createState() =>
       _ProductCategoryBottomsheetState();
 
   static Future<ServiceModel?> show(BuildContext context,
-      ***REMOVED***required CategoryModel category***REMOVED***) async ***REMOVED***
+      {required CategoryModel category***REMOVED***) async {
     final response = await showAppBottomSheet<ServiceModel?>(
       context,
       ProductCategoryBottomsheet(category: category),
     );
-    if (response != null) ***REMOVED***
+    if (response != null) {
       return response;
     ***REMOVED***
     return null;
@@ -30,23 +30,23 @@ class ProductCategoryBottomsheet extends StatefulHookConsumerWidget ***REMOVED**
 ***REMOVED***
 
 class _ProductCategoryBottomsheetState
-    extends ConsumerState<ProductCategoryBottomsheet> ***REMOVED***
-***REMOVED***
-  void didChangeDependencies() ***REMOVED***
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) ***REMOVED***
+    extends ConsumerState<ProductCategoryBottomsheet> {
+  @override
+  void didChangeDependencies() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref
           .read(serviceCategoryStateProvider.notifier)
           .getServices(categoryId: widget.category.id);
-  ***REMOVED***
+    ***REMOVED***
     super.didChangeDependencies();
   ***REMOVED***
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        BottomSheetHeader(title: 'Select $***REMOVED***widget.category.name***REMOVED*** Category'),
+        BottomSheetHeader(title: 'Select ${widget.category.name***REMOVED*** Category'),
         Column(
           children: [
             ref.watch(serviceCategoryStateProvider).maybeWhen(
@@ -69,16 +69,16 @@ class _ProductCategoryBottomsheetState
                             ),
                             2.verticalSpace,
                             Text(data[index].name),
-                    ***REMOVED***
+                          ],
                         ),
                       ),
                     ),
                   ),
                 )
-    ***REMOVED***
+          ],
         ),
         40.verticalSpace,
-***REMOVED***
+      ],
     );
   ***REMOVED***
 ***REMOVED***

@@ -9,19 +9,19 @@ typedef LoadingErrorWidgetBuilder = Widget Function(
   dynamic error,
 );
 
-class CacheImageViewer extends StatelessWidget ***REMOVED***
-  const CacheImageViewer(***REMOVED***Key? key, this.imageUrl, this.height, this.width, this.fit, this.error***REMOVED***) : super(key: key);
+class CacheImageViewer extends StatelessWidget {
+  const CacheImageViewer({Key? key, this.imageUrl, this.height, this.width, this.fit, this.error***REMOVED***) : super(key: key);
   final String? imageUrl;
   final double? height;
   final double? width;
   final BoxFit? fit;
   final LoadingErrorWidgetBuilder? error;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl ?? '',
-      progressIndicatorBuilder: (_, url, downloadProgress) ***REMOVED***
+      progressIndicatorBuilder: (_, url, downloadProgress) {
         return url.isEmpty ? Image.asset(Assets.images.logo.path, fit: BoxFit.cover) : context.loader;
       ***REMOVED***,
       errorWidget: error ?? (context, url, error) => const Icon(Icons.error_outline),

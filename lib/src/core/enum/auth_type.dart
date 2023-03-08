@@ -1,1 +1,1 @@
-enum AuthType ***REMOVED*** User, Merchant ***REMOVED***
+enum AuthType { User, Merchant ***REMOVED***

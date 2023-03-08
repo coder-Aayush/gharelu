@@ -3,12 +3,12 @@ import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/home/data_source/booking_data_source.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
+class SlotNotifier extends StateNotifier<AppState<List<String>>> {
   SlotNotifier(this._dataSource) : super(const AppState.initial());
   final BookingDataSource _dataSource;
 
   Future<void> getBookings(
-      ***REMOVED***required DateTime date, required String serviceId***REMOVED***) async ***REMOVED***
+      {required DateTime date, required String serviceId***REMOVED***) async {
     final times = generateTime();
     state = const AppState.loading();
     final response = await _dataSource.getBookingOnDate(
@@ -18,10 +18,10 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
         serverError: (message) => AppState.error(message: message),
         noInternet: () => const AppState.noInternet(),
       ),
-      (response) ***REMOVED***
+      (response) {
         final alreadyBookedTimes = response;
-        for (var time in alreadyBookedTimes) ***REMOVED***
-          if (times.contains(time.time)) ***REMOVED***
+        for (var time in alreadyBookedTimes) {
+          if (times.contains(time.time)) {
             times.remove(time.time);
           ***REMOVED***
         ***REMOVED***
@@ -30,7 +30,7 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
     );
   ***REMOVED***
 
-  List<String> generateTime() ***REMOVED***
+  List<String> generateTime() {
     int startTime = 8;
     int endTime = 17;
     int hoursLeft = endTime - startTime + 1;
@@ -38,7 +38,7 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> ***REMOVED***
     final hours = List.generate(
             hoursLeft * 2,
             (i) =>
-                '$***REMOVED***endTime - (i / 2).truncate()***REMOVED***:$***REMOVED***i % 2 == 1 ? '00' : '30'***REMOVED*** $***REMOVED***endTime - (i / 2).truncate() > 12 ? 'PM' : 'AM'***REMOVED***')
+                '${endTime - (i / 2).truncate()***REMOVED***:${i % 2 == 1 ? '00' : '30'***REMOVED*** ${endTime - (i / 2).truncate() > 12 ? 'PM' : 'AM'***REMOVED***')
         .reversed
         .toList();
     return hours;

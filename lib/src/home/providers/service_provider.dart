@@ -1,16 +1,16 @@
-***REMOVED***
+import 'dart:developer';
 
-***REMOVED***
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gharelu/src/core/state/app_state.dart';
 import 'package:gharelu/src/home/data_source/service_data_source.dart';
 import 'package:gharelu/src/home/models/category_model.dart';
 
-class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> ***REMOVED***
+class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
   CategoriesState(this._remoteSource)
       : super(const AppState<List<CategoryModel>>.initial());
   final ServiceRemoteSource _remoteSource;
 
-  Future<void> getServices() async ***REMOVED***
+  Future<void> getServices() async {
     state = const AppState.loading();
     final response = await _remoteSource.getCategories();
     state = response.fold(

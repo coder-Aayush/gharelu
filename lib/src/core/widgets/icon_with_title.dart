@@ -5,14 +5,14 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 
-class IconWithTitle extends StatelessWidget ***REMOVED***
-  const IconWithTitle(***REMOVED***Key? key, required this.icon, required this.title***REMOVED***)
+class IconWithTitle extends StatelessWidget {
+  const IconWithTitle({Key? key, required this.icon, required this.title***REMOVED***)
       : super(key: key);
   final String icon;
   final String title;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
       decoration: BoxDecoration(
@@ -24,7 +24,7 @@ class IconWithTitle extends StatelessWidget ***REMOVED***
           SvgPicture.asset(icon, color: AppColors.primaryColor, height: 15),
           3.horizontalSpace,
           Text(title, style: AppStyles.text12PxMedium.primary),
-  ***REMOVED***
+        ],
       ),
     );
   ***REMOVED***

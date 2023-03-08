@@ -6,8 +6,8 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-class PaymentCard extends StatelessWidget ***REMOVED***
-  const PaymentCard(***REMOVED***
+class PaymentCard extends StatelessWidget {
+  const PaymentCard({
     Key? key,
     required this.onPressed,
     required this.title,
@@ -25,8 +25,8 @@ class PaymentCard extends StatelessWidget ***REMOVED***
   BoxConstraints get _constraints =>
       BoxConstraints.tightFor(width: double.infinity, height: 70.h);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     // return Material(
     //   color: AppColors.transparent,
     //   child: Container(
@@ -52,7 +52,7 @@ class PaymentCard extends StatelessWidget ***REMOVED***
         child: InkWell(
           splashColor: (titleColor ?? AppColors.primaryColor).withOpacity(0.5),
           borderRadius: radius,
-          onTap: () async ***REMOVED***
+          onTap: () async {
             FocusScope.of(context).unfocus();
             await HapticFeedback.heavyImpact();
             onPressed.call();
@@ -71,7 +71,7 @@ class PaymentCard extends StatelessWidget ***REMOVED***
                     style: AppStyles.text18PxBold
                         .copyWith(color: titleColor ?? const Color(0xff5D2E8E)),
                   ),
-          ***REMOVED***
+                ],
               ).pOnly(left: 20),
             ),
           ),

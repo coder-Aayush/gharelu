@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
-class BodyPainter extends CustomPainter ***REMOVED***
-***REMOVED***
-  void paint(Canvas canvas, Size size) ***REMOVED***
+class BodyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
     Paint paint_1 = Paint()
       ..color = AppColors.whiteColor
       ..style = PaintingStyle.fill;
@@ -46,8 +46,8 @@ class BodyPainter extends CustomPainter ***REMOVED***
     canvas.drawPath(path_3, paint_2);
   ***REMOVED***
 
-***REMOVED***
-  bool shouldRepaint(covariant CustomPainter oldDelegate) ***REMOVED***
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   ***REMOVED***
 ***REMOVED***

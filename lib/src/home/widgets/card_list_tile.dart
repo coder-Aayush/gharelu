@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CardListTile extends StatelessWidget ***REMOVED***
-  const CardListTile(***REMOVED***Key? key, required this.title, required this.onPressed***REMOVED***)
+class CardListTile extends StatelessWidget {
+  const CardListTile({Key? key, required this.title, required this.onPressed***REMOVED***)
       : super(key: key);
 
   final String title;
   final VoidCallback onPressed;
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     return Card(
       elevation: 0,
       child: ListTile(

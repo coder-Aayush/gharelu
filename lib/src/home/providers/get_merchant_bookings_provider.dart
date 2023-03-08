@@ -9,12 +9,12 @@ part 'state/get_merchant_bookings_state.dart';
 part 'get_merchant_bookings_provider.freezed.dart';
 
 class GetMerchantBookingsNotifier
-    extends StateNotifier<GetMerchantBookingsState> ***REMOVED***
+    extends StateNotifier<GetMerchantBookingsState> {
   GetMerchantBookingsNotifier(this._dataSource)
       : super(const GetMerchantBookingsState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getMerchantBookings() async ***REMOVED***
+  Future<void> getMerchantBookings() async {
     state = const GetMerchantBookingsState.loading();
     final response = await _dataSource.getMerchantBookings();
     state = response.fold(
@@ -23,14 +23,14 @@ class GetMerchantBookingsNotifier
             GetMerchantBookingsState.error(message: message),
         noInternet: () => const GetMerchantBookingsState.noInternet(),
       ),
-      (response) ***REMOVED***
+      (response) {
         final previous = <BookingModel>[];
         final upcoming = <BookingModel>[];
-        for (var booking in response) ***REMOVED***
+        for (var booking in response) {
           if (booking.orderType == OrderType.Completed ||
-              booking.orderType == OrderType.Cancelled) ***REMOVED***
+              booking.orderType == OrderType.Cancelled) {
             previous.add(booking);
-          ***REMOVED*** else ***REMOVED***
+          ***REMOVED*** else {
             upcoming.add(booking);
           ***REMOVED***
         ***REMOVED***
@@ -44,7 +44,7 @@ class GetMerchantBookingsNotifier
   ***REMOVED***
 
   Future<void> updateBookings(
-      ***REMOVED***required String bookingId, required OrderType orderType***REMOVED***) async ***REMOVED***
+      {required String bookingId, required OrderType orderType***REMOVED***) async {
     state = const GetMerchantBookingsState.loading();
     final response = await _dataSource.updateBookings(
         bookingId: bookingId, orderType: orderType);
@@ -55,7 +55,7 @@ class GetMerchantBookingsNotifier
             GetMerchantBookingsState.error(message: message),
         noInternet: () => const GetMerchantBookingsState.noInternet(),
       ),
-      (response) ***REMOVED***
+      (response) {
         final _state = state as _Success;
         return GetMerchantBookingsState.success(
           previous: _state.previous,
@@ -67,8 +67,8 @@ class GetMerchantBookingsNotifier
 ***REMOVED***
 
 final getMerchantBookingsStateProvider = StateNotifierProvider<
-    GetMerchantBookingsNotifier, GetMerchantBookingsState>((ref) ***REMOVED***
+    GetMerchantBookingsNotifier, GetMerchantBookingsState>((ref) {
   return GetMerchantBookingsNotifier(
     ref.read(bookingDataSourceProvider),
   )..getMerchantBookings();
-***REMOVED***);
+***REMOVED***

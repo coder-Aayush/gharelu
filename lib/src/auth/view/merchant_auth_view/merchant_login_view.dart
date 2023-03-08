@@ -11,32 +11,32 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantLoginView extends HookConsumerWidget ***REMOVED***
-  const MerchantLoginView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantLoginView extends HookConsumerWidget {
+  const MerchantLoginView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context, WidgetRef ref) ***REMOVED***
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final _email = useTextEditingController();
     final _password = useTextEditingController();
 
     // list for the login event
-    ref.listen(merchantLoginProvider, (previous, next) ***REMOVED***
+    ref.listen(merchantLoginProvider, (previous, next) {
       final state = next as AppState;
       state.maybeWhen(
         orElse: () => null,
         error: (message) => context.showSnackbar(message: message),
-        success: (data) ***REMOVED***
+        success: (data) {
           context.router.replaceAll([const MerchantDashboardRouter()]);
           context.showSnackbar(message: 'Your are logged in');
         ***REMOVED***,
       );
-  ***REMOVED***
+    ***REMOVED***
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login as Merchant'),
       ),
       body: SingleChildScrollView(
-        child: Consumer(builder: (context, ref, _) ***REMOVED***
+        child: Consumer(builder: (context, ref, _) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -94,9 +94,9 @@ class MerchantLoginView extends HookConsumerWidget ***REMOVED***
                     onPressed: () => context.router.push(MerchantSignupRoute()),
                     child: const Text('Sign Up'),
                   ),
-          ***REMOVED***
+                ],
               ),
-      ***REMOVED***
+            ],
           );
         ***REMOVED***),
       ).px(20),

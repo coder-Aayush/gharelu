@@ -10,11 +10,11 @@ import 'package:gharelu/src/home/providers/get_merchant_bookings_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MerchantBookingsView extends HookWidget ***REMOVED***
-  const MerchantBookingsView(***REMOVED***Key? key***REMOVED***) : super(key: key);
+class MerchantBookingsView extends HookWidget {
+  const MerchantBookingsView({Key? key***REMOVED***) : super(key: key);
 
-***REMOVED***
-  Widget build(BuildContext context) ***REMOVED***
+  @override
+  Widget build(BuildContext context) {
     final tabController = useTabController(initialLength: 2, initialIndex: 1);
     return ScaffoldWrapper(
       appBar: AppBar(
@@ -30,14 +30,14 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
           tabs: [
             const Tab(text: 'Previous'),
             const Tab(text: 'Upcoming'),
-    ***REMOVED***
+          ],
         ),
       ),
-      body: Consumer(builder: (context, ref, _) ***REMOVED***
+      body: Consumer(builder: (context, ref, _) {
         return ref.watch(getMerchantBookingsStateProvider).maybeWhen(
               orElse: Container.new,
               loading: () => context.loader,
-              error: (message) ***REMOVED***
+              error: (message) {
                 context.showErorDialog(message: message);
                 return Container();
               ***REMOVED***,
@@ -45,7 +45,7 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                 controller: tabController,
                 children: [
                   RefreshIndicator(
-                    onRefresh: () async ***REMOVED***
+                    onRefresh: () async {
                       await ref.refresh(getMerchantBookingsStateProvider);
                     ***REMOVED***,
                     child: previous.isEmpty
@@ -63,7 +63,7 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                           ),
                   ),
                   RefreshIndicator(
-                    onRefresh: () async ***REMOVED***
+                    onRefresh: () async {
                       await ref.refresh(getMerchantBookingsStateProvider);
                     ***REMOVED***,
                     child: upcoming.isEmpty
@@ -74,7 +74,7 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                             ),
                           )
                         : ListView.builder(
-                            itemBuilder: (context, index) ***REMOVED***
+                            itemBuilder: (context, index) {
                               final product = upcoming[index];
                               return MerchantBookingProductTile(
                                 booking: product,
@@ -83,7 +83,7 @@ class MerchantBookingsView extends HookWidget ***REMOVED***
                             itemCount: upcoming.length,
                           ),
                   ),
-          ***REMOVED***
+                ],
               ),
             );
       ***REMOVED***),

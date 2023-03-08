@@ -12,7 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
-class $AssetsIconsGen ***REMOVED***
+class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   ***REMOVED***File path: assets/icons/chat.svg
@@ -56,7 +56,7 @@ class $AssetsIconsGen ***REMOVED***
       ];
 ***REMOVED***
 
-class $AssetsImagesGen ***REMOVED***
+class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   ***REMOVED***File path: assets/images/babr.png
@@ -91,7 +91,7 @@ class $AssetsImagesGen ***REMOVED***
       [babr, esewaLogo, ghareluLogo, logo, map, market, userAvatar, welcome];
 ***REMOVED***
 
-class $AssetsLottieGen ***REMOVED***
+class $AssetsLottieGen {
   const $AssetsLottieGen();
 
   ***REMOVED***File path: assets/lottie/error.json
@@ -109,7 +109,7 @@ class $AssetsLottieGen ***REMOVED***
   List<LottieGenImage> get values => [error, loader, notFound];
 ***REMOVED***
 
-class Assets ***REMOVED***
+class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
@@ -117,12 +117,12 @@ class Assets ***REMOVED***
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
 ***REMOVED***
 
-class AssetGenImage ***REMOVED***
+class AssetGenImage {
   const AssetGenImage(this._assetName);
 
   final String _assetName;
 
-  Image image(***REMOVED***
+  Image image({
     Key? key,
     AssetBundle? bundle,
     ImageFrameBuilder? frameBuilder,
@@ -146,7 +146,7 @@ class AssetGenImage ***REMOVED***
     FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
-  ***REMOVED***) ***REMOVED***
+  ***REMOVED***) {
     return Image.asset(
       _assetName,
       key: key,
@@ -182,12 +182,12 @@ class AssetGenImage ***REMOVED***
   String get keyName => _assetName;
 ***REMOVED***
 
-class SvgGenImage ***REMOVED***
+class SvgGenImage {
   const SvgGenImage(this._assetName);
 
   final String _assetName;
 
-  SvgPicture svg(***REMOVED***
+  SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
@@ -205,7 +205,7 @@ class SvgGenImage ***REMOVED***
     Clip clipBehavior = Clip.hardEdge,
     bool cacheColorFilter = false,
     SvgTheme? theme,
-  ***REMOVED***) ***REMOVED***
+  ***REMOVED***) {
     return SvgPicture.asset(
       _assetName,
       key: key,
@@ -233,12 +233,12 @@ class SvgGenImage ***REMOVED***
   String get keyName => _assetName;
 ***REMOVED***
 
-class LottieGenImage ***REMOVED***
+class LottieGenImage {
   const LottieGenImage(this._assetName);
 
   final String _assetName;
 
-  LottieBuilder lottie(***REMOVED***
+  LottieBuilder lottie({
     Animation<double>? controller,
     bool? animate,
     FrameRate? frameRate,
@@ -260,7 +260,7 @@ class LottieGenImage ***REMOVED***
     bool? addRepaintBoundary,
     FilterQuality? filterQuality,
     void Function(String)? onWarning,
-  ***REMOVED***) ***REMOVED***
+  ***REMOVED***) {
     return Lottie.asset(
       _assetName,
       controller: controller,

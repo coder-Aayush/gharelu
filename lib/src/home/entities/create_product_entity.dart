@@ -6,9 +6,9 @@ import 'package:gharelu/src/home/models/service_model.dart';
 part 'create_product_entity.freezed.dart';
 
 @freezed
-class CreateProductEntity with _$CreateProductEntity ***REMOVED***
+class CreateProductEntity with _$CreateProductEntity {
   const CreateProductEntity._();
-  const factory CreateProductEntity(***REMOVED***
+  const factory CreateProductEntity({
     required Field productName,
     required Field description,
     required Field price,
@@ -37,7 +37,7 @@ class CreateProductEntity with _$CreateProductEntity ***REMOVED***
         serviceId: '',
       );
 
-  bool get isValid ***REMOVED***
+  bool get isValid {
     return productName.isValid &&
         description.isValid &&
         price.isValid &&

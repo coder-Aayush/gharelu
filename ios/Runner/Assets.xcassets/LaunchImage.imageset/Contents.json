@@ -1,22 +1,22 @@
-***REMOVED***
+{
   "images" : [
-    ***REMOVED***
+    {
       "filename" : "LaunchImage.png",
       "idiom" : "universal",
       "scale" : "1x"
     ***REMOVED***,
-    ***REMOVED***
+    {
       "filename" : "LaunchImage@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     ***REMOVED***,
-    ***REMOVED***
+    {
       "filename" : "LaunchImage@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     ***REMOVED***
-***REMOVED***
-  "info" : ***REMOVED***
+  ],
+  "info" : {
     "author" : "xcode",
     "version" : 1
   ***REMOVED***
