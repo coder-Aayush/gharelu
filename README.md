@@ -3,9 +3,34 @@
 Gharelu is an on-demand handyman application built with Flutter and Firebase. The app allows users to find and hire local handymen for a variety of home repair and maintenance tasks. This repository contains the source code for the Gharelu mobile application.
 
 
+### User-Facing Features
+
+- Search for local handymen by category and service type.
+- Schedule appointments with handymen.
+- Manage upcoming and past appointments.
+- Pay for services using Khalti and eSewa.
+
+### Merchant-Facing Features
+
+- Create and manage service listings.
+- Respond to appointment requests from users.
+- Manage upcoming and past appointments.
+- Receive payments through Khalti.
+
+### Other Features
+
+- Real-time chat between users and service providers.
+- Secure authentication and user account management.
+- Integration with Google Maps for location-based search and appointment scheduling.
+- Product management for merchants, allowing them to sell products alongside their services.
+
 ## Screenshoots
 
-
+<img src="/screenshoots/splash_screen.jpg"  alt="Gharelu App Github" height="90"/>
+<img src="/screenshoots/login_screen.jpg"  alt="Gharelu App Github" height="90"/>
+<img src="/screenshoots/home_image.jpg"  alt="Gharelu App Github" height="90"/>
+<img src="/screenshoots/cart_image.jpg"  alt="Gharelu App Github" height="90"/>
+<img src="/screenshoots/select_slot_image.jpg"  alt="Gharelu App Github" height="90"/>
 
 ## Getting Started
 To get started with Gharelu, follow these steps:
