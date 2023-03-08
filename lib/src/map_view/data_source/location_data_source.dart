@@ -27,7 +27,7 @@ class LocationDataSource implements _LocationDataSource {
   LocationDataSource() {
     dio = Dio();
     _apiKey = dotenv.env['MAPBOX_KEY']!;
-    _googleMapKey = dotenv.env['MAPBOX_KEY']!;
+    _googleMapKey = dotenv.env['GOOGLE_MAP_API_KEY']!;
   }
   late final Dio dio;
   late final String _apiKey;
