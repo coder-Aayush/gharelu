@@ -26,11 +26,7 @@ Gharelu is an on-demand handyman application built with Flutter and Firebase. Th
 
 ## Screenshoots
 
-<img src="/screenshoots/splash_screen.jpg"  alt="Gharelu App Github" height="90"/>
-<img src="/screenshoots/login_screen.jpg"  alt="Gharelu App Github" height="90"/>
-<img src="/screenshoots/home_image.jpg"  alt="Gharelu App Github" height="90"/>
-<img src="/screenshoots/cart_image.jpg"  alt="Gharelu App Github" height="90"/>
-<img src="/screenshoots/select_slot_image.jpg"  alt="Gharelu App Github" height="90"/>
+<img src="/screenshoots/splash_screen.jpg"  alt="Gharelu App Github" height="90"/> <img src="/screenshoots/login_screen.jpg"  alt="Gharelu App Github" height="90"/> <img src="/screenshoots/home_image.jpg"  alt="Gharelu App Github" height="90"/> <img src="/screenshoots/cart_image.jpg"  alt="Gharelu App Github" height="90"/> <img src="/screenshoots/select_slot_image.jpg"  alt="Gharelu App Github" height="90"/>
 
 ## Getting Started
 To get started with Gharelu, follow these steps:
