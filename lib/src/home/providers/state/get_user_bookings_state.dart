@@ -11,11 +11,11 @@ class GetUserBookingsState with _$GetUserBookingsState {
   const factory GetUserBookingsState.success({
     required List<BookingModel> previous,
     required List<BookingModel> upcoming,
-  ***REMOVED***) = _Success;
+  }) = _Success;
 
   const factory GetUserBookingsState.noInternet() = _Internet;
 
   const factory GetUserBookingsState.error({
     required String message,
-  ***REMOVED***) = _Error;
-***REMOVED***
+  }) = _Error;
+}

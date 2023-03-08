@@ -9,7 +9,7 @@ import 'package:gharelu/src/home/models/banner_model.dart';
 
 abstract class _BannerRemoteSource {
   Future<Either<AppError, List<BannerModel>>> getBanners();
-***REMOVED***
+}
 
 class BannerRemoteSource implements _BannerRemoteSource {
   BannerRemoteSource(this._reader);
@@ -20,7 +20,7 @@ class BannerRemoteSource implements _BannerRemoteSource {
     try {
       _reader.read(firebaseAuthProvider).authStateChanges().listen((event) {
         log(event.toString());
-      ***REMOVED***
+      });
       final response = await _reader.read(firestoreProvider)
           .collection(AppConstant.banners)
           .get();
@@ -28,16 +28,16 @@ class BannerRemoteSource implements _BannerRemoteSource {
         return right(response.docs
             .map((banner) => BannerModel.fromJson(banner.data()))
             .toList());
-      ***REMOVED*** else {
+      } else {
         return right([]);
-      ***REMOVED***
-    ***REMOVED*** catch (e) {
+      }
+    } catch (e) {
       log(e.toString());
       return left(
           const AppError.serverError(message: 'Failed to Fetch Banners'));
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+    }
+  }
+}
 
 final bannerRemoteSourceProvider =
     Provider<BannerRemoteSource>((ref) => BannerRemoteSource(ref));

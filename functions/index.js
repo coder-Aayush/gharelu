@@ -1,34 +1,40 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+const functions = require("firebase-functions");
+const admin = require('firebase-admin');
+const algolia = require('algoliasearch');
+const { default: algoliasearch } = require("algoliasearch");
 
 
-const ALGOLIA_APP_ID = 'IYS3NBQCDI';
-const ALGOLIA_ADMIN_KEY = '3ab9dbad16ea56cdccf487e845d139a6';
-***REMOVED***
+
+/// TODO: Add your Algolia App Id
+const ALGOLIA_APP_ID = '';
+
+/// TODO: Add your Algolia Admin Key
+const ALGOLIA_ADMIN_KEY = '';
+
+/// 
+const ALGOLIA_INDEX_NAME = 'services';
 
 
-***REMOVED***
+admin.initializeApp(functions.config().firebase);
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+exports.onService = functions.firestore.document('services/{sId}').onWrite(async (snap, context) => {
+    const value = snap.after.data();
+    value.objectID = value.id;
+    updateAloglia(value);
+});
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
+async function updateAloglia(data) {
+    const newValue = snap.after.data();
+    newValue.objectID = snap.id;
 
-***REMOVED***
+    var client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
 
-***REMOVED***
+    var index = client.initIndex(ALGOLIA_INDEX_NAME);
 
-***REMOVED***
-***REMOVED***
+    await index.saveObject(newValue);
+}
 
-exports.onBookingSuccess = functions.firestore.document('bookings/{bId***REMOVED***').onWrite(async (snap, context)=> {
-***REMOVED***
+exports.onBookingSuccess = functions.firestore.document('bookings/{bId}').onWrite(async (snap, context)=> {
+    const value = snap.after.data();
     
-***REMOVED***
+});

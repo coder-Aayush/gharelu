@@ -4,11 +4,11 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DashboardView extends StatefulHookConsumerWidget {
-  const DashboardView({Key? key***REMOVED***) : super(key: key);
+  const DashboardView({Key? key}) : super(key: key);
 
   @override
   _DashboardViewState createState() => _DashboardViewState();
-***REMOVED***
+}
 
 class _DashboardViewState extends ConsumerState<DashboardView> {
   @override
@@ -17,7 +17,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
     return WillPopScope(
       onWillPop: () async {
         return false;
-      ***REMOVED***,
+      },
       child: AutoTabsScaffold(
         routes: [
           const HomeRouter(),
@@ -59,8 +59,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
               ),
             ],
           );
-        ***REMOVED***,
+        },
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

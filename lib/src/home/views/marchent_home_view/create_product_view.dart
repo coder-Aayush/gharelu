@@ -22,7 +22,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreateProductView extends HookConsumerWidget {
-  const CreateProductView({Key? key, this.editProduct***REMOVED***) : super(key: key);
+  const CreateProductView({Key? key, this.editProduct}) : super(key: key);
   final ProductModel? editProduct;
 
   @override
@@ -34,7 +34,7 @@ class CreateProductView extends HookConsumerWidget {
     final category = useTextEditingController();
     final service = useTextEditingController();
 
-    ***REMOVED***Listeners
+    /// Listeners
     ///
     ///
     useEffect(() {
@@ -49,9 +49,9 @@ class CreateProductView extends HookConsumerWidget {
         quanity.text = editProduct!.quantity.toString();
         category.text = editProduct?.category?.name ?? '';
         service.text = editProduct?.service?.name ?? '';
-      ***REMOVED***
+      }
       return null;
-    ***REMOVED***, []);
+    }, []);
 
     final form = ref.watch(createProductFormNotifierProvider).form;
 
@@ -65,10 +65,10 @@ class CreateProductView extends HookConsumerWidget {
             ..navigate(const MerchantHomeRoute());
           ref.refresh(productStateProvider.notifier).getProducts(merchantOnly: true);
           context.showSnackbar(message: editProduct == null ? 'Product Created!': 'Product Updated');
-        ***REMOVED***,
+        },
         error: (message) => context.showErorDialog(message: message),
       );
-    ***REMOVED***
+    });
 
     return ScaffoldWrapper(
       appBar: AppBar(
@@ -101,7 +101,7 @@ class CreateProductView extends HookConsumerWidget {
                   image: form.fileImage?.value != null ? File(form.fileImage!.value) : null,
                   update: editProduct != null,
                 );
-          ***REMOVED***,
+          },
           loading: ref.watch(createProductNotifierProvider).maybeWhen(
                 orElse: () => false,
                 loading: () => true,
@@ -124,8 +124,8 @@ class CreateProductView extends HookConsumerWidget {
                   final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
                   if (picker != null) {
                     ref.read(createProductFormNotifierProvider.notifier).setImage(File(picker.path));
-                  ***REMOVED***
-                ***REMOVED***,
+                  }
+                },
                 child: Stack(
                   children: [
                     GradientCircle(
@@ -134,15 +134,15 @@ class CreateProductView extends HookConsumerWidget {
                       child: Consumer(builder: (context, ref, _) {
                         if (form.imageUrl.isNotEmpty) {
                           return CacheImageViewer(imageUrl: form.imageUrl);
-                        ***REMOVED***
+                        }
                         if (form.fileImage?.value != null) {
                           return Image.file(File(form.fileImage!.value), fit: BoxFit.cover);
-                        ***REMOVED***
+                        }
                         return Opacity(
                           opacity: .4,
                           child: Assets.images.market.image(),
                         );
-                      ***REMOVED***),
+                      }),
                     ),
                     const Positioned(
                       bottom: 0,
@@ -156,7 +156,7 @@ class CreateProductView extends HookConsumerWidget {
                   ],
                 ),
               );
-            ***REMOVED***),
+            }),
             20.verticalSpace,
             CustomTextField(
               labelText: 'Product Name',
@@ -167,7 +167,7 @@ class CreateProductView extends HookConsumerWidget {
               error: form.productName.errorMessage,
               warning: form.productName.warningMessage,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){***REMOVED*** ]')),
+                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){} ]')),
               ],
               maxLength: 100,
             ),
@@ -178,7 +178,7 @@ class CreateProductView extends HookConsumerWidget {
               controller: productDescription,
               maxLength: 300,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){***REMOVED*** ]')),
+                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9-(){} ]')),
               ],
               onChanged: (value) => ref.read(createProductFormNotifierProvider.notifier).setProductDescription(value),
               error: form.description.errorMessage,
@@ -226,16 +226,16 @@ class CreateProductView extends HookConsumerWidget {
                 if (response != null) {
                   ref.read(createProductFormNotifierProvider.notifier).setService(response);
                   category.text = response.name;
-                ***REMOVED***
-              ***REMOVED***,
+                }
+              },
             ),
             20.verticalSpace,
             GestureDetector(
               onTap: () {
                 if (form.category.id.isEmpty) {
                   context.showSnackbar(message: 'Select Product Category First');
-                ***REMOVED***
-              ***REMOVED***,
+                }
+              },
               child: CustomTextField(
                 readOnly: true,
                 isEnable: form.category.id.isNotEmpty,
@@ -246,8 +246,8 @@ class CreateProductView extends HookConsumerWidget {
                   if (response != null) {
                     ref.read(createProductFormNotifierProvider.notifier).setCategory(response);
                     service.text = response.name;
-                  ***REMOVED***
-                ***REMOVED***,
+                  }
+                },
               ),
             ),
             20.verticalSpace,
@@ -276,5 +276,5 @@ class CreateProductView extends HookConsumerWidget {
         ).px(20.w),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

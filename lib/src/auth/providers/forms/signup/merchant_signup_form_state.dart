@@ -6,4 +6,4 @@ part 'merchant_signup_form_state.freezed.dart';
 @freezed
 class MerchantSignupFormState with _$MerchantSignupFormState {
   const factory MerchantSignupFormState(MerchantSignupFromEntity form) = _MerchantSignupFromState;
-***REMOVED***
+}

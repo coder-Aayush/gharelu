@@ -19,6 +19,6 @@ class RoomModel with _$RoomModel {
     int? createdAt,
     int? updatedAt,
     ProductModel? product,
-  ***REMOVED***) = _RoomModel;
+  }) = _RoomModel;
   factory RoomModel.fromJson(Map<String, dynamic> json) => _$RoomModelFromJson(json);
-***REMOVED***
+}

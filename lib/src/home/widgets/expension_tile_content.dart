@@ -5,7 +5,7 @@ class ExpensionTileContent extends StatelessWidget {
     Key? key,
     required this.title,
     required this.description,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final String title;
 
@@ -20,5 +20,5 @@ class ExpensionTileContent extends StatelessWidget {
         Text(description),
       ],
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

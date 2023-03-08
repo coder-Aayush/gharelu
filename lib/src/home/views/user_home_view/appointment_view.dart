@@ -12,7 +12,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AppointmentView extends ConsumerWidget {
-  const AppointmentView({Key? key***REMOVED***) : super(key: key);
+  const AppointmentView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +45,7 @@ class AppointmentView extends ConsumerWidget {
                       RefreshIndicator(
                         onRefresh: () async {
                           await ref.refresh(getUserBookingsNotifierProvider);
-                        ***REMOVED***,
+                        },
                         child: previous.isEmpty
                             ? Center(
                                 child: NoDataFound(
@@ -58,7 +58,7 @@ class AppointmentView extends ConsumerWidget {
                                 itemBuilder: (context, index) =>
                                     BookingProductTile(
                                   booking: previous[index],
-                                  onButton: (product) {***REMOVED***,
+                                  onButton: (product) {},
                                 ).py(10.h).px(10.w),
                                 itemCount: previous.length,
                               ),
@@ -66,7 +66,7 @@ class AppointmentView extends ConsumerWidget {
                       RefreshIndicator(
                         onRefresh: () async {
                           await ref.refresh(getUserBookingsNotifierProvider);
-                        ***REMOVED***,
+                        },
                         child: upcoming.isEmpty
                             ? Center(
                                 child: NoDataFound(
@@ -80,18 +80,18 @@ class AppointmentView extends ConsumerWidget {
                                   final product = upcoming[index];
                                   return BookingProductTile(
                                     booking: product,
-                                    onButton: (product) {***REMOVED***,
+                                    onButton: (product) {},
                                   ).py(10.h).px(10.w);
-                                ***REMOVED***,
+                                },
                                 itemCount: upcoming.length,
                               ),
                       ),
                     ],
                   ),
                 );
-          ***REMOVED***,
+          },
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

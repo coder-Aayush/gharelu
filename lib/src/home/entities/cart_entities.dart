@@ -12,7 +12,7 @@ class CartEntities with _$CartEntities {
     @Default([]) List<ProductModel> products,
     @Default(0) int price,
     @Default(0) int subTotal,
-  ***REMOVED***) = _CartEntities;
+  }) = _CartEntities;
 
   factory CartEntities.empty() => const CartEntities(price: 0, products: []);
 
@@ -24,7 +24,7 @@ class CartEntities with _$CartEntities {
     required String serviceId,
     required String userId,
     required String merchantId,
-  ***REMOVED***) {
+  }) {
     final now = DateTime.now().millisecondsSinceEpoch;
     List<BookingModel> bookings = [];
     for (var i = 0; i < products.length; i++) {
@@ -45,8 +45,8 @@ class CartEntities with _$CartEntities {
         merchantId: merchantId,
         bookedDate: DateTime.parse(bookingDate).millisecondsSinceEpoch,
       ));
-    ***REMOVED***
+    }
 
     return bookings;
-  ***REMOVED***
-***REMOVED***
+  }
+}

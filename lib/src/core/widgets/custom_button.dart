@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
 class CustomButton extends StatelessWidget {
-  ***REMOVED***[title] argument is required
+  /// [title] argument is required
   const CustomButton({
     Key? key,
     this.title,
@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
     this.elevation = 0,
     this.gap = 17,
     this.splashColor,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final String? title;
   final Widget? icon;
@@ -33,25 +33,25 @@ class CustomButton extends StatelessWidget {
 
   final VoidCallback? onPressed;
 
-  ***REMOVED***[titleStyle] is used to style the button text
+  /// [titleStyle] is used to style the button text
   final TextStyle? titleStyle;
 
-  ***REMOVED***[gradient] for enabled state of button
+  /// [gradient] for enabled state of button
   final Color backgroundColor;
 
-  ***REMOVED***[shape] is used to apply border radius on button,
+  /// [shape] is used to apply border radius on button,
   final ShapeBorder? shape;
 
-  ***REMOVED***[width] button width, defaults is 140
+  /// [width] button width, defaults is 140
   final double width;
 
-  ***REMOVED***[height] button height, defaults is 44
+  /// [height] button height, defaults is 44
   final double height;
 
-  ***REMOVED***[loading] is used to display circular progress indicator on loading event, default is false
+  /// [loading] is used to display circular progress indicator on loading event, default is false
   final bool loading;
 
-  ***REMOVED***[isDisabled] is used to disable to button, default is true
+  /// [isDisabled] is used to disable to button, default is true
   final bool isDisabled;
 
   final Color? splashColor;
@@ -86,7 +86,7 @@ class CustomButton extends StatelessWidget {
                 FocusScope.of(context).unfocus();
                 await HapticFeedback.heavyImpact();
                 onPressed?.call();
-              ***REMOVED***,
+              },
         child: ConstrainedBox(
           constraints: _constraints,
           child: Ink(
@@ -127,5 +127,5 @@ class CustomButton extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

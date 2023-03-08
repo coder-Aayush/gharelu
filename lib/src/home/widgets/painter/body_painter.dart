@@ -44,10 +44,10 @@ class BodyPainter extends CustomPainter {
     canvas.drawPath(path_1, paint_1);
     canvas.drawPath(path_2, paint_1);
     canvas.drawPath(path_3, paint_2);
-  ***REMOVED***
+  }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -12,7 +12,7 @@ class MerchantLoginProvider extends StateNotifier<AppState<User?>> {
   Future<void> loginAsMerchant({
     required String email,
     required String password,
-  ***REMOVED***) async {
+  }) async {
     state = const AppState.loading();
     final response =
         await _remoteSource.merchantLogin(email: email, password: password);
@@ -22,8 +22,8 @@ class MerchantLoginProvider extends StateNotifier<AppState<User?>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final merchantLoginProvider =
     StateNotifierProvider.autoDispose<MerchantLoginProvider, AppState<User?>>(

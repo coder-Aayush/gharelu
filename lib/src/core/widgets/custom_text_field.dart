@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.warning,
     this.readOnly = false,
     this.labelText,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final String? title;
   final TextEditingController controller;
@@ -85,15 +85,15 @@ class CustomTextField extends StatelessWidget {
           ),
       ],
     );
-  ***REMOVED***
+  }
 
   Color get borderColor {
     if (hasError) {
       return AppColors.errorColor;
-    ***REMOVED***
+    }
     if (hasWarning) {
       return AppColors.warningColor;
-    ***REMOVED***
+    }
     return AppColors.primaryColor;
-  ***REMOVED***
-***REMOVED***
+  }
+}

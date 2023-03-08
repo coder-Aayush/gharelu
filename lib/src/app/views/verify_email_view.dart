@@ -9,13 +9,13 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class VerifyEmailView extends StatefulWidget {
-  const VerifyEmailView({Key? key, required this.email***REMOVED***) : super(key: key);
+  const VerifyEmailView({Key? key, required this.email}) : super(key: key);
 
   final String email;
 
   @override
   State<VerifyEmailView> createState() => _VerifyEmailViewState();
-***REMOVED***
+}
 
 class _VerifyEmailViewState extends State<VerifyEmailView> {
   bool isVerified = false;
@@ -24,7 +24,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
     return WillPopScope(
       onWillPop: () async {
         return isVerified;
-      ***REMOVED***,
+      },
       child: ScaffoldWrapper(
         body: Center(
           child: Column(
@@ -60,17 +60,17 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                       isVerified = currentUser?.emailVerified ?? false;
                       if (currentUser?.emailVerified == false) {
                         context.showSnackbar(message: 'Email Not Verified yet');
-                      ***REMOVED*** else {
+                      } else {
                         context.router.pop();
-                      ***REMOVED***
-                    ***REMOVED***,
+                      }
+                    },
                   );
-                ***REMOVED***,
+                },
               ),
             ],
           ),
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

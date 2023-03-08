@@ -6,4 +6,4 @@ part 'user_signup_form_state.freezed.dart';
 @freezed
 class UserSignupFormState with _$UserSignupFormState {
   const factory UserSignupFormState(UserSignupFromEntity form) = _UserSignupFromState;
-***REMOVED***
+}

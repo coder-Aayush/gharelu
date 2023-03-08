@@ -14,18 +14,18 @@ class CustomSearchServices extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [];
-  ***REMOVED***
+  }
 
   @override
   Widget? buildLeading(BuildContext context) {
     return const BackButton();
-  ***REMOVED***
+  }
 
   @override
   Widget buildResults(BuildContext context) {
     searcher.query(query);
     return Container();
-  ***REMOVED***
+  }
 
   @override
   Widget buildSuggestions(BuildContext context) {
@@ -65,9 +65,9 @@ class CustomSearchServices extends SearchDelegate {
                 children: hit.getHighlightedString('name').toInlineSpans(),
               )),
             ).py(12.h);
-          ***REMOVED***,
+          },
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

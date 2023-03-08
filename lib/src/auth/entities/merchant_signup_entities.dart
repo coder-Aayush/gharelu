@@ -14,7 +14,7 @@ class MerchantSignupFromEntity with _$MerchantSignupFromEntity {
     required Field phoneNumber,
     required Field location,
     required List<Field> documents,
-  ***REMOVED***) = _MerchantSignupFromEntity;
+  }) = _MerchantSignupFromEntity;
 
   factory MerchantSignupFromEntity.empty() => const MerchantSignupFromEntity(
         name: Field(value: ''),
@@ -34,4 +34,4 @@ class MerchantSignupFromEntity with _$MerchantSignupFromEntity {
       phoneNumber.isValid &&
       location.isValid &&
       documents.isNotEmpty;
-***REMOVED***
+}

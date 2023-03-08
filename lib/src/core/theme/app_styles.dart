@@ -250,8 +250,8 @@ class AppStyles {
         fontSize: 10.sp,
         fontWeight: FontWeight.bold,
       );
-***REMOVED***
+}
 
 double calculateSpacing(double em) {
   return 16 * em;
-***REMOVED***
+}

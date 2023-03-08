@@ -14,13 +14,13 @@ import 'package:latlong2/latlong.dart';
 typedef Success = Function(String, String, LatLng);
 
 class MapPickerView extends StatefulHookConsumerWidget {
-  const MapPickerView(this.onSuccess, {Key? key***REMOVED***) : super(key: key);
+  const MapPickerView(this.onSuccess, {Key? key}) : super(key: key);
   // ignore: inference_failure_on_function_return_type
   final Success onSuccess;
 
   @override
   _MapPickerViewState createState() => _MapPickerViewState();
-***REMOVED***
+}
 
 class _MapPickerViewState extends ConsumerState<MapPickerView> {
   late MapController controller;
@@ -32,8 +32,8 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
     selectedLatLng = LatLng(27.70169, 85.3206);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // context.showSnackbar(message: 'Tab anywhere to Select Location');
-    ***REMOVED***
-  ***REMOVED***
+    });
+  }
 
   late LatLng selectedLatLng;
 
@@ -46,7 +46,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
         success: (data) => context.showSnackbar(message: data.toString()),
         error: (message) => context.showSnackbar(message: message),
       );
-    ***REMOVED***
+    });
     return StatefulBuilder(
       builder: (context, setState) {
         return ScaffoldWrapper(
@@ -66,7 +66,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                     success: (data) => const Icon(Icons.done),
                   ),
             );
-          ***REMOVED***),
+          }),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             notchMargin: 15,
@@ -90,7 +90,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     );
-                  ***REMOVED***),
+                  }),
                 ],
               ),
             ),
@@ -102,20 +102,20 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                 mapController: controller,
                 children: [
                   TileLayer(
-                    urlTemplate: 'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/{z***REMOVED***/{x***REMOVED***/{y***REMOVED***@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
+                    urlTemplate: 'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
                     additionalOptions: {
                       'accessToken': 'pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
                       'id': 'mapbox.mapbox-streets-v8',
-                    ***REMOVED***,
+                    },
                   ),
                 ],
                 options: MapOptions(
                   center: LatLng(27.700769, 85.300140),
                   onPointerDown: (event, point) {
                     selectedLatLng = point;
-                    setState(() {***REMOVED***
-                    ref.read(getLocationStateProvider.notifier).getLocationFromLatLng(lat: '${selectedLatLng.latitude***REMOVED***', lng: '${selectedLatLng.longitude***REMOVED***');
-                  ***REMOVED***,
+                    setState(() {});
+                    ref.read(getLocationStateProvider.notifier).getLocationFromLatLng(lat: '${selectedLatLng.latitude}', lng: '${selectedLatLng.longitude}');
+                  },
                   keepAlive: true,
                   zoom: 18.0,
                   // allowPanning: true,
@@ -130,7 +130,7 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
             ],
           ),
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

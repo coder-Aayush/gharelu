@@ -12,7 +12,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class UserSignupView extends HookConsumerWidget {
-  const UserSignupView({Key? key***REMOVED***) : super(key: key);
+  const UserSignupView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +28,7 @@ class UserSignupView extends HookConsumerWidget {
         success: (data) => context.router.replaceAll([const DashboardRouter()]),
         error: (message) => context.showSnackbar(message: message),
       );
-    ***REMOVED***
+    });
 
     return ScaffoldWrapper(
       appBar: AppBar(
@@ -48,7 +48,7 @@ class UserSignupView extends HookConsumerWidget {
               CustomTextField(
                 onChanged: (name) {
                   ref.read(userSignupFormProvider.notifier).setName(name);
-                ***REMOVED***,
+                },
                 title: 'Name',
                 controller: _name,
                 textInputType: TextInputType.name,
@@ -109,7 +109,7 @@ class UserSignupView extends HookConsumerWidget {
                         ref
                             .read(userSignupFormProvider.notifier)
                             .setLocation(location, placeId, latlng);
-                      ***REMOVED***,
+                      },
                     )),
                   ),
                   4.horizontalSpace,
@@ -156,8 +156,8 @@ class UserSignupView extends HookConsumerWidget {
               ),
             ],
           ).px(20);
-        ***REMOVED***),
+        }),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -7,7 +7,7 @@ class GetLocationState extends StateNotifier<AppState<String>> {
   final LocationDataSource _dataSource;
 
   Future<void> getLocationFromLatLng(
-      {required String lat, required String lng***REMOVED***) async {
+      {required String lat, required String lng}) async {
     state = const AppState.loading();
     final response =
         await _dataSource.getLocationFromGeoCordinates(lat: lat, lng: lng);
@@ -17,8 +17,8 @@ class GetLocationState extends StateNotifier<AppState<String>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState<String>.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final getLocationStateProvider =
     StateNotifierProvider.autoDispose<GetLocationState, AppState>(

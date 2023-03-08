@@ -12,7 +12,7 @@ class CustomProductCard extends StatelessWidget {
     required this.image,
     this.discount,
     required this.name,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final VoidCallback onPressed;
   final String image;
@@ -80,5 +80,5 @@ class CustomProductCard extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

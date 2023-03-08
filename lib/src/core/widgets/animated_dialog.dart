@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AnimatedDialog extends StatefulWidget {
   @override
   State<AnimatedDialog> createState() => _AnimatedDialogState();
-***REMOVED***
+}
 
 class _AnimatedDialogState extends State<AnimatedDialog>
     with SingleTickerProviderStateMixin {
@@ -16,7 +16,7 @@ class _AnimatedDialogState extends State<AnimatedDialog>
     controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     animation = Tween<double>(begin: 0, end: 1).animate(controller);
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,6 @@ class _AnimatedDialogState extends State<AnimatedDialog>
         ),
       )),
     );
-  ***REMOVED***
+  }
   // static Future<void> show(BuildContext context, )=> showDialog(context: context, builder: builder)
-***REMOVED***
+}

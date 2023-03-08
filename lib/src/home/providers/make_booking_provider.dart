@@ -9,7 +9,7 @@ class CreateBookingNotifier
 
   final BookingDataSource _dataSource;
 
-  Future<void> createBookings({required List<BookingModel> booking***REMOVED***) async {
+  Future<void> createBookings({required List<BookingModel> booking}) async {
     state = const AppState.loading();
     final response = await _dataSource.makeBooking(booking: booking);
     state = response.fold(
@@ -18,8 +18,8 @@ class CreateBookingNotifier
               noInternet: () => const AppState.noInternet(),
             ),
         (response) => AppState.success(data: response));
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final createBookingProvider =
     StateNotifierProvider<CreateBookingNotifier, AppState<List<BookingModel>>>(

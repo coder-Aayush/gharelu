@@ -13,12 +13,12 @@ class GetMerchantBookingsState with _$GetMerchantBookingsState {
   const factory GetMerchantBookingsState.success({
     required List<BookingModel> previous,
     required List<BookingModel> upcoming,
-  ***REMOVED***) = _Success;
+  }) = _Success;
 
   
 
 
   const factory GetMerchantBookingsState.error({
     required String message,
-  ***REMOVED***) = _Error;
-***REMOVED***
+  }) = _Error;
+}

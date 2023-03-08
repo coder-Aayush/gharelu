@@ -12,5 +12,5 @@ Future<void> launchType(UtilityEnum type, String content) async {
     case UtilityEnum.WEB:
       await launchUrlString(content);
       break;
-  ***REMOVED***
-***REMOVED***
+  }
+}

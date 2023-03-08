@@ -11,7 +11,7 @@ class ServiceCategoryState extends StateNotifier<AppState<List<ServiceModel>>> {
   final ServiceRemoteSource _remoteSource;
 
   Future<void> getServices(
-      {String? categoryId, bool merchantOnly = false***REMOVED***) async {
+      {String? categoryId, bool merchantOnly = false}) async {
     state = const AppState.loading();
     final response = await _remoteSource.getServices(
         id: categoryId, merchantOnly: merchantOnly);
@@ -21,11 +21,11 @@ class ServiceCategoryState extends StateNotifier<AppState<List<ServiceModel>>> {
             noInternet: () => const AppState.noInternet()),
         (response) => AppState.success(data: response));
     log(state.toString());
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final serviceCategoryStateProvider =
     StateNotifierProvider<ServiceCategoryState, AppState<List<ServiceModel>>>(
         (ref) {
   return ServiceCategoryState(ref.read(serviceRemoteSourceProvider));
-***REMOVED***
+});

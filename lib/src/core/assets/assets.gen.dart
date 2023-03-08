@@ -1,7 +1,7 @@
-***REMOVED***GENERATED CODE - DO NOT MODIFY BY HAND
-***REMOVED********************************************************
-***REMOVED*** FlutterGen
-***REMOVED********************************************************
+/// GENERATED CODE - DO NOT MODIFY BY HAND
+/// *****************************************************
+///  FlutterGen
+/// *****************************************************
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -15,35 +15,35 @@ import 'package:lottie/lottie.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  ***REMOVED***File path: assets/icons/chat.svg
+  /// File path: assets/icons/chat.svg
   SvgGenImage get chat => const SvgGenImage('assets/icons/chat.svg');
 
-  ***REMOVED***File path: assets/icons/clock_icon.svg
+  /// File path: assets/icons/clock_icon.svg
   SvgGenImage get clockIcon => const SvgGenImage('assets/icons/clock_icon.svg');
 
-  ***REMOVED***File path: assets/icons/delete_icon.svg
+  /// File path: assets/icons/delete_icon.svg
   SvgGenImage get deleteIcon =>
       const SvgGenImage('assets/icons/delete_icon.svg');
 
-  ***REMOVED***File path: assets/icons/hand_watch_icon.svg
+  /// File path: assets/icons/hand_watch_icon.svg
   SvgGenImage get handWatchIcon =>
       const SvgGenImage('assets/icons/hand_watch_icon.svg');
 
-  ***REMOVED***File path: assets/icons/khalti_logo.svg
+  /// File path: assets/icons/khalti_logo.svg
   SvgGenImage get khaltiLogo =>
       const SvgGenImage('assets/icons/khalti_logo.svg');
 
-  ***REMOVED***File path: assets/icons/location_marker.svg
+  /// File path: assets/icons/location_marker.svg
   SvgGenImage get locationMarker =>
       const SvgGenImage('assets/icons/location_marker.svg');
 
-  ***REMOVED***File path: assets/icons/phone.svg
+  /// File path: assets/icons/phone.svg
   SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
 
-  ***REMOVED***File path: assets/icons/search.svg
+  /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
-  ***REMOVED***List of all assets
+  /// List of all assets
   List<SvgGenImage> get values => [
         chat,
         clockIcon,
@@ -54,60 +54,60 @@ class $AssetsIconsGen {
         phone,
         search
       ];
-***REMOVED***
+}
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  ***REMOVED***File path: assets/images/babr.png
+  /// File path: assets/images/babr.png
   AssetGenImage get babr => const AssetGenImage('assets/images/babr.png');
 
-  ***REMOVED***File path: assets/images/esewa_logo.png
+  /// File path: assets/images/esewa_logo.png
   AssetGenImage get esewaLogo =>
       const AssetGenImage('assets/images/esewa_logo.png');
 
-  ***REMOVED***File path: assets/images/gharelu_logo.jpg
+  /// File path: assets/images/gharelu_logo.jpg
   AssetGenImage get ghareluLogo =>
       const AssetGenImage('assets/images/gharelu_logo.jpg');
 
-  ***REMOVED***File path: assets/images/logo.png
+  /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
-  ***REMOVED***File path: assets/images/map.png
+  /// File path: assets/images/map.png
   AssetGenImage get map => const AssetGenImage('assets/images/map.png');
 
-  ***REMOVED***File path: assets/images/market.png
+  /// File path: assets/images/market.png
   AssetGenImage get market => const AssetGenImage('assets/images/market.png');
 
-  ***REMOVED***File path: assets/images/user_avatar.png
+  /// File path: assets/images/user_avatar.png
   AssetGenImage get userAvatar =>
       const AssetGenImage('assets/images/user_avatar.png');
 
-  ***REMOVED***File path: assets/images/welcome.png
+  /// File path: assets/images/welcome.png
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
 
-  ***REMOVED***List of all assets
+  /// List of all assets
   List<AssetGenImage> get values =>
       [babr, esewaLogo, ghareluLogo, logo, map, market, userAvatar, welcome];
-***REMOVED***
+}
 
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
-  ***REMOVED***File path: assets/lottie/error.json
+  /// File path: assets/lottie/error.json
   LottieGenImage get error => const LottieGenImage('assets/lottie/error.json');
 
-  ***REMOVED***File path: assets/lottie/loader.json
+  /// File path: assets/lottie/loader.json
   LottieGenImage get loader =>
       const LottieGenImage('assets/lottie/loader.json');
 
-  ***REMOVED***File path: assets/lottie/not_found.json
+  /// File path: assets/lottie/not_found.json
   LottieGenImage get notFound =>
       const LottieGenImage('assets/lottie/not_found.json');
 
-  ***REMOVED***List of all assets
+  /// List of all assets
   List<LottieGenImage> get values => [error, loader, notFound];
-***REMOVED***
+}
 
 class Assets {
   Assets._();
@@ -115,7 +115,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
-***REMOVED***
+}
 
 class AssetGenImage {
   const AssetGenImage(this._assetName);
@@ -146,7 +146,7 @@ class AssetGenImage {
     FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
-  ***REMOVED***) {
+  }) {
     return Image.asset(
       _assetName,
       key: key,
@@ -173,14 +173,14 @@ class AssetGenImage {
       cacheWidth: cacheWidth,
       cacheHeight: cacheHeight,
     );
-  ***REMOVED***
+  }
 
   ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 
   String get keyName => _assetName;
-***REMOVED***
+}
 
 class SvgGenImage {
   const SvgGenImage(this._assetName);
@@ -205,7 +205,7 @@ class SvgGenImage {
     Clip clipBehavior = Clip.hardEdge,
     bool cacheColorFilter = false,
     SvgTheme? theme,
-  ***REMOVED***) {
+  }) {
     return SvgPicture.asset(
       _assetName,
       key: key,
@@ -226,12 +226,12 @@ class SvgGenImage {
       cacheColorFilter: cacheColorFilter,
       theme: theme,
     );
-  ***REMOVED***
+  }
 
   String get path => _assetName;
 
   String get keyName => _assetName;
-***REMOVED***
+}
 
 class LottieGenImage {
   const LottieGenImage(this._assetName);
@@ -260,7 +260,7 @@ class LottieGenImage {
     bool? addRepaintBoundary,
     FilterQuality? filterQuality,
     void Function(String)? onWarning,
-  ***REMOVED***) {
+  }) {
     return Lottie.asset(
       _assetName,
       controller: controller,
@@ -285,9 +285,9 @@ class LottieGenImage {
       filterQuality: filterQuality,
       onWarning: onWarning,
     );
-  ***REMOVED***
+  }
 
   String get path => _assetName;
 
   String get keyName => _assetName;
-***REMOVED***
+}

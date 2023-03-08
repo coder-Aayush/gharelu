@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class NotificationService {
   factory NotificationService() {
     return instance;
-  ***REMOVED***
+  }
   const NotificationService._();
 
   static NotificationService get instance => const NotificationService._();
@@ -26,7 +26,7 @@ class NotificationService {
         )
       ],
     );
-  ***REMOVED***
+  }
 
   Future<void> show() async {
     await AwesomeNotifications().createNotification(
@@ -41,5 +41,5 @@ class NotificationService {
         notificationLayout: NotificationLayout.Inbox,
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

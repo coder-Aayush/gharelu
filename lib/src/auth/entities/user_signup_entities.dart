@@ -12,7 +12,7 @@ class UserSignupFromEntity with _$UserSignupFromEntity {
     required Field password,
     required Field confirmPassword,
     required Field location,
-  ***REMOVED***) = _UserSignupFromEntity;
+  }) = _UserSignupFromEntity;
 
   factory UserSignupFromEntity.empty() => const UserSignupFromEntity(
         name: Field(value: ''),
@@ -30,4 +30,4 @@ class UserSignupFromEntity with _$UserSignupFromEntity {
       email.isValid &&
       password.isValid &&
       confirmPassword.isValid && location.isValid;
-***REMOVED***
+}

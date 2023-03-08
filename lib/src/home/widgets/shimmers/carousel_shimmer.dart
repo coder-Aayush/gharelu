@@ -3,7 +3,7 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CarouselShimmer extends StatelessWidget {
-  const CarouselShimmer({Key? key***REMOVED***) : super(key: key);
+  const CarouselShimmer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,5 +19,5 @@ class CarouselShimmer extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

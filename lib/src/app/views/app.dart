@@ -11,7 +11,7 @@ import 'package:khalti_flutter/khalti_flutter.dart';
 
 
 class AppView extends StatelessWidget {
-  AppView({Key? key***REMOVED***) : super(key: key);
+  AppView({Key? key}) : super(key: key);
   final _router = getIt<AppRouter>();
   @override
   Widget build(BuildContext context) {
@@ -50,5 +50,5 @@ class AppView extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

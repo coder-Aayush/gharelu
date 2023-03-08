@@ -14,11 +14,11 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantHomeView extends ConsumerStatefulWidget {
-  const MerchantHomeView({Key? key***REMOVED***) : super(key: key);
+  const MerchantHomeView({Key? key}) : super(key: key);
 
   @override
   _MerchantHomeViewState createState() => _MerchantHomeViewState();
-***REMOVED***
+}
 
 class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
   @override
@@ -28,7 +28,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
       () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
     );
     super.initState();
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
                     context: context,
                     delegate: CustomSearchServices(searcher),
                   );
-                ***REMOVED***,
+                },
               ),
             ),
           ),
@@ -83,7 +83,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
                         ),
                       ),
                     ).toSliverBox;
-                  ***REMOVED*** else {
+                  } else {
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => ProductTile(
@@ -102,13 +102,13 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
                         childCount: data.length,
                       ),
                     );
-                  ***REMOVED***
-                ***REMOVED***,
+                  }
+                },
               );
-            ***REMOVED***,
+            },
           )
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -13,7 +13,7 @@ class UserSignupProvider extends StateNotifier<AppState<User?>> {
     required String email,
     required String password,
     required String location,
-  ***REMOVED***) async {
+  }) async {
     state = const AppState.loading();
     final response = await _remoteSource.signupUser(
         name: name, email: email, password: password, location: location);
@@ -23,8 +23,8 @@ class UserSignupProvider extends StateNotifier<AppState<User?>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final userSignupProvider =
     StateNotifierProvider.autoDispose<UserSignupProvider, AppState<User?>>(

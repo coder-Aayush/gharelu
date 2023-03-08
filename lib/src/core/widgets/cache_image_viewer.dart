@@ -10,7 +10,7 @@ typedef LoadingErrorWidgetBuilder = Widget Function(
 );
 
 class CacheImageViewer extends StatelessWidget {
-  const CacheImageViewer({Key? key, this.imageUrl, this.height, this.width, this.fit, this.error***REMOVED***) : super(key: key);
+  const CacheImageViewer({Key? key, this.imageUrl, this.height, this.width, this.fit, this.error}) : super(key: key);
   final String? imageUrl;
   final double? height;
   final double? width;
@@ -23,11 +23,11 @@ class CacheImageViewer extends StatelessWidget {
       imageUrl: imageUrl ?? '',
       progressIndicatorBuilder: (_, url, downloadProgress) {
         return url.isEmpty ? Image.asset(Assets.images.logo.path, fit: BoxFit.cover) : context.loader;
-      ***REMOVED***,
+      },
       errorWidget: error ?? (context, url, error) => const Icon(Icons.error_outline),
       fit: fit ?? BoxFit.cover,
       height: height,
       width: width,
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -4,18 +4,18 @@
       "filename" : "background.png",
       "idiom" : "universal",
       "scale" : "1x"
-    ***REMOVED***,
+    },
     {
       "idiom" : "universal",
       "scale" : "2x"
-    ***REMOVED***,
+    },
     {
       "idiom" : "universal",
       "scale" : "3x"
-    ***REMOVED***
+    }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
-  ***REMOVED***
-***REMOVED***
+  }
+}

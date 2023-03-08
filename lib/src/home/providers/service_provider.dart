@@ -22,8 +22,8 @@ class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
       (response) => AppState.success(data: response),
     );
     log(state.toString());
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final categoriesStateProvider =
     StateNotifierProvider<CategoriesState, AppState<List<CategoryModel>>>(

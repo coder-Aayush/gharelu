@@ -15,12 +15,12 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProfileView extends StatefulHookConsumerWidget {
-  const ProfileView({Key? key, required this.onAppoinment***REMOVED***) : super(key: key);
+  const ProfileView({Key? key, required this.onAppoinment}) : super(key: key);
   final VoidCallback onAppoinment;
 
   @override
   _ProfileViewState createState() => _ProfileViewState();
-***REMOVED***
+}
 
 class _ProfileViewState extends ConsumerState<ProfileView> {
   @override
@@ -32,12 +32,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
           success: (data) {
             context.router.replaceAll([const SplashRoute()]);
             ref.invalidate(getUserInfoNotifiderProvider);
-          ***REMOVED***,
+          },
           error: (message) {
             context.showSnackbar(message: message);
-          ***REMOVED***,
+          },
         );
-      ***REMOVED***
+      });
       return ScaffoldWrapper(
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
@@ -83,14 +83,14 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                         ),
                       ),
                     );
-              ***REMOVED***),
+              }),
             ),
             Column(
               children: [
                 // 30.verticalSpace,
                 // CardListTile(
                 //   title: 'View Profile',
-                //   onPressed: () {***REMOVED***,
+                //   onPressed: () {},
                 // ),
                 30.verticalSpace,
                 CardListTile(
@@ -114,13 +114,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                       title: 'Logout',
                       onPressed: () => ref.read(logoutStateNotifierProvider.notifier).logout(),
                     );
-                  ***REMOVED***,
+                  },
                 ),
               ],
             ).px(20.w),
           ],
         ),
       );
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+    });
+  }
+}

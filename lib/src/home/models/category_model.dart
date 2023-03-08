@@ -13,7 +13,7 @@ class CategoryModel with _$CategoryModel {
     @Default(true) bool enable,
     required int createdAt,
     required int updatedAt,
-  ***REMOVED***) = _CategoryModel;
+  }) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
@@ -27,5 +27,5 @@ class CategoryModel with _$CategoryModel {
       createdAt: now,
       updatedAt: now,
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

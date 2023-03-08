@@ -15,31 +15,31 @@ class UserSignupFormProvider extends StateNotifier<UserSignupFormState> {
     if (name.isEmpty) {
       nameField = _form.name
           .copyWith(isValid: false, errorMessage: 'Name cannot be empty');
-    ***REMOVED*** else {
+    } else {
       nameField = _form.name.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED***
+    }
     _form = _form.copyWith(name: nameField);
     state = state.copyWith(form: _form);
-  ***REMOVED***
+  }
 
   void setEmail(String email) {
     final _form = state.form.copyWith(email: Field(value: email));
     late Field emailField;
     if (email.trim().validateEmail()) {
       emailField = _form.email.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       emailField = _form.email
           .copyWith(isValid: false, errorMessage: 'Email doesn\'t looks right');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(email: emailField));
-  ***REMOVED***
+  }
 
   void setPassword(String password) {
     var _form = state.form.copyWith(password: Field(value: password));
     late Field passwordField;
     passwordField = _form.password.copyWith(isValid: true, errorMessage: '');
     state = state.copyWith(form: _form.copyWith(password: passwordField));
-  ***REMOVED***
+  }
 
   void setConfirmPassword(String confirmPassword) {
     final _password = state.form.password.value;
@@ -48,24 +48,24 @@ class UserSignupFormProvider extends StateNotifier<UserSignupFormState> {
     if (_password == confirmPassword) {
       confirmPasswordField =
           _form.confirmPassword.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       confirmPasswordField = _form.confirmPassword.copyWith(
         value: confirmPassword,
         isValid: false,
         errorMessage: 'Password and Confirm Password do not match',
       );
-    ***REMOVED***
+    }
     state = state.copyWith(
         form: _form.copyWith(confirmPassword: confirmPasswordField));
-  ***REMOVED***
+  }
 
   void setLocation(String location, String placeId, LatLng latLng) {
     var _form = state.form.copyWith(location: Field(value: location));
     late Field locationField;
     locationField = _form.location.copyWith(isValid: true, errorMessage: '');
     state = state.copyWith(form: _form.copyWith(location: locationField));
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final userSignupFormProvider = StateNotifierProvider.autoDispose<
     UserSignupFormProvider,

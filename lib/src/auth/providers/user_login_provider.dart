@@ -8,7 +8,7 @@ class UserLoginState extends StateNotifier<AppState> {
   final AuthRemoteSource _remoteSource;
 
   Future<void> loginAsUser(
-      {required String email, required String password***REMOVED***) async {
+      {required String email, required String password}) async {
     state = const AppState.loading();
     final response =
         await _remoteSource.loginAsUser(email: email, password: password);
@@ -18,8 +18,8 @@ class UserLoginState extends StateNotifier<AppState> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final userLoginProvider =
     StateNotifierProvider.autoDispose<UserLoginState, AppState>(

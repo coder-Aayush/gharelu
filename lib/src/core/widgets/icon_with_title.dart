@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 
 class IconWithTitle extends StatelessWidget {
-  const IconWithTitle({Key? key, required this.icon, required this.title***REMOVED***)
+  const IconWithTitle({Key? key, required this.icon, required this.title})
       : super(key: key);
   final String icon;
   final String title;
@@ -27,5 +27,5 @@ class IconWithTitle extends StatelessWidget {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

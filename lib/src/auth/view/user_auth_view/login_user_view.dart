@@ -12,7 +12,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginUserView extends HookConsumerWidget {
-  const LoginUserView({Key? key***REMOVED***) : super(key: key);
+  const LoginUserView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,11 +28,11 @@ class LoginUserView extends HookConsumerWidget {
             buttonTitle: 'Back To Home',
             onPressed: () {
               context.router.replaceAll([const DashboardRouter()]);
-            ***REMOVED***,
+            },
           ),
         ),
       );
-    ***REMOVED***
+    });
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login'),
@@ -63,7 +63,7 @@ class LoginUserView extends HookConsumerWidget {
                         .errorMessage,
                     controller: _email,
                   );
-                ***REMOVED***,
+                },
               ),
               30.verticalSpace,
               CustomTextField(
@@ -111,8 +111,8 @@ class LoginUserView extends HookConsumerWidget {
               ),
             ],
           ).px(20);
-        ***REMOVED***),
+        }),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

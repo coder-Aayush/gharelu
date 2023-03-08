@@ -19,8 +19,8 @@ class BannerState extends StateNotifier<AppState<List<BannerModel>>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState<List<BannerModel>>.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final bannerStateProvider =
     StateNotifierProvider.autoDispose<BannerState, AppState<List<BannerModel>>>(

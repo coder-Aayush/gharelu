@@ -30,7 +30,7 @@ class ChatDetailView extends StatefulHookConsumerWidget {
     this.product,
     this.merchant,
     this.user,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
   final String roomId;
   final CustomUserModel? user;
   final CustomUserModel? merchant;
@@ -39,21 +39,21 @@ class ChatDetailView extends StatefulHookConsumerWidget {
 
   @override
   _ChatDetailViewState createState() => _ChatDetailViewState();
-***REMOVED***
+}
 
 class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
   @override
   void initState() {
     message = TextEditingController();
     super.initState();
-  ***REMOVED***
+  }
 
   @override
   void dispose() {
     ref.invalidate(getMessagesNotifierProvider);
     message.dispose();
     super.dispose();
-  ***REMOVED***
+  }
 
   late TextEditingController message;
 
@@ -85,7 +85,7 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                   (widget.product?.name ?? ''),
                   style: AppStyles.text18PxBold,
                 ),
-                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')***REMOVED***', style: AppStyles.text12PxMedium.midGrey)
+                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')}', style: AppStyles.text12PxMedium.midGrey)
               ],
             ).expanded(),
           ],
@@ -104,13 +104,13 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                           if (data.isEmpty) {
                             return SizedBox(
                               child: NoDataFound(
-                                title: 'Start Conversation with ${isMerchant ? '${widget.user?.name***REMOVED***' : '${widget.merchant?.name***REMOVED***'***REMOVED***',
+                                title: 'Start Conversation with ${isMerchant ? '${widget.user?.name}' : '${widget.merchant?.name}'}',
                                 onRefresh: () {
                                   ref.read(getMessagesNotifierProvider(roomId));
-                                ***REMOVED***,
+                                },
                               ),
                             ).expanded();
-                          ***REMOVED***
+                          }
                           return ListView.builder(
                             itemCount: data.length,
                             reverse: true,
@@ -124,7 +124,7 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                                     imageUrl: message.imageUrl,
                                   ),
                                 );
-                              ***REMOVED***
+                              }
                               return BubbleSpecialTwo(
                                 text: message.message ?? '',
                                 isSender: userId == message.senderId ? true : false,
@@ -133,11 +133,11 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                                 delivered: false,
                                 textStyle: userId == message.senderId ? AppStyles.text14PxRegular.white : const TextStyle(),
                               ).px(10).py(10);
-                            ***REMOVED***,
+                            },
                           ).expanded();
-                        ***REMOVED***,
+                        },
                       );
-                ***REMOVED***,
+                },
               ),
               MessageBar(
                 onSend: (message) {
@@ -154,7 +154,7 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                           updatedAt: now,
                         ),
                       );
-                ***REMOVED***,
+                },
                 sendButtonColor: AppColors.primaryColor,
                 actions: [
                   Padding(
@@ -181,8 +181,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                                   senderId: userId!,
                                 ),
                               );
-                        ***REMOVED***
-                      ***REMOVED***,
+                        }
+                      },
                     ),
                   ),
                 ],
@@ -202,10 +202,10 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                     child: context.loader,
                   )),
                 );
-          ***REMOVED***)
+          })
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 // 

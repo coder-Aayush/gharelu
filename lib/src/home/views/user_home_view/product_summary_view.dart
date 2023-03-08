@@ -12,7 +12,7 @@ import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductSummaryView extends StatelessWidget {
-  const ProductSummaryView({Key? key, required this.service***REMOVED***) : super(key: key);
+  const ProductSummaryView({Key? key, required this.service}) : super(key: key);
   final ServiceModel service;
 
   @override
@@ -45,7 +45,7 @@ class ProductSummaryView extends StatelessWidget {
                       children: [
                         Text('Item Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
-                        Text('Rs: ${_cart.totalPrice***REMOVED***',
+                        Text('Rs: ${_cart.totalPrice}',
                             style: AppStyles.text14PxSemiBold)
                       ],
                     ),
@@ -66,7 +66,7 @@ class ProductSummaryView extends StatelessWidget {
                         Text('Total', style: AppStyles.text14PxMedium),
                         const Spacer(),
                         Text(
-                          'Rs: ${_cart.subTotal***REMOVED***',
+                          'Rs: ${_cart.subTotal}',
                           style: AppStyles.text14PxSemiBold,
                         )
                       ],
@@ -84,10 +84,10 @@ class ProductSummaryView extends StatelessWidget {
                 ),
               ),
             );
-          ***REMOVED*** else {
+          } else {
             return const SizedBox.shrink();
-          ***REMOVED***
-        ***REMOVED***,
+          }
+        },
       ),
       body: CustomScrollView(
         slivers: [
@@ -121,7 +121,7 @@ class ProductSummaryView extends StatelessWidget {
                   ],
                 ),
               ).toSliverBox;
-            ***REMOVED***
+            }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -132,7 +132,7 @@ class ProductSummaryView extends StatelessWidget {
                   return ListTile(
                     title: Text(product.name),
                     subtitle: Text(
-                        'Rs: ${calculateTotalPriceOfProduct(product.price, product.quantity)***REMOVED***'),
+                        'Rs: ${calculateTotalPriceOfProduct(product.price, product.quantity)}'),
                     trailing: IncrementAndDecrement(
                       count: product.quantity,
                       onIncrement: () => ref
@@ -143,16 +143,16 @@ class ProductSummaryView extends StatelessWidget {
                           .decrement(product),
                     ),
                   );
-                ***REMOVED***),
+                }),
               ],
             ).px(20).py(20).toSliverBox;
-          ***REMOVED***),
+          }),
         ],
       ),
     );
-  ***REMOVED***
+  }
 
   int calculateTotalPriceOfProduct(int amount, int quantity) {
     return amount * quantity;
-  ***REMOVED***
-***REMOVED***
+  }
+}

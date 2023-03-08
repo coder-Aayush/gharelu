@@ -7,16 +7,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class SendMessageNotifier extends StateNotifier<AppState<bool>> {
   SendMessageNotifier(this._remoteSource) : super(const AppState.initial());
   final ChatRemoteSource _remoteSource;
-  Future<void> sendMessage({required MessageModel message***REMOVED***) async {
+  Future<void> sendMessage({required MessageModel message}) async {
     state = const AppState.loading();
     final response = await _remoteSource.sendMessage(message: message);
     state = response.fold(
       (error) => error.when(serverError: (message) => AppState.error(message: message), noInternet: () => AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final sendMessageNotifierProvider = StateNotifierProvider<SendMessageNotifier, AppState<bool>>((ref) {
   return SendMessageNotifier(ref.read(chatRemoteSourceProvider));
-***REMOVED***
+});

@@ -15,8 +15,8 @@ class BannerModel with _$BannerModel {
     required String imageUrl,
     @Default(false) bool redirect,
     @Default(true) isVisiable,
-  ***REMOVED***)= _BannerModel;
+  })= _BannerModel;
 
   factory BannerModel.fromJson(Map<String, dynamic> json) =>
       _$BannerModelFromJson(json);
-***REMOVED***
+}

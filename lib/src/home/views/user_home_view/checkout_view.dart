@@ -22,7 +22,7 @@ import 'package:khalti_flutter/khalti_flutter.dart';
 
 class CheckoutView extends HookConsumerWidget {
   const CheckoutView(
-      {Key? key, required this.date, required this.time, required this.service***REMOVED***)
+      {Key? key, required this.date, required this.time, required this.service})
       : super(key: key);
   final String date;
   final String time;
@@ -43,9 +43,9 @@ class CheckoutView extends HookConsumerWidget {
             ..navigate(const AppointmentRouter());
           context.router
               .popUntil((route) => route.settings.name == DashboardRouter.name);
-        ***REMOVED***,
+        },
       );
-    ***REMOVED***
+    });
     return Consumer(
       builder: (context, ref, _) {
         return ScaffoldWrapper(
@@ -77,7 +77,7 @@ class CheckoutView extends HookConsumerWidget {
                             amount: ((_cart.totalPrice + 50) *
                                 100), // Amount should be in paisa
                             productIdentity: _cart.products.first.serviceId,
-                            productName: '${_cart.products.first.categoryId***REMOVED***',
+                            productName: '${_cart.products.first.categoryId}',
                           );
                           await KhaltiScope.of(context).pay(
                             config: config,
@@ -98,13 +98,13 @@ class CheckoutView extends HookConsumerWidget {
                                         merchantId: service.merchantId,
                                       ),
                                     );
-                              ***REMOVED***
-                            ***REMOVED***,
+                              }
+                            },
                             onFailure: (value) {
                               context.showSnackbar(message: value.message);
-                            ***REMOVED***,
+                            },
                           );
-                        ***REMOVED***,
+                        },
                         icon: Assets.icons.khaltiLogo.svg(height: 23.h),
                       ),
                       20.verticalSpace,
@@ -114,17 +114,17 @@ class CheckoutView extends HookConsumerWidget {
                         onPressed: () {
                           context.showSnackbar(
                               message: 'Unable to Pay with eSEWA');
-                        ***REMOVED***,
+                        },
                         titleColor: const Color(0xff60BB47),
                       ),
                     ],
                   ).px(20).toSliverBox;
-                ***REMOVED***,
+                },
               )
             ],
           ),
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

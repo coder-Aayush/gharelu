@@ -14,20 +14,20 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SelectSlotView extends StatefulHookConsumerWidget {
-  const SelectSlotView({Key? key, required this.service***REMOVED***) : super(key: key);
+  const SelectSlotView({Key? key, required this.service}) : super(key: key);
   final ServiceModel service;
   @override
   _SelectSlotViewState createState() => _SelectSlotViewState();
-***REMOVED***
+}
 
 class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
   @override
   void didChangeDependencies() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(slotNotifierProvider.notifier).getBookings(date: DateTime.now(), serviceId: widget.service.id);
-    ***REMOVED***
+    });
     super.didChangeDependencies();
-  ***REMOVED***
+  }
 
   ValueNotifier<String?> selectedTime = ValueNotifier<String?>(null);
   ValueNotifier<DateTime> selectedDate = ValueNotifier<DateTime>(DateTime.now());
@@ -48,7 +48,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
                 service: widget.service,
               )),
             ).px(20).py(10.h);
-          ***REMOVED***,
+          },
         ),
       ),
       body: CustomScrollView(
@@ -75,7 +75,7 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
                       selectedTime.value = null;
                       ref.read(slotNotifierProvider.notifier).getBookings(date: date, serviceId: widget.service.id);
                       selectedDate.value = date;
-                    ***REMOVED***,
+                    },
                     leftMargin: 20,
                     monthColor: Colors.blueGrey,
                     dayColor: Colors.teal[200],
@@ -122,14 +122,14 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
                                       ),
                                       onPressed: () {
                                         selectedTime.value = data[index];
-                                      ***REMOVED***,
+                                      },
                                     );
-                                  ***REMOVED***,
+                                  },
                                 ),
                               ),
                             ).px(20),
                           );
-                    ***REMOVED***,
+                    },
                   ),
                 ],
               ),
@@ -142,5 +142,5 @@ class _SelectSlotViewState extends ConsumerState<SelectSlotView> {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

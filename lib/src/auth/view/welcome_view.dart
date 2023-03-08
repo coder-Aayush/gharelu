@@ -7,7 +7,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView(
-      {Key? key, required this.onPressed, required this.buttonTitle***REMOVED***)
+      {Key? key, required this.onPressed, required this.buttonTitle})
       : super(key: key);
   final VoidCallback onPressed;
   final String buttonTitle;
@@ -36,7 +36,7 @@ class WelcomeView extends StatelessWidget {
                 width: 270.w,
                 onPressed: () async {
                   onPressed();
-                ***REMOVED***,
+                },
               ),
               20.verticalSpace,
             ],
@@ -44,5 +44,5 @@ class WelcomeView extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

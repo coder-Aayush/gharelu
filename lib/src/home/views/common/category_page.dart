@@ -12,13 +12,13 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoryView extends StatefulHookConsumerWidget {
-  const CategoryView({Key? key, required this.category***REMOVED***) : super(key: key);
+  const CategoryView({Key? key, required this.category}) : super(key: key);
 
   final CategoryModel category;
 
   @override
   _CategoryViewState createState() => _CategoryViewState();
-***REMOVED***
+}
 
 class _CategoryViewState extends ConsumerState<CategoryView> {
   @override
@@ -27,9 +27,9 @@ class _CategoryViewState extends ConsumerState<CategoryView> {
       ref
           .read(serviceCategoryStateProvider.notifier)
           .getServices(categoryId: widget.category.id);
-    ***REMOVED***
+    });
     super.didChangeDependencies();
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +73,10 @@ class _CategoryViewState extends ConsumerState<CategoryView> {
                   ),
                 ),
               );
-            ***REMOVED***,
+            },
           )
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

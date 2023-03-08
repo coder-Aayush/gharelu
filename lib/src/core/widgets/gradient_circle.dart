@@ -11,7 +11,7 @@ class GradientCircle extends StatelessWidget {
     this.borderWidth = 2.0,
     this.gradient = AppColors.circleGradient,
     this.showGradient = false,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final double radius;
   final Widget child;
@@ -41,5 +41,5 @@ class GradientCircle extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

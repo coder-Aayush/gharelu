@@ -16,7 +16,7 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> {
     required String password,
     required List<File> documents,
     required String location,
-  ***REMOVED***) async {
+  }) async {
     state = const AppState.loading();
     final response = await _reader.read(authRemoteSourceProvider).merchantSignup(
       email: email,
@@ -32,8 +32,8 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final merchantSignupProvider =
     StateNotifierProvider.autoDispose<MerchantSignupState, AppState<User?>>(

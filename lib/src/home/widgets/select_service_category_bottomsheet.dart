@@ -9,7 +9,7 @@ import 'package:gharelu/src/home/providers/service_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SelectServiceCategoryBottomsheet extends StatelessWidget {
-  const SelectServiceCategoryBottomsheet({Key? key***REMOVED***) : super(key: key);
+  const SelectServiceCategoryBottomsheet({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +30,7 @@ class SelectServiceCategoryBottomsheet extends StatelessWidget {
                       (index) => GestureDetector(
                         onTap: () {
                           Navigator.pop(context, data[index]);
-                        ***REMOVED***,
+                        },
                         child: Column(
                           children: [
                             GradientCircle(
@@ -49,20 +49,20 @@ class SelectServiceCategoryBottomsheet extends StatelessWidget {
                       ),
                     ),
                   ).px(20.w);
-                ***REMOVED***,
+                },
               );
-        ***REMOVED***),
+        }),
         40.verticalSpace,
       ],
     );
-  ***REMOVED***
+  }
 
   static Future<CategoryModel?> show(BuildContext context) async {
     final response = await showAppBottomSheet<CategoryModel?>(
         context, const SelectServiceCategoryBottomsheet());
     if (response != null) {
       return response;
-    ***REMOVED***
+    }
     return null;
-  ***REMOVED***
-***REMOVED***
+  }
+}

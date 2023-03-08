@@ -16,7 +16,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MerchantSignupView extends HookConsumerWidget {
-  const MerchantSignupView({Key? key***REMOVED***) : super(key: key);
+  const MerchantSignupView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,9 +28,9 @@ class MerchantSignupView extends HookConsumerWidget {
         success: (data) {
           context.router.replaceAll([const MerchantDashboardRouter()]);
           context.showSnackbar(message: 'You are signed up');
-        ***REMOVED***,
+        },
       );
-    ***REMOVED***
+    });
     final _name = useTextEditingController();
     final _email = useTextEditingController();
     final _phoneNumber = useTextEditingController();
@@ -112,8 +112,8 @@ class MerchantSignupView extends HookConsumerWidget {
                   ref
                       .read(merchantSignupFormProvider.notifier)
                       .setDocuments(imagePath.map((e) => e.path).toList());
-                ***REMOVED***
-              ***REMOVED***,
+                }
+              },
             ),
             20.verticalSpace,
             Wrap(
@@ -151,7 +151,7 @@ class MerchantSignupView extends HookConsumerWidget {
                         ref
                             .read(merchantSignupFormProvider.notifier)
                             .setLocation(location);
-                      ***REMOVED***,
+                      },
                     ),
                   ),
                 ),
@@ -207,5 +207,5 @@ class MerchantSignupView extends HookConsumerWidget {
         ),
       ).px(20),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

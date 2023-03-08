@@ -30,21 +30,21 @@ class GetMerchantBookingsNotifier
           if (booking.orderType == OrderType.Completed ||
               booking.orderType == OrderType.Cancelled) {
             previous.add(booking);
-          ***REMOVED*** else {
+          } else {
             upcoming.add(booking);
-          ***REMOVED***
-        ***REMOVED***
+          }
+        }
         print(response);
         return GetMerchantBookingsState.success(
           previous: previous,
           upcoming: upcoming,
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
+  }
 
   Future<void> updateBookings(
-      {required String bookingId, required OrderType orderType***REMOVED***) async {
+      {required String bookingId, required OrderType orderType}) async {
     state = const GetMerchantBookingsState.loading();
     final response = await _dataSource.updateBookings(
         bookingId: bookingId, orderType: orderType);
@@ -61,14 +61,14 @@ class GetMerchantBookingsNotifier
           previous: _state.previous,
           upcoming: _state.upcoming,
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final getMerchantBookingsStateProvider = StateNotifierProvider<
     GetMerchantBookingsNotifier, GetMerchantBookingsState>((ref) {
   return GetMerchantBookingsNotifier(
     ref.read(bookingDataSourceProvider),
   )..getMerchantBookings();
-***REMOVED***
+});

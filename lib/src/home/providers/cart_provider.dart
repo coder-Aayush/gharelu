@@ -15,7 +15,7 @@ class CartState extends StateNotifier<CartEntities> {
       products: [...cart.products, product.copyWith(quantity: 1)],
     );
     calculatePrice();
-  ***REMOVED***
+  }
 
   void calculatePrice() {
     final cart = state;
@@ -28,9 +28,9 @@ class CartState extends StateNotifier<CartEntities> {
       price: _price,
       subTotal: _price + 50,
     );
-  ***REMOVED***
+  }
 
-  void removeFromCart(ProductModel product) {***REMOVED***
+  void removeFromCart(ProductModel product) {}
 
   void increment(ProductModel product) {
     final cart = state;
@@ -49,7 +49,7 @@ class CartState extends StateNotifier<CartEntities> {
       products: _product.update(productIndex, updatedProduct),
     );
     calculatePrice();
-  ***REMOVED***
+  }
 
   void decrement(ProductModel product) {
     final cart = state;
@@ -61,7 +61,7 @@ class CartState extends StateNotifier<CartEntities> {
         price: cart.price,
         products: _product,
       );
-    ***REMOVED*** else {
+    } else {
       final productIndex =
           state.products.indexWhere((element) => element.id == product.id);
       final updatedProduct = state.products[productIndex].copyWith(
@@ -72,13 +72,13 @@ class CartState extends StateNotifier<CartEntities> {
         products: _product.update(productIndex, updatedProduct),
       );
       calculatePrice();
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   // void setMerchantId(String merchantId) {
   //   state = state.copyWith(merchantId: merchantId);
-  // ***REMOVED***
-***REMOVED***
+  // }
+}
 
 final cartStateProvider =
     StateNotifierProvider.autoDispose<CartState, CartEntities>(

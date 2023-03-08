@@ -15,10 +15,10 @@ class DeleteProductNotifier extends StateNotifier<AppState<bool>> {
       ),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final deleteProductNotifierProvider =
     StateNotifierProvider<DeleteProductNotifier, AppState<bool>>((ref) {
   return DeleteProductNotifier(ref.read(serviceRemoteSourceProvider));
-***REMOVED***
+});

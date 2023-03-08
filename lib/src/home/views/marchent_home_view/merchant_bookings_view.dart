@@ -11,7 +11,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantBookingsView extends HookWidget {
-  const MerchantBookingsView({Key? key***REMOVED***) : super(key: key);
+  const MerchantBookingsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +40,14 @@ class MerchantBookingsView extends HookWidget {
               error: (message) {
                 context.showErorDialog(message: message);
                 return Container();
-              ***REMOVED***,
+              },
               success: (previous, upcoming) => TabBarView(
                 controller: tabController,
                 children: [
                   RefreshIndicator(
                     onRefresh: () async {
                       await ref.refresh(getMerchantBookingsStateProvider);
-                    ***REMOVED***,
+                    },
                     child: previous.isEmpty
                         ? Center(
                             child: NoDataFound(
@@ -65,7 +65,7 @@ class MerchantBookingsView extends HookWidget {
                   RefreshIndicator(
                     onRefresh: () async {
                       await ref.refresh(getMerchantBookingsStateProvider);
-                    ***REMOVED***,
+                    },
                     child: upcoming.isEmpty
                         ? Center(
                             child: NoDataFound(
@@ -79,14 +79,14 @@ class MerchantBookingsView extends HookWidget {
                               return MerchantBookingProductTile(
                                 booking: product,
                               ).py(10.h).px(10.w);
-                            ***REMOVED***,
+                            },
                             itemCount: upcoming.length,
                           ),
                   ),
                 ],
               ),
             );
-      ***REMOVED***),
+      }),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

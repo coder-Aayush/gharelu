@@ -11,7 +11,7 @@ class IncrementAndDecrement extends StatelessWidget {
       {Key? key,
       required this.count,
       required this.onIncrement,
-      required this.onDecrement***REMOVED***)
+      required this.onDecrement})
       : super(key: key);
   final int count;
   final VoidCallback onIncrement;
@@ -65,5 +65,5 @@ class IncrementAndDecrement extends StatelessWidget {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

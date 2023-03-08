@@ -8,7 +8,7 @@ class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> {
   AuthStatusNotifier(this._dataSource) : super(const AppState.initial());
   final AuthStatusDataSource _dataSource;
 
-  Future<void> checkAuth({required String id***REMOVED***) async {
+  Future<void> checkAuth({required String id}) async {
     state = const AppState.loading();
     final response = await _dataSource.authSatus(id: id);
     state = response.fold(
@@ -17,8 +17,8 @@ class AuthStatusNotifier extends StateNotifier<AppState<CustomUserModel>> {
           noInternet: () => const AppState.noInternet()),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final authStatusNotifierProvider = StateNotifierProvider.autoDispose<
     AuthStatusNotifier, AppState<CustomUserModel>>((ref) {
@@ -26,6 +26,6 @@ final authStatusNotifierProvider = StateNotifierProvider.autoDispose<
   final notifier = AuthStatusNotifier(ref.read(authStatusDataSourceProvider));
   if (currentUser != null) {
     notifier..checkAuth(id: currentUser.uid);
-  ***REMOVED***
+  }
   return notifier;
-***REMOVED***
+});

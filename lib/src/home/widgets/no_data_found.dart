@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
 
 class NoDataFound extends StatelessWidget {
-  const NoDataFound({Key? key, required this.title, required this.onRefresh***REMOVED***) : super(key: key);
+  const NoDataFound({Key? key, required this.title, required this.onRefresh}) : super(key: key);
   final String title;
   final VoidCallback onRefresh;
   @override
@@ -27,5 +27,5 @@ class NoDataFound extends StatelessWidget {
         )
       ],
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

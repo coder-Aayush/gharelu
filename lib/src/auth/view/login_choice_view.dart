@@ -8,7 +8,7 @@ import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
 class LoginChoiceView extends StatelessWidget {
-  const LoginChoiceView({Key? key***REMOVED***) : super(key: key);
+  const LoginChoiceView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,5 +53,5 @@ class LoginChoiceView extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

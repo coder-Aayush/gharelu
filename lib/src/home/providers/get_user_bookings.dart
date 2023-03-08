@@ -27,20 +27,20 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
         for (var item in response) {
           if (item.orderType == OrderType.Cancelled || item.orderType == OrderType.Completed) {
             previous.add(item);
-          ***REMOVED*** else {
+          } else {
             upcoming.add(item);
-          ***REMOVED***
-        ***REMOVED***
+          }
+        }
 
         return GetUserBookingsState.success(
           previous: previous,
           upcoming: upcoming,
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
+  }
 
-  Future<void> updateBookings({required String bookingId, required OrderType orderType***REMOVED***) async {
+  Future<void> updateBookings({required String bookingId, required OrderType orderType}) async {
     state = const GetUserBookingsState.loading();
     final response = await _dataSource.updateBookings(bookingId: bookingId, orderType: orderType);
     getBookings();
@@ -55,13 +55,13 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
           previous: _state.previous,
           upcoming: _state.upcoming,
         );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final getUserBookingsNotifierProvider = StateNotifierProvider<GetUserBookingsNotifier, GetUserBookingsState>(
   (ref) {
     return GetUserBookingsNotifier(ref.read(bookingDataSourceProvider))..getBookings();
-  ***REMOVED***,
+  },
 );

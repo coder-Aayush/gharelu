@@ -18,7 +18,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SplashView extends HookConsumerWidget {
-  const SplashView({Key? key***REMOVED***) : super(key: key);
+  const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,37 +26,37 @@ class SplashView extends HookConsumerWidget {
     //   NotificationService.instance.initilize();
     //   if (ref.read(firebaseAuthProvider).currentUser != null) {
     //     context.router.replaceAll([const DashboardRouter()]);
-    //   ***REMOVED***
-    // ***REMOVED***, []);
+    //   }
+    // }, []);
     ref.listen<AppState<CustomUserModel>>(authStatusNotifierProvider,
         (previous, next) {
       next.maybeWhen(
         orElse: () => null,
         success: (data) {
           ref.read(authChangeProvider);
-          context.showSnackbar(message: 'Welcome Back ${data.name***REMOVED***');
+          context.showSnackbar(message: 'Welcome Back ${data.name}');
           if (data.isMerchant) {
-            ***REMOVED***navigate to merchant
+            /// navigate to merchant
             ///
             context.router.replaceAll([const MerchantDashboardRouter()]);
-          ***REMOVED*** else {
+          } else {
             context.router.replaceAll([const DashboardRouter()]);
-          ***REMOVED***
-        ***REMOVED***,
+          }
+        },
         error: (message) async {
           context.showSnackbar(message: message);
           // ignore: inference_failure_on_instance_creation
           await Future.delayed(const Duration(milliseconds: 300));
           context.router.push(const LoginChoiceRoute());
-        ***REMOVED***,
+        },
       );
-    ***REMOVED***
+    });
 
     // ref.listen(authSatate, (previous, next) {
     //   if (next != null) {
     //     log(next.toString());
-    //   ***REMOVED***
-    // ***REMOVED***
+    //   }
+    // });
     // final _authState = ref.watch(authSatate);
     // return Scaffold(
     //   backgroundColor: AppColors.primaryColor,
@@ -64,9 +64,9 @@ class SplashView extends HookConsumerWidget {
     //     data: (data) {
     //       if (data != null) {
     //         context.router.replaceAll([const DashboardRouter()]);
-    //       ***REMOVED***
+    //       }
     //       return _body(context);
-    //     ***REMOVED***,
+    //     },
     //     error: (message, _) => _body(context),
     //     loading: () => _body(context),
     //   ),
@@ -75,7 +75,7 @@ class SplashView extends HookConsumerWidget {
       backgroundColor: AppColors.primaryColor,
       body: _body(context),
     );
-  ***REMOVED***
+  }
 
   Widget _body(BuildContext context) {
     return SafeArea(
@@ -98,7 +98,7 @@ class SplashView extends HookConsumerWidget {
                     orElse: () => buildButton(ref, context),
                     success: (data) {
                       return const SizedBox.shrink();
-                    ***REMOVED***,
+                    },
                     loading: () => const Center(
                       child: CircularProgressIndicator(
                         color: AppColors.whiteColor,
@@ -106,13 +106,13 @@ class SplashView extends HookConsumerWidget {
                     ),
                     error: (message) => buildButton(ref, context),
                   );
-            ***REMOVED***),
+            }),
             20.verticalSpace,
           ],
         ),
       ),
     );
-  ***REMOVED***
+  }
 
   Widget buildButton(WidgetRef ref, BuildContext context) {
     return CustomButton(
@@ -127,5 +127,5 @@ class SplashView extends HookConsumerWidget {
       titleStyle: AppStyles.text14PxMedium.softBlack,
       width: 270,
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

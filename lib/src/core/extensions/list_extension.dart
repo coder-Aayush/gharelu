@@ -4,5 +4,5 @@ extension ListUpdate<T> on List<T> {
     list.add(t);
     replaceRange(pos, pos + 1, list);
     return this;
-  ***REMOVED***
-***REMOVED***
+  }
+}

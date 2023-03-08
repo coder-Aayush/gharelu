@@ -13,4 +13,4 @@ class FirebaseDBCollection {
       FirebaseFirestore.instance.collection('bookings');
   static CollectionReference<Map<String, dynamic>> products =
       FirebaseFirestore.instance.collection('products');
-***REMOVED***
+}

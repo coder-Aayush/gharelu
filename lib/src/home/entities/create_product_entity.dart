@@ -22,7 +22,7 @@ class CreateProductEntity with _$CreateProductEntity {
     required String categoryId,
     required CategoryModel category,
     required ServiceModel service,
-  ***REMOVED***) = _CreateProductEntity;
+  }) = _CreateProductEntity;
 
   factory CreateProductEntity.empty() => CreateProductEntity(
         categoryId: '',
@@ -45,5 +45,5 @@ class CreateProductEntity with _$CreateProductEntity {
         category.id.isNotEmpty &&
         service.id.isNotEmpty &&
         (imageUrl.isEmpty ? (fileImage?.isValid ?? false) : true);
-  ***REMOVED***
-***REMOVED***
+  }
+}

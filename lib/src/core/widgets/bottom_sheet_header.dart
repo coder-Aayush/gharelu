@@ -15,7 +15,7 @@ class BottomSheetHeader extends StatelessWidget {
     this.leading,
     this.closeText,
     this.isActionIconEnabled = false,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
   final String title;
   final Function()? onClose;
   final EdgeInsetsGeometry? padding;
@@ -47,10 +47,10 @@ class BottomSheetHeader extends StatelessWidget {
               onPressed: () {
                 if (onClose != null) {
                   onClose?.call();
-                ***REMOVED*** else {
+                } else {
                   Navigator.pop(context);
-                ***REMOVED***
-              ***REMOVED***,
+                }
+              },
               child: Text(
                 closeText ?? 'Close',
                 style: AppStyles.text14PxMedium.error,
@@ -60,7 +60,7 @@ class BottomSheetHeader extends StatelessWidget {
         ],
       ),
     );
-  ***REMOVED***
+  }
 
   
-***REMOVED***
+}

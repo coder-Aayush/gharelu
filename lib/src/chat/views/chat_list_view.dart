@@ -9,12 +9,12 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ChatListView extends StatefulHookConsumerWidget {
-  const ChatListView({Key? key, required this.isMerchant***REMOVED***) : super(key: key);
+  const ChatListView({Key? key, required this.isMerchant}) : super(key: key);
   final bool isMerchant;
 
   @override
   _ChatListViewState createState() => _ChatListViewState();
-***REMOVED***
+}
 
 class _ChatListViewState extends ConsumerState<ChatListView> {
   bool get isMerchant => widget.isMerchant;
@@ -35,11 +35,11 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
       //               imageUrl: data[index].id,
       //               name: isMerchant ? (room.user?.name ?? '') : (room.merchant?.name ?? ''),
       //               subtitle: 's',
-      //               onPressed: () {***REMOVED***,
+      //               onPressed: () {},
       //             );
-      //           ***REMOVED***,
+      //           },
       //         );
-      //       ***REMOVED***,
+      //       },
       //     ),
       // body: Column(),
       body: ref.watch(chatListNotifierProvider(isMerchant)).maybeWhen(
@@ -61,12 +61,12 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
                     user: room.user,
                   )),
                 );
-              ***REMOVED***,
+              },
             ),
           ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 
  // ref.watch(getChatListProvider(widget.isMerchant)).maybeWhen(
@@ -80,12 +80,12 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
           //                 return ChatListTile(
           //                   onPressed: () {
           //                     context.router.push(const ChatDetailRoute());
-          //                   ***REMOVED***,
+          //                   },
           //                   imageUrl: 'https://placehold.jp/30/dd6699/ffffff/300x150.png?text=A',
           //                   name: 'Aayush Bhattarai',
           //                   subtitle: 'Hi, I just booked service.',
           //                 );
-          //               ***REMOVED***),
+          //               }),
           //         ),
           //       ),
           //     ),

@@ -23,7 +23,7 @@ class ProductModel with _$ProductModel {
     @Default(false) bool unPublish,
     CategoryModel? category,
     ServiceModel? service,
-  ***REMOVED***) = _ProductModel;
+  }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
@@ -42,5 +42,5 @@ class ProductModel with _$ProductModel {
       merchantId: '',
       updatedAt: now,
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -12,7 +12,7 @@ import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DeleteProductBottomsheet extends ConsumerWidget {
-  const DeleteProductBottomsheet({Key? key, required this.productId***REMOVED***)
+  const DeleteProductBottomsheet({Key? key, required this.productId})
       : super(key: key);
 
   final String productId;
@@ -30,9 +30,9 @@ class DeleteProductBottomsheet extends ConsumerWidget {
           context.router.popUntil(
             (route) => route.settings.name == MerchantDashboardRouter.name,
           );
-        ***REMOVED***,
+        },
       );
-    ***REMOVED***
+    });
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -76,9 +76,9 @@ class DeleteProductBottomsheet extends ConsumerWidget {
         ).px(20.w),
       ],
     );
-  ***REMOVED***
+  }
 
-  static Future<void> show(BuildContext context, {required String productId***REMOVED***) =>
+  static Future<void> show(BuildContext context, {required String productId}) =>
       showAppBottomSheet(
           context, DeleteProductBottomsheet(productId: productId));
-***REMOVED***
+}

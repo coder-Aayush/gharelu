@@ -8,7 +8,7 @@ import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductCategoryBottomsheet extends StatefulHookConsumerWidget {
-  const ProductCategoryBottomsheet({Key? key, required this.category***REMOVED***)
+  const ProductCategoryBottomsheet({Key? key, required this.category})
       : super(key: key);
   final CategoryModel category;
 
@@ -17,17 +17,17 @@ class ProductCategoryBottomsheet extends StatefulHookConsumerWidget {
       _ProductCategoryBottomsheetState();
 
   static Future<ServiceModel?> show(BuildContext context,
-      {required CategoryModel category***REMOVED***) async {
+      {required CategoryModel category}) async {
     final response = await showAppBottomSheet<ServiceModel?>(
       context,
       ProductCategoryBottomsheet(category: category),
     );
     if (response != null) {
       return response;
-    ***REMOVED***
+    }
     return null;
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 class _ProductCategoryBottomsheetState
     extends ConsumerState<ProductCategoryBottomsheet> {
@@ -37,16 +37,16 @@ class _ProductCategoryBottomsheetState
       ref
           .read(serviceCategoryStateProvider.notifier)
           .getServices(categoryId: widget.category.id);
-    ***REMOVED***
+    });
     super.didChangeDependencies();
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        BottomSheetHeader(title: 'Select ${widget.category.name***REMOVED*** Category'),
+        BottomSheetHeader(title: 'Select ${widget.category.name} Category'),
         Column(
           children: [
             ref.watch(serviceCategoryStateProvider).maybeWhen(
@@ -80,5 +80,5 @@ class _ProductCategoryBottomsheetState
         40.verticalSpace,
       ],
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

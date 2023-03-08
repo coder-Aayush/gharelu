@@ -23,7 +23,7 @@ class ProductView extends StatefulHookConsumerWidget {
     required this.image,
     required this.title,
     required this.service,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
   final String categoryId;
   final String serviceId;
   final String image;
@@ -32,7 +32,7 @@ class ProductView extends StatefulHookConsumerWidget {
 
   @override
   _ProductViewState createState() => _ProductViewState();
-***REMOVED***
+}
 
 class _ProductViewState extends ConsumerState<ProductView> {
   @override
@@ -42,9 +42,9 @@ class _ProductViewState extends ConsumerState<ProductView> {
         Duration.zero,
         () => ref.read(productStateProvider.notifier).getProducts(categoryId: widget.categoryId),
       );
-    ***REMOVED***
+    }
     super.initState();
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _ProductViewState extends ConsumerState<ProductView> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Total: Rs ${cart.price***REMOVED***', style: AppStyles.text14PxBold.white),
+                Text('Total: Rs ${cart.price}', style: AppStyles.text14PxBold.white),
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
@@ -70,10 +70,10 @@ class _ProductViewState extends ConsumerState<ProductView> {
               ],
             ).px(20).py(10),
           );
-        ***REMOVED*** else {
+        } else {
           return const SizedBox.shrink();
-        ***REMOVED***
-      ***REMOVED***),
+        }
+      }),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -114,12 +114,12 @@ class _ProductViewState extends ConsumerState<ProductView> {
                                 (element) => element.id == product.id,
                               );
                               ref.read(cartStateProvider.notifier).addToCart(product);
-                            ***REMOVED***,
+                            },
                             price: data[index].price,
                           ).px(10).py(14);
-                        ***REMOVED***,
+                        },
                       );
-                    ***REMOVED***,
+                    },
                     childCount: data.length,
                   ),
                 ),
@@ -131,5 +131,5 @@ class _ProductViewState extends ConsumerState<ProductView> {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

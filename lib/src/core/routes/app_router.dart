@@ -64,7 +64,7 @@ import 'package:gharelu/src/map_view/views/views.dart';
     AutoRoute<void>(page: HelpAndSupportView),
     AutoRoute<void>(page: ProfileInfoView),
 
-    ***REMOVED***merchant views
+    /// merchant views
     ///
 
     AutoRoute<void>(
@@ -83,4 +83,4 @@ import 'package:gharelu/src/map_view/views/views.dart';
     AutoRoute<void>(page: VerifyEmailView),
   ],
 )
-class $AppRouter {***REMOVED***
+class $AppRouter {}

@@ -11,7 +11,7 @@ class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> {
   final ServiceRemoteSource _remoteSource;
 
   Future<void> createProduct(ProductModel product,
-      {File? image, bool update = false***REMOVED***) async {
+      {File? image, bool update = false}) async {
     state = const AppState.loading();
     final response = await _remoteSource.createProduct(product,
         productImage: image, update: update);
@@ -22,10 +22,10 @@ class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> {
       ),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final createProductNotifierProvider = StateNotifierProvider.autoDispose<
     CreateProductNotifier, AppState<ProductModel>>((ref) {
   return CreateProductNotifier(ref.read(serviceRemoteSourceProvider));
-***REMOVED***
+});

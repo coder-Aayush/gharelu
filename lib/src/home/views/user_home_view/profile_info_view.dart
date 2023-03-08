@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
 class ProfileInfoView extends StatelessWidget {
-  const ProfileInfoView({Key? key***REMOVED***) : super(key: key);
+  const ProfileInfoView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,5 +18,5 @@ class ProfileInfoView extends StatelessWidget {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -13,11 +13,11 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget {
-  ProductTile({Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id***REMOVED***) : super(key: key) {
+  ProductTile({Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id}) : super(key: key) {
     if (status != null && booking == null) {
       throw Exception('if status is provided, we need product too');
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
   final String id;
   final String image;
   final String name;
@@ -100,7 +100,7 @@ class ProductTile extends StatelessWidget {
         ],
       ),
     );
-  ***REMOVED***
+  }
 
   Widget statusButton(BuildContext context) {
     final now = DateTime.now();
@@ -113,15 +113,15 @@ class ProductTile extends StatelessWidget {
         isDisabled: !now.subtract(const Duration(hours: 6)).isBefore(updatedHour),
         onPressed: () {
           CancelAppointmentButtomSheet.show(context, bookingId: id);
-        ***REMOVED***,
+        },
         height: buttonHeight,
         width: buttonWidth + 10,
         titleStyle: AppStyles.text12PxMedium.white,
         shape: shape,
       );
-    ***REMOVED*** else if (status == OrderType.Completed) {
+    } else if (status == OrderType.Completed) {
       return Text('Order Completed', style: AppStyles.text12PxMedium.primary);
-    ***REMOVED*** else
+    } else
       return Text('Order Canceled', style: AppStyles.text12PxMedium.error);
-  ***REMOVED***
-***REMOVED***
+  }
+}

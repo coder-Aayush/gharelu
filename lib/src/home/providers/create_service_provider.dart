@@ -19,8 +19,8 @@ class CreateServiceNotifier extends StateNotifier<AppState<ServiceModel>> {
       ),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final createServiceNotifierProvider = StateNotifierProvider.autoDispose<
     CreateServiceNotifier, AppState<ServiceModel>>(

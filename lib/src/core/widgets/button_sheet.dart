@@ -10,7 +10,7 @@ Future<T?> showAppBottomSheet<T>(
   Color backgroundColor = AppColors.whiteColor,
   double borderRadius = 8,
   VoidCallback? onComplete,
-***REMOVED***) async {
+}) async {
   final response = await showModalBottomSheet<T>(
     backgroundColor: backgroundColor,
     context: context,
@@ -26,4 +26,4 @@ Future<T?> showAppBottomSheet<T>(
     ),
   );
   return response;
-***REMOVED***
+}

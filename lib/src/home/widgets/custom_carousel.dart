@@ -7,7 +7,7 @@ import 'package:gharelu/src/home/models/banner_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CustomCarousel extends StatelessWidget {
-  const CustomCarousel({Key? key, required this.banners***REMOVED***) : super(key: key);
+  const CustomCarousel({Key? key, required this.banners}) : super(key: key);
 
   final List<BannerModel> banners;
 
@@ -30,5 +30,5 @@ class CustomCarousel extends StatelessWidget {
         viewportFraction: 0.8,
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
 class HelpAndSupportView extends StatelessWidget {
-  const HelpAndSupportView({Key? key***REMOVED***) : super(key: key);
+  const HelpAndSupportView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,10 @@ class HelpAndSupportView extends StatelessWidget {
             title: helpAndSupport.name,
             onPressed: () async {
               await launchType(helpAndSupport.type, helpAndSupport.content);
-            ***REMOVED***,
+            },
           );
-        ***REMOVED***),
+        }),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

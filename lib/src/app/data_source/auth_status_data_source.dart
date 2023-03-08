@@ -12,31 +12,31 @@ class AuthStatusDataSource {
 
   final FirebaseFirestore _firestore;
   Future<Either<AppError, CustomUserModel>> authSatus(
-      {required String id***REMOVED***) async {
+      {required String id}) async {
     try {
-      ***REMOVED***check if current user is merchant or normal user
+      /// check if current user is merchant or normal user
       ///
       final user =
           (await _firestore.collection(AppConstant.users).doc(id).get());
       if (user.exists && user.data() != null) {
         return right(CustomUserModel.fromJson(user.data()!));
-      ***REMOVED***
+      }
       final merchant =
           await _firestore.collection(AppConstant.merchants).doc(id).get();
       if (merchant.exists && merchant.data() != null) {
         return right(CustomUserModel.fromJson(merchant.data()!));
-      ***REMOVED***
+      }
       return left(const AppError.serverError(message: 'UnAuthenticated'));
-    ***REMOVED*** on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(
           AppError.serverError(message: e.message ?? 'UnAuthenticated'));
-    ***REMOVED*** on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       return left(
           AppError.serverError(message: e.message ?? 'UnAuthenticated'));
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+    }
+  }
+}
 
 final authStatusDataSourceProvider = Provider<AuthStatusDataSource>((ref) {
   return AuthStatusDataSource(ref.read(firestoreProvider));
-***REMOVED***
+});

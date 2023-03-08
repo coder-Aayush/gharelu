@@ -14,9 +14,9 @@ final firebaseAuthProvider = Provider<FirebaseAuth>(
     final instance = FirebaseAuth.instance;
     // if (instance.currentUser != null) {
     //   sendVerificationEmail(instance.currentUser!);
-    // ***REMOVED***
+    // }
     return instance;
-  ***REMOVED***,
+  },
 );
 
 final authChangeProvider = StreamProvider<User?>((ref) async* {
@@ -33,10 +33,10 @@ final authChangeProvider = StreamProvider<User?>((ref) async* {
               Duration.zero,
               () => _router.push(VerifyEmailRoute(email: event.email!)),
             );
-          ***REMOVED***
-        ***REMOVED***
-      ***REMOVED***
-***REMOVED***,
+          }
+        }
+      });
+},
 );
 
 // final authSatate =
@@ -44,16 +44,16 @@ final authChangeProvider = StreamProvider<User?>((ref) async* {
 
 final storageProvider = Provider<FirebaseStorage>((ref) {
   return FirebaseStorage.instance;
-***REMOVED***
+});
 
 Future<void> sendVerificationEmail(User currentUser) async {
   if (currentUser.emailVerified == false) {
     currentUser.sendEmailVerification().then(
       (value) {
         getIt<AppRouter>().navigatorKey.currentContext?.showSnackbar(
-              message: 'Verification Email Sent to ${currentUser.email***REMOVED***',
+              message: 'Verification Email Sent to ${currentUser.email}',
             );
-      ***REMOVED***,
+      },
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

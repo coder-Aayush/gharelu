@@ -11,7 +11,7 @@ class ChatListTile extends StatelessWidget {
     required this.name,
     required this.subtitle,
     required this.onPressed,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
   final String imageUrl;
   final String name;
   final String subtitle;
@@ -31,5 +31,5 @@ class ChatListTile extends StatelessWidget {
       title: Text(name, style: AppStyles.text16PxBold),
       subtitle: Text(subtitle, style: AppStyles.text12PxRegular.midGrey),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

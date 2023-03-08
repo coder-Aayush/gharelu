@@ -13,12 +13,12 @@ class UserLoginFormProvider extends StateNotifier<UserLoginFormState> {
     late Field emailField;
     if (email.trim().validateEmail()) {
       emailField = _form.email.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       emailField = _form.email
           .copyWith(isValid: false, errorMessage: 'ops, email is not valid');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(email: emailField));
-  ***REMOVED***
+  }
 
   void setPassword(String password) {
     var _form = state.form.copyWith(password: Field(value: password));
@@ -26,13 +26,13 @@ class UserLoginFormProvider extends StateNotifier<UserLoginFormState> {
     // TODO: Check for password
     if (password.isNotEmpty) {
       passwordField = _form.password.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       passwordField = _form.password
           .copyWith(isValid: false, errorMessage: 'enter valid password');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(password: passwordField));
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final userLoginFormProvider = StateNotifierProvider.autoDispose<
     UserLoginFormProvider,

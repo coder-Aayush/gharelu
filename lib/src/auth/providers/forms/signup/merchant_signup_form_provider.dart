@@ -15,36 +15,36 @@ class MerchantSignupFormProvider
     if (name.isEmpty) {
       nameField = _form.name
           .copyWith(isValid: false, errorMessage: 'Name cannot be empty');
-    ***REMOVED*** else {
+    } else {
       nameField = _form.name.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED***
+    }
     _form = _form.copyWith(name: nameField);
     state = state.copyWith(form: _form);
-  ***REMOVED***
+  }
 
   void setEmail(String email) {
     final _form = state.form.copyWith(email: Field(value: email));
     late Field emailField;
     if (email.trim().validateEmail()) {
       emailField = _form.email.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       emailField = _form.email
           .copyWith(isValid: false, errorMessage: 'Email doesn\'t looks right');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(email: emailField));
-  ***REMOVED***
+  }
 
   void setPassword(String password) {
     final _form = state.form.copyWith(password: Field(value: password));
     late Field passwordField;
     if (password.length > 4) {
       passwordField = _form.password.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       passwordField = _form.password
           .copyWith(isValid: false, errorMessage: 'Password is not strong');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(password: passwordField));
-  ***REMOVED***
+  }
 
   void setPhoneNumber(String phoneNumber) {
     final _form = state.form.copyWith(phoneNumber: Field(value: phoneNumber));
@@ -52,12 +52,12 @@ class MerchantSignupFormProvider
     if (phoneNumber.length > 5) {
       phoneNumberField =
           _form.phoneNumber.copyWith(isValid: true, errorMessage: '');
-    ***REMOVED*** else {
+    } else {
       phoneNumberField = _form.phoneNumber
           .copyWith(isValid: false, errorMessage: 'Enter valid phone number');
-    ***REMOVED***
+    }
     state = state.copyWith(form: _form.copyWith(phoneNumber: phoneNumberField));
-  ***REMOVED***
+  }
 
   void setLocation(String location) {
     final _form = state.form.copyWith(location: Field(value: location));
@@ -65,7 +65,7 @@ class MerchantSignupFormProvider
 
     locationField = _form.location.copyWith(isValid: true, errorMessage: '');
     state = state.copyWith(form: _form.copyWith(location: locationField));
-  ***REMOVED***
+  }
 
   void setDocuments(List<String> documents) {
     final _form = state.form.copyWith(
@@ -77,14 +77,14 @@ class MerchantSignupFormProvider
         .toList();
     state = state.copyWith(
         form: _form.copyWith(documents: documentsField.toList()));
-  ***REMOVED***
+  }
 
   void removeDocument(Field docField) {
     var data = new List<Field>.from(state.form.documents);
     data.remove(docField);
     state = state.copyWith(form: state.form.copyWith(documents: data));
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final merchantSignupFormProvider =
     StateNotifierProvider.autoDispose<

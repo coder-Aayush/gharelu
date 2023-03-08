@@ -12,7 +12,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantLoginView extends HookConsumerWidget {
-  const MerchantLoginView({Key? key***REMOVED***) : super(key: key);
+  const MerchantLoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,9 +28,9 @@ class MerchantLoginView extends HookConsumerWidget {
         success: (data) {
           context.router.replaceAll([const MerchantDashboardRouter()]);
           context.showSnackbar(message: 'Your are logged in');
-        ***REMOVED***,
+        },
       );
-    ***REMOVED***
+    });
     return ScaffoldWrapper(
       appBar: AppBar(
         title: const Text('Login as Merchant'),
@@ -98,8 +98,8 @@ class MerchantLoginView extends HookConsumerWidget {
               ),
             ],
           );
-        ***REMOVED***),
+        }),
       ).px(20),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

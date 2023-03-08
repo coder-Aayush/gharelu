@@ -29,8 +29,8 @@ class BookingModel with _$BookingModel {
     required int bookedDate,
     String? roomId,
     @Default(OrderType.Pending) OrderType orderType,
-  ***REMOVED***) = _BookingModel;
+  }) = _BookingModel;
 
   factory BookingModel.fromJson(Map<String, dynamic> json) =>
       _$BookingModelFromJson(json);
-***REMOVED***
+}

@@ -14,4 +14,4 @@ void main() async {
   getIt.registerLazySingleton(AppRouter.new);
   await dotenv.load(fileName: '.env');
   runApp(AppView.new());
-***REMOVED***
+}

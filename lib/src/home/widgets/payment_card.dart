@@ -13,7 +13,7 @@ class PaymentCard extends StatelessWidget {
     required this.title,
     required this.icon,
     this.titleColor,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final VoidCallback onPressed;
   final String title;
@@ -56,7 +56,7 @@ class PaymentCard extends StatelessWidget {
             FocusScope.of(context).unfocus();
             await HapticFeedback.heavyImpact();
             onPressed.call();
-          ***REMOVED***,
+          },
           child: ConstrainedBox(
             constraints: _constraints,
             child: Center(
@@ -78,5 +78,5 @@ class PaymentCard extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

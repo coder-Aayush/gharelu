@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key, required this.onPressed***REMOVED***) : super(key: key);
+  const SearchBar({Key? key, required this.onPressed}) : super(key: key);
 
   final VoidCallback onPressed;
 
@@ -51,5 +51,5 @@ class SearchBar extends StatelessWidget {
         ).px(20),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

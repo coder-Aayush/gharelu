@@ -15,7 +15,7 @@ class GetMessageNotifier extends StateNotifier<AppState<List<MessageModel>>> {
   final FirebaseAuth _firebaseAuth;
   final Ref ref;
 
-  void getMessages({required String roomId***REMOVED***) {
+  void getMessages({required String roomId}) {
     state = const AppState.loading();
     List<MessageModel> messages = [];
     _firestore.collection(AppConstant.messages).where('room_id', isEqualTo: roomId).orderBy('created_at', descending: true).snapshots().listen((event) async {
@@ -27,12 +27,12 @@ class GetMessageNotifier extends StateNotifier<AppState<List<MessageModel>>> {
         final _message = messages[index].copyWith();
         messages.update(index, _message);
         state = AppState.success(data: messages);
-      ***REMOVED***
+      }
       state = AppState.success(data: messages);
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+    });
+  }
+}
 
 final getMessagesNotifierProvider = StateNotifierProvider.family<GetMessageNotifier, AppState<List<MessageModel>>, String>((ref, roomId) {
   return GetMessageNotifier(ref.read(firestoreProvider), ref.read(firebaseAuthProvider), ref)..getMessages(roomId: roomId);
-***REMOVED***
+});

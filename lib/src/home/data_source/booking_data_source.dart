@@ -16,14 +16,14 @@ import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 abstract class _BookingDataSource {
-  Future<Either<AppError, List<BookingModel>>> getBookingOnDate({required String date, required String serviceId***REMOVED***
-  Future<Either<AppError, List<BookingModel>>> makeBooking({required List<BookingModel> booking***REMOVED***
+  Future<Either<AppError, List<BookingModel>>> getBookingOnDate({required String date, required String serviceId});
+  Future<Either<AppError, List<BookingModel>>> makeBooking({required List<BookingModel> booking});
 
   Future<Either<AppError, List<BookingModel>>> getUserBookings();
 
   Future<Either<AppError, List<BookingModel>>> getMerchantBookings();
-  Future<Either<AppError, bool>> updateBookings({required String bookingId, required OrderType orderType***REMOVED***
-***REMOVED***
+  Future<Either<AppError, bool>> updateBookings({required String bookingId, required OrderType orderType});
+}
 
 class BookingDataSource implements _BookingDataSource {
   BookingDataSource(this._ref, this._serviceRemoteSource, this._chatRemoteSource);
@@ -33,18 +33,18 @@ class BookingDataSource implements _BookingDataSource {
 
   final Ref _ref;
   @override
-  Future<Either<AppError, List<BookingModel>>> getBookingOnDate({required String date, required String serviceId***REMOVED***) async {
+  Future<Either<AppError, List<BookingModel>>> getBookingOnDate({required String date, required String serviceId}) async {
     try {
       final response = await FirebaseDBCollection.bookings.where('date', isEqualTo: date).where('service_id', isEqualTo: serviceId).get();
       final data = response.docs.map((e) => BookingModel.fromJson(e.data())).toList();
       return right(data);
-    ***REMOVED*** on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   @override
-  Future<Either<AppError, List<BookingModel>>> makeBooking({required List<BookingModel> booking***REMOVED***) async {
+  Future<Either<AppError, List<BookingModel>>> makeBooking({required List<BookingModel> booking}) async {
     try {
       final now = DateTime.now().millisecondsSinceEpoch;
       final user = FirebaseAuth.instance.currentUser;
@@ -55,7 +55,7 @@ class BookingDataSource implements _BookingDataSource {
         if (products.isNotEmpty) {
           mercnahtId = ProductModel.fromJson(products.first.data()).merchantId;
           item.copyWith(merchantId: mercnahtId);
-        ***REMOVED***
+        }
         final roomId = (await _chatRemoteSource.createChatRoom(room: RoomModel(id: '', userId: user!.uid, merchantId: mercnahtId!, productId: item.productId))).fold((l) => null, (r) => r);
         await FirebaseDBCollection.bookings.doc(id).set(
               item
@@ -69,14 +69,14 @@ class BookingDataSource implements _BookingDataSource {
                   )
                   .toJson(),
             );
-      ***REMOVED***
+      }
       final response = await FirebaseDBCollection.bookings.where('user_id', isEqualTo: user?.uid).get();
       final data = response.docs.map((e) => BookingModel.fromJson(e.data())).toList();
       return right(data);
-    ***REMOVED*** on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       return left(AppError.serverError(message: e.message ?? 'Unknow Error'));
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   @override
   Future<Either<AppError, List<BookingModel>>> getUserBookings() async {
@@ -88,12 +88,12 @@ class BookingDataSource implements _BookingDataSource {
         final _item = BookingModel.fromJson(item.data());
         final product = (await _serviceRemoteSource.getProducts(productId: _item.productId)).fold((l) => null, (r) => r);
         bookings.add(_item.copyWith(product: product?.first));
-      ***REMOVED***
+      }
       return right(bookings);
-    ***REMOVED*** on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       return left(AppError.serverError(message: e.message ?? 'Unknown Error'));
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   @override
   Future<Either<AppError, List<BookingModel>>> getMerchantBookings() async {
@@ -116,44 +116,44 @@ class BookingDataSource implements _BookingDataSource {
           final _data = ProductModel.fromJson(productResponse.data()!);
           final _booking = bookings[index].copyWith(product: _data);
           bookings.update(index, _booking);
-        ***REMOVED***
+        }
         if (userResponse.data() != null) {
           final _data = CustomUserModel.fromJson(userResponse.data()!);
           final _booking = bookings[index].copyWith(user: _data);
           bookings.update(index, _booking);
-        ***REMOVED***
+        }
         if (merchantResponse.data() != null) {
           final _data = CustomUserModel.fromJson(merchantResponse.data()!);
           final _booking = bookings[index].copyWith(merchantUser: _data);
           bookings.update(index, _booking);
-        ***REMOVED***
-      ***REMOVED***
+        }
+      }
       return right(bookings);
-    ***REMOVED*** on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(
         AppError.serverError(
           message: e.message ?? 'Unknown Error occured while Fetching Bookings',
         ),
       );
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   @override
-  Future<Either<AppError, bool>> updateBookings({required String bookingId, required OrderType orderType***REMOVED***) async {
+  Future<Either<AppError, bool>> updateBookings({required String bookingId, required OrderType orderType}) async {
     try {
       await FirebaseDBCollection.bookings.doc(bookingId).update({
         'order_type': orderType.name,
-      ***REMOVED***
+      });
       return right(true);
-    ***REMOVED*** on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(
         AppError.serverError(
           message: e.message ?? 'Unknown Error occured while Updating Bookings',
         ),
       );
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+    }
+  }
+}
 
 final bookingDataSourceProvider = Provider<BookingDataSource>(
   (ref) => BookingDataSource(

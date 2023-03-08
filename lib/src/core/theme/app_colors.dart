@@ -24,4 +24,4 @@ class AppColors {
     transform: GradientRotation(3.14159),
   );
   static const Color midWhite = Color(0xffEEEEEE);
-***REMOVED***
+}

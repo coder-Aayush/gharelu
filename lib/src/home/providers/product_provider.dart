@@ -12,7 +12,7 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> {
     String? categoryId,
     String? productId,
     bool merchantOnly = false,
-  ***REMOVED***) async {
+  }) async {
     state = const AppState.loading();
     final response = await _remoteSource.getProducts(
       categoryId: categoryId,
@@ -21,7 +21,7 @@ class ProductState extends StateNotifier<AppState<List<ProductModel>>> {
     );
     state = response.fold((error) => error.when(serverError: (message) => AppState.error(message: message), noInternet: () => const AppState.noInternet()), (response) => AppState.success(data: response));
     print(state);
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final productStateProvider = StateNotifierProvider<ProductState, AppState<List<ProductModel>>>((ref) => ProductState(ref.read(serviceRemoteSourceProvider)));

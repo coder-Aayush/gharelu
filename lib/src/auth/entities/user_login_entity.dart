@@ -9,7 +9,7 @@ class UserLoginEntity with _$UserLoginEntity {
   const factory UserLoginEntity({
     required Field email,
     required Field password,
-  ***REMOVED***) = _UserLoginEntity;
+  }) = _UserLoginEntity;
 
   factory UserLoginEntity.empty() => const UserLoginEntity(
         email: Field(value: ''),
@@ -17,4 +17,4 @@ class UserLoginEntity with _$UserLoginEntity {
       );
 
   bool get isValid => email.isValid && password.isValid;
-***REMOVED***
+}

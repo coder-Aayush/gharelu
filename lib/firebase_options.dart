@@ -4,16 +4,16 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, TargetPlatform;
 
-***REMOVED***Default [FirebaseOptions] for use with your Firebase apps.
+/// Default [FirebaseOptions] for use with your Firebase apps.
 ///
-***REMOVED***Example:
-***REMOVED***```dart
-***REMOVED***import 'firebase_options.dart';
-***REMOVED***// ...
-***REMOVED***await Firebase.initializeApp(
-***REMOVED***  options: DefaultFirebaseOptions.currentPlatform,
-***REMOVED***);
-***REMOVED***```
+/// Example:
+/// ```dart
+/// import 'firebase_options.dart';
+/// // ...
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
+/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     switch (defaultTargetPlatform) {
@@ -25,8 +25,8 @@ class DefaultFirebaseOptions {
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
         );
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBAuHgGPhWKbrQlaumlYID_BM4HB4I0ZbQ',
@@ -46,4 +46,4 @@ class DefaultFirebaseOptions {
         '398152368850-o822p1ea53vcr98ujnprs5c7sq5ed4sc.apps.googleusercontent.com',
     iosBundleId: 'app.gharelu',
   );
-***REMOVED***
+}

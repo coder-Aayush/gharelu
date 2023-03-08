@@ -16,8 +16,8 @@ class LogoutStateNotifier extends StateNotifier<AppState<bool>> {
       ),
       (response) => AppState.success(data: response),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final logoutStateNotifierProvider =
     StateNotifierProvider.autoDispose<LogoutStateNotifier, AppState<bool>>(

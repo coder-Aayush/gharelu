@@ -20,7 +20,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // class CancelAppointmentButtomSheet extends HookConsumerWidget {
-//   const CancelAppointmentButtomSheet({Key? key***REMOVED***) : super(key: key);
+//   const CancelAppointmentButtomSheet({Key? key}) : super(key: key);
 
 //   @override
 //   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,9 +58,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                         ).py(8.h),
 //                       ],
 //                     );
-//                   ***REMOVED***,
+//                   },
 //                 );
-//               ***REMOVED***,
+//               },
 //             ),
 //           ).px(20.w),
 //           25.verticalSpace,
@@ -78,7 +78,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                           const Spacer(),
 //                           CustomButton(
 //                             isDisabled: false,
-//                             onPressed: () {***REMOVED***,
+//                             onPressed: () {},
 //                             title: 'Cancel Appointment',
 //                             width: 150,
 //                             backgroundColor: AppColors.transparent,
@@ -94,13 +94,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //                       )
 //                     : Container(),
 //               );
-//             ***REMOVED***,
+//             },
 //           ).px(20.w),
 //           30.verticalSpace,
 //         ],
 //       ),
 //     );
-//   ***REMOVED***
+//   }
 
 // static Future<void> show(BuildContext context) async =>
 //     showAppBottomSheet(context, const CancelAppointmentButtomSheet());
@@ -111,35 +111,35 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //       case 1:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () {***REMOVED***,
+//           onPressed: () {},
 //           title: 'Reschedule',
 //         );
 //       case 2:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () {***REMOVED***,
+//           onPressed: () {},
 //           title: 'Reschedule',
 //         );
 //       case 3:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () {***REMOVED***,
+//           onPressed: () {},
 //           title: 'Complain',
 //         );
 //       case 4:
 //         return CustomButton(
 //           isDisabled: false,
-//           onPressed: () {***REMOVED***,
+//           onPressed: () {},
 //           title: 'Complain',
 //         );
 //       default:
 //         return const SizedBox.shrink();
-//     ***REMOVED***
-//   ***REMOVED***
-// ***REMOVED***
+//     }
+//   }
+// }
 
 class CancelAppointmentButtomSheet extends StatelessWidget {
-  const CancelAppointmentButtomSheet({Key? key, required this.bookingId***REMOVED***) : super(key: key);
+  const CancelAppointmentButtomSheet({Key? key, required this.bookingId}) : super(key: key);
   final String bookingId;
 
   @override
@@ -160,9 +160,9 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
                       orElse: () => null,
                       success: (previous, upcoming) {
                         Navigator.pop(context);
-                      ***REMOVED***,
+                      },
                     );
-                  ***REMOVED***
+                  });
                   return CustomButton(
                     title: 'Cancel Appoinment',
                     loading: ref.watch(getUserBookingsNotifierProvider).maybeWhen(
@@ -171,11 +171,11 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
                         ),
                     onPressed: () {
                       ref.read(getUserBookingsNotifierProvider.notifier).updateBookings(bookingId: bookingId, orderType: OrderType.Cancelled);
-                    ***REMOVED***,
+                    },
                     isDisabled: false,
                     backgroundColor: AppColors.errorColor,
                   );
-                ***REMOVED***),
+                }),
                 const Spacer(),
                 CustomButton(
                   title: 'Cancel',
@@ -189,7 +189,7 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
         20.verticalSpace,
       ],
     );
-  ***REMOVED***
+  }
 
-  static Future<void> show(BuildContext context, {required String bookingId***REMOVED***) async => showAppBottomSheet(context, CancelAppointmentButtomSheet(bookingId: bookingId));
-***REMOVED***
+  static Future<void> show(BuildContext context, {required String bookingId}) async => showAppBottomSheet(context, CancelAppointmentButtomSheet(bookingId: bookingId));
+}

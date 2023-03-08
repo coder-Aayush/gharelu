@@ -21,6 +21,6 @@ class MessageModel with _$MessageModel {
     required String senderId,
     int? createdAt,
     required int updatedAt,
-  ***REMOVED***) = _MessageModel;
+  }) = _MessageModel;
   factory MessageModel.fromJson(Map<String, dynamic> json) => _$MessageModelFromJson(json);
-***REMOVED***
+}

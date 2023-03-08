@@ -15,7 +15,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MerchantBookingProductTile extends StatelessWidget {
-  const MerchantBookingProductTile({Key? key, required this.booking***REMOVED***)
+  const MerchantBookingProductTile({Key? key, required this.booking})
       : super(key: key);
   final BookingModel booking;
 
@@ -48,7 +48,7 @@ class MerchantBookingProductTile extends StatelessWidget {
                             style: AppStyles.text16PxSemiBold.softBlack,
                           ),
                           Text(
-                            '#${booking.user?.uid ?? ''***REMOVED***',
+                            '#${booking.user?.uid ?? ''}',
                             style: AppStyles.text10PxRegular.primary,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -67,14 +67,14 @@ class MerchantBookingProductTile extends StatelessWidget {
                   children: [
                     // IconButton(
                     //   onPressed: () async => await launchUrlString(
-                    //       'tel:${booking.user?.phoneNumber***REMOVED***'),
+                    //       'tel:${booking.user?.phoneNumber}'),
                     //   icon: Icon(
                     //     Icons.phone,
                     //     color: AppColors.softBlack.withOpacity(.4),
                     //   ),
                     // ),
                     // IconButton(
-                    //   onPressed: () {***REMOVED***,
+                    //   onPressed: () {},
                     //   icon: Assets.icons.chat.svg(),
                     // ),
                   ],
@@ -169,7 +169,7 @@ class MerchantBookingProductTile extends StatelessWidget {
                               ],
                             ),
                           );
-                        ***REMOVED***,
+                        },
                       )
                     ],
                   ),
@@ -182,12 +182,12 @@ class MerchantBookingProductTile extends StatelessWidget {
               child: ExpansionTile(
                 tilePadding: EdgeInsets.zero,
                 title: const Text('Payment Info'),
-                onExpansionChanged: (value) {***REMOVED***,
+                onExpansionChanged: (value) {},
                 childrenPadding: EdgeInsets.zero,
                 children: [
                   ExpensionTileContent(
                     title: 'Item Price: ',
-                    description: 'Rs ${booking.totalPrice - 60***REMOVED***',
+                    description: 'Rs ${booking.totalPrice - 60}',
                   ),
                   3.verticalSpace,
                   const ExpensionTileContent(
@@ -198,7 +198,7 @@ class MerchantBookingProductTile extends StatelessWidget {
                   Divider(color: AppColors.softBlack.withOpacity(.2)),
                   ExpensionTileContent(
                     title: 'Total: ',
-                    description: 'Rs ${booking.totalPrice***REMOVED***',
+                    description: 'Rs ${booking.totalPrice}',
                   ),
                   4.verticalSpace,
                 ],
@@ -208,8 +208,8 @@ class MerchantBookingProductTile extends StatelessWidget {
         ),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 
 

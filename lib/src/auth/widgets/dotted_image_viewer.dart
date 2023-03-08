@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 
 class DottedImageViewer extends StatelessWidget {
-  const DottedImageViewer({Key? key, required this.image, this.onDelete***REMOVED***)
+  const DottedImageViewer({Key? key, required this.image, this.onDelete})
       : super(key: key);
   final String image;
   final VoidCallback? onDelete;
@@ -50,5 +50,5 @@ class DottedImageViewer extends StatelessWidget {
         ),
       ],
     ).pOnly(left: 10);
-  ***REMOVED***
-***REMOVED***
+  }
+}

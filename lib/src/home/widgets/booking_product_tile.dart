@@ -13,13 +13,13 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BookingProductTile extends StatefulHookConsumerWidget {
-  const BookingProductTile({Key? key, required this.booking, required this.onButton***REMOVED***) : super(key: key);
+  const BookingProductTile({Key? key, required this.booking, required this.onButton}) : super(key: key);
   final BookingModel booking;
   final Function(BookingModel) onButton;
 
   @override
   _UpcomingProductTileState createState() => _UpcomingProductTileState();
-***REMOVED***
+}
 
 class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with AutomaticKeepAliveClientMixin {
   @override
@@ -48,8 +48,8 @@ class _UpcomingProductTileState extends ConsumerState<BookingProductTile> with A
         ],
       ).pOnly(top: 2.h),
     );
-  ***REMOVED***
+  }
 
   @override
   bool get wantKeepAlive => true;
-***REMOVED***
+}

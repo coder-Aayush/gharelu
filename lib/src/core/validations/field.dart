@@ -11,5 +11,5 @@ class Field with _$Field {
     @Default(false) bool isValid,
     @Default(false) bool isTouched,
     @Default(false) bool obscureText,
-  ***REMOVED***) = _Field;
-***REMOVED***
+  }) = _Field;
+}

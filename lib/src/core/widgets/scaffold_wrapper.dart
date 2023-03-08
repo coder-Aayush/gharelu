@@ -31,7 +31,7 @@ class ScaffoldWrapper extends StatelessWidget {
     this.endDrawerEnableOpenDragGesture = true,
     this.restorationId,
     this.loading = false,
-  ***REMOVED***) : super(key: key);
+  }) : super(key: key);
 
   final bool extendBody;
 
@@ -87,13 +87,13 @@ class ScaffoldWrapper extends StatelessWidget {
       onTap: () {
         if (FocusScope.of(context).hasFocus) {
           FocusScope.of(context).unfocus();
-        ***REMOVED***
-      ***REMOVED***,
+        }
+      },
       onVerticalDragStart: (details) {
         if (FocusScope.of(context).hasFocus) {
           FocusScope.of(context).unfocus();
-        ***REMOVED***
-      ***REMOVED***,
+        }
+      },
       child: Scaffold(
         key: key,
         appBar: appBar,
@@ -121,5 +121,5 @@ class ScaffoldWrapper extends StatelessWidget {
         restorationId: restorationId,
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

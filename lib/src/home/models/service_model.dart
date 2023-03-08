@@ -16,7 +16,7 @@ class ServiceModel with _$ServiceModel {
     int? createdAt,
     int? updatedAt,
     @Default(false) bool enable,
-  ***REMOVED***) = _ServiceModel;
+  }) = _ServiceModel;
 
   factory ServiceModel.fromJson(Map<String, dynamic> json) =>
       _$ServiceModelFromJson(json);
@@ -28,4 +28,4 @@ class ServiceModel with _$ServiceModel {
         merchantId: '',
         categoryId: '',
       );
-***REMOVED***
+}

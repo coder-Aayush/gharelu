@@ -19,7 +19,7 @@ class CustomUserModel with _$CustomUserModel {
     @Default(false) bool isMerchant,
     @Default([]) List<String>? documents,
     AuthType? authType,
-  ***REMOVED***) = _CustomUserModel;
+  }) = _CustomUserModel;
 
   factory CustomUserModel.fromJson(Map<String, dynamic> json) =>
       _$CustomUserModelFromJson(json);
@@ -27,4 +27,4 @@ class CustomUserModel with _$CustomUserModel {
   // DateTime? get createdAt => DateTime.fromMillisecondsSinceEpoch(created_at!);
 
   // DateTime get updatedAt => DateTime.fromMillisecondsSinceEpoch(updated_at);
-***REMOVED***
+}

@@ -13,10 +13,10 @@ class AppConstant {
   static const String rooms = 'rooms';
   static const String messages = 'messages';
 
-  ***REMOVED***value `categories`
+  /// value `categories`
   static const String categories = 'categories';
 
-  ***REMOVED***value `products`
+  /// value `products`
   static const String products = 'products';
 
   static const List<CancellationReasonEntity> cancellationReason = [
@@ -69,13 +69,13 @@ class AppConstant {
       type: UtilityEnum.MOBILE,
     ),
   ];
-***REMOVED***
+}
 
 ///
-***REMOVED***Incorrect appointment: The appointment was scheduled for the wrong date, time, or location.
+/// Incorrect appointment: The appointment was scheduled for the wrong date, time, or location.
 // Rescheduling: The individual needs to reschedule the appointment for a different date or time.
 // Change of mind: The individual no longer wants or needs the service or product that the appointment was for.
 // Conflict with owner: The individual has a conflict with the person or organization that they were scheduled to meet with.
 // Other: There may be other reasons not listed here that are specific to the individual or the situation.
 
-enum MessageType { text, image ***REMOVED***
+enum MessageType { text, image }

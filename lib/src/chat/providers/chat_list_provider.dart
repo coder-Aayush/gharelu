@@ -20,17 +20,17 @@
 //   //     final merchant = await getMerchantInfo(ref, room.merchantId);
 //   //     final data = chatRoom[index].copyWith(user: user, merchant: merchant);
 //   //     chatRoom.update(index, data);
-//   //   ***REMOVED***
+//   //   }
 
-//   // ***REMOVED***
+//   // });
 //   // return response;
 //   ref.read(getChatProvider);
-// ***REMOVED***
+// });
 
 // // final getUserInfoProvider = FutureProvider.family<CustomUserModel, String>((ref, userId) async {
 // //   final firestore = ref.read(firestoreProvider);
 
-// // ***REMOVED***
+// // });
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -52,7 +52,7 @@ class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> {
 
   String? get userId => _firebaseAuth.currentUser?.uid;
 
-  void getChatList({required bool isMerchant***REMOVED***) async {
+  void getChatList({required bool isMerchant}) async {
     state = const AppState.loading();
     List<RoomModel> rooms = [];
     MessageModel? lastMessage;
@@ -67,11 +67,11 @@ class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> {
           final _room = rooms[i].copyWith(user: user, merchant: merchant, product: product);
           rooms.update(i, _room);
           state = AppState.success(data: rooms);
-        ***REMOVED***
-      ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      });
+  }
+}
 
 final chatListNotifierProvider = StateNotifierProvider.family<ChatListNotifier, AppState<List<RoomModel>>, bool>((ref, isMerchant) {
   return ChatListNotifier(ref.read(firestoreProvider), ref.read(firebaseAuthProvider), ref)..getChatList(isMerchant: isMerchant);
-***REMOVED***
+});

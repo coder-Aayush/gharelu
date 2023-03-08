@@ -11,7 +11,7 @@ class DeleteUserProviderNotifier extends StateNotifier<AppState<bool>> {
     String? message,
     required String password,
     bool isMerchant = false,
-  ***REMOVED***) async {
+  }) async {
     state = const AppState.loading();
     final response = await _remoteSource.deleteUser(
       message: message,
@@ -24,8 +24,8 @@ class DeleteUserProviderNotifier extends StateNotifier<AppState<bool>> {
               noInternet: () => const AppState.noInternet(),
             ),
         (response) => AppState.success(data: response));
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 final deleteUserProviderNotifierProvider = StateNotifierProvider.autoDispose<
         DeleteUserProviderNotifier, AppState<bool>>(

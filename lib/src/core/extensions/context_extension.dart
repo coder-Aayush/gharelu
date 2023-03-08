@@ -12,12 +12,12 @@ extension ContextX on BuildContext {
   double get width => MediaQuery.of(this).size.width;
 
   double get height => MediaQuery.of(this).size.height;
-***REMOVED***
+}
 
 extension WidgetX on BuildContext {
   void showSnackbar({
     required String message,
-  ***REMOVED***) {
+  }) {
     ScaffoldMessenger.of(this)
       ..hideCurrentSnackBar()
       ..showSnackBar(
@@ -32,9 +32,9 @@ extension WidgetX on BuildContext {
           duration: const Duration(seconds: 3),
         ),
       );
-  ***REMOVED***
+  }
 
-  void showErorDialog({required String? message, VoidCallback? buttonPressed, String? buttonTitle***REMOVED***) {
+  void showErorDialog({required String? message, VoidCallback? buttonPressed, String? buttonTitle}) {
     showGeneralDialog(
       context: this,
       barrierDismissible: false,
@@ -77,16 +77,16 @@ extension WidgetX on BuildContext {
             onPressed: () {
               if (buttonPressed != null) {
                 buttonPressed.call();
-              ***REMOVED*** else {
+              } else {
                 Navigator.pop(context);
-              ***REMOVED***
-            ***REMOVED***,
+              }
+            },
             child: Text(buttonTitle ?? 'Ok'),
           ),
         ],
       ),
     );
-  ***REMOVED***
+  }
 
   Widget get loader => Center(
         child: SizedBox(
@@ -95,4 +95,4 @@ extension WidgetX on BuildContext {
           width: 150.w,
         ),
       );
-***REMOVED***
+}

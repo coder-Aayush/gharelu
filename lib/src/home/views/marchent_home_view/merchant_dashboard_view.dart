@@ -6,11 +6,11 @@ import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantDashboardView extends StatefulHookConsumerWidget {
-  const MerchantDashboardView({Key? key***REMOVED***) : super(key: key);
+  const MerchantDashboardView({Key? key}) : super(key: key);
 
   @override
   _MerchantDashboardViewState createState() => _MerchantDashboardViewState();
-***REMOVED***
+}
 
 class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> {
   @override
@@ -24,7 +24,7 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> {
           .getUserInfo(id: userId!, isMerchant: true),
     );
     super.didChangeDependencies();
-  ***REMOVED***
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,5 +72,5 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> {
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

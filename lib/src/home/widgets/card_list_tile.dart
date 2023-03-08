@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardListTile extends StatelessWidget {
-  const CardListTile({Key? key, required this.title, required this.onPressed***REMOVED***)
+  const CardListTile({Key? key, required this.title, required this.onPressed})
       : super(key: key);
 
   final String title;
@@ -20,5 +20,5 @@ class CardListTile extends StatelessWidget {
         trailing: const Icon(Icons.arrow_forward_ios),
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}

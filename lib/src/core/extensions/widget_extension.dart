@@ -18,7 +18,7 @@ extension WidgetX on Widget {
     double right = 0,
     double bottom = 0,
     double left = 0,
-  ***REMOVED***) =>
+  }) =>
       Padding(
         padding: EdgeInsets.only(
           top: top,
@@ -41,13 +41,13 @@ extension WidgetX on Widget {
 
   SliverToBoxAdapter get toSliverBox => SliverToBoxAdapter(child: this);
 
-  Expanded expanded({int flex = 1***REMOVED***) => Expanded(
+  Expanded expanded({int flex = 1}) => Expanded(
         child: this,
         flex: flex,
       );
 
 
-***REMOVED***
+}
 
 extension TextStyleX on TextStyle {
   //colors
@@ -61,4 +61,4 @@ extension TextStyleX on TextStyle {
 
   TextStyle spacing(double value) =>
       copyWith(letterSpacing: calculateSpacing(value));
-***REMOVED***
+}

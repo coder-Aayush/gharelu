@@ -17,11 +17,11 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeView extends StatefulHookConsumerWidget {
-  const HomeView({Key? key***REMOVED***) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
-***REMOVED***
+}
 
 class _HomeViewState extends ConsumerState<HomeView> {
   @override
@@ -30,8 +30,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final currentUser = ref.read(firebaseAuthProvider).currentUser;
       ref.read(getUserInfoNotifiderProvider.notifier).getUserInfo(id: currentUser?.uid ?? '');
-    ***REMOVED***
-  ***REMOVED***
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +52,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
               background: SearchBar(
                 onPressed: () {
                   final searcher = HitsSearcher(
-                    applicationID: '${dotenv.env['ALGOLIA_APPLICATIONID']***REMOVED***',
-                    apiKey: '${dotenv.env['ALGOLIA_APIKEY']***REMOVED***',
+                    applicationID: '${dotenv.env['ALGOLIA_APPLICATIONID']}',
+                    apiKey: '${dotenv.env['ALGOLIA_APIKEY']}',
                     indexName: 'services',
                   );
                   showSearch(
                     context: context,
                     delegate: CustomSearchServices(searcher),
                   );
-                ***REMOVED***,
+                },
               ),
             ),
           ),
@@ -72,19 +72,19 @@ class _HomeViewState extends ConsumerState<HomeView> {
               success: (data) {
                 if (data.isEmpty) {
                   return const SizedBox.shrink().toSliverBox;
-                ***REMOVED*** else {
+                } else {
                   return Column(
                     children: [
                       CustomCarousel(banners: data),
                       30.verticalSpace,
                     ],
                   ).toSliverBox;
-                ***REMOVED***
-              ***REMOVED***,
+                }
+              },
               error: (message) => Center(child: Text(message)).toSliverBox,
               loading: () => const CarouselShimmer().px(20.w).toSliverBox,
             );
-          ***REMOVED***),
+          }),
           Consumer(
             builder: (context, ref, _) {
               final serviceState = ref.watch(categoriesStateProvider);
@@ -108,10 +108,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   ),
                 ),
               );
-            ***REMOVED***,
+            },
           ),
         ],
       ),
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
