@@ -76,6 +76,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/lottie/
+    - .env
 
 
 flutter_icons:
