@@ -41,7 +41,7 @@ class AppView extends StatelessWidget {
                   centerTitle: true,
                   titleTextStyle: AppStyles.text20PxSemiBold.softBlack,
                 ),
-                useMaterial3: true,
+                // useMaterial3: true,
                 colorSchemeSeed: AppColors.primaryColor,
               ),
               builder: (context, child) => child!,

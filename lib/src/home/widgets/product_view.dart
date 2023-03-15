@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
+import 'package:gharelu/src/core/widgets/widgets.dart';
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({
@@ -24,7 +25,7 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.h,
+      height: 200.h,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
@@ -37,22 +38,30 @@ class CustomProductCard extends StatelessWidget {
           onTap: onPressed,
           child: Stack(
             clipBehavior: Clip.none,
-            alignment: Alignment.topRight,
             children: [
-              Positioned.fill(child: Assets.images.babr.image()),
-              Positioned(
-                width: 150,
-                top: 3,
-                right: 3,
-                child: Container(
-                  alignment: Alignment.topRight,
-                  child: Text(
-                    name,
-                    style: AppStyles.text18PxMedium.primary,
-                    maxLines: 2,
-                    textAlign: TextAlign.right,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+              Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    image.isNotEmpty
+                        ? CacheImageViewer(
+                            imageUrl: image,
+                            fit: BoxFit.cover,
+                            height: 100.h,
+                          )
+                        : Assets.images.babr.image(),
+                    const Spacer(),
+                    Text(
+                      name,
+                      style: AppStyles.text18PxMedium.primary,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const Spacer(),
+                  ],
                 ),
               ),
               if (discount != null && discount != 0)

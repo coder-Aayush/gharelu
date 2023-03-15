@@ -8,7 +8,6 @@ import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
 import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/providers/product_provider.dart';
