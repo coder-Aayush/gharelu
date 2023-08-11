@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/main.dart';
@@ -15,7 +16,7 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return KhaltiScope(
-      publicKey: 'test_public_key_fb6cfb8adc524a1ebdfa34d656b5922b',
+      publicKey: dotenv.env['KHALTI_PUBLIC_KEY'] as String,
       enabledDebugging: true,
       navigatorKey: _router.navigatorKey,
       builder: (_, navigatorState) => ProviderScope(
