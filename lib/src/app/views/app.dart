@@ -9,7 +9,6 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
-
 class AppView extends StatelessWidget {
   AppView({Key? key}) : super(key: key);
   final _router = getIt<AppRouter>();
@@ -37,6 +36,7 @@ class AppView extends StatelessWidget {
               routeInformationParser: _router.defaultRouteParser(),
               title: 'Gharelu',
               theme: ThemeData(
+                useMaterial3: true,
                 appBarTheme: AppBarTheme(
                   centerTitle: true,
                   titleTextStyle: AppStyles.text20PxSemiBold.softBlack,
