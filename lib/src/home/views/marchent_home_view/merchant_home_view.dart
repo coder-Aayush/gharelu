@@ -1,18 +1,16 @@
-import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/enum/order_type.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/providers/product_provider.dart';
-import 'package:gharelu/src/home/providers/service_category_provider.dart';
-import 'package:gharelu/src/home/widgets/search_services.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage<void>()
 class MerchantHomeView extends ConsumerStatefulWidget {
   const MerchantHomeView({Key? key}) : super(key: key);
 
@@ -45,21 +43,21 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
             snap: true,
             floating: true,
             pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: SearchBar(
-                onPressed: () {
-                  final searcher = HitsSearcher(
-                    applicationID: 'IYS3NBQCDI',
-                    apiKey: '3ab9dbad16ea56cdccf487e845d139a6',
-                    indexName: 'services',
-                  );
-                  showSearch(
-                    context: context,
-                    delegate: CustomSearchServices(searcher),
-                  );
-                },
-              ),
-            ),
+            // flexibleSpace: FlexibleSpaceBar(
+            //   background: SearchBar(
+            //     onPressed: () {
+            //       final searcher = HitsSearcher(
+            //         applicationID: 'IYS3NBQCDI',
+            //         apiKey: '3ab9dbad16ea56cdccf487e845d139a6',
+            //         indexName: 'services',
+            //       );
+            //       showSearch(
+            //         context: context,
+            //         delegate: CustomSearchServices(searcher),
+            //       );
+            //     },
+            //   ),
+            // ),
           ),
           20.verticalSpace.toSliverBox,
           Consumer(

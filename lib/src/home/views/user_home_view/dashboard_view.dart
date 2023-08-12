@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage<void>(name: 'DashboardRouter')
 class DashboardView extends StatefulHookConsumerWidget {
   const DashboardView({Key? key}) : super(key: key);
 
@@ -31,10 +33,6 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                   ..navigate(const AppointmentRouter()),
           ),
         ],
-        builder: (context, child, animation) => FadeTransition(
-          opacity: animation,
-          child: child,
-        ),
         bottomNavigationBuilder: (context, tabsRouter) {
           return BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,

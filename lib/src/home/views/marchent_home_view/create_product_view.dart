@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+@RoutePage<void>()
 class CreateProductView extends HookConsumerWidget {
   const CreateProductView({Key? key, this.editProduct}) : super(key: key);
   final ProductModel? editProduct;

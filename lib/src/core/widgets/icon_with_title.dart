@@ -21,7 +21,14 @@ class IconWithTitle extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(icon, color: AppColors.primaryColor, height: 15),
+          SvgPicture.asset(
+            icon,
+            height: 15,
+            colorFilter: const ColorFilter.mode(
+              AppColors.primaryColor,
+              BlendMode.srcIn,
+            ),
+          ),
           3.horizontalSpace,
           Text(title, style: AppStyles.text12PxMedium.primary),
         ],

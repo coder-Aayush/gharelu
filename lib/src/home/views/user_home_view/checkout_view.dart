@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -20,6 +21,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
+@RoutePage<void>()
 class CheckoutView extends HookConsumerWidget {
   const CheckoutView(
       {Key? key, required this.date, required this.time, required this.service})

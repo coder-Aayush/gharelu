@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
   final bool isEnable;
   final bool isPassword;
   final String? error;
-  final Function(String)? onChanged;
+  final void Function(String)? onChanged;
   final TextInputType textInputType;
   final int? maxLength;
   final TextCapitalization? textCapitalization;

@@ -130,16 +130,16 @@ class MerchantBookingProductTile extends StatelessWidget {
                         builder: (context, ref, _) {
                           return DropdownButtonHideUnderline(
                             child: DropdownButton2<OrderType>(
-                              buttonHeight: 32,
-                              dropdownDecoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: AppColors.whiteColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: AppColors.softBlack.withOpacity(.4),
-                                  ),
-                                ],
-                              ),
+                              // he
+                              // dropdownDecoration: BoxDecoration(
+                              //   borderRadius: BorderRadius.circular(4),
+                              //   color: AppColors.whiteColor,
+                              //   boxShadow: [
+                              //     BoxShadow(
+                              //       color: AppColors.softBlack.withOpacity(.4),
+                              //     ),
+                              //   ],
+                              // ),
                               onChanged: (value) => ref
                                   .read(
                                       getMerchantBookingsStateProvider.notifier)
@@ -210,6 +210,3 @@ class MerchantBookingProductTile extends StatelessWidget {
     );
   }
 }
-
-
-

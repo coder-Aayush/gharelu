@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/auth/providers/logout_provider.dart';
@@ -14,6 +15,7 @@ import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage(name: 'ProfileRouter')
 class ProfileView extends StatefulHookConsumerWidget {
   const ProfileView({Key? key, required this.onAppoinment}) : super(key: key);
   final VoidCallback onAppoinment;

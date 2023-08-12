@@ -16,7 +16,7 @@ class ExpensionTileContent extends StatelessWidget {
     return Row(
       children: [
         Text(title),
-        Spacer(),
+        const Spacer(),
         Text(description),
       ],
     );

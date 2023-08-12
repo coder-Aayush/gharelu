@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 
 import 'package:chat_bubbles/bubbles/bubble_normal_image.dart';
@@ -22,6 +23,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+@RoutePage<void>()
 class ChatDetailView extends StatefulHookConsumerWidget {
   const ChatDetailView({
     Key? key,

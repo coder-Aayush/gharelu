@@ -5,6 +5,7 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage<void>(name: 'MerchantDashboardRouter')
 class MerchantDashboardView extends StatefulHookConsumerWidget {
   const MerchantDashboardView({Key? key}) : super(key: key);
 
@@ -32,8 +33,8 @@ class _MerchantDashboardViewState extends ConsumerState<MerchantDashboardView> {
       routes: [
         const MerchantHomeRoute(),
         const MerchantBookingsRoute(),
-        ChatListRoute(isMerchant: true),
-        ProfileRoute(
+        ChatRouter(isMerchant: true),
+        ProfileRouter(
           onAppoinment: () =>
               context.router.root.innerRouterOf(MerchantDashboardRouter.name)
                 ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)

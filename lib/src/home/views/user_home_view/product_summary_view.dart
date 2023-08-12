@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +12,7 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
+@RoutePage<void>()
 class ProductSummaryView extends StatelessWidget {
   const ProductSummaryView({Key? key, required this.service}) : super(key: key);
   final ServiceModel service;
@@ -22,66 +24,63 @@ class ProductSummaryView extends StatelessWidget {
         builder: (context, ref, _) {
           final _cart = ref.watch(cartStateProvider);
           if (_cart.products.isNotEmpty) {
-            return BottomAppBar(
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
+            return Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ),
+                color: AppColors.primaryColor.withOpacity(.2),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Payment Summary',
+                    style: AppStyles.text16PxMedium,
                   ),
-                  color: AppColors.primaryColor.withOpacity(.2),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Payment Summary',
-                      style: AppStyles.text16PxMedium,
+                  20.verticalSpace,
+                  Row(
+                    children: [
+                      Text('Item Total', style: AppStyles.text14PxMedium),
+                      const Spacer(),
+                      Text('Rs: ${_cart.totalPrice}',
+                          style: AppStyles.text14PxSemiBold)
+                    ],
+                  ),
+                  22.verticalSpace,
+                  Row(
+                    children: [
+                      Text('Convenience Fee', style: AppStyles.text14PxMedium),
+                      const Spacer(),
+                      Text('Rs: 50', style: AppStyles.text14PxSemiBold)
+                    ],
+                  ),
+                  20.verticalSpace,
+                  const Divider(),
+                  10.verticalSpace,
+                  Row(
+                    children: [
+                      Text('Total', style: AppStyles.text14PxMedium),
+                      const Spacer(),
+                      Text(
+                        'Rs: ${_cart.subTotal}',
+                        style: AppStyles.text14PxSemiBold,
+                      )
+                    ],
+                  ),
+                  20.verticalSpace,
+                  Center(
+                    child: CustomButton(
+                      title: 'Select Slot',
+                      isDisabled: !_cart.products.isNotEmpty,
+                      onPressed: () => context.router
+                          .push(SelectSlotRoute(service: service)),
                     ),
-                    20.verticalSpace,
-                    Row(
-                      children: [
-                        Text('Item Total', style: AppStyles.text14PxMedium),
-                        const Spacer(),
-                        Text('Rs: ${_cart.totalPrice}',
-                            style: AppStyles.text14PxSemiBold)
-                      ],
-                    ),
-                    22.verticalSpace,
-                    Row(
-                      children: [
-                        Text('Convenience Fee',
-                            style: AppStyles.text14PxMedium),
-                        const Spacer(),
-                        Text('Rs: 50', style: AppStyles.text14PxSemiBold)
-                      ],
-                    ),
-                    20.verticalSpace,
-                    const Divider(),
-                    10.verticalSpace,
-                    Row(
-                      children: [
-                        Text('Total', style: AppStyles.text14PxMedium),
-                        const Spacer(),
-                        Text(
-                          'Rs: ${_cart.subTotal}',
-                          style: AppStyles.text14PxSemiBold,
-                        )
-                      ],
-                    ),
-                    20.verticalSpace,
-                    Center(
-                      child: CustomButton(
-                        title: 'Select Slot',
-                        isDisabled: !_cart.products.isNotEmpty,
-                        onPressed: () => context.router
-                            .push(SelectSlotRoute(service: service)),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
           } else {

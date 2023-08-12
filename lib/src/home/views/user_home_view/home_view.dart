@@ -16,6 +16,7 @@ import 'package:gharelu/src/home/widgets/search_services.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage(name: 'HomeRouter')
 class HomeView extends StatefulHookConsumerWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -48,21 +49,21 @@ class _HomeViewState extends ConsumerState<HomeView> {
             snap: true,
             floating: true,
             pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: SearchBar(
-                onPressed: () {
-                  final searcher = HitsSearcher(
-                    applicationID: '${dotenv.env['ALGOLIA_APPLICATIONID']}',
-                    apiKey: '${dotenv.env['ALGOLIA_APIKEY']}',
-                    indexName: 'services',
-                  );
-                  showSearch(
-                    context: context,
-                    delegate: CustomSearchServices(searcher),
-                  );
-                },
-              ),
-            ),
+            // flexibleSpace: FlexibleSpaceBar(
+            //   background: SearchBar(
+            //     onPressed: () {
+            //       final searcher = HitsSearcher(
+            //         applicationID: '${dotenv.env['ALGOLIA_APPLICATIONID']}',
+            //         apiKey: '${dotenv.env['ALGOLIA_APIKEY']}',
+            //         indexName: 'services',
+            //       );
+            //       showSearch(
+            //         context: context,
+            //         delegate: CustomSearchServices(searcher),
+            //       );
+            //     },
+            //   ),
+            // ),
           ),
           20.verticalSpace.toSliverBox,
           Consumer(builder: (context, ref, _) {

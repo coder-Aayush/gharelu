@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:gharelu/src/home/providers/get_user_bookings.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage(name: 'AppointmentRouter')
 class AppointmentView extends ConsumerWidget {
   const AppointmentView({Key? key}) : super(key: key);
 

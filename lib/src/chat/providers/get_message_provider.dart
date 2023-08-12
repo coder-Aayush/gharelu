@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gharelu/src/chat/data_source/chat_data_source.dart';
 import 'package:gharelu/src/chat/models/message_model.dart';
 import 'package:gharelu/src/core/constant/app_constant.dart';
 import 'package:gharelu/src/core/extensions/list_extension.dart';

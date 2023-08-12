@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gharelu/src/home/models/booking_model.dart';
 import 'package:gharelu/src/home/models/product_model.dart';

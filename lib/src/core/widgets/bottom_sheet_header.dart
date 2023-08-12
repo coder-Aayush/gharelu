@@ -17,9 +17,9 @@ class BottomSheetHeader extends StatelessWidget {
     this.isActionIconEnabled = false,
   }) : super(key: key);
   final String title;
-  final Function()? onClose;
+  final void Function()? onClose;
   final EdgeInsetsGeometry? padding;
-  final Function()? onBackPressed;
+  final void Function()? onBackPressed;
   final bool showClose;
   final Widget? trailing;
   final Widget? leading;

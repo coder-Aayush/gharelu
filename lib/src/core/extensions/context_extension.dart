@@ -4,7 +4,6 @@ import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
-import 'package:gharelu/src/core/widgets/animated_dialog.dart';
 import 'package:lottie/lottie.dart';
 
 extension ContextX on BuildContext {

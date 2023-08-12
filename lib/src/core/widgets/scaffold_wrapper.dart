@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:lottie/lottie.dart';
 
 class ScaffoldWrapper extends StatelessWidget {
   const ScaffoldWrapper({

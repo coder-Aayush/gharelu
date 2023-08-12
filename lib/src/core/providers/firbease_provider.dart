@@ -19,24 +19,25 @@ final firebaseAuthProvider = Provider<FirebaseAuth>(
   },
 );
 
-final authChangeProvider = StreamProvider<User?>((ref) async* {
+final authChangeProvider = StreamProvider<User?>(
+  (ref) async* {
     yield* ref.read(firebaseAuthProvider).authStateChanges()
       ..listen((event) {
-        if (event != null) {
-          final _router = getIt<AppRouter>();
-          sendVerificationEmail(event);
-          if (event.emailVerified == false) {
-            _router.navigatorKey.currentContext?.showSnackbar(
-              message: 'Email not Verified',
-            );
-            Future.delayed(
-              Duration.zero,
-              () => _router.push(VerifyEmailRoute(email: event.email!)),
-            );
-          }
-        }
+        // if (event != null) {
+        //   final _router = getIt<AppRouter>();
+        //   sendVerificationEmail(event);
+        //   if (event.emailVerified == false) {
+        //     _router.navigatorKey.currentContext?.showSnackbar(
+        //       message: 'Email not Verified',
+        //     );
+        //     Future.delayed(
+        //       Duration.zero,
+        //       () => _router.push(VerifyEmailRoute(email: event.email!)),
+        //     );
+        //   }
+        // }
       });
-},
+  },
 );
 
 // final authSatate =

@@ -267,3 +267,7 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
     }
   }
 }
+
+final serviceRemoteSourceProvider = Provider<ServiceRemoteSource>((ref) {
+  return ServiceRemoteSource(ref);
+});

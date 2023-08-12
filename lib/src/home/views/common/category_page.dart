@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
@@ -11,6 +12,7 @@ import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage<void>()
 class CategoryView extends StatefulHookConsumerWidget {
   const CategoryView({Key? key, required this.category}) : super(key: key);
 

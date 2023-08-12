@@ -37,7 +37,13 @@ class SearchBar extends StatelessWidget {
               child: Row(
                 children: [
                   Assets.icons.search
-                      .svg(color: AppColors.softBlack, height: 25)
+                      .svg(
+                        height: 25,
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.midGreyColor,
+                          BlendMode.srcIn,
+                        ),
+                      )
                       .px(5),
                   6.horizontalSpace,
                   Text(

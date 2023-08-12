@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ import 'package:latlong2/latlong.dart';
 // ignore: inference_failure_on_function_return_type
 typedef Success = Function(String, String, LatLng);
 
+@RoutePage<void>()
 class MapPickerView extends StatefulHookConsumerWidget {
   const MapPickerView(this.onSuccess, {Key? key}) : super(key: key);
   // ignore: inference_failure_on_function_return_type

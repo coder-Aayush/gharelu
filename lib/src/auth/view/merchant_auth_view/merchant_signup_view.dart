@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+@RoutePage<void>()
 class MerchantSignupView extends HookConsumerWidget {
   const MerchantSignupView({Key? key}) : super(key: key);
 
@@ -108,7 +110,7 @@ class MerchantSignupView extends HookConsumerWidget {
               label: const Text('Upload'),
               onPressed: () async {
                 final imagePath = (await ImagePicker().pickMultiImage());
-                if (imagePath != null) {
+                if (imagePath.isNotEmpty) {
                   ref
                       .read(merchantSignupFormProvider.notifier)
                       .setDocuments(imagePath.map((e) => e.path).toList());

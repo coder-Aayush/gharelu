@@ -6,6 +6,6 @@ class MerchantProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWrapper();
+    return const ScaffoldWrapper();
   }
 }
