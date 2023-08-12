@@ -3,84 +3,47 @@ export 'package:auto_route/auto_route.dart';
 export 'app_router.gr.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:gharelu/src/app/views/views.dart';
-import 'package:gharelu/src/auth/view/pages.dart';
-import 'package:gharelu/src/chat/views/chat_list_view.dart';
-import 'package:gharelu/src/home/views/marchent_home_view/merchant_bookings_view.dart';
-import 'package:gharelu/src/home/views/marchent_home_view/pages.dart';
-import 'package:gharelu/src/home/views/pages.dart';
-import 'package:gharelu/src/map_view/views/views.dart';
+import 'package:gharelu/src/core/routes/app_router.gr.dart';
+import 'package:gharelu/src/chat/views/views.dart';
 
-@AdaptiveAutoRouter(
+@AutoRouterConfig(
   replaceInRouteName: 'View,Route',
-  routes: [
-    AutoRoute<void>(page: SplashView, initial: true),
-    AutoRoute<void>(page: LoginChoiceView),
-    AutoRoute<void>(page: UserSignupView),
-    AutoRoute<void>(page: LoginUserView),
-    AutoRoute<void>(page: MerchantSignupView),
-    AutoRoute<void>(page: MerchantLoginView),
-    AutoRoute<void>(page: WelcomeView),
-
-    // map
-    AutoRoute<void>(page: MapPickerView),
-
-    // user home
-    AutoRoute<void>(
-      page: DashboardView,
-      path: 'dashboard',
-      name: 'DashboardRouter',
-      children: [
-        AutoRoute(
-          page: HomeView,
-          path: '',
-          name: 'HomeRouter',
-        ),
-        AutoRoute(
-          page: AppointmentView,
-          path: 'bookmark',
-          name: 'AppointmentRouter',
-        ),
-        AutoRoute(
-          page: ChatListView,
-          path: 'chat',
-          name: 'ChatRouter',
-        ),
-        AutoRoute(
-          page: ProfileView,
-          path: 'profile',
-          name: 'ProfileRouter',
-        ),
-      ],
-    ),
-    AutoRoute<void>(page: CategoryView),
-
-    // chats
-    AutoRoute<void>(page: ChatDetailView),
-    AutoRoute<void>(page: ProductView),
-    AutoRoute<void>(page: ProductSummaryView),
-    AutoRoute<void>(page: SelectSlotView),
-    AutoRoute<void>(page: CheckoutView),
-    AutoRoute<void>(page: HelpAndSupportView),
-    AutoRoute<void>(page: ProfileInfoView),
-
-    /// merchant views
-    ///
-
-    AutoRoute<void>(
-      name: 'MerchantDashboardRouter',
-      page: MerchantDashboardView,
-      children: [
-        AutoRoute<void>(page: MerchantHomeView),
-        AutoRoute<void>(page: MerchantBookingsView),
-        AutoRoute<void>(page: ChatListView),
-        AutoRoute<void>(page: ProfileView),
-      ],
-    ),
-    AutoRoute<void>(page: CreateProductView),
-
-    //
-    AutoRoute<void>(page: VerifyEmailView),
-  ],
 )
-class $AppRouter {}
+class AppRouter extends $AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.adaptive();
+
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(page: SplashRoute.page, path: '/'),
+    AutoRoute(page: LoginChoiceRoute.page),
+    AutoRoute(page: UserSignupRoute.page),
+    AutoRoute(page: LoginUserRoute.page),
+    AutoRoute(page: MerchantSignupRoute.page),
+    AutoRoute(page: MerchantLoginRoute.page),
+    AutoRoute(page: WelcomeRoute.page),
+    AutoRoute(page: MapPickerRoute.page),
+    AutoRoute(page: DashboardRouter.page, path: '/dashboard', children: [
+      AutoRoute(page: HomeRouter.page, path: ''),
+      AutoRoute(page: AppointmentRouter.page, path: 'bookmark'),
+      AutoRoute(page: ChatRouter.page, path: 'chat'),
+      AutoRoute(page: ProfileRouter.page, path: 'profile'),
+    ]),
+    AutoRoute(page: CategoryRoute.page),
+    AutoRoute(page: ChatDetailRoute.page),
+    AutoRoute(page: ProductRoute.page),
+    AutoRoute(page: ProductSummaryRoute.page),
+    AutoRoute(page: SelectSlotRoute.page),
+    AutoRoute(page: CheckoutRoute.page),
+    AutoRoute(page: HelpAndSupportRoute.page),
+    AutoRoute(page: ProfileInfoRoute.page),
+    AutoRoute(page: MerchantDashboardRouter.page, children: [
+      AutoRoute(page: MerchantHomeRoute.page),
+      AutoRoute(page: MerchantBookingsRoute.page),
+      AutoRoute(page: ChatRouter.page),
+      AutoRoute(page: ProfileRouter.page),
+    ]),
+    AutoRoute(page: CreateProductRoute.page),
+    AutoRoute(page: VerifyEmailRoute.page),
+  ];
+}
