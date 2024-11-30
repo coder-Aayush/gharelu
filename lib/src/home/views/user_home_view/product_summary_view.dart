@@ -12,7 +12,7 @@ import 'package:gharelu/src/home/models/service_model.dart';
 import 'package:gharelu/src/home/providers/cart_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class ProductSummaryView extends StatelessWidget {
   const ProductSummaryView({Key? key, required this.service}) : super(key: key);
   final ServiceModel service;
@@ -114,7 +114,7 @@ class ProductSummaryView extends StatelessWidget {
                     20.verticalSpace,
                     CustomButton(
                       title: 'Shop More',
-                      onPressed: () => context.router.pop(),
+                      onPressed: () => context.router.maybePop(),
                       isDisabled: false,
                     ),
                   ],

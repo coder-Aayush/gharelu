@@ -10,7 +10,7 @@ import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class MerchantHomeView extends ConsumerStatefulWidget {
   const MerchantHomeView({Key? key}) : super(key: key);
 
@@ -23,7 +23,9 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
   void initState() {
     Future.delayed(
       const Duration(milliseconds: 200),
-      () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
+      () => ref
+          .read(productStateProvider.notifier)
+          .getProducts(merchantOnly: true),
     );
     super.initState();
   }
@@ -77,7 +79,9 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
                         height: context.height * 0.6,
                         child: NoDataFound(
                           title: 'No Services Found',
-                          onRefresh: () => ref.read(productStateProvider.notifier).getProducts(merchantOnly: true),
+                          onRefresh: () => ref
+                              .read(productStateProvider.notifier)
+                              .getProducts(merchantOnly: true),
                         ),
                       ),
                     ).toSliverBox;

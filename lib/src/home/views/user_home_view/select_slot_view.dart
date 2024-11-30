@@ -14,7 +14,7 @@ import 'package:gharelu/src/home/providers/slot_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class SelectSlotView extends StatefulHookConsumerWidget {
   const SelectSlotView({Key? key, required this.service}) : super(key: key);
   final ServiceModel service;

@@ -11,7 +11,7 @@ import 'package:gharelu/src/home/providers/get_merchant_bookings_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class MerchantBookingsView extends HookWidget {
   const MerchantBookingsView({Key? key}) : super(key: key);
 
@@ -21,9 +21,8 @@ class MerchantBookingsView extends HookWidget {
     return ScaffoldWrapper(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: const Text('Your Bookings', style: TextStyle(
-          color: AppColors.whiteColor
-        )),
+        title: const Text('Your Bookings',
+            style: TextStyle(color: AppColors.whiteColor)),
         bottom: TabBar(
           splashFactory: NoSplash.splashFactory,
           automaticIndicatorColorAdjustment: true,
@@ -54,11 +53,13 @@ class MerchantBookingsView extends HookWidget {
                         ? Center(
                             child: NoDataFound(
                               title: 'No Previous Bookings Found',
-                              onRefresh: () => ref.refresh(getMerchantBookingsStateProvider),
+                              onRefresh: () =>
+                                  ref.refresh(getMerchantBookingsStateProvider),
                             ),
                           )
                         : ListView.builder(
-                            itemBuilder: (context, index) => MerchantBookingProductTile(
+                            itemBuilder: (context, index) =>
+                                MerchantBookingProductTile(
                               booking: previous[index],
                             ).py(10.h).px(10.w),
                             itemCount: previous.length,
@@ -72,7 +73,8 @@ class MerchantBookingsView extends HookWidget {
                         ? Center(
                             child: NoDataFound(
                               title: 'No Upcoming Bookings Found',
-                              onRefresh: () => ref.refresh(getMerchantBookingsStateProvider),
+                              onRefresh: () =>
+                                  ref.refresh(getMerchantBookingsStateProvider),
                             ),
                           )
                         : ListView.builder(

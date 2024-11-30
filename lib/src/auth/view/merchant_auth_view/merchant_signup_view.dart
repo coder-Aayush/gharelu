@@ -16,7 +16,7 @@ import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class MerchantSignupView extends HookConsumerWidget {
   const MerchantSignupView({Key? key}) : super(key: key);
 
@@ -148,7 +148,7 @@ class MerchantSignupView extends HookConsumerWidget {
                   onPressed: () => context.router.push(
                     MapPickerRoute(
                       onSuccess: (location, placeId, latlng) {
-                        context.router.pop();
+                        context.router.maybePop();
                         // ref.read(merchantSignupProvider).
                         ref
                             .read(merchantSignupFormProvider.notifier)
@@ -200,7 +200,7 @@ class MerchantSignupView extends HookConsumerWidget {
                   style: AppStyles.text14PxRegular.midGrey,
                 ),
                 TextButton(
-                  onPressed: () => context.router.pop(),
+                  onPressed: () => context.router.maybePop(),
                   child: const Text('Login'),
                 ),
               ],

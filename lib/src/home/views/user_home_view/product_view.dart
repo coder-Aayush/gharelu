@@ -15,7 +15,7 @@ import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class ProductView extends StatefulHookConsumerWidget {
   const ProductView({
     Key? key,
@@ -41,7 +41,9 @@ class _ProductViewState extends ConsumerState<ProductView> {
     if (mounted) {
       Future.delayed(
         Duration.zero,
-        () => ref.read(productStateProvider.notifier).getProducts(categoryId: widget.categoryId),
+        () => ref
+            .read(productStateProvider.notifier)
+            .getProducts(categoryId: widget.categoryId),
       );
     }
     super.initState();
@@ -58,11 +60,13 @@ class _ProductViewState extends ConsumerState<ProductView> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Total: Rs ${cart.price}', style: AppStyles.text14PxBold.white),
+                Text('Total: Rs ${cart.price}',
+                    style: AppStyles.text14PxBold.white),
                 const Spacer(),
                 CustomButton(
                   title: 'View Cart',
-                  onPressed: () => context.router.push(ProductSummaryRoute(service: widget.service)),
+                  onPressed: () => context.router
+                      .push(ProductSummaryRoute(service: widget.service)),
                   isDisabled: false,
                   backgroundColor: AppColors.whiteColor,
                   titleStyle: AppStyles.text14PxBold.primary,
@@ -109,12 +113,16 @@ class _ProductViewState extends ConsumerState<ProductView> {
                             name: product.name,
                             description: product.description,
                             image: product.image,
-                            itemInCart: cart.products.where((element) => element.id == product.id).isNotEmpty,
+                            itemInCart: cart.products
+                                .where((element) => element.id == product.id)
+                                .isNotEmpty,
                             onButtomPressed: () {
                               final _product = cart.products.where(
                                 (element) => element.id == product.id,
                               );
-                              ref.read(cartStateProvider.notifier).addToCart(product);
+                              ref
+                                  .read(cartStateProvider.notifier)
+                                  .addToCart(product);
                             },
                             price: data[index].price,
                           ).px(10).py(14);

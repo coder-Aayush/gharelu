@@ -4,7 +4,7 @@ import 'package:gharelu/src/core/providers/firbease_provider.dart';
 import 'package:gharelu/src/core/routes/app_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>(name: 'DashboardRouter')
+@RoutePage(name: 'DashboardRouter')
 class DashboardView extends StatefulHookConsumerWidget {
   const DashboardView({Key? key}) : super(key: key);
 

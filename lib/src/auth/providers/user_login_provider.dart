@@ -7,8 +7,7 @@ class UserLoginState extends StateNotifier<AppState> {
 
   final AuthRemoteSource _remoteSource;
 
-  Future<void> loginAsUser(
-      {required String email, required String password}) async {
+  Future loginAsUser({required String email, required String password}) async {
     state = const AppState.loading();
     final response =
         await _remoteSource.loginAsUser(email: email, password: password);

@@ -8,7 +8,7 @@ class CreateServiceNotifier extends StateNotifier<AppState<ServiceModel>> {
 
   final ServiceRemoteSource _remoteSource;
 
-  Future<void> createService(ServiceModel service) async {
+  Future createService(ServiceModel service) async {
     state = const AppState.loading();
     final response = await _remoteSource.createServices(service);
     state = response.fold(

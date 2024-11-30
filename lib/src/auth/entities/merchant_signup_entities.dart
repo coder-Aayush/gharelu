@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/validations/field.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 part 'merchant_signup_entities.freezed.dart';
 
@@ -25,7 +25,7 @@ class MerchantSignupFromEntity with _$MerchantSignupFromEntity {
         documents: [],
       );
 
-  bool get isEmailVerified => (email.value as String).validateEmail();
+  bool get isEmailVerified => (email.value as String).isEmail;
 
   bool get isValid =>
       name.isValid &&

@@ -14,7 +14,7 @@ class GetMerchantBookingsNotifier
       : super(const GetMerchantBookingsState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getMerchantBookings() async {
+  Future getMerchantBookings() async {
     state = const GetMerchantBookingsState.loading();
     final response = await _dataSource.getMerchantBookings();
     state = response.fold(
@@ -43,7 +43,7 @@ class GetMerchantBookingsNotifier
     );
   }
 
-  Future<void> updateBookings(
+  Future updateBookings(
       {required String bookingId, required OrderType orderType}) async {
     state = const GetMerchantBookingsState.loading();
     final response = await _dataSource.updateBookings(

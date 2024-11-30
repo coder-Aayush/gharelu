@@ -9,8 +9,7 @@ class GetUserInfoNotifier extends StateNotifier<AppState<CustomUserModel>> {
   GetUserInfoNotifier(this._remoteSource) : super(const AppState.initial());
   final AuthRemoteSource _remoteSource;
 
-  Future<void> getUserInfo(
-      {required String id, bool isMerchant = false}) async {
+  Future getUserInfo({required String id, bool isMerchant = false}) async {
     state = const AppState.loading();
     final response =
         await _remoteSource.getUserInfo(id: id, isMerchant: isMerchant);

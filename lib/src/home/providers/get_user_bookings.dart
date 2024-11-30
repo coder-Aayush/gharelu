@@ -9,10 +9,11 @@ part 'get_user_bookings.freezed.dart';
 part 'state/get_user_bookings_state.dart';
 
 class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
-  GetUserBookingsNotifier(this._dataSource) : super(const GetUserBookingsState.initial());
+  GetUserBookingsNotifier(this._dataSource)
+      : super(const GetUserBookingsState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getBookings() async {
+  Future getBookings() async {
     state = const GetUserBookingsState.loading();
     final response = await _dataSource.getUserBookings();
     state = response.fold(
@@ -25,7 +26,8 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
         List<BookingModel> upcoming = [];
 
         for (var item in response) {
-          if (item.orderType == OrderType.Cancelled || item.orderType == OrderType.Completed) {
+          if (item.orderType == OrderType.Cancelled ||
+              item.orderType == OrderType.Completed) {
             previous.add(item);
           } else {
             upcoming.add(item);
@@ -40,9 +42,11 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
     );
   }
 
-  Future<void> updateBookings({required String bookingId, required OrderType orderType}) async {
+  Future updateBookings(
+      {required String bookingId, required OrderType orderType}) async {
     state = const GetUserBookingsState.loading();
-    final response = await _dataSource.updateBookings(bookingId: bookingId, orderType: orderType);
+    final response = await _dataSource.updateBookings(
+        bookingId: bookingId, orderType: orderType);
     getBookings();
     state = response.fold(
       (error) => error.when(
@@ -60,8 +64,10 @@ class GetUserBookingsNotifier extends StateNotifier<GetUserBookingsState> {
   }
 }
 
-final getUserBookingsNotifierProvider = StateNotifierProvider<GetUserBookingsNotifier, GetUserBookingsState>(
+final getUserBookingsNotifierProvider =
+    StateNotifierProvider<GetUserBookingsNotifier, GetUserBookingsState>(
   (ref) {
-    return GetUserBookingsNotifier(ref.read(bookingDataSourceProvider))..getBookings();
+    return GetUserBookingsNotifier(ref.read(bookingDataSourceProvider))
+      ..getBookings();
   },
 );

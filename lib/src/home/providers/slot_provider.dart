@@ -7,7 +7,7 @@ class SlotNotifier extends StateNotifier<AppState<List<String>>> {
   SlotNotifier(this._dataSource) : super(const AppState.initial());
   final BookingDataSource _dataSource;
 
-  Future<void> getBookings(
+  Future getBookings(
       {required DateTime date, required String serviceId}) async {
     final times = generateTime();
     state = const AppState.loading();

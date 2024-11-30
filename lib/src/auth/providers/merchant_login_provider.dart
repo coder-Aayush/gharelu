@@ -9,7 +9,7 @@ class MerchantLoginProvider extends StateNotifier<AppState<User?>> {
 
   final AuthRemoteSource _remoteSource;
 
-  Future<void> loginAsMerchant({
+  Future loginAsMerchant({
     required String email,
     required String password,
   }) async {

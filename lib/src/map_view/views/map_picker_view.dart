@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/plugin_api.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gharelu/src/core/assets/assets.gen.dart';
 import 'package:gharelu/src/core/extensions/context_extension.dart';
@@ -14,7 +14,7 @@ import 'package:latlong2/latlong.dart';
 // ignore: inference_failure_on_function_return_type
 typedef Success = Function(String, String, LatLng);
 
-@RoutePage<void>()
+@RoutePage()
 class MapPickerView extends StatefulHookConsumerWidget {
   const MapPickerView(this.onSuccess, {Key? key}) : super(key: key);
   // ignore: inference_failure_on_function_return_type
@@ -54,10 +54,11 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
         return ScaffoldWrapper(
           extendBody: true,
           floatingActionButton: Consumer(builder: (context, ref, _) {
-            final String? location = ref.watch(getLocationStateProvider).maybeWhen(
-                  orElse: () => null,
-                  success: (data) => data.toString(),
-                );
+            final String? location =
+                ref.watch(getLocationStateProvider).maybeWhen(
+                      orElse: () => null,
+                      success: (data) => data.toString(),
+                    );
             return FloatingActionButton(
               onPressed: () => widget.onSuccess(location!, '', selectedLatLng),
               child: ref.watch(getLocationStateProvider).maybeWhen(
@@ -69,7 +70,8 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                   ),
             );
           }),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             notchMargin: 15,
             shape: const CircularNotchedRectangle(),
@@ -80,12 +82,13 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                 children: [
                   const Spacer(),
                   Consumer(builder: (context, ref, _) {
-                    final String location = ref.watch(getLocationStateProvider).maybeWhen(
-                          orElse: () => 'Pick Your Location',
-                          success: (data) => data.toString(),
-                          error: (message) => message,
-                          loading: () => 'Loading',
-                        );
+                    final String location =
+                        ref.watch(getLocationStateProvider).maybeWhen(
+                              orElse: () => 'Pick Your Location',
+                              success: (data) => data.toString(),
+                              error: (message) => message,
+                              loading: () => 'Loading',
+                            );
                     return Text(
                       location,
                       style: AppStyles.text14PxRegular,
@@ -104,24 +107,27 @@ class _MapPickerViewState extends ConsumerState<MapPickerView> {
                 mapController: controller,
                 children: [
                   TileLayer(
-                    urlTemplate: 'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
+                    urlTemplate:
+                        'https://api.mapbox.com/styles/v1/theaayush/cl6flf3vp000g15mv6mw99ewl/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
                     additionalOptions: {
-                      'accessToken': 'pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
+                      'accessToken':
+                          'pk.eyJ1IjoidGhlYWF5dXNoIiwiYSI6ImNreWViMTZlejA5dHkydXRlMjdlZHh6d2UifQ.YwuKn1uPwMLudv3V7xqvCw',
                       'id': 'mapbox.mapbox-streets-v8',
                     },
                   ),
                 ],
                 options: MapOptions(
-                  center: LatLng(27.700769, 85.300140),
                   onPointerDown: (event, point) {
                     selectedLatLng = point;
                     setState(() {});
-                    ref.read(getLocationStateProvider.notifier).getLocationFromLatLng(lat: '${selectedLatLng.latitude}', lng: '${selectedLatLng.longitude}');
+                    ref
+                        .read(getLocationStateProvider.notifier)
+                        .getLocationFromLatLng(
+                            lat: '${selectedLatLng.latitude}',
+                            lng: '${selectedLatLng.longitude}');
                   },
                   keepAlive: true,
-                  zoom: 18.0,
-                  // allowPanning: true,
-                  enableScrollWheel: true,
+                  initialCenter: selectedLatLng,
                 ),
                 // layers: [
               ),

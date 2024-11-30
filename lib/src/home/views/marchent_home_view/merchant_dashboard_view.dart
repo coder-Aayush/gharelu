@@ -5,7 +5,7 @@ import 'package:gharelu/src/core/theme/app_colors.dart';
 import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>(name: 'MerchantDashboardRouter')
+@RoutePage(name: 'MerchantDashboardRouter')
 class MerchantDashboardView extends StatefulHookConsumerWidget {
   const MerchantDashboardView({Key? key}) : super(key: key);
 

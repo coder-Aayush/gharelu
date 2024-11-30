@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/utility/contact_utility.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class HelpAndSupportView extends StatelessWidget {
   const HelpAndSupportView({Key? key}) : super(key: key);
 

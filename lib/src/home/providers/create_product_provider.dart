@@ -10,7 +10,7 @@ class CreateProductNotifier extends StateNotifier<AppState<ProductModel>> {
 
   final ServiceRemoteSource _remoteSource;
 
-  Future<void> createProduct(ProductModel product,
+  Future createProduct(ProductModel product,
       {File? image, bool update = false}) async {
     state = const AppState.loading();
     final response = await _remoteSource.createProduct(product,

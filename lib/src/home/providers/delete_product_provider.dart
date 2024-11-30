@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class DeleteProductNotifier extends StateNotifier<AppState<bool>> {
   DeleteProductNotifier(this._remoteSource) : super(const AppState.initial());
   final ServiceRemoteSource _remoteSource;
-  Future<void> deleteProduct(String id) async {
+  Future deleteProduct(String id) async {
     state = const AppState.loading();
     final response = await _remoteSource.deleteProduct(id);
     state = response.fold(

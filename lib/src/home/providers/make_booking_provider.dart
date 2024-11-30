@@ -9,7 +9,7 @@ class CreateBookingNotifier
 
   final BookingDataSource _dataSource;
 
-  Future<void> createBookings({required List<BookingModel> booking}) async {
+  Future createBookings({required List<BookingModel> booking}) async {
     state = const AppState.loading();
     final response = await _dataSource.makeBooking(booking: booking);
     state = response.fold(

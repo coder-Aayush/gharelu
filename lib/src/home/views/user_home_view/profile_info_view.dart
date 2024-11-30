@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class ProfileInfoView extends StatelessWidget {
   const ProfileInfoView({Key? key}) : super(key: key);
 
@@ -15,9 +15,7 @@ class ProfileInfoView extends StatelessWidget {
         title: const Text('My Account'),
       ),
       body: Column(
-        children: [
-          
-        ],
+        children: [],
       ),
     );
   }
