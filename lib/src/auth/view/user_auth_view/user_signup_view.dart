@@ -12,7 +12,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class UserSignupView extends HookConsumerWidget {
   const UserSignupView({Key? key}) : super(key: key);
 
@@ -107,7 +107,7 @@ class UserSignupView extends HookConsumerWidget {
                     label: const Text('Set on Map'),
                     onPressed: () => context.router.push(MapPickerRoute(
                       onSuccess: (location, placeId, latlng) {
-                        context.router.pop();
+                        context.router.maybePop();
                         ref
                             .read(userSignupFormProvider.notifier)
                             .setLocation(location, placeId, latlng);
@@ -152,7 +152,7 @@ class UserSignupView extends HookConsumerWidget {
                     style: AppStyles.text14PxRegular.midGrey,
                   ),
                   TextButton(
-                      onPressed: () => context.router.pop(),
+                      onPressed: () => context.router.maybePop(),
                       child: const Text('Login')),
                 ],
               ),

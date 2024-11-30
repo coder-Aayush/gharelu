@@ -47,7 +47,7 @@ final storageProvider = Provider<FirebaseStorage>((ref) {
   return FirebaseStorage.instance;
 });
 
-Future<void> sendVerificationEmail(User currentUser) async {
+Future sendVerificationEmail(User currentUser) async {
   if (currentUser.emailVerified == false) {
     currentUser.sendEmailVerification().then(
       (value) {

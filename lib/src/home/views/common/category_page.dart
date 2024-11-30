@@ -12,7 +12,7 @@ import 'package:gharelu/src/home/providers/service_category_provider.dart';
 import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class CategoryView extends StatefulHookConsumerWidget {
   const CategoryView({Key? key, required this.category}) : super(key: key);
 

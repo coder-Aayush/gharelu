@@ -1,15 +1,14 @@
 export 'package:auto_route/auto_route.dart';
 
-export 'app_router.gr.dart';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:gharelu/src/core/routes/app_router.gr.dart';
-import 'package:gharelu/src/chat/views/views.dart';
+
+export 'app_router.gr.dart';
 
 @AutoRouterConfig(
   replaceInRouteName: 'View,Route',
 )
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
 

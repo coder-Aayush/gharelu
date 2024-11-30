@@ -14,7 +14,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class SplashView extends HookConsumerWidget {
   const SplashView({Key? key}) : super(key: key);
 

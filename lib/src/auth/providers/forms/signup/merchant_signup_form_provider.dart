@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gharelu/src/app/views/app.dart';
 import 'package:gharelu/src/auth/entities/merchant_signup_entities.dart';
 import 'package:gharelu/src/auth/providers/forms/signup/merchant_signup_form_state.dart';
+import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/validations/field.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class MerchantSignupFormProvider
     extends StateNotifier<MerchantSignupFormState> {
@@ -25,7 +26,7 @@ class MerchantSignupFormProvider
   void setEmail(String email) {
     final _form = state.form.copyWith(email: Field(value: email));
     late Field emailField;
-    if (email.trim().validateEmail()) {
+    if (email.trim().isEmail) {
       emailField = _form.email.copyWith(isValid: true, errorMessage: '');
     } else {
       emailField = _form.email

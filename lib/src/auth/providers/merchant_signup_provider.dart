@@ -9,7 +9,7 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> {
   MerchantSignupState(this._reader) : super(const AppState.initial());
   final Ref _reader;
 
-  Future<void> signupAsMerchant({
+  Future signupAsMerchant({
     required String email,
     required String name,
     required String phoneNumber,
@@ -18,14 +18,15 @@ class MerchantSignupState extends StateNotifier<AppState<User?>> {
     required String location,
   }) async {
     state = const AppState.loading();
-    final response = await _reader.read(authRemoteSourceProvider).merchantSignup(
-      email: email,
-      name: name,
-      phoneNumber: phoneNumber,
-      password: password,
-      documents: documents,
-      location: location,
-    );
+    final response =
+        await _reader.read(authRemoteSourceProvider).merchantSignup(
+              email: email,
+              name: name,
+              phoneNumber: phoneNumber,
+              password: password,
+              documents: documents,
+              location: location,
+            );
     state = response.fold(
       (error) => error.when(
           serverError: (message) => AppState.error(message: message),

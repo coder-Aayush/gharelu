@@ -8,7 +8,7 @@ class UserSignupProvider extends StateNotifier<AppState<User?>> {
 
   final AuthRemoteSource _remoteSource;
 
-  Future<void> signup({
+  Future signup({
     required String name,
     required String email,
     required String password,

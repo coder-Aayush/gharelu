@@ -10,8 +10,7 @@ class ServiceCategoryState extends StateNotifier<AppState<List<ServiceModel>>> {
       : super(const AppState<List<ServiceModel>>.initial());
   final ServiceRemoteSource _remoteSource;
 
-  Future<void> getServices(
-      {String? categoryId, bool merchantOnly = false}) async {
+  Future getServices({String? categoryId, bool merchantOnly = false}) async {
     state = const AppState.loading();
     final response = await _remoteSource.getServices(
         id: categoryId, merchantOnly: merchantOnly);

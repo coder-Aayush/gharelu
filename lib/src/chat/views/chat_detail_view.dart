@@ -23,7 +23,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class ChatDetailView extends StatefulHookConsumerWidget {
   const ChatDetailView({
     Key? key,
@@ -77,7 +77,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                 radius: 40.r,
                 showGradient: true,
                 child: CacheImageViewer(
-                  error: (context, url, error) => Assets.images.userAvatar.image(fit: BoxFit.cover),
+                  error: (context, url, error) =>
+                      Assets.images.userAvatar.image(fit: BoxFit.cover),
                 )),
             10.horizontalSpace,
             Column(
@@ -87,7 +88,9 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                   (widget.product?.name ?? ''),
                   style: AppStyles.text18PxBold,
                 ),
-                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')}', style: AppStyles.text12PxMedium.midGrey)
+                Text(
+                    '${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')}',
+                    style: AppStyles.text12PxMedium.midGrey)
               ],
             ).expanded(),
           ],
@@ -99,14 +102,17 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
             children: [
               Consumer(
                 builder: (context, ref, _) {
-                  return ref.watch(getMessagesNotifierProvider(roomId)).maybeWhen(
+                  return ref
+                      .watch(getMessagesNotifierProvider(roomId))
+                      .maybeWhen(
                         orElse: () => Container().expanded(),
                         loading: () => context.loader.expanded(),
                         success: (data) {
                           if (data.isEmpty) {
                             return SizedBox(
                               child: NoDataFound(
-                                title: 'Start Conversation with ${isMerchant ? '${widget.user?.name}' : '${widget.merchant?.name}'}',
+                                title:
+                                    'Start Conversation with ${isMerchant ? '${widget.user?.name}' : '${widget.merchant?.name}'}',
                                 onRefresh: () {
                                   ref.read(getMessagesNotifierProvider(roomId));
                                 },
@@ -120,7 +126,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                               final message = data[index];
                               if (message.type == MessageType.image) {
                                 return BubbleNormalImage(
-                                  isSender: userId == message.senderId ? true : false,
+                                  isSender:
+                                      userId == message.senderId ? true : false,
                                   id: message.id,
                                   image: CacheImageViewer(
                                     imageUrl: message.imageUrl,
@@ -129,11 +136,16 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                               }
                               return BubbleSpecialTwo(
                                 text: message.message ?? '',
-                                isSender: userId == message.senderId ? true : false,
+                                isSender:
+                                    userId == message.senderId ? true : false,
                                 tail: true,
-                                color: userId == message.senderId ? AppColors.primaryColor : const Color(0xFFE8E8EE),
+                                color: userId == message.senderId
+                                    ? AppColors.primaryColor
+                                    : const Color(0xFFE8E8EE),
                                 delivered: false,
-                                textStyle: userId == message.senderId ? AppStyles.text14PxRegular.white : const TextStyle(),
+                                textStyle: userId == message.senderId
+                                    ? AppStyles.text14PxRegular.white
+                                    : const TextStyle(),
                               ).px(10).py(10);
                             },
                           ).expanded();
@@ -149,7 +161,9 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                           id: '',
                           userId: widget.user!.uid,
                           merchantId: widget.merchant!.uid,
-                          type: selectedImage.value != null ? MessageType.image : MessageType.text,
+                          type: selectedImage.value != null
+                              ? MessageType.image
+                              : MessageType.text,
                           roomId: roomId,
                           message: message,
                           senderId: userId!,
@@ -168,10 +182,13 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                         size: 24,
                       ),
                       onTap: () async {
-                        final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
+                        final picker = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
                         if (picker?.path != null) {
                           final now = DateTime.now().millisecondsSinceEpoch;
-                          ref.read(sendMessageNotifierProvider.notifier).sendMessage(
+                          ref
+                              .read(sendMessageNotifierProvider.notifier)
+                              .sendMessage(
                                 message: MessageModel(
                                   id: '',
                                   updatedAt: now,

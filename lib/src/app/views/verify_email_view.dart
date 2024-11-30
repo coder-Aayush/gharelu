@@ -8,7 +8,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({Key? key, required this.email}) : super(key: key);
 
@@ -62,7 +62,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                       if (currentUser?.emailVerified == false) {
                         context.showSnackbar(message: 'Email Not Verified yet');
                       } else {
-                        context.router.pop();
+                        context.router.maybePop();
                       }
                     },
                   );

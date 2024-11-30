@@ -8,7 +8,7 @@ import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/theme/theme.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class LoginChoiceView extends StatelessWidget {
   const LoginChoiceView({Key? key}) : super(key: key);
 

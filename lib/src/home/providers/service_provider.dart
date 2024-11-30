@@ -10,7 +10,7 @@ class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
       : super(const AppState<List<CategoryModel>>.initial());
   final ServiceRemoteSource _remoteSource;
 
-  Future<void> getServices() async {
+  Future getServices() async {
     state = const AppState.loading();
     final response = await _remoteSource.getCategories();
     state = response.fold(

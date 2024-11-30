@@ -102,7 +102,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 //     );
 //   }
 
-// static Future<void> show(BuildContext context) async =>
+// static Future show(BuildContext context) async =>
 //     showAppBottomSheet(context, const CancelAppointmentButtomSheet());
 
 //   Widget renderCancellationReasonButton(
@@ -139,7 +139,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // }
 
 class CancelAppointmentButtomSheet extends StatelessWidget {
-  const CancelAppointmentButtomSheet({Key? key, required this.bookingId}) : super(key: key);
+  const CancelAppointmentButtomSheet({Key? key, required this.bookingId})
+      : super(key: key);
   final String bookingId;
 
   @override
@@ -150,7 +151,8 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
         const BottomSheetHeader(title: 'Cancel Appointments'),
         Column(
           children: [
-            Text('Are you Sure want to Cancel this order?', style: AppStyles.text14PxSemiBold.softBlack),
+            Text('Are you Sure want to Cancel this order?',
+                style: AppStyles.text14PxSemiBold.softBlack),
             20.verticalSpace,
             Row(
               children: [
@@ -165,12 +167,17 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
                   });
                   return CustomButton(
                     title: 'Cancel Appoinment',
-                    loading: ref.watch(getUserBookingsNotifierProvider).maybeWhen(
-                          orElse: () => false,
-                          loading: () => true,
-                        ),
+                    loading:
+                        ref.watch(getUserBookingsNotifierProvider).maybeWhen(
+                              orElse: () => false,
+                              loading: () => true,
+                            ),
                     onPressed: () {
-                      ref.read(getUserBookingsNotifierProvider.notifier).updateBookings(bookingId: bookingId, orderType: OrderType.Cancelled);
+                      ref
+                          .read(getUserBookingsNotifierProvider.notifier)
+                          .updateBookings(
+                              bookingId: bookingId,
+                              orderType: OrderType.Cancelled);
                     },
                     isDisabled: false,
                     backgroundColor: AppColors.errorColor,
@@ -191,5 +198,7 @@ class CancelAppointmentButtomSheet extends StatelessWidget {
     );
   }
 
-  static Future<void> show(BuildContext context, {required String bookingId}) async => showAppBottomSheet(context, CancelAppointmentButtomSheet(bookingId: bookingId));
+  static Future<void> show(BuildContext context, {required String bookingId}) async =>
+      showAppBottomSheet(
+          context, CancelAppointmentButtomSheet(bookingId: bookingId));
 }

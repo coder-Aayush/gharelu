@@ -35,5 +35,5 @@ class _AnimatedDialogState extends State<AnimatedDialog>
       )),
     );
   }
-  // static Future<void> show(BuildContext context, )=> showDialog(context: context, builder: builder)
+  // static Future show(BuildContext context, )=> showDialog(context: context, builder: builder)
 }

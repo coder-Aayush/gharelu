@@ -6,7 +6,7 @@ import 'package:gharelu/src/core/extensions/extensions.dart';
 import 'package:gharelu/src/core/theme/app_styles.dart';
 import 'package:gharelu/src/core/widgets/widgets.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class WelcomeView extends StatelessWidget {
   const WelcomeView(
       {Key? key, required this.onPressed, required this.buttonTitle})

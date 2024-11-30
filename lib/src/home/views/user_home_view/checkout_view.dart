@@ -21,7 +21,7 @@ import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
-@RoutePage<void>()
+@RoutePage()
 class CheckoutView extends HookConsumerWidget {
   const CheckoutView(
       {Key? key, required this.date, required this.time, required this.service})

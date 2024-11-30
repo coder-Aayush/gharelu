@@ -6,7 +6,7 @@ class LogoutStateNotifier extends StateNotifier<AppState<bool>> {
   LogoutStateNotifier(this._remoteSource) : super(const AppState.initial());
   final AuthRemoteSource _remoteSource;
 
-  Future<void> logout() async {
+  Future logout() async {
     state = const AppState.loading();
     final response = await _remoteSource.logout();
     state = response.fold(

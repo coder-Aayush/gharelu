@@ -9,7 +9,7 @@ class NotificationService {
 
   static NotificationService get instance => const NotificationService._();
 
-  Future<void> initilize() async {
+  Future initilize() async {
     AwesomeNotifications().initialize(
       null,
       [
@@ -25,7 +25,7 @@ class NotificationService {
     );
   }
 
-  Future<void> show() async {
+  Future show() async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: NotificationService().hashCode,

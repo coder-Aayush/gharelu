@@ -42,8 +42,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '398152368850',
     projectId: 'ghareluapp-np',
     storageBucket: 'ghareluapp-np.appspot.com',
-    iosClientId:
-        '398152368850-o822p1ea53vcr98ujnprs5c7sq5ed4sc.apps.googleusercontent.com',
+    androidClientId: '398152368850-2kdcoqfmjd4duq4ga4htn4svbq7s835d.apps.googleusercontent.com',
+    iosClientId: '398152368850-o822p1ea53vcr98ujnprs5c7sq5ed4sc.apps.googleusercontent.com',
     iosBundleId: 'app.gharelu',
   );
+
 }

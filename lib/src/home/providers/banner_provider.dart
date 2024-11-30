@@ -8,7 +8,7 @@ class BannerState extends StateNotifier<AppState<List<BannerModel>>> {
       : super(const AppState<List<BannerModel>>.initial());
   final BannerRemoteSource _remoteSource;
 
-  Future<void> getBanners() async {
+  Future getBanners() async {
     state = const AppState.loading();
     final response = await _remoteSource.getBanners();
     state = response.fold(
@@ -22,7 +22,8 @@ class BannerState extends StateNotifier<AppState<List<BannerModel>>> {
 
 final bannerStateProvider =
     StateNotifierProvider.autoDispose<BannerState, AppState<List<BannerModel>>>(
-        (ref) => BannerState(ref.read(bannerRemoteSourceProvider)..getBanners()));
+        (ref) =>
+            BannerState(ref.read(bannerRemoteSourceProvider)..getBanners()));
 
 
 // 
