@@ -73,3 +73,10 @@ If you'd like to contribute to Gharelu, please follow these guidelines:
 2. Create a pull request with a detailed description of your changes.
 3. Follow the code formatting and style guidelines outlined in the project.
 4. All contributions must be submitted under the MIT license.
+
+## Contact / Reach Out
+For any questions, suggestions, or support, please feel free to contact us:
+
+- Email: theaayushb@gmail.com
+- WhatsApp: [Contact](wa.me/+9779818630213)
+- Website: https://aayushbhattarai.info.np
